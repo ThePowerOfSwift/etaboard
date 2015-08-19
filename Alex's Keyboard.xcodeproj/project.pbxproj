@@ -12,19 +12,11 @@
 		206ECC1A1B83D44300B62EA0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 206ECC181B83D44300B62EA0 /* Main.storyboard */; };
 		206ECC1C1B83D44300B62EA0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 206ECC1B1B83D44300B62EA0 /* Images.xcassets */; };
 		206ECC1F1B83D44300B62EA0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 206ECC1D1B83D44300B62EA0 /* LaunchScreen.xib */; };
-		206ECC2B1B83D44300B62EA0 /* Alex_s_KeyboardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206ECC2A1B83D44300B62EA0 /* Alex_s_KeyboardTests.swift */; };
 		206ECC3D1B83D4C900B62EA0 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206ECC3C1B83D4C900B62EA0 /* KeyboardViewController.swift */; };
 		206ECC401B83D4C900B62EA0 /* Alex’s Keyboard extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 206ECC381B83D4C900B62EA0 /* Alex’s Keyboard extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		206ECC251B83D44300B62EA0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 206ECC071B83D44300B62EA0 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 206ECC0E1B83D44300B62EA0;
-			remoteInfo = "Alex’s Keyboard";
-		};
 		206ECC3E1B83D4C900B62EA0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 206ECC071B83D44300B62EA0 /* Project object */;
@@ -56,9 +48,6 @@
 		206ECC191B83D44300B62EA0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		206ECC1B1B83D44300B62EA0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		206ECC1E1B83D44300B62EA0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		206ECC241B83D44300B62EA0 /* Alex’s KeyboardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Alex’s KeyboardTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		206ECC291B83D44300B62EA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		206ECC2A1B83D44300B62EA0 /* Alex_s_KeyboardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alex_s_KeyboardTests.swift; sourceTree = "<group>"; };
 		206ECC381B83D4C900B62EA0 /* Alex’s Keyboard extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Alex’s Keyboard extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		206ECC3B1B83D4C900B62EA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		206ECC3C1B83D4C900B62EA0 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
@@ -66,13 +55,6 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		206ECC0C1B83D44300B62EA0 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		206ECC211B83D44300B62EA0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -93,7 +75,6 @@
 			isa = PBXGroup;
 			children = (
 				206ECC111B83D44300B62EA0 /* container app */,
-				206ECC271B83D44300B62EA0 /* Alex’s KeyboardTests */,
 				206ECC391B83D4C900B62EA0 /* keyboard extension */,
 				206ECC101B83D44300B62EA0 /* Products */,
 			);
@@ -103,7 +84,6 @@
 			isa = PBXGroup;
 			children = (
 				206ECC0F1B83D44300B62EA0 /* Alex’s Keyboard.app */,
-				206ECC241B83D44300B62EA0 /* Alex’s KeyboardTests.xctest */,
 				206ECC381B83D4C900B62EA0 /* Alex’s Keyboard extension.appex */,
 			);
 			name = Products;
@@ -127,23 +107,6 @@
 			isa = PBXGroup;
 			children = (
 				206ECC131B83D44300B62EA0 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		206ECC271B83D44300B62EA0 /* Alex’s KeyboardTests */ = {
-			isa = PBXGroup;
-			children = (
-				206ECC2A1B83D44300B62EA0 /* Alex_s_KeyboardTests.swift */,
-				206ECC281B83D44300B62EA0 /* Supporting Files */,
-			);
-			path = "Alex’s KeyboardTests";
-			sourceTree = "<group>";
-		};
-		206ECC281B83D44300B62EA0 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				206ECC291B83D44300B62EA0 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -188,24 +151,6 @@
 			productReference = 206ECC0F1B83D44300B62EA0 /* Alex’s Keyboard.app */;
 			productType = "com.apple.product-type.application";
 		};
-		206ECC231B83D44300B62EA0 /* Alex’s KeyboardTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 206ECC311B83D44300B62EA0 /* Build configuration list for PBXNativeTarget "Alex’s KeyboardTests" */;
-			buildPhases = (
-				206ECC201B83D44300B62EA0 /* Sources */,
-				206ECC211B83D44300B62EA0 /* Frameworks */,
-				206ECC221B83D44300B62EA0 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				206ECC261B83D44300B62EA0 /* PBXTargetDependency */,
-			);
-			name = "Alex’s KeyboardTests";
-			productName = "Alex’s KeyboardTests";
-			productReference = 206ECC241B83D44300B62EA0 /* Alex’s KeyboardTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		206ECC371B83D4C900B62EA0 /* Alex’s Keyboard extension */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 206ECC411B83D4C900B62EA0 /* Build configuration list for PBXNativeTarget "Alex’s Keyboard extension" */;
@@ -235,10 +180,6 @@
 					206ECC0E1B83D44300B62EA0 = {
 						CreatedOnToolsVersion = 6.4;
 					};
-					206ECC231B83D44300B62EA0 = {
-						CreatedOnToolsVersion = 6.4;
-						TestTargetID = 206ECC0E1B83D44300B62EA0;
-					};
 					206ECC371B83D4C900B62EA0 = {
 						CreatedOnToolsVersion = 6.4;
 					};
@@ -258,7 +199,6 @@
 			projectRoot = "";
 			targets = (
 				206ECC0E1B83D44300B62EA0 /* Alex’s Keyboard */,
-				206ECC231B83D44300B62EA0 /* Alex’s KeyboardTests */,
 				206ECC371B83D4C900B62EA0 /* Alex’s Keyboard extension */,
 			);
 		};
@@ -272,13 +212,6 @@
 				206ECC1A1B83D44300B62EA0 /* Main.storyboard in Resources */,
 				206ECC1F1B83D44300B62EA0 /* LaunchScreen.xib in Resources */,
 				206ECC1C1B83D44300B62EA0 /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		206ECC221B83D44300B62EA0 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,14 +234,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		206ECC201B83D44300B62EA0 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				206ECC2B1B83D44300B62EA0 /* Alex_s_KeyboardTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		206ECC341B83D4C900B62EA0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -320,11 +245,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		206ECC261B83D44300B62EA0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 206ECC0E1B83D44300B62EA0 /* Alex’s Keyboard */;
-			targetProxy = 206ECC251B83D44300B62EA0 /* PBXContainerItemProxy */;
-		};
 		206ECC3F1B83D4C900B62EA0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 206ECC371B83D4C900B62EA0 /* Alex’s Keyboard extension */;
@@ -453,40 +373,6 @@
 			};
 			name = Release;
 		};
-		206ECC321B83D44300B62EA0 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "Alex’s KeyboardTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Alex’s Keyboard.app/Alex’s Keyboard";
-			};
-			name = Debug;
-		};
-		206ECC331B83D44300B62EA0 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "Alex’s KeyboardTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Alex’s Keyboard.app/Alex’s Keyboard";
-			};
-			name = Release;
-		};
 		206ECC421B83D4C900B62EA0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -528,15 +414,6 @@
 			buildConfigurations = (
 				206ECC2F1B83D44300B62EA0 /* Debug */,
 				206ECC301B83D44300B62EA0 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		206ECC311B83D44300B62EA0 /* Build configuration list for PBXNativeTarget "Alex’s KeyboardTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				206ECC321B83D44300B62EA0 /* Debug */,
-				206ECC331B83D44300B62EA0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
