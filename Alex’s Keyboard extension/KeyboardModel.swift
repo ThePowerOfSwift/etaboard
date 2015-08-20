@@ -3,6 +3,13 @@ import UIKit
 class KeyboardModel {
     var keyboardSize = CGSize(width: 0, height: 0)
     
+    func keysWithCoordinates() -> [String: (CGFloat, CGFloat)] {
+        var result = [String: (CGFloat, CGFloat)]()
+        result["a"] = (15, 10)
+        result["l"] = (100, 60)
+        return result
+    }
+    
     func distanceBetween(pointA: (CGFloat, CGFloat), pointB: (CGFloat, CGFloat)) -> CGFloat {
         let dx = pointA.0 - pointB.0
         let dy = pointA.1 - pointB.1

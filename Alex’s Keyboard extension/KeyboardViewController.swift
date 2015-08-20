@@ -16,7 +16,7 @@ class KeyboardViewController: UIInputViewController {
         let tapRecognizer2 = UITapGestureRecognizer(target:self, action: "userDidTap:")
         self.view.addGestureRecognizer(tapRecognizer2)
         
-        keyboardView = KeyboardView.create()
+        keyboardView = KeyboardView.create(keyboardModel)
         self.view.addSubview(keyboardView!)
         
         addNextKeyboardButton()
