@@ -2,34 +2,18 @@ import UIKit
 
 class KeyboardViewController: UIInputViewController {
     var keyboardView: KeyboardView?
+    var keyboardModel = KeyboardModel()
 
-    func distanceBetween(pointA: (CGFloat, CGFloat), pointB: (CGFloat, CGFloat)) -> CGFloat {
-        let dx = pointA.0 - pointB.0
-        let dy = pointA.1 - pointB.1
-        return sqrt(dx*dx + dy*dy)
-    }
-    
-    func someAction2(sender:UITapGestureRecognizer){
+    func userDidTap(sender:UITapGestureRecognizer){
         let touchPoint = sender.locationInView(self.view)
         NSLog("tap at (%.1f,%.1f)", touchPoint.x, touchPoint.y)
-        
-        var ax = view.bounds.size.width / 4
-        var ay = view.bounds.size.height / 4
-        var lx = view.bounds.size.width / 4 * 3
-        var ly = view.bounds.size.height / 4 * 3
-        
-        var keyForDistance = [CGFloat: String]()
-        keyForDistance[distanceBetween((ax, ay), pointB: (touchPoint.x, touchPoint.y))] = "a"
-        keyForDistance[distanceBetween((lx, ly), pointB: (touchPoint.x, touchPoint.y))] = "l"
-        
-        var closestKey = keyForDistance[minElement(keyForDistance.keys)]!
-        (textDocumentProxy as! UIKeyInput).insertText(closestKey)
+        (textDocumentProxy as! UIKeyInput).insertText(keyboardModel.key(touchPoint))
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let tapRecognizer2 = UITapGestureRecognizer(target:self, action: "someAction2:")
+        let tapRecognizer2 = UITapGestureRecognizer(target:self, action: "userDidTap:")
         self.view.addGestureRecognizer(tapRecognizer2)
         
         keyboardView = KeyboardView.create()
@@ -41,6 +25,7 @@ class KeyboardViewController: UIInputViewController {
     override func viewWillLayoutSubviews() {
         NSLog("size: (%.1f,%.1f)", view.bounds.width, view.bounds.height)
         keyboardView!.frame = CGRectMake(0, 0, view.bounds.width, view.bounds.height)
+        keyboardModel.keyboardSize = view.bounds.size
         keyboardView!.setNeedsDisplay()
     }
     
