@@ -1,6 +1,43 @@
 import UIKit
 
+class KeyboardView: UIView {
+    var buttonSize: CGFloat = 0
+    var buttonOffset: CGFloat = 0
+    var attributes: [NSObject: AnyObject]?
+    
+    func initButtonAttributes() {
+        buttonSize = UIFont.buttonFontSize()
+        buttonOffset = buttonSize / 2
+        let paraStyle = NSMutableParagraphStyle()
+        paraStyle.alignment = NSTextAlignment.Center
+        attributes = [
+            NSForegroundColorAttributeName: UIColor.lightTextColor(),
+            NSFontAttributeName: UIFont.systemFontOfSize(UIFont.buttonFontSize()),
+            NSParagraphStyleAttributeName: paraStyle
+        ]
+    }
+    
+    override func drawRect(rect: CGRect) {
+        NSLog("drawing keyboard \(NSStringFromCGRect(rect))")
+        
+        draw("a", at: (15, 10))
+        draw("l", at: (100, 60))
+    }
+    
+    func draw(key: String, at: (CGFloat, CGFloat)) {
+        key.drawInRect(CGRectMake(at.0 - buttonOffset, at.1 - buttonOffset, buttonSize, buttonSize), withAttributes: attributes)
+    }
+    
+    static func create() -> KeyboardView {
+        var keyboardView = KeyboardView()
+        keyboardView.backgroundColor = UIColor.darkGrayColor()
+        keyboardView.initButtonAttributes()
+        return keyboardView
+    }
+}
+
 class KeyboardViewController: UIInputViewController {
+    var keyboardView: KeyboardView?
 
     func distanceBetween(pointA: (CGFloat, CGFloat), pointB: (CGFloat, CGFloat)) -> CGFloat {
         let dx = pointA.0 - pointB.0
@@ -28,12 +65,19 @@ class KeyboardViewController: UIInputViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.view.backgroundColor = UIColor(red: 0.5, green: 0, blue:0, alpha: 0.1)
-    
         let tapRecognizer2 = UITapGestureRecognizer(target:self, action: "someAction2:")
         self.view.addGestureRecognizer(tapRecognizer2)
         
+        keyboardView = KeyboardView.create()
+        self.view.addSubview(keyboardView!)
+        
         addNextKeyboardButton()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        NSLog("size: (%.1f,%.1f)", view.bounds.width, view.bounds.height)
+        keyboardView!.frame = CGRectMake(0, 0, view.bounds.width, view.bounds.height)
+        keyboardView!.setNeedsDisplay()
     }
     
     func addNextKeyboardButton() {
