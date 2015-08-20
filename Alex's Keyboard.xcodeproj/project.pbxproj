@@ -14,6 +14,7 @@
 		206ECC1F1B83D44300B62EA0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 206ECC1D1B83D44300B62EA0 /* LaunchScreen.xib */; };
 		206ECC3D1B83D4C900B62EA0 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206ECC3C1B83D4C900B62EA0 /* KeyboardViewController.swift */; };
 		206ECC401B83D4C900B62EA0 /* Alex’s Keyboard extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 206ECC381B83D4C900B62EA0 /* Alex’s Keyboard extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		206ECC4F1B8660D800B62EA0 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206ECC4E1B8660D800B62EA0 /* KeyboardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		206ECC381B83D4C900B62EA0 /* Alex’s Keyboard extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Alex’s Keyboard extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		206ECC3B1B83D4C900B62EA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		206ECC3C1B83D4C900B62EA0 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
+		206ECC4E1B8660D800B62EA0 /* KeyboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 			children = (
 				206ECC3C1B83D4C900B62EA0 /* KeyboardViewController.swift */,
 				206ECC3A1B83D4C900B62EA0 /* Supporting Files */,
+				206ECC4E1B8660D800B62EA0 /* KeyboardView.swift */,
 			);
 			name = "keyboard extension";
 			path = "Alex’s Keyboard extension";
@@ -239,6 +242,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				206ECC3D1B83D4C900B62EA0 /* KeyboardViewController.swift in Sources */,
+				206ECC4F1B8660D800B62EA0 /* KeyboardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
