@@ -1,30 +1,47 @@
 import UIKit
 
 class KeyboardModel {
-    var keyboardSize = CGSize(width: 0, height: 0)
+    var coordinates = [String: (CGFloat, CGFloat)]()
+
+    var keyboardSize: CGSize {
+        get {
+            // this is crap
+            return self.keyboardSize
+        }
+        set(newSize) {
+            var row = "a s d f"
+            var keys = split(row) {$0 == " "}
+            var numberOfSegments = CGFloat(keys.count * 2)
+            var y = newSize.height / 2
+            
+            for (posInRow, key) in enumerate(keys) {
+                var x = newSize.width / numberOfSegments * (CGFloat(posInRow) * 2 + 1)
+                coordinates[key] = (x, y)
+            }
+        }
+    }
+
+    init() {
+        self.keyboardSize = CGSize(width: 0, height: 0)
+    }
+
     
     func keysWithCoordinates() -> [String: (CGFloat, CGFloat)] {
-        var result = [String: (CGFloat, CGFloat)]()
-        result["a"] = (15, 10)
-        result["l"] = (100, 60)
-        return result
+        return coordinates
     }
     
-    func distanceBetween(pointA: (CGFloat, CGFloat), pointB: (CGFloat, CGFloat)) -> CGFloat {
-        let dx = pointA.0 - pointB.0
-        let dy = pointA.1 - pointB.1
+    func distanceBetween(pointA: (CGFloat, CGFloat), and: CGPoint) -> CGFloat {
+        let dx = pointA.0 - and.x
+        let dy = pointA.1 - and.y
         return sqrt(dx*dx + dy*dy)
     }
     
     func key(tap: CGPoint) -> String {
-        var ax = keyboardSize.width / 4
-        var ay = keyboardSize.height / 4
-        var lx = keyboardSize.width / 4 * 3
-        var ly = keyboardSize.height / 4 * 3
-        
         var keyForDistance = [CGFloat: String]()
-        keyForDistance[distanceBetween((ax, ay), pointB: (tap.x, tap.y))] = "a"
-        keyForDistance[distanceBetween((lx, ly), pointB: (tap.x, tap.y))] = "l"
+        
+        for (key, keyCoordinates) in coordinates {
+            keyForDistance[distanceBetween(keyCoordinates, and: tap)] = key
+        }
         
         return keyForDistance[minElement(keyForDistance.keys)]!
     }
