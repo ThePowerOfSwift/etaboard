@@ -1,6 +1,13 @@
 import UIKit
 
 class KeyboardModel {
+    let rows = [
+        "1 2 3 4 5 6 7 8 9 0 ß",
+        "q w e r t z u i o p ü",
+        "a s d f g h j k l ö ä",
+        "y x c v b n m , ."
+    ]
+    
     var coordinates = [String: (CGFloat, CGFloat)]()
 
     var keyboardSize: CGSize {
@@ -9,18 +16,20 @@ class KeyboardModel {
             return self.keyboardSize
         }
         set(newSize) {
-            var row = "a s d f"
-            var keys = split(row) {$0 == " "}
-            var numberOfSegments = CGFloat(keys.count * 2)
-            var y = newSize.height / 2
-            
-            for (posInRow, key) in enumerate(keys) {
-                var x = newSize.width / numberOfSegments * (CGFloat(posInRow) * 2 + 1)
-                coordinates[key] = (x, y)
+            let noOfRowSegments = CGFloat(rows.count * 2)
+            for (rowIdx, row) in enumerate(rows) {
+                let y = newSize.height / noOfRowSegments * (CGFloat(rowIdx) * 2 + 1)
+                
+                let keysInRow = split(row) {$0 == " "}
+                let numberOfKeySegments = CGFloat(keysInRow.count * 2)
+                for (posInRow, key) in enumerate(keysInRow) {
+                    var x = newSize.width / numberOfKeySegments * (CGFloat(posInRow) * 2 + 1)
+                    coordinates[key] = (x, y)
+                }
             }
         }
     }
-
+    
     init() {
         self.keyboardSize = CGSize(width: 0, height: 0)
     }
