@@ -16,6 +16,8 @@ class KeyboardViewController: UIInputViewController {
         let tapRecognizer2 = UITapGestureRecognizer(target:self, action: "userDidTap:")
         self.view.addGestureRecognizer(tapRecognizer2)
         
+        self.view.backgroundColor = UIColor.darkGrayColor()
+        
         keyboardView = KeyboardView.create(keyboardModel)
         self.view.addSubview(keyboardView!)
         
@@ -24,8 +26,10 @@ class KeyboardViewController: UIInputViewController {
     
     override func viewWillLayoutSubviews() {
         NSLog("size: (%.1f,%.1f)", view.bounds.width, view.bounds.height)
-        keyboardView!.frame = CGRectMake(0, 0, view.bounds.width, view.bounds.height)
-        keyboardModel.keyboardSize = view.bounds.size
+        
+        let offsetToLeaveRoomForSwitchKey = CGFloat(20)
+        keyboardView!.frame = CGRectMake(0, 0, view.bounds.width, view.bounds.height - offsetToLeaveRoomForSwitchKey)
+        keyboardModel.keyboardSize = CGSize(width: view.bounds.size.width, height: view.bounds.size.height - offsetToLeaveRoomForSwitchKey)
         keyboardView!.setNeedsDisplay()
     }
     
