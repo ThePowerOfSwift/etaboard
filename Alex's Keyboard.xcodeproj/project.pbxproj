@@ -55,6 +55,7 @@
 		206ECC3C1B83D4C900B62EA0 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		206ECC4E1B8660D800B62EA0 /* KeyboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
 		206ECC521B8665E100B62EA0 /* KeyboardModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardModel.swift; sourceTree = "<group>"; };
+		20F512771B8FC3BA00C94531 /* Alex’s Keyboard extension-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Alex’s Keyboard extension-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +123,7 @@
 				206ECC3A1B83D4C900B62EA0 /* Supporting Files */,
 				206ECC4E1B8660D800B62EA0 /* KeyboardView.swift */,
 				206ECC521B8665E100B62EA0 /* KeyboardModel.swift */,
+				20F512771B8FC3BA00C94531 /* Alex’s Keyboard extension-Bridging-Header.h */,
 			);
 			name = "keyboard extension";
 			path = "Alex’s Keyboard extension";
@@ -384,6 +386,7 @@
 		206ECC421B83D4C900B62EA0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -392,16 +395,20 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Alex’s Keyboard extension/Alex’s Keyboard extension-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		206ECC431B83D4C900B62EA0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = "Alex’s Keyboard extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Alex’s Keyboard extension/Alex’s Keyboard extension-Bridging-Header.h";
 			};
 			name = Release;
 		};

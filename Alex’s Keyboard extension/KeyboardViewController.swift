@@ -1,12 +1,21 @@
 import UIKit
 
+class MyGestureRecognizer: UIGestureRecognizer {
+    override func touchesBegan(touches: Set<NSObject>!, withEvent event: UIEvent!) {
+        if let touch = touches.first as? UITouch {
+            let touchPoint = touch.locationInView(self.view)
+            NSLog("touch began at (%.1f,%.1f)", touchPoint.x, touchPoint.y)
+            self.state = .Ended
+        }
+    }
+}
+
 class KeyboardViewController: UIInputViewController {
     var keyboardView: KeyboardView?
     var keyboardModel = KeyboardModel()
 
-    func userDidTap(sender:UITapGestureRecognizer){
-        let touchPoint = sender.locationInView(self.view)
-        NSLog("tap at (%.1f,%.1f)", touchPoint.x, touchPoint.y)
+    func handleTap(recognizer: UIGestureRecognizer) {
+        let touchPoint = recognizer.locationInView(self.view)
         (textDocumentProxy as! UIKeyInput).insertText(keyboardModel.key(touchPoint))
     }
     
@@ -17,19 +26,19 @@ class KeyboardViewController: UIInputViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let leftSwipeRecognizer = UISwipeGestureRecognizer(target:self, action: "userSwipedLeft:")
-        leftSwipeRecognizer.direction = .Left
-        self.view.addGestureRecognizer(leftSwipeRecognizer)
-        
-        let tapRecognizer2 = UITapGestureRecognizer(target:self, action: "userDidTap:")
-        self.view.addGestureRecognizer(tapRecognizer2)
-        
         self.view.backgroundColor = UIColor.darkGrayColor()
         
         keyboardView = KeyboardView.create(keyboardModel)
         self.view.addSubview(keyboardView!)
-        
         addNextKeyboardButton()
+        
+        let leftSwipeRecognizer = UISwipeGestureRecognizer(target:self, action: "userSwipedLeft:")
+        leftSwipeRecognizer.direction = .Left
+        self.view.addGestureRecognizer(leftSwipeRecognizer)
+    
+        let tapRecognizer = MyGestureRecognizer(
+            target: self, action: "handleTap:")
+        keyboardView!.addGestureRecognizer(tapRecognizer)
     }
     
     override func viewWillLayoutSubviews() {
