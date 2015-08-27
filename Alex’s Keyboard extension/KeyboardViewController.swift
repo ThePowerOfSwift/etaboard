@@ -10,9 +10,17 @@ class KeyboardViewController: UIInputViewController {
         (textDocumentProxy as! UIKeyInput).insertText(keyboardModel.key(touchPoint))
     }
     
+    func userSwipedLeft(sender: UISwipeGestureRecognizer) {
+        NSLog("swipe left")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let leftSwipeRecognizer = UISwipeGestureRecognizer(target:self, action: "userSwipedLeft:")
+        leftSwipeRecognizer.direction = .Left
+        self.view.addGestureRecognizer(leftSwipeRecognizer)
+        
         let tapRecognizer2 = UITapGestureRecognizer(target:self, action: "userDidTap:")
         self.view.addGestureRecognizer(tapRecognizer2)
         
