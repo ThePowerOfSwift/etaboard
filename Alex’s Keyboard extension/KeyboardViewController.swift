@@ -30,9 +30,10 @@ class KeyboardViewController: UIInputViewController {
     }
     
     func addNextKeyboardButton() {
-        var nextKeyboardButton = UIButton.buttonWithType(.System) as! UIButton
+        var nextKeyboardButton = UIButton.buttonWithType(.Custom) as! UIButton
         
-        nextKeyboardButton.setTitle(NSLocalizedString("Next Keyboard", comment: "Title for 'Next Keyboard' button"), forState: .Normal)
+        nextKeyboardButton.setTitleColor(UIColor.lightGrayColor(), forState: .Normal)
+        nextKeyboardButton.setTitle("\u{2328}", forState: .Normal)
         nextKeyboardButton.sizeToFit()
         nextKeyboardButton.setTranslatesAutoresizingMaskIntoConstraints(false)
         
