@@ -8,13 +8,14 @@ class KeyboardView: UIView {
     var model: KeyboardModel?
     
     func initButtonAttributes() {
-        buttonSize = UIFont.buttonFontSize()
+        let font = UIFont.systemFontOfSize(UIFont.buttonFontSize())
+        buttonSize = font.pointSize + abs(font.descender)
         buttonOffset = buttonSize / 2
         let paraStyle = NSMutableParagraphStyle()
         paraStyle.alignment = NSTextAlignment.Center
         attributes = [
             NSForegroundColorAttributeName: UIColor.lightTextColor(),
-            NSFontAttributeName: UIFont.systemFontOfSize(UIFont.buttonFontSize()),
+            NSFontAttributeName: font,
             NSParagraphStyleAttributeName: paraStyle
         ]
     }
@@ -27,8 +28,18 @@ class KeyboardView: UIView {
         }
     }
     
-    func draw(key: String, at: (CGFloat, CGFloat)) {
-        key.drawInRect(CGRectMake(at.0 - buttonOffset, at.1 - buttonOffset, buttonSize, buttonSize), withAttributes: attributes)
+    func draw(key: String, at coordinates: (CGFloat, CGFloat)) {
+        let rect = CGRectMake(
+            coordinates.0 - buttonOffset, coordinates.1 - buttonOffset, buttonSize, buttonSize)
+        key.drawInRect(rect, withAttributes: attributes)
+        
+//        drawPoint(at: coordinates)
+    }
+    
+    func drawPoint(at coordinates: (CGFloat, CGFloat)) {
+        var path = UIBezierPath(rect: CGRectMake(coordinates.0, coordinates.1, 1, 1))
+        UIColor.redColor().setStroke()
+        path.stroke()
     }
     
     static func create(model: KeyboardModel) -> KeyboardView {
