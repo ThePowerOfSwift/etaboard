@@ -6,6 +6,11 @@ class KeyboardView: UIView {
     var attributes: [NSObject: AnyObject]?
     
     var model: KeyboardModel?
+    let representations = [
+        KeyboardModel.Enter: "⏎",
+        KeyboardModel.Backspace: "⌫",
+        KeyboardModel.Space: "＿＿"
+    ]
     
     func initButtonAttributes() {
         let font = UIFont.systemFontOfSize(UIFont.buttonFontSize())
@@ -24,12 +29,14 @@ class KeyboardView: UIView {
         NSLog("drawing keyboard \(NSStringFromCGRect(rect))")
         
         for (key, coordinates) in model!.keysWithCoordinates() {
-            var symbolToRender = key
-            if key == KeyboardModel.Enter { symbolToRender = "⏎" }
-            if key == KeyboardModel.Backspace { symbolToRender = "⌫" }
-            if key == KeyboardModel.Space { symbolToRender = "＿＿" }
-            draw(symbolToRender, at: coordinates)
+            draw(symbolToRender(key), at: coordinates)
         }
+    }
+    
+    func symbolToRender (key: String) -> String {
+        if let specialRepresentation = representations[key] {
+            return specialRepresentation }
+        return key
     }
     
     func draw(key: String, at coordinates: (CGFloat, CGFloat)) {
