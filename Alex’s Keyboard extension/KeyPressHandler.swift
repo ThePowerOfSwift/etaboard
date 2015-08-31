@@ -36,8 +36,10 @@ class KeyPressHandler {
         }
         else {
             input.insertText(key)
-            model.disableUpperCase()
-            keyboardViewController.keyboardView?.setNeedsDisplay()
+            if model.typeInUpperCase {
+                model.disableUpperCase()
+                keyboardViewController.keyboardView?.setNeedsDisplay()
+            }
         }
 
     }
