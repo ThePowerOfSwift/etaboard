@@ -75,4 +75,8 @@ class KeyboardModel {
     func toggleUpperCase() {
         typeInUpperCase = !typeInUpperCase
     }
+    
+    func disableUpperCase() {
+        typeInUpperCase = false
+    }
 }

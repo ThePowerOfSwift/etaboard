@@ -1,12 +1,14 @@
 
 class KeyPressHandler {
     let input: UIKeyInput
+    let model: KeyboardModel
     var dedicatedReactions: [String: () -> Void]
     
     init(inputViewController: UIInputViewController,
         model: KeyboardModel) {
         let input = inputViewController.textDocumentProxy as! UIKeyInput
         self.input = input
+        self.model = model
         
         dedicatedReactions = [
             KeyboardModel.Enter: { input.insertText("\n") },
@@ -24,6 +26,7 @@ class KeyPressHandler {
         }
         else {
             input.insertText(key)
+            model.disableUpperCase()
         }
 
     }
