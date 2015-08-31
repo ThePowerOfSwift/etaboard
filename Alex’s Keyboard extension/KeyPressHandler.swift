@@ -1,5 +1,6 @@
 
 class KeyPressHandler {
+    let keyboardViewController: KeyboardViewController
     let input: UIKeyInput
     let model: KeyboardModel
     var dedicatedReactions: [String: () -> Void]
@@ -9,6 +10,8 @@ class KeyPressHandler {
         let input = inputViewController.textDocumentProxy as! UIKeyInput
         self.input = input
         self.model = model
+        let keyboardViewController = (inputViewController as! KeyboardViewController)
+        self.keyboardViewController = keyboardViewController
         
         dedicatedReactions = [
             KeyboardModel.Enter: { input.insertText("\n") },
@@ -16,8 +19,15 @@ class KeyPressHandler {
             KeyboardModel.Space: { input.insertText(" ") },
             KeyboardModel.NextKeyboard: {
                 inputViewController.advanceToNextInputMode() },
-            KeyboardModel.Shift: { model.toggleUpperCase() },
+            KeyboardModel.Shift: {
+                model.toggleUpperCase()
+                keyboardViewController.keyboardView?.setNeedsDisplay()
+            },
         ]
+    }
+    
+    func redrawKeyboard() {
+        
     }
     
     func handle(key: String) {
@@ -27,6 +37,7 @@ class KeyPressHandler {
         else {
             input.insertText(key)
             model.disableUpperCase()
+            keyboardViewController.keyboardView?.setNeedsDisplay()
         }
 
     }

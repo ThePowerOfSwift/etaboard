@@ -44,7 +44,18 @@ class KeyboardModel {
 
     
     func keysWithCoordinates() -> [String: (CGFloat, CGFloat)] {
-        return coordinates
+        var result = [String: (CGFloat, CGFloat)]()
+        
+        for (key, keyCoordinates) in coordinates {
+            if typeInUpperCase && isNormalKey(key) {
+                result[key.uppercaseString] = keyCoordinates
+            } else {
+                result[key] = keyCoordinates
+            }
+
+        }
+        
+        return result
     }
     
     func distanceBetween(pointA: (CGFloat, CGFloat), and: CGPoint) -> CGFloat {
