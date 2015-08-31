@@ -17,6 +17,7 @@
 		206ECC4F1B8660D800B62EA0 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206ECC4E1B8660D800B62EA0 /* KeyboardView.swift */; };
 		206ECC531B8665E100B62EA0 /* KeyboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206ECC521B8665E100B62EA0 /* KeyboardModel.swift */; };
 		20F5127B1B8FC7B600C94531 /* MyTapRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F5127A1B8FC7B600C94531 /* MyTapRecognizer.swift */; };
+		20F52A8E1B94D78D007D7B34 /* KeyPressHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F52A8D1B94D78D007D7B34 /* KeyPressHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		206ECC521B8665E100B62EA0 /* KeyboardModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardModel.swift; sourceTree = "<group>"; };
 		20F512771B8FC3BA00C94531 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		20F5127A1B8FC7B600C94531 /* MyTapRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTapRecognizer.swift; sourceTree = "<group>"; };
+		20F52A8D1B94D78D007D7B34 /* KeyPressHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyPressHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				206ECC3C1B83D4C900B62EA0 /* KeyboardViewController.swift */,
+				20F52A8D1B94D78D007D7B34 /* KeyPressHandler.swift */,
 				206ECC4E1B8660D800B62EA0 /* KeyboardView.swift */,
 				206ECC521B8665E100B62EA0 /* KeyboardModel.swift */,
 				20F5127C1B8FC8FE00C94531 /* tap recognizer */,
@@ -260,6 +263,7 @@
 				206ECC3D1B83D4C900B62EA0 /* KeyboardViewController.swift in Sources */,
 				206ECC4F1B8660D800B62EA0 /* KeyboardView.swift in Sources */,
 				206ECC531B8665E100B62EA0 /* KeyboardModel.swift in Sources */,
+				20F52A8E1B94D78D007D7B34 /* KeyPressHandler.swift in Sources */,
 				20F5127B1B8FC7B600C94531 /* MyTapRecognizer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

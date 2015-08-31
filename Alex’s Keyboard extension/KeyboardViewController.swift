@@ -3,29 +3,21 @@ import UIKit
 class KeyboardViewController: UIInputViewController {
     var keyboardView: KeyboardView?
     var keyboardModel = KeyboardModel()
+    var keyPressHandler: KeyPressHandler?
 
     func handleTap(recognizer: UIGestureRecognizer) {
         let touchPoint = recognizer.locationInView(self.view)
-        let input = textDocumentProxy as! UIKeyInput
         let key = keyboardModel.key(touchPoint)
-        if key == KeyboardModel.Enter {
-            input.insertText("\n")
-        }
-        else if key == KeyboardModel.Backspace {
-            input.deleteBackward()
-        }
-        else if key == KeyboardModel.Space {
-            input.insertText(" ")
-        }
-        else {
-            input.insertText(key)
-        }
+        keyPressHandler?.handle(key)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.view.backgroundColor = UIColor.darkGrayColor()
+        
+        keyPressHandler = KeyPressHandler(
+            input: textDocumentProxy as! UIKeyInput)
         
         keyboardView = KeyboardView.create(keyboardModel)
         self.view.addSubview(keyboardView!)
