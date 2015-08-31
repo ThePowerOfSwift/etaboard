@@ -16,8 +16,6 @@ class KeyboardView: UIView {
     
     func initButtonAttributes() {
         let font = UIFont.systemFontOfSize(UIFont.buttonFontSize())
-        buttonSize = font.pointSize + abs(font.descender)
-        buttonOffset = buttonSize / 2
         let paraStyle = NSMutableParagraphStyle()
         paraStyle.alignment = NSTextAlignment.Center
         attributes = [
@@ -25,6 +23,12 @@ class KeyboardView: UIView {
             NSFontAttributeName: font,
             NSParagraphStyleAttributeName: paraStyle
         ]
+        
+        let maxWidth = "⌨".sizeWithAttributes(attributes).width
+        
+        buttonSize = max(maxWidth, font.pointSize + abs(font.descender))
+        buttonOffset = buttonSize / 2
+
     }
     
     override func drawRect(rect: CGRect) {
