@@ -25,7 +25,7 @@ class KeyboardView: UIView {
         
         for (key, coordinates) in model!.keysWithCoordinates() {
             var symbolToRender = key
-            if key == "<cr>" { symbolToRender = "\u{23ce}" }
+            if key == KeyboardModel.ENTER { symbolToRender = "\u{23ce}" }
             draw(symbolToRender, at: coordinates)
         }
     }
