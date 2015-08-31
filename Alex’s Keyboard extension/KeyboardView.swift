@@ -9,7 +9,8 @@ class KeyboardView: UIView {
     let representations = [
         KeyboardModel.Enter: "⏎",
         KeyboardModel.Backspace: "⌫",
-        KeyboardModel.Space: "＿＿"
+        KeyboardModel.Space: "＿＿",
+        KeyboardModel.NextKeyboard: "\u{2328}",
     ]
     
     func initButtonAttributes() {

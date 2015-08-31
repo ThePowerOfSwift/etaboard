@@ -16,12 +16,10 @@ class KeyboardViewController: UIInputViewController {
 
         self.view.backgroundColor = UIColor.darkGrayColor()
         
-        keyPressHandler = KeyPressHandler(
-            input: textDocumentProxy as! UIKeyInput)
+        keyPressHandler = KeyPressHandler(inputViewController: self)
         
         keyboardView = KeyboardView.create(keyboardModel)
         self.view.addSubview(keyboardView!)
-        addNextKeyboardButton()
         
         let tapRecognizer = MyTapRecognizer(
             target: self, action: "handleTap:")
@@ -31,26 +29,8 @@ class KeyboardViewController: UIInputViewController {
     override func viewWillLayoutSubviews() {
         NSLog("size: (%.1f,%.1f)", view.bounds.width, view.bounds.height)
         
-        let offsetToLeaveRoomForSwitchKey = CGFloat(20)
-        keyboardView!.frame = CGRectMake(0, 0, view.bounds.width, view.bounds.height - offsetToLeaveRoomForSwitchKey)
-        keyboardModel.keyboardSize = CGSize(width: view.bounds.size.width, height: view.bounds.size.height - offsetToLeaveRoomForSwitchKey)
+        keyboardView!.frame = CGRectMake(0, 0, view.bounds.width, view.bounds.height)
+        keyboardModel.keyboardSize = CGSize(width: view.bounds.size.width, height: view.bounds.size.height)
         keyboardView!.setNeedsDisplay()
-    }
-    
-    func addNextKeyboardButton() {
-        var nextKeyboardButton = UIButton.buttonWithType(.Custom) as! UIButton
-        
-        nextKeyboardButton.setTitleColor(UIColor.lightGrayColor(), forState: .Normal)
-        nextKeyboardButton.setTitle("\u{2328}", forState: .Normal)
-        nextKeyboardButton.sizeToFit()
-        nextKeyboardButton.setTranslatesAutoresizingMaskIntoConstraints(false)
-        
-        nextKeyboardButton.addTarget(self, action: "advanceToNextInputMode", forControlEvents: .TouchUpInside)
-        
-        self.view.addSubview(nextKeyboardButton)
-        
-        var nextKeyboardButtonLeftSideConstraint = NSLayoutConstraint(item: nextKeyboardButton, attribute: .Left, relatedBy: .Equal, toItem: self.view, attribute: .Left, multiplier: 1.0, constant: 0.0)
-        var nextKeyboardButtonBottomConstraint = NSLayoutConstraint(item: nextKeyboardButton, attribute: .Bottom, relatedBy: .Equal, toItem: self.view, attribute: .Bottom, multiplier: 1.0, constant: 0.0)
-        self.view.addConstraints([nextKeyboardButtonLeftSideConstraint, nextKeyboardButtonBottomConstraint])
     }
 }
