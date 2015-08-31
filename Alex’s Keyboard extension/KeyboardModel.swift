@@ -8,10 +8,11 @@ class KeyboardModel {
     static let Shift = "x5"
     
     let rows = [
-        "1 2 3 4 5 6 7 8 9 0 ß \(Backspace)",
+        "\(NextKeyboard) \(Shift) \(Space) \(Backspace) \(Enter)",
         "q w e r t z u i o p ü",
-        "\(Shift) a s d f g h j k l ö ä \(Enter)",
-        "\(NextKeyboard) y x c v b n m , . \(Space)",
+        "a s d f g h j k l ö ä",
+        "y x c v b n m , . ! ?",
+        "1 2 3 4 5 6 7 8 9 0 ß",
     ]
     
     var typeInUpperCase = false
