@@ -10,7 +10,7 @@ class KeyboardView: UIView {
         KeyboardModel.Enter: "⏎",
         KeyboardModel.Backspace: "⌫",
         KeyboardModel.Space: "＿＿",
-        KeyboardModel.NextKeyboard: "\u{2328}",
+        KeyboardModel.NextKeyboard: "⌨",
         KeyboardModel.Shift: "⬆︎",
     ]
     
