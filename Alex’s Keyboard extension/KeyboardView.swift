@@ -24,7 +24,9 @@ class KeyboardView: UIView {
         NSLog("drawing keyboard \(NSStringFromCGRect(rect))")
         
         for (key, coordinates) in model!.keysWithCoordinates() {
-            draw(key, at: coordinates)
+            var symbolToRender = key
+            if key == "<cr>" { symbolToRender = "\u{23ce}" }
+            draw(symbolToRender, at: coordinates)
         }
     }
     

@@ -4,7 +4,7 @@ class KeyboardModel {
     let rows = [
         "1 2 3 4 5 6 7 8 9 0 ß",
         "q w e r t z u i o p ü",
-        "a s d f g h j k l ö ä",
+        "a s d f g h j k l ö ä <cr>",
         "y x c v b n m , ."
     ]
     

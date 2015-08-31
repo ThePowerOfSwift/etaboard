@@ -6,7 +6,14 @@ class KeyboardViewController: UIInputViewController {
 
     func handleTap(recognizer: UIGestureRecognizer) {
         let touchPoint = recognizer.locationInView(self.view)
-        (textDocumentProxy as! UIKeyInput).insertText(keyboardModel.key(touchPoint))
+        let input = textDocumentProxy as! UIKeyInput
+        let key = keyboardModel.key(touchPoint)
+        if key == "<cr>" {
+            input.insertText("\n")
+        }
+        else {
+            input.insertText(key)
+        }
     }
     
     override func viewDidLoad() {
