@@ -5,13 +5,16 @@ class KeyboardModel {
     static let Backspace = "<bs>"
     static let Space = "x3"
     static let NextKeyboard = "x4"
+    static let Shift = "x5"
     
     let rows = [
         "1 2 3 4 5 6 7 8 9 0 ß \(Backspace)",
         "q w e r t z u i o p ü",
-        "a s d f g h j k l ö ä \(Enter)",
-        "\(NextKeyboard) y x c v b n m , . \(Space)"
+        "\(Shift) a s d f g h j k l ö ä \(Enter)",
+        "\(NextKeyboard) y x c v b n m , . \(Space)",
     ]
+    
+    var typeInUpperCase = false
     
     var coordinates = [String: (CGFloat, CGFloat)]()
 
@@ -56,7 +59,20 @@ class KeyboardModel {
         for (key, keyCoordinates) in coordinates {
             keyForDistance[distanceBetween(keyCoordinates, and: tap)] = key
         }
+        let key = keyForDistance[minElement(keyForDistance.keys)]!
         
-        return keyForDistance[minElement(keyForDistance.keys)]!
+        if typeInUpperCase && isNormalKey(key) {
+            return key.uppercaseString
+        }
+        
+        return key
+    }
+    
+    func isNormalKey(key: String) -> Bool {
+        return count(key) == 1
+    }
+    
+    func toggleUpperCase() {
+        typeInUpperCase = !typeInUpperCase
     }
 }

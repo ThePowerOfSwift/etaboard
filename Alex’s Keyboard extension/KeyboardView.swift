@@ -11,6 +11,7 @@ class KeyboardView: UIView {
         KeyboardModel.Backspace: "⌫",
         KeyboardModel.Space: "＿＿",
         KeyboardModel.NextKeyboard: "\u{2328}",
+        KeyboardModel.Shift: "⬆︎",
     ]
     
     func initButtonAttributes() {

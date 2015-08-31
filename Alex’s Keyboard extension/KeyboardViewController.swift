@@ -16,7 +16,9 @@ class KeyboardViewController: UIInputViewController {
 
         self.view.backgroundColor = UIColor.darkGrayColor()
         
-        keyPressHandler = KeyPressHandler(inputViewController: self)
+        keyPressHandler = KeyPressHandler(
+            inputViewController: self,
+            model: keyboardModel)
         
         keyboardView = KeyboardView.create(keyboardModel)
         self.view.addSubview(keyboardView!)
