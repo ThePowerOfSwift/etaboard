@@ -14,6 +14,9 @@ class KeyboardViewController: UIInputViewController {
         else if key == KeyboardModel.Backspace {
             input.deleteBackward()
         }
+        else if key == KeyboardModel.Space {
+            input.insertText(" ")
+        }
         else {
             input.insertText(key)
         }
