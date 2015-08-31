@@ -8,8 +8,11 @@ class KeyboardViewController: UIInputViewController {
         let touchPoint = recognizer.locationInView(self.view)
         let input = textDocumentProxy as! UIKeyInput
         let key = keyboardModel.key(touchPoint)
-        if key == "<cr>" {
+        if key == KeyboardModel.Enter {
             input.insertText("\n")
+        }
+        else if key == KeyboardModel.Backspace {
+            input.deleteBackward()
         }
         else {
             input.insertText(key)

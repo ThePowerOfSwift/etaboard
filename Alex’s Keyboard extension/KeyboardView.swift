@@ -25,7 +25,8 @@ class KeyboardView: UIView {
         
         for (key, coordinates) in model!.keysWithCoordinates() {
             var symbolToRender = key
-            if key == KeyboardModel.ENTER { symbolToRender = "\u{23ce}" }
+            if key == KeyboardModel.Enter { symbolToRender = "\u{23ce}" }
+            if key == KeyboardModel.Backspace { symbolToRender = "\u{232b}" }
             draw(symbolToRender, at: coordinates)
         }
     }
