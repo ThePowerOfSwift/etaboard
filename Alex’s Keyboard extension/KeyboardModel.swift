@@ -21,13 +21,18 @@ class KeyboardModel {
     
     var delegate: KeyboardModelDelegate?
     
-    private var typeInUpperCase = false
+    private var typeInUpperCase = false {
+        didSet {
+            if typeInUpperCase != oldValue {
+                delegate?.keyboardChanged()
+            }
+        }
+    }
     
     private var coordinates = [String: (CGFloat, CGFloat)]()
 
     var keyboardSize: CGSize {
         get {
-            // this is crap
             return self.keyboardSize
         }
         set(newSize) {
@@ -92,13 +97,9 @@ class KeyboardModel {
     
     func toggleUpperCase() {
         typeInUpperCase = !typeInUpperCase
-        delegate?.keyboardChanged()
     }
     
     func disableUpperCase() {
-        if typeInUpperCase {
-            typeInUpperCase = false
-            delegate?.keyboardChanged()
-        }
+        typeInUpperCase = false
     }
 }
