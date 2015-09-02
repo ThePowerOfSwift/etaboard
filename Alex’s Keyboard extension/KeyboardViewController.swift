@@ -22,6 +22,7 @@ class KeyboardViewController: UIInputViewController {
         
         keyboardView = KeyboardView.create(keyboardModel)
         self.view.addSubview(keyboardView!)
+        keyboardModel.delegate = keyboardView
         
         let tapRecognizer = MyTapRecognizer(
             target: self, action: "handleTap:")

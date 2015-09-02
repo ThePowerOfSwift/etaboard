@@ -1,5 +1,9 @@
 import UIKit
 
+protocol KeyboardModelDelegate {
+    func keyboardChanged()
+}
+
 class KeyboardModel {
     static let Enter = "<cr>"
     static let Backspace = "<bs>"
@@ -15,9 +19,11 @@ class KeyboardModel {
         "1 2 3 4 5 6 7 8 9 0 ß",
     ]
     
-    var typeInUpperCase = false
+    var delegate: KeyboardModelDelegate?
     
-    var coordinates = [String: (CGFloat, CGFloat)]()
+    private var typeInUpperCase = false
+    
+    private var coordinates = [String: (CGFloat, CGFloat)]()
 
     var keyboardSize: CGSize {
         get {
@@ -86,9 +92,13 @@ class KeyboardModel {
     
     func toggleUpperCase() {
         typeInUpperCase = !typeInUpperCase
+        delegate?.keyboardChanged()
     }
     
     func disableUpperCase() {
-        typeInUpperCase = false
+        if typeInUpperCase {
+            typeInUpperCase = false
+            delegate?.keyboardChanged()
+        }
     }
 }
