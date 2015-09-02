@@ -21,18 +21,13 @@ class KeyboardViewController: UIInputViewController {
             model: keyboardModel)
         
         keyboardView = KeyboardView.create(keyboardModel)
+        keyboardView?.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight
         self.view.addSubview(keyboardView!)
         keyboardModel.delegate = keyboardView
         
         let tapRecognizer = MyTapRecognizer(
             target: self, action: "handleTap:")
         keyboardView!.addGestureRecognizer(tapRecognizer)
-    }
-    
-    override func viewWillLayoutSubviews() {
-        NSLog("size: (%.1f,%.1f)", view.bounds.width, view.bounds.height)
-        
-        keyboardView!.frame = CGRectMake(0, 0, view.bounds.width, view.bounds.height)
-        keyboardModel.keyboardSize = CGSize(width: view.bounds.size.width, height: view.bounds.size.height)
+
     }
 }

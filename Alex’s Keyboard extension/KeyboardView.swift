@@ -30,10 +30,15 @@ class KeyboardView: UIView, KeyboardModelDelegate {
         buttonOffset = buttonSize / 2
 
     }
-    
+
+    override func layoutSubviews() {
+        NSLog("new bounds: \(NSStringFromCGRect(self.bounds))")
+        model?.keyboardSize = CGSizeMake(self.bounds.width, self.bounds.height)
+    }
+
     override func drawRect(rect: CGRect) {
-        NSLog("drawing keyboard \(NSStringFromCGRect(rect))")
-        
+        NSLog("drawing keyboard in rect: \(NSStringFromCGRect(rect))")
+
         for (key, coordinates) in model!.keysWithCoordinates() {
             draw(symbolToRender(key), at: coordinates)
         }
