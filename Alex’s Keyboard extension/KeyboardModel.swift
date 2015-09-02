@@ -47,6 +47,7 @@ class KeyboardModel {
                     coordinates[key] = (x, y)
                 }
             }
+            delegate?.keyboardChanged()
         }
     }
     

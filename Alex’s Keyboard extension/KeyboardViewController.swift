@@ -34,6 +34,5 @@ class KeyboardViewController: UIInputViewController {
         
         keyboardView!.frame = CGRectMake(0, 0, view.bounds.width, view.bounds.height)
         keyboardModel.keyboardSize = CGSize(width: view.bounds.size.width, height: view.bounds.size.height)
-        keyboardView!.setNeedsDisplay()
     }
 }
