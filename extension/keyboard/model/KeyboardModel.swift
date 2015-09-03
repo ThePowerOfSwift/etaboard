@@ -39,24 +39,10 @@ class KeyboardModel {
     }
 
     private func calculateLayouts(size: CGSize) {
-        var uppercase = [String: (CGFloat, CGFloat)]()
-        var lowercase = [String: (CGFloat, CGFloat)]()
-        
-        let rows = SchematicLayout.rowsLowercase
-        let noOfRowSegments = CGFloat(rows.count * 2)
-        for (rowIdx, row) in enumerate(rows) {
-            let y = size.height / noOfRowSegments * (CGFloat(rowIdx) * 2 + 1)
-
-            let keysInRow = split(row) {$0 == " "}
-            let numberOfKeySegments = CGFloat(keysInRow.count * 2)
-            for (posInRow, key) in enumerate(keysInRow) {
-                var x = size.width / numberOfKeySegments * (CGFloat(posInRow) * 2 + 1)
-                lowercase[key] = (x, y)
-                uppercase[SchematicLayout.uppercase(forKey: key)] = (x, y)
-            }
-        }
-        lowercaseLayout = ConcreteLayout(layout: lowercase)
-        uppercaseLayout = ConcreteLayout(layout: uppercase)
+        lowercaseLayout = ConcreteLayout(
+            schematicLayout: SchematicLayout.rowsLowercase, size: size)
+        uppercaseLayout = ConcreteLayout(
+            basedOn: lowercaseLayout!, transformer: SchematicLayout.uppercase)
     }
 
     private func selectLayout() {
