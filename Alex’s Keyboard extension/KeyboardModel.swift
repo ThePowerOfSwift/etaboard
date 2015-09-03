@@ -29,9 +29,9 @@ class KeyboardModel {
 
     var delegate: KeyboardModelDelegate?
     
-    private var typeInUpperCase = false {
+    private var typeInUppercase = false {
         didSet {
-            if typeInUpperCase != oldValue {
+            if typeInUppercase != oldValue {
                 updateCoordinates()
             }
         }
@@ -78,7 +78,7 @@ class KeyboardModel {
     }
 
     private func updateCoordinates() {
-        coordinates = typeInUpperCase ? uppercaseCoordinates : lowercaseCoordinates
+        coordinates = typeInUppercase ? uppercaseCoordinates : lowercaseCoordinates
     }
 
     func key(tap: CGPoint) -> String {
@@ -96,11 +96,11 @@ class KeyboardModel {
         return sqrt(dx*dx + dy*dy)
     }
     
-    func toggleUpperCase() {
-        typeInUpperCase = !typeInUpperCase
+    func toggleUppercase() {
+        typeInUppercase = !typeInUppercase
     }
     
-    func disableUpperCase() {
-        typeInUpperCase = false
+    func disableUppercase() {
+        typeInUppercase = false
     }
 }

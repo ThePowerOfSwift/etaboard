@@ -19,7 +19,7 @@ class KeyPressHandler {
             KeyboardModel.Space: { input.insertText(" ") },
             KeyboardModel.NextKeyboard: {
                 inputViewController.advanceToNextInputMode() },
-            KeyboardModel.Shift: { model.toggleUpperCase() },
+            KeyboardModel.Shift: { model.toggleUppercase() },
         ]
     }
     
@@ -33,7 +33,7 @@ class KeyPressHandler {
         }
         else {
             input.insertText(key)
-            model.disableUpperCase()
+            model.disableUppercase()
         }
 
     }
