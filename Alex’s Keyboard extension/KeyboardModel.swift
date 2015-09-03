@@ -18,82 +18,82 @@ class KeyboardModel {
         "' y x c v b n m - ! ?",
         "1 2 3 4 5 6 7 8 9 0 ß",
     ]
-    
+
+    private var uppercaseCoordinates = [String: (CGFloat, CGFloat)]()
+    private var lowercaseCoordinates = [String: (CGFloat, CGFloat)]()
+    private var coordinates = [String: (CGFloat, CGFloat)]() {
+        didSet {
+            delegate?.keyboardChanged()
+        }
+    }
+
     var delegate: KeyboardModelDelegate?
     
     private var typeInUpperCase = false {
         didSet {
             if typeInUpperCase != oldValue {
-                delegate?.keyboardChanged()
+                updateCoordinates()
             }
         }
     }
-    
-    private var coordinates = [String: (CGFloat, CGFloat)]()
 
     var keyboardSize: CGSize {
-        get {
-            return self.keyboardSize
-        }
-        set(newSize) {
-            let noOfRowSegments = CGFloat(rows.count * 2)
-            for (rowIdx, row) in enumerate(rows) {
-                let y = newSize.height / noOfRowSegments * (CGFloat(rowIdx) * 2 + 1)
-                
-                let keysInRow = split(row) {$0 == " "}
-                let numberOfKeySegments = CGFloat(keysInRow.count * 2)
-                for (posInRow, key) in enumerate(keysInRow) {
-                    var x = newSize.width / numberOfKeySegments * (CGFloat(posInRow) * 2 + 1)
-                    coordinates[key] = (x, y)
-                }
-            }
-            delegate?.keyboardChanged()
+        didSet {
+            calculateCoordinates(keyboardSize)
+            updateCoordinates()
         }
     }
-    
+
     init() {
         self.keyboardSize = CGSize(width: 0, height: 0)
     }
 
-    
     func keysWithCoordinates() -> [String: (CGFloat, CGFloat)] {
-        var result = [String: (CGFloat, CGFloat)]()
-        
-        for (key, keyCoordinates) in coordinates {
-            if typeInUpperCase && isNormalKey(key) {
-                result[key.uppercaseString] = keyCoordinates
-            } else {
-                result[key] = keyCoordinates
-            }
-
-        }
-        
+        let result = coordinates
         return result
     }
-    
-    func distanceBetween(pointA: (CGFloat, CGFloat), and: CGPoint) -> CGFloat {
-        let dx = pointA.0 - and.x
-        let dy = pointA.1 - and.y
-        return sqrt(dx*dx + dy*dy)
+
+    private func calculateCoordinates(size: CGSize) {
+        let noOfRowSegments = CGFloat(rows.count * 2)
+        for (rowIdx, row) in enumerate(rows) {
+            let y = size.height / noOfRowSegments * (CGFloat(rowIdx) * 2 + 1)
+
+            let keysInRow = split(row) {$0 == " "}
+            let numberOfKeySegments = CGFloat(keysInRow.count * 2)
+            for (posInRow, key) in enumerate(keysInRow) {
+                var x = size.width / numberOfKeySegments * (CGFloat(posInRow) * 2 + 1)
+                lowercaseCoordinates[key] = (x, y)
+                uppercaseCoordinates[toUppercase(key)] = (x, y)
+            }
+        }
     }
-    
+
+    private func toUppercase(key: String) -> String {
+        if isNormalKey(key) { return key.uppercaseString }
+        return key
+    }
+
+    private func isNormalKey(key: String) -> Bool {
+        return count(key) == 1
+    }
+
+    private func updateCoordinates() {
+        coordinates = typeInUpperCase ? uppercaseCoordinates : lowercaseCoordinates
+    }
+
     func key(tap: CGPoint) -> String {
         var keyForDistance = [CGFloat: String]()
-        
+
         for (key, keyCoordinates) in coordinates {
             keyForDistance[distanceBetween(keyCoordinates, and: tap)] = key
         }
-        let key = keyForDistance[minElement(keyForDistance.keys)]!
-        
-        if typeInUpperCase && isNormalKey(key) {
-            return key.uppercaseString
-        }
-        
-        return key
+        return keyForDistance[minElement(keyForDistance.keys)]!
     }
-    
-    func isNormalKey(key: String) -> Bool {
-        return count(key) == 1
+
+    private func distanceBetween(pointA: (CGFloat, CGFloat), and: CGPoint) -> CGFloat {
+        let dx = pointA.0 - and.x
+        let dy = pointA.1 - and.y
+        return sqrt(dx*dx + dy*dy)
     }
     
     func toggleUpperCase() {
