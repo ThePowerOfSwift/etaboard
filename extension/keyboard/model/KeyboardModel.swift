@@ -5,8 +5,8 @@ protocol KeyboardModelDelegate {
 }
 
 class KeyboardModel {
-    private var uppercaseLayout: ConcreteLayout?
     private var lowercaseLayout: ConcreteLayout?
+    private var uppercaseLayout: ConcreteLayout?
     private var currentLayout: ConcreteLayout? {
         didSet {
             delegate?.keyboardChanged()
@@ -23,21 +23,22 @@ class KeyboardModel {
         }
     }
 
-    var keyboardSize: CGSize {
+    var keyboardSize: CGSize? {
         didSet {
-            calculateLayouts(keyboardSize)
+            calculateLayouts(keyboardSize!)
             selectLayout()
         }
     }
 
-    init() {
-        self.keyboardSize = CGSize(width: 0, height: 0)
-    }
-
+    
     func keysWithCoordinates() -> [String: (CGFloat, CGFloat)] {
         return currentLayout!.keysWithCoordinates
     }
 
+    func closestKey(to tap: CGPoint) -> String {
+        return currentLayout!.closestKey(to: tap)
+    }
+    
     private func calculateLayouts(size: CGSize) {
         lowercaseLayout = ConcreteLayout(
             schematicLayout: SchematicLayout.rowsLowercase, size: size)
@@ -47,10 +48,6 @@ class KeyboardModel {
 
     private func selectLayout() {
         currentLayout = typeInUppercase ? uppercaseLayout : lowercaseLayout
-    }
-
-    func closestKey(to tap: CGPoint) -> String {
-        return currentLayout!.closestKey(to: tap)
     }
 
     func toggleUppercase() {
