@@ -12,13 +12,13 @@
 		206ECC1A1B83D44300B62EA0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 206ECC181B83D44300B62EA0 /* Main.storyboard */; };
 		206ECC1C1B83D44300B62EA0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 206ECC1B1B83D44300B62EA0 /* Images.xcassets */; };
 		206ECC1F1B83D44300B62EA0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 206ECC1D1B83D44300B62EA0 /* LaunchScreen.xib */; };
-		206ECC3D1B83D4C900B62EA0 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206ECC3C1B83D4C900B62EA0 /* KeyboardViewController.swift */; };
 		206ECC401B83D4C900B62EA0 /* Alex’s Keyboard extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 206ECC381B83D4C900B62EA0 /* Alex’s Keyboard extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		206ECC4F1B8660D800B62EA0 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206ECC4E1B8660D800B62EA0 /* KeyboardView.swift */; };
-		206ECC531B8665E100B62EA0 /* KeyboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206ECC521B8665E100B62EA0 /* KeyboardModel.swift */; };
-		20F5127B1B8FC7B600C94531 /* MyTapRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F5127A1B8FC7B600C94531 /* MyTapRecognizer.swift */; };
-		20F52A8E1B94D78D007D7B34 /* KeyPressHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F52A8D1B94D78D007D7B34 /* KeyPressHandler.swift */; };
-		C2149CAAD3206E2557396015 /* SchematicLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21D022ABE20D24CFF1D09D7 /* SchematicLayout.swift */; };
+		C211CB0B7AE6315B6481428E /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21DF7BC99AC431E9EA856D8 /* KeyboardViewController.swift */; };
+		C2138D2EB35AB7B000B3195D /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21AC261406FBCF7ABB89D22 /* KeyboardView.swift */; };
+		C214F72F655636D4EFF1A5EC /* KeyPressHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C218C70011E8ACF9B9DFAEF1 /* KeyPressHandler.swift */; };
+		C217DE1857A2A3DB936D4FBC /* KeyboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2155C8BA414427799A129F4 /* KeyboardModel.swift */; };
+		C21BE9FE6042214E16CFE3BE /* MyTapRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2109E4AA5A6B55793E1A243 /* MyTapRecognizer.swift */; };
+		C21CC63D023DE56856F324EF /* SchematicLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21912EDF510A3371CD7F635 /* SchematicLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,13 +55,13 @@
 		206ECC1E1B83D44300B62EA0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		206ECC381B83D4C900B62EA0 /* Alex’s Keyboard extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Alex’s Keyboard extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		206ECC3B1B83D4C900B62EA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		206ECC3C1B83D4C900B62EA0 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
-		206ECC4E1B8660D800B62EA0 /* KeyboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
-		206ECC521B8665E100B62EA0 /* KeyboardModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardModel.swift; sourceTree = "<group>"; };
-		20F512771B8FC3BA00C94531 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
-		20F5127A1B8FC7B600C94531 /* MyTapRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTapRecognizer.swift; sourceTree = "<group>"; };
-		20F52A8D1B94D78D007D7B34 /* KeyPressHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyPressHandler.swift; sourceTree = "<group>"; };
-		C21D022ABE20D24CFF1D09D7 /* SchematicLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchematicLayout.swift; sourceTree = "<group>"; };
+		C2109E4AA5A6B55793E1A243 /* MyTapRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTapRecognizer.swift; sourceTree = "<group>"; };
+		C2155C8BA414427799A129F4 /* KeyboardModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardModel.swift; sourceTree = "<group>"; };
+		C21642694BABA9BBCF0D1925 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Bridging-Header.h"; path = "extension/keyboard/tap-recognizer/Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
+		C218C70011E8ACF9B9DFAEF1 /* KeyPressHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyPressHandler.swift; sourceTree = "<group>"; };
+		C21912EDF510A3371CD7F635 /* SchematicLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchematicLayout.swift; sourceTree = "<group>"; };
+		C21AC261406FBCF7ABB89D22 /* KeyboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
+		C21DF7BC99AC431E9EA856D8 /* KeyboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +88,7 @@
 				206ECC111B83D44300B62EA0 /* container app */,
 				206ECC391B83D4C900B62EA0 /* keyboard extension */,
 				206ECC101B83D44300B62EA0 /* Products */,
+				C2161F83BEA9648952561B04 /* extension */,
 			);
 			sourceTree = "<group>";
 		};
@@ -125,13 +126,8 @@
 		206ECC391B83D4C900B62EA0 /* keyboard extension */ = {
 			isa = PBXGroup;
 			children = (
-				206ECC3C1B83D4C900B62EA0 /* KeyboardViewController.swift */,
-				20F52A8D1B94D78D007D7B34 /* KeyPressHandler.swift */,
-				206ECC4E1B8660D800B62EA0 /* KeyboardView.swift */,
-				206ECC521B8665E100B62EA0 /* KeyboardModel.swift */,
 				20F5127C1B8FC8FE00C94531 /* tap recognizer */,
 				206ECC3A1B83D4C900B62EA0 /* Supporting Files */,
-				C21D022ABE20D24CFF1D09D7 /* SchematicLayout.swift */,
 			);
 			name = "keyboard extension";
 			path = "Alex’s Keyboard extension";
@@ -148,10 +144,46 @@
 		20F5127C1B8FC8FE00C94531 /* tap recognizer */ = {
 			isa = PBXGroup;
 			children = (
-				20F512771B8FC3BA00C94531 /* Bridging-Header.h */,
-				20F5127A1B8FC7B600C94531 /* MyTapRecognizer.swift */,
+				C21642694BABA9BBCF0D1925 /* Bridging-Header.h */,
 			);
 			name = "tap recognizer";
+			sourceTree = "<group>";
+		};
+		C21251DCC6DA70051228390D /* model */ = {
+			isa = PBXGroup;
+			children = (
+				C21912EDF510A3371CD7F635 /* SchematicLayout.swift */,
+				C2155C8BA414427799A129F4 /* KeyboardModel.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		C21562DC51054FA1169A063A /* tap-recognizer */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "tap-recognizer";
+			sourceTree = "<group>";
+		};
+		C2161F83BEA9648952561B04 /* extension */ = {
+			isa = PBXGroup;
+			children = (
+				C219BF81BC82D6D2B7B0E6DF /* keyboard */,
+				C21DF7BC99AC431E9EA856D8 /* KeyboardViewController.swift */,
+			);
+			path = extension;
+			sourceTree = "<group>";
+		};
+		C219BF81BC82D6D2B7B0E6DF /* keyboard */ = {
+			isa = PBXGroup;
+			children = (
+				C21251DCC6DA70051228390D /* model */,
+				C21AC261406FBCF7ABB89D22 /* KeyboardView.swift */,
+				C218C70011E8ACF9B9DFAEF1 /* KeyPressHandler.swift */,
+				C21562DC51054FA1169A063A /* tap-recognizer */,
+				C2109E4AA5A6B55793E1A243 /* MyTapRecognizer.swift */,
+			);
+			path = keyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,12 +295,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				206ECC3D1B83D4C900B62EA0 /* KeyboardViewController.swift in Sources */,
-				206ECC4F1B8660D800B62EA0 /* KeyboardView.swift in Sources */,
-				206ECC531B8665E100B62EA0 /* KeyboardModel.swift in Sources */,
-				20F52A8E1B94D78D007D7B34 /* KeyPressHandler.swift in Sources */,
-				20F5127B1B8FC7B600C94531 /* MyTapRecognizer.swift in Sources */,
-				C2149CAAD3206E2557396015 /* SchematicLayout.swift in Sources */,
+				C21CC63D023DE56856F324EF /* SchematicLayout.swift in Sources */,
+				C217DE1857A2A3DB936D4FBC /* KeyboardModel.swift in Sources */,
+				C2138D2EB35AB7B000B3195D /* KeyboardView.swift in Sources */,
+				C214F72F655636D4EFF1A5EC /* KeyPressHandler.swift in Sources */,
+				C211CB0B7AE6315B6481428E /* KeyboardViewController.swift in Sources */,
+				C21BE9FE6042214E16CFE3BE /* MyTapRecognizer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
