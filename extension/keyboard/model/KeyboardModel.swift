@@ -5,9 +5,9 @@ protocol KeyboardModelDelegate {
 }
 
 class KeyboardModel {
-    private var uppercaseLayout = [String: (CGFloat, CGFloat)]()
-    private var lowercaseLayout = [String: (CGFloat, CGFloat)]()
-    private var currentLayout = [String: (CGFloat, CGFloat)]() {
+    private var uppercaseLayout: ConcreteLayout?
+    private var lowercaseLayout: ConcreteLayout?
+    private var currentLayout: ConcreteLayout? {
         didSet {
             delegate?.keyboardChanged()
         }
@@ -35,11 +35,13 @@ class KeyboardModel {
     }
 
     func keysWithCoordinates() -> [String: (CGFloat, CGFloat)] {
-        let result = currentLayout
-        return result
+        return currentLayout!.keysWithCoordinates
     }
 
     private func calculateLayouts(size: CGSize) {
+        var uppercase = [String: (CGFloat, CGFloat)]()
+        var lowercase = [String: (CGFloat, CGFloat)]()
+        
         let rows = SchematicLayout.rowsLowercase
         let noOfRowSegments = CGFloat(rows.count * 2)
         for (rowIdx, row) in enumerate(rows) {
@@ -49,10 +51,12 @@ class KeyboardModel {
             let numberOfKeySegments = CGFloat(keysInRow.count * 2)
             for (posInRow, key) in enumerate(keysInRow) {
                 var x = size.width / numberOfKeySegments * (CGFloat(posInRow) * 2 + 1)
-                lowercaseLayout[key] = (x, y)
-                uppercaseLayout[SchematicLayout.uppercase(forKey: key)] = (x, y)
+                lowercase[key] = (x, y)
+                uppercase[SchematicLayout.uppercase(forKey: key)] = (x, y)
             }
         }
+        lowercaseLayout = ConcreteLayout(layout: lowercase)
+        uppercaseLayout = ConcreteLayout(layout: uppercase)
     }
 
     private func selectLayout() {
@@ -60,20 +64,9 @@ class KeyboardModel {
     }
 
     func closestKey(to tap: CGPoint) -> String {
-        var keyForDistance = [CGFloat: String]()
-
-        for (key, keyCenter) in currentLayout {
-            keyForDistance[distanceBetween(keyCenter, and: tap)] = key
-        }
-        return keyForDistance[minElement(keyForDistance.keys)]!
+        return currentLayout!.closestKey(to: tap)
     }
 
-    private func distanceBetween(pointA: (CGFloat, CGFloat), and pointB: CGPoint) -> CGFloat {
-        let dx = pointA.0 - pointB.x
-        let dy = pointA.1 - pointB.y
-        return sqrt(dx*dx + dy*dy)
-    }
-    
     func toggleUppercase() {
         typeInUppercase = !typeInUppercase
     }
