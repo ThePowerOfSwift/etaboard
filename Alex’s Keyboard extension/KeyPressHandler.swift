@@ -14,17 +14,12 @@ class KeyPressHandler {
         self.keyboardViewController = keyboardViewController
         
         dedicatedReactions = [
-            KeyboardModel.Enter: { input.insertText("\n") },
-            KeyboardModel.Backspace: { input.deleteBackward() },
-            KeyboardModel.Space: { input.insertText(" ") },
-            KeyboardModel.NextKeyboard: {
-                inputViewController.advanceToNextInputMode() },
-            KeyboardModel.Shift: { model.toggleUppercase() },
+            SchematicLayout.Enter: { input.insertText("\n") },
+            SchematicLayout.Backspace: { input.deleteBackward() },
+            SchematicLayout.Space: { input.insertText(" ") },
+            SchematicLayout.NextKeyboard: { inputViewController.advanceToNextInputMode() },
+            SchematicLayout.Shift: { model.toggleUppercase() },
         ]
-    }
-    
-    func redrawKeyboard() {
-        
     }
     
     func handle(key: String) {

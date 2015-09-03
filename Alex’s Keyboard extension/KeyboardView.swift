@@ -7,11 +7,11 @@ class KeyboardView: UIView, KeyboardModelDelegate {
     
     var model: KeyboardModel?
     let representations = [
-        KeyboardModel.Enter: "⏎",
-        KeyboardModel.Backspace: "⌫",
-        KeyboardModel.Space: "＿＿",
-        KeyboardModel.NextKeyboard: "⌨",
-        KeyboardModel.Shift: "⬆︎",
+        SchematicLayout.Enter: "⏎",
+        SchematicLayout.Backspace: "⌫",
+        SchematicLayout.Space: "＿＿",
+        SchematicLayout.NextKeyboard: "⌨",
+        SchematicLayout.Shift: "⬆︎",
     ]
     
     func initButtonAttributes() {
