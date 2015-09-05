@@ -17,8 +17,12 @@ class KeyPressHandler {
             SchematicLayout.Enter: { input.insertText("\n") },
             SchematicLayout.Backspace: { input.deleteBackward() },
             SchematicLayout.Space: { input.insertText(" ") },
-            SchematicLayout.NextKeyboard: { inputViewController.advanceToNextInputMode() },
-            SchematicLayout.Shift: { model.toggleUppercase() },
+            SchematicLayout.NextSystemKeyboard: { inputViewController.advanceToNextInputMode() },
+            
+            SchematicLayout.LettersPageUppercase: { model.activateLettersPageUppercase() },
+            SchematicLayout.LettersPageLowercase: { model.activateLettersPageLowercase() },
+            SchematicLayout.SymbolsPage: { model.activateSymbolsPage() },
+            SchematicLayout.LettersPageOnSymbolsPage: { model.activateLettersPageLowercase() },
         ]
     }
     
@@ -28,8 +32,7 @@ class KeyPressHandler {
         }
         else {
             input.insertText(key)
-            model.disableUppercase()
+            model.activateLettersPageLowercase()
         }
-
     }
 }

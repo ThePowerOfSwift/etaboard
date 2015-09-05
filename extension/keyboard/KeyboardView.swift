@@ -10,8 +10,11 @@ class KeyboardView: UIView, KeyboardModelDelegate {
         SchematicLayout.Enter: "⏎",
         SchematicLayout.Backspace: "⌫",
         SchematicLayout.Space: "＿＿",
-        SchematicLayout.NextKeyboard: "⌨",
-        SchematicLayout.Shift: "⬆︎",
+        SchematicLayout.NextSystemKeyboard: "⌨",
+        SchematicLayout.LettersPageUppercase: "⬆︎",
+        SchematicLayout.LettersPageLowercase: "⬆︎",
+        SchematicLayout.SymbolsPage: "🔣",
+        SchematicLayout.LettersPageOnSymbolsPage: "🔤",
     ]
     
     func initButtonAttributes() {

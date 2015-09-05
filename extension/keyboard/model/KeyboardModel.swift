@@ -7,6 +7,10 @@ protocol KeyboardModelDelegate {
 class KeyboardModel {
     private var lowercaseLayout: ConcreteLayout?
     private var uppercaseLayout: ConcreteLayout?
+    private var symbolsLayout: ConcreteLayout?
+    
+    private var currentLayoutIndex = 1
+    
     private var currentLayout: ConcreteLayout? {
         didSet {
             delegate?.keyboardChanged()
@@ -15,14 +19,6 @@ class KeyboardModel {
 
     var delegate: KeyboardModelDelegate?
     
-    private var typeInUppercase = false {
-        didSet {
-            if typeInUppercase != oldValue {
-                selectLayout()
-            }
-        }
-    }
-
     var keyboardSize: CGSize? {
         didSet {
             calculateLayouts(keyboardSize!)
@@ -44,17 +40,30 @@ class KeyboardModel {
             schematicLayout: SchematicLayout.rowsLowercase, size: size)
         uppercaseLayout = ConcreteLayout(
             basedOn: lowercaseLayout!, transformer: SchematicLayout.uppercase)
-    }
-
-    private func selectLayout() {
-        currentLayout = typeInUppercase ? uppercaseLayout : lowercaseLayout
-    }
-
-    func toggleUppercase() {
-        typeInUppercase = !typeInUppercase
+        symbolsLayout = ConcreteLayout(
+            schematicLayout: SchematicLayout.rowsSymbolsPage, size: size)
     }
     
-    func disableUppercase() {
-        typeInUppercase = false
+    private func selectLayout() {
+        switch currentLayoutIndex {
+        case 2: currentLayout = uppercaseLayout
+        case 3: currentLayout = symbolsLayout
+        default: currentLayout = lowercaseLayout
+        }
+    }
+
+    func activateLettersPageLowercase() {
+        currentLayoutIndex = 1
+        selectLayout()
+    }
+    
+    func activateLettersPageUppercase() {
+        currentLayoutIndex = 2
+        selectLayout()
+    }
+    
+    func activateSymbolsPage() {
+        currentLayoutIndex = 3
+        selectLayout()
     }
 }
