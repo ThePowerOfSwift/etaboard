@@ -26,7 +26,9 @@ class SchematicLayout {
     ]
 
     static let Emojis = [
-        "\(ToLetters) 😊",
+        "\(ToLetters) 😊 😀 😉 😂 😞 😕",
+        "☀️          😎 😛 😜 😝 😳 😠",
+        "😚          😘 😴 👍 💃 🎉 🍸",
     ]
     
     static func uppercase(forKey key: String) -> String {
