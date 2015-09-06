@@ -4,17 +4,18 @@ protocol KeyboardModelDelegate {
     func keyboardChanged()
 }
 
+enum Page {
+    case Lowercase, Uppercase, Symbols
+}
+
 class KeyboardModel {
-    private var lowercaseLayout: ConcreteLayout?
-    private var uppercaseLayout: ConcreteLayout?
-    private var symbolsLayout: ConcreteLayout?
-    
-    private var currentLayoutIndex = 1 {
+    private var currentPage = Page.Lowercase {
         didSet {
-            if currentLayoutIndex != oldValue { setCurrentLayout() }
+            if currentPage != oldValue { setCurrentLayout() }
         }
     }
     
+    private var layouts = [Page: ConcreteLayout]()
     private var currentLayout: ConcreteLayout? {
         didSet {
             delegate?.keyboardChanged()
@@ -40,31 +41,19 @@ class KeyboardModel {
     }
     
     private func calculateLayouts(size: CGSize) {
-        lowercaseLayout = ConcreteLayout(
+        layouts[.Lowercase] = ConcreteLayout(
             schematicLayout: SchematicLayout.Lowercase, size: size)
-        uppercaseLayout = ConcreteLayout(
-            basedOn: lowercaseLayout!, transformer: SchematicLayout.uppercase)
-        symbolsLayout = ConcreteLayout(
+        layouts[.Uppercase] = ConcreteLayout(
+            basedOn: layouts[.Lowercase]!, transformer: SchematicLayout.uppercase)
+        layouts[.Symbols] = ConcreteLayout(
             schematicLayout: SchematicLayout.Symbols, size: size)
     }
     
     private func setCurrentLayout() {
-        switch currentLayoutIndex {
-        case 2: currentLayout = uppercaseLayout
-        case 3: currentLayout = symbolsLayout
-        default: currentLayout = lowercaseLayout
-        }
-    }
-
-    func activateLettersPageLowercase() {
-        currentLayoutIndex = 1
+        currentLayout = layouts[currentPage]
     }
     
-    func activateLettersPageUppercase() {
-        currentLayoutIndex = 2
-    }
-    
-    func activateSymbolsPage() {
-        currentLayoutIndex = 3
+    func proceedToPage(page: Page) {
+        currentPage = page
     }
 }
