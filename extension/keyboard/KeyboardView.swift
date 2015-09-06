@@ -15,6 +15,7 @@ class KeyboardView: UIView, KeyboardModelDelegate {
         SchematicLayout.FromUppertoLower: "⬆︎",
         SchematicLayout.FromLettersToSymbols: "⌥",
         SchematicLayout.FromSymbolsToLetters: "ABC",
+        SchematicLayout.ToEmojis: "☺︎",
     ]
     
     func initButtonAttributes() {

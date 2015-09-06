@@ -8,9 +8,10 @@ class SchematicLayout {
     static let FromUppertoLower = "x6"
     static let FromLettersToSymbols = "x7"
     static let FromSymbolsToLetters = "x8"
+    static let ToEmojis = "x9"
 
     static let Lowercase = [
-        "\(FromLowerToUpper) \(Space) , . \(Backspace) \(Enter)",
+        "\(FromLowerToUpper) \(Space) , . \(Backspace) \(Enter) \(ToEmojis)",
         "q w e r t z u i o p ü",
         "a s d f g h j k l ö ä",
         "' y x c v b n m - ! ?",
@@ -24,6 +25,10 @@ class SchematicLayout {
         "/ € $ < >",
     ]
 
+    static let Emojis = [
+        "\(FromSymbolsToLetters) 😊",
+    ]
+    
     static func uppercase(forKey key: String) -> String {
         if key == FromLowerToUpper { return FromUppertoLower }
         if isNormalKey(key) { return key.uppercaseString }

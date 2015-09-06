@@ -5,7 +5,7 @@ protocol KeyboardModelDelegate {
 }
 
 enum Page {
-    case Lowercase, Uppercase, Symbols
+    case Lowercase, Uppercase, Symbols, Emojis
 }
 
 class KeyboardModel {
@@ -47,6 +47,8 @@ class KeyboardModel {
             basedOn: layouts[.Lowercase]!, transformer: SchematicLayout.uppercase)
         layouts[.Symbols] = ConcreteLayout(
             schematicLayout: SchematicLayout.Symbols, size: size)
+        layouts[.Emojis] = ConcreteLayout(
+            schematicLayout: SchematicLayout.Emojis, size: size)
     }
     
     private func setCurrentLayout() {

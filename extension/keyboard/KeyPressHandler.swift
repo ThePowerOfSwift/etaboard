@@ -23,6 +23,7 @@ class KeyPressHandler {
             SchematicLayout.FromUppertoLower: { model.proceedToPage(.Lowercase) },
             SchematicLayout.FromLettersToSymbols: { model.proceedToPage(.Symbols) },
             SchematicLayout.FromSymbolsToLetters: { model.proceedToPage(.Lowercase) },
+            SchematicLayout.ToEmojis: { model.proceedToPage(.Emojis) },
         ]
     }
     
