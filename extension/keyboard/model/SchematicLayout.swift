@@ -19,7 +19,9 @@ class SchematicLayout {
     
     static let rowsSymbolsPage = [
         "\(LettersPageOnSymbolsPage) \(Space) \(Backspace) \(Enter)",
-        "@ + * # : ;",
+        "@ & : ; + * =",
+        "\" ( ) { } [ ]",
+        "/ € $ < >",
     ]
 
     static func uppercase(forKey key: String) -> String {
