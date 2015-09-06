@@ -11,10 +11,10 @@ class KeyboardView: UIView, KeyboardModelDelegate {
         SchematicLayout.Backspace: "⌫",
         SchematicLayout.Space: "＿＿",
         SchematicLayout.NextSystemKeyboard: "⌨",
-        SchematicLayout.FromLowerToUpper: "⬆︎",
-        SchematicLayout.FromUppertoLower: "⬆︎",
-        SchematicLayout.FromLettersToSymbols: "⌥",
-        SchematicLayout.FromSymbolsToLetters: "ABC",
+        SchematicLayout.ToUppercase: "⬆︎",
+        SchematicLayout.ToLowercase: "⬆︎",
+        SchematicLayout.ToSymbols: "⌥",
+        SchematicLayout.ToLetters: "ABC",
         SchematicLayout.ToEmojis: "☺︎",
     ]
     

@@ -4,33 +4,34 @@ class SchematicLayout {
     static let Space = "x3"
     static let NextSystemKeyboard = "x4"
     
-    static let FromLowerToUpper = "x5"
-    static let FromUppertoLower = "x6"
-    static let FromLettersToSymbols = "x7"
-    static let FromSymbolsToLetters = "x8"
+    static let ToUppercase = "x5"
+    static let ToLowercase = "x6"
+    static let ToSymbols = "x7"
+    static let ToLetters = "x8"
     static let ToEmojis = "x9"
 
     static let Lowercase = [
-        "\(FromLowerToUpper) \(Space) , . \(Backspace) \(Enter) \(ToEmojis)",
+        "\(ToUppercase) \(Space) , . \(Backspace) \(Enter) \(ToEmojis)",
         "q w e r t z u i o p ü",
         "a s d f g h j k l ö ä",
         "' y x c v b n m - ! ?",
-        "\(FromLettersToSymbols) 1 2 3 4 5 6 7 8 9 0 ß \(NextSystemKeyboard)",
+        "\(ToSymbols) 1 2 3 4 5 6 7 8 9 0 ß \(NextSystemKeyboard)",
     ]
     
     static let Symbols = [
-        "\(FromSymbolsToLetters) \(Space) \(Backspace) \(Enter)",
+        "\(ToLetters) \(Space) \(Backspace) \(Enter)",
         "@ & : ; + * =",
         "\" ( ) { } [ ]",
         "/ € $ < >",
     ]
 
     static let Emojis = [
-        "\(FromSymbolsToLetters) 😊",
+        "\(ToLetters) 😊",
     ]
     
     static func uppercase(forKey key: String) -> String {
-        if key == FromLowerToUpper { return FromUppertoLower }
+        if key == ToUppercase { return ToLowercase
+        }
         if isNormalKey(key) { return key.uppercaseString }
         return key
     }
