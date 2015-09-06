@@ -11,7 +11,7 @@ class KeyboardModel {
     
     private var currentLayoutIndex = 1 {
         didSet {
-            setCurrentLayout()
+            if currentLayoutIndex != oldValue { setCurrentLayout() }
         }
     }
     
