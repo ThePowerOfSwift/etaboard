@@ -13,8 +13,8 @@ class KeyboardView: UIView, KeyboardModelDelegate {
         SchematicLayout.NextSystemKeyboard: "⌨",
         SchematicLayout.LettersPageUppercase: "⬆︎",
         SchematicLayout.LettersPageLowercase: "⬆︎",
-        SchematicLayout.SymbolsPage: "🔣",
-        SchematicLayout.LettersPageOnSymbolsPage: "🔤",
+        SchematicLayout.SymbolsPage: "⌥",
+        SchematicLayout.LettersPageOnSymbolsPage: "ABC",
     ]
     
     func initButtonAttributes() {
