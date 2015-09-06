@@ -9,7 +9,11 @@ class KeyboardModel {
     private var uppercaseLayout: ConcreteLayout?
     private var symbolsLayout: ConcreteLayout?
     
-    private var currentLayoutIndex = 1
+    private var currentLayoutIndex = 1 {
+        didSet {
+            setCurrentLayout()
+        }
+    }
     
     private var currentLayout: ConcreteLayout? {
         didSet {
@@ -22,7 +26,7 @@ class KeyboardModel {
     var keyboardSize: CGSize? {
         didSet {
             calculateLayouts(keyboardSize!)
-            selectLayout()
+            setCurrentLayout()
         }
     }
 
@@ -44,7 +48,7 @@ class KeyboardModel {
             schematicLayout: SchematicLayout.Symbols, size: size)
     }
     
-    private func selectLayout() {
+    private func setCurrentLayout() {
         switch currentLayoutIndex {
         case 2: currentLayout = uppercaseLayout
         case 3: currentLayout = symbolsLayout
@@ -54,16 +58,13 @@ class KeyboardModel {
 
     func activateLettersPageLowercase() {
         currentLayoutIndex = 1
-        selectLayout()
     }
     
     func activateLettersPageUppercase() {
         currentLayoutIndex = 2
-        selectLayout()
     }
     
     func activateSymbolsPage() {
         currentLayoutIndex = 3
-        selectLayout()
     }
 }
