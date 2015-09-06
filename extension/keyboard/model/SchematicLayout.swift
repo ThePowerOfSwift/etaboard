@@ -10,11 +10,11 @@ class SchematicLayout {
     static let LettersPageOnSymbolsPage = "x8"
 
     static let rowsLowercase = [
-        "\(SymbolsPage) \(LettersPageUppercase) \(Space) , . \(Backspace) \(Enter) \(NextSystemKeyboard)",
+        "\(LettersPageUppercase) \(Space) , . \(Backspace) \(Enter)",
         "q w e r t z u i o p ü",
         "a s d f g h j k l ö ä",
         "' y x c v b n m - ! ?",
-        "1 2 3 4 5 6 7 8 9 0 ß",
+        "\(SymbolsPage) 1 2 3 4 5 6 7 8 9 0 ß \(NextSystemKeyboard)",
     ]
     
     static let rowsSymbolsPage = [
