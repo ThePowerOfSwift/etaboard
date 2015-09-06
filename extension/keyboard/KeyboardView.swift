@@ -11,10 +11,10 @@ class KeyboardView: UIView, KeyboardModelDelegate {
         SchematicLayout.Backspace: "⌫",
         SchematicLayout.Space: "＿＿",
         SchematicLayout.NextSystemKeyboard: "⌨",
-        SchematicLayout.LettersPageUppercase: "⬆︎",
-        SchematicLayout.LettersPageLowercase: "⬆︎",
-        SchematicLayout.SymbolsPage: "⌥",
-        SchematicLayout.LettersPageOnSymbolsPage: "ABC",
+        SchematicLayout.FromLowerToUpper: "⬆︎",
+        SchematicLayout.FromUppertoLower: "⬆︎",
+        SchematicLayout.FromLettersToSymbols: "⌥",
+        SchematicLayout.FromSymbolsToLetters: "ABC",
     ]
     
     func initButtonAttributes() {

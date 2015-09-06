@@ -37,11 +37,11 @@ class KeyboardModel {
     
     private func calculateLayouts(size: CGSize) {
         lowercaseLayout = ConcreteLayout(
-            schematicLayout: SchematicLayout.rowsLowercase, size: size)
+            schematicLayout: SchematicLayout.Lowercase, size: size)
         uppercaseLayout = ConcreteLayout(
             basedOn: lowercaseLayout!, transformer: SchematicLayout.uppercase)
         symbolsLayout = ConcreteLayout(
-            schematicLayout: SchematicLayout.rowsSymbolsPage, size: size)
+            schematicLayout: SchematicLayout.Symbols, size: size)
     }
     
     private func selectLayout() {

@@ -19,10 +19,10 @@ class KeyPressHandler {
             SchematicLayout.Space: { input.insertText(" ") },
             SchematicLayout.NextSystemKeyboard: { inputViewController.advanceToNextInputMode() },
             
-            SchematicLayout.LettersPageUppercase: { model.activateLettersPageUppercase() },
-            SchematicLayout.LettersPageLowercase: { model.activateLettersPageLowercase() },
-            SchematicLayout.SymbolsPage: { model.activateSymbolsPage() },
-            SchematicLayout.LettersPageOnSymbolsPage: { model.activateLettersPageLowercase() },
+            SchematicLayout.FromLowerToUpper: { model.activateLettersPageUppercase() },
+            SchematicLayout.FromUppertoLower: { model.activateLettersPageLowercase() },
+            SchematicLayout.FromLettersToSymbols: { model.activateSymbolsPage() },
+            SchematicLayout.FromSymbolsToLetters: { model.activateLettersPageLowercase() },
         ]
     }
     
