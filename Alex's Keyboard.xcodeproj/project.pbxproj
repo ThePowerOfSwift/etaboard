@@ -152,13 +152,6 @@
 			path = model;
 			sourceTree = "<group>";
 		};
-		C21562DC51054FA1169A063A /* tap-recognizer */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "tap-recognizer";
-			sourceTree = "<group>";
-		};
 		C2161F83BEA9648952561B04 /* extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -175,7 +168,6 @@
 				C21251DCC6DA70051228390D /* model */,
 				C21AC261406FBCF7ABB89D22 /* KeyboardView.swift */,
 				C218C70011E8ACF9B9DFAEF1 /* KeyPressHandler.swift */,
-				C21562DC51054FA1169A063A /* tap-recognizer */,
 				C2109E4AA5A6B55793E1A243 /* MyTapRecognizer.swift */,
 			);
 			path = keyboard;
