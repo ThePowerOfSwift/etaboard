@@ -13,6 +13,7 @@ class Document {
     
     func deleteCurrentWord() {
         if let contextBefore = proxy.documentContextBeforeInput {
+            if contextBefore.hasSuffix(" ") { return }
             var wordsBefore = split(contextBefore) {$0 == " "}
             let lastWord = wordsBefore.last
             for i in 0..<count(lastWord!) {
