@@ -4,6 +4,7 @@ class KeyboardViewController: UIInputViewController {
     var keyboardView: KeyboardView?
     var keyboardModel = KeyboardModel()
     var keyPressHandler: KeyPressHandler?
+    var document: Document?
 
     func handleTap(recognizer: UIGestureRecognizer) {
         let touchPoint = recognizer.locationInView(self.keyboardView)
@@ -14,11 +15,14 @@ class KeyboardViewController: UIInputViewController {
     func didTapSuggestion(sender: AnyObject?) {
         let button = sender as! UIButton
         let title = button.titleForState(.Normal)
-        (textDocumentProxy as! UIKeyInput).insertText(title!)
+        
+        document?.replaceCurrentWord(title!)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        document = Document(proxy: textDocumentProxy as! UITextDocumentProxy)
 
         var suggestionBar = SuggestionBarView.create(self, action: "didTapSuggestion:")
         suggestionBar.setTranslatesAutoresizingMaskIntoConstraints(false)
