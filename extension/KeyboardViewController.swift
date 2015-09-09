@@ -36,19 +36,9 @@ class KeyboardViewController: UIInputViewController {
         
         self.view.addSubview(keyboardView!)
 
-        var alignSuggestionBarWidth = NSLayoutConstraint(item: suggestionBar, attribute: .Width,
-            relatedBy: .Equal, toItem: self.view, attribute: .Width, multiplier: 1, constant: 0)
-        var alignSuggestionBarTop = NSLayoutConstraint(item: suggestionBar, attribute: .Top,
-            relatedBy: .Equal, toItem: self.view, attribute: .Top, multiplier: 1, constant: 0)
-        self.view.addConstraints([alignSuggestionBarWidth, alignSuggestionBarTop])
-
-        var keyboardWidth = NSLayoutConstraint(item: keyboardView!, attribute: .Width,
-            relatedBy: .Equal, toItem: self.view, attribute: .Width, multiplier: 1, constant: 0)
-        var keyboardTop = NSLayoutConstraint(item: keyboardView!, attribute: .Top,
-            relatedBy: .Equal, toItem: suggestionBar, attribute: .Bottom, multiplier: 1, constant: 0)
-        var keyboardBottom = NSLayoutConstraint(item: keyboardView!, attribute: .Bottom,
-            relatedBy: .Equal, toItem: self.view, attribute: .Bottom, multiplier: 1, constant: 0)
-        self.view.addConstraints([keyboardWidth, keyboardTop, keyboardBottom])
+        self.view.align([.Top, .Width], of: suggestionBar)
+        self.view.align([.Width, .Bottom], of: keyboardView!)
+        self.view.align(.Top, of: keyboardView!, with: .Bottom, of: suggestionBar)
 
         let tapRecognizer = MyTapRecognizer(
             target: self, action: "handleTap:")
