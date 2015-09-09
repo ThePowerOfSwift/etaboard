@@ -1,6 +1,8 @@
 
 class SuggestionBarView: UIView {
     
+    override class func requiresConstraintBasedLayout() -> Bool { return true }
+    
     func initStuff(target: AnyObject, action: Selector) {
         var buttonForSuggestion = UIButton.buttonWithType(.Custom) as! UIButton
         buttonForSuggestion.setTitleColor(UIColor.lightGrayColor(), forState: .Normal)
