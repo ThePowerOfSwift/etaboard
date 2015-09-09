@@ -88,9 +88,8 @@
 			isa = PBXGroup;
 			children = (
 				206ECC111B83D44300B62EA0 /* container app */,
-				206ECC391B83D4C900B62EA0 /* keyboard extension */,
-				206ECC101B83D44300B62EA0 /* Products */,
 				C2161F83BEA9648952561B04 /* extension */,
+				206ECC101B83D44300B62EA0 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -125,23 +124,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		206ECC391B83D4C900B62EA0 /* keyboard extension */ = {
-			isa = PBXGroup;
-			children = (
-				206ECC3A1B83D4C900B62EA0 /* Supporting Files */,
-			);
-			name = "keyboard extension";
-			path = "Alex’s Keyboard extension";
-			sourceTree = "<group>";
-		};
-		206ECC3A1B83D4C900B62EA0 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				206ECC3B1B83D4C900B62EA0 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		C21251DCC6DA70051228390D /* model */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,6 +140,7 @@
 				C219BF81BC82D6D2B7B0E6DF /* keyboard */,
 				C21DF7BC99AC431E9EA856D8 /* KeyboardViewController.swift */,
 				C21642694BABA9BBCF0D1925 /* Bridging-Header.h */,
+				206ECC3B1B83D4C900B62EA0 /* Info.plist */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -431,7 +414,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "Alex’s Keyboard extension/Info.plist";
+				INFOPLIST_FILE = "extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -444,7 +427,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				INFOPLIST_FILE = "Alex’s Keyboard extension/Info.plist";
+				INFOPLIST_FILE = "extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
