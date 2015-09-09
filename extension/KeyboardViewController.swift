@@ -20,26 +20,9 @@ class KeyboardViewController: UIInputViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        var suggestionBar = UIView()
+        var suggestionBar = SuggestionBarView.create(self, action: "didTapSuggestion:")
         suggestionBar.setTranslatesAutoresizingMaskIntoConstraints(false)
         self.view.addSubview(suggestionBar)
-        
-        var buttonForSuggestion = UIButton.buttonWithType(.Custom) as! UIButton
-        buttonForSuggestion.setTitleColor(UIColor.lightGrayColor(), forState: .Normal)
-        buttonForSuggestion.setTitle("Claudi", forState: .Normal)
-        buttonForSuggestion.setTranslatesAutoresizingMaskIntoConstraints(false)
-        buttonForSuggestion.addTarget(self, action: "didTapSuggestion:", forControlEvents: .TouchUpInside)
-        
-        suggestionBar.addSubview(buttonForSuggestion)
-
-        var top = NSLayoutConstraint(item: buttonForSuggestion, attribute: .Top,
-            relatedBy: .Equal, toItem: suggestionBar, attribute: .Top, multiplier: 1, constant: 0)
-        var bottom = NSLayoutConstraint(item: buttonForSuggestion, attribute: .Height,
-            relatedBy: .Equal, toItem: suggestionBar, attribute: .Height, multiplier: 1, constant: 0)
-        var center = NSLayoutConstraint(item: buttonForSuggestion, attribute: .CenterX,
-            relatedBy: .Equal, toItem: suggestionBar, attribute: .CenterX, multiplier: 1, constant: 0)
-        suggestionBar.addConstraints([top, bottom, center])
-        
         
         self.view.backgroundColor = UIColor.darkGrayColor()
         
