@@ -12,16 +12,7 @@ class SuggestionBarView: UIView {
         
         addSubview(buttonForSuggestion)
         
-        self.addConstraints([
-            align(.Top, of: buttonForSuggestion, and: self),
-            align(.Height, of: buttonForSuggestion, and: self),
-            align(.CenterX, of: buttonForSuggestion, and: self),
-            ])
-    }
-    
-    func align(attribute: NSLayoutAttribute, of item1: AnyObject, and item2: AnyObject) -> NSLayoutConstraint {
-        return NSLayoutConstraint(item: item1, attribute: attribute,
-            relatedBy: .Equal, toItem: item2, attribute: attribute, multiplier: 1, constant: 0)
+        align([.Top, .Height, .CenterX], of: buttonForSuggestion)
     }
     
     static func create(target: AnyObject, action: Selector) -> UIView {
