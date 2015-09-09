@@ -14,7 +14,7 @@ class KeyboardView: UIView, KeyboardModelDelegate {
         SchematicLayout.ToUppercase: "⬆︎",
         SchematicLayout.ToLowercase: "⬆︎",
         SchematicLayout.ToSymbols: "⌥",
-        SchematicLayout.ToLetters: "ABC",
+        SchematicLayout.ToLetters: "←",
         SchematicLayout.ToEmojis: "☺︎",
     ]
     
