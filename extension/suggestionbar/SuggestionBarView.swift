@@ -12,13 +12,16 @@ class SuggestionBarView: UIView {
         
         addSubview(buttonForSuggestion)
         
-        var top = NSLayoutConstraint(item: buttonForSuggestion, attribute: .Top,
-            relatedBy: .Equal, toItem: self, attribute: .Top, multiplier: 1, constant: 0)
-        var bottom = NSLayoutConstraint(item: buttonForSuggestion, attribute: .Height,
-            relatedBy: .Equal, toItem: self, attribute: .Height, multiplier: 1, constant: 0)
-        var center = NSLayoutConstraint(item: buttonForSuggestion, attribute: .CenterX,
-            relatedBy: .Equal, toItem: self, attribute: .CenterX, multiplier: 1, constant: 0)
-        self.addConstraints([top, bottom, center])
+        self.addConstraints([
+            align(.Top, of: buttonForSuggestion, and: self),
+            align(.Height, of: buttonForSuggestion, and: self),
+            align(.CenterX, of: buttonForSuggestion, and: self),
+            ])
+    }
+    
+    func align(attribute: NSLayoutAttribute, of item1: AnyObject, and item2: AnyObject) -> NSLayoutConstraint {
+        return NSLayoutConstraint(item: item1, attribute: attribute,
+            relatedBy: .Equal, toItem: item2, attribute: attribute, multiplier: 1, constant: 0)
     }
     
     static func create(target: AnyObject, action: Selector) -> UIView {
