@@ -320,7 +320,6 @@
 				TargetAttributes = {
 					20317DE11BA2EEF2008A4303 = {
 						CreatedOnToolsVersion = 6.4;
-						TestTargetID = 206ECC0E1B83D44300B62EA0;
 					};
 					206ECC0E1B83D44300B62EA0 = {
 						CreatedOnToolsVersion = 6.4;
@@ -454,7 +453,6 @@
 		20317DEA1BA2EEF2008A4303 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -467,14 +465,12 @@
 				INFOPLIST_FILE = UnitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Alex’s Keyboard.app/Alex’s Keyboard";
 			};
 			name = Debug;
 		};
 		20317DEB1BA2EEF2008A4303 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -483,7 +479,6 @@
 				INFOPLIST_FILE = UnitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Alex’s Keyboard.app/Alex’s Keyboard";
 			};
 			name = Release;
 		};
