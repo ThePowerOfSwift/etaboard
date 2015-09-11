@@ -1,3 +1,4 @@
+import UIKit
 
 class Document {
     let proxy: UITextDocumentProxy
