@@ -1,6 +1,5 @@
 import Quick
 import Nimble
-import AppExtension
 
 class SomeTextDocumentProxy: UITextDocumentProxyAdapter {
     override func insertText(text: String) {
