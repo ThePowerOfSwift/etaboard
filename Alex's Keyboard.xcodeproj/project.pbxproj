@@ -273,9 +273,9 @@
 			productReference = 20317DE21BA2EEF2008A4303 /* UnitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		206ECC0E1B83D44300B62EA0 /* Alex’s Keyboard */ = {
+		206ECC0E1B83D44300B62EA0 /* EtaBoard */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 206ECC2E1B83D44300B62EA0 /* Build configuration list for PBXNativeTarget "Alex’s Keyboard" */;
+			buildConfigurationList = 206ECC2E1B83D44300B62EA0 /* Build configuration list for PBXNativeTarget "EtaBoard" */;
 			buildPhases = (
 				206ECC0B1B83D44300B62EA0 /* Sources */,
 				206ECC0C1B83D44300B62EA0 /* Frameworks */,
@@ -287,7 +287,7 @@
 			dependencies = (
 				206ECC3F1B83D4C900B62EA0 /* PBXTargetDependency */,
 			);
-			name = "Alex’s Keyboard";
+			name = EtaBoard;
 			productName = "Alex’s Keyboard";
 			productReference = 206ECC0F1B83D44300B62EA0 /* Alex’s Keyboard.app */;
 			productType = "com.apple.product-type.application";
@@ -342,7 +342,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				206ECC0E1B83D44300B62EA0 /* Alex’s Keyboard */,
+				206ECC0E1B83D44300B62EA0 /* EtaBoard */,
 				206ECC371B83D4C900B62EA0 /* Alex’s Keyboard extension */,
 				20317DE11BA2EEF2008A4303 /* UnitTests */,
 			);
@@ -420,7 +420,7 @@
 /* Begin PBXTargetDependency section */
 		20317DE91BA2EEF2008A4303 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 206ECC0E1B83D44300B62EA0 /* Alex’s Keyboard */;
+			target = 206ECC0E1B83D44300B62EA0 /* EtaBoard */;
 			targetProxy = 20317DE81BA2EEF2008A4303 /* PBXContainerItemProxy */;
 		};
 		206ECC3F1B83D4C900B62EA0 /* PBXTargetDependency */ = {
@@ -633,7 +633,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		206ECC2E1B83D44300B62EA0 /* Build configuration list for PBXNativeTarget "Alex’s Keyboard" */ = {
+		206ECC2E1B83D44300B62EA0 /* Build configuration list for PBXNativeTarget "EtaBoard" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				206ECC2F1B83D44300B62EA0 /* Debug */,
