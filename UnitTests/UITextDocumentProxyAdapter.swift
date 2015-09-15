@@ -20,7 +20,7 @@ class UITextDocumentProxyAdapter: NSObject, UITextDocumentProxy {
     
     // for UITextDocumentProxy
     @objc var documentContextAfterInput: String?
-    @objc var documentContextBeforeInput: String?
+    @objc var documentContextBeforeInput: String? { return nil }
     @objc func adjustTextPositionByCharacterOffset(offset: Int) {}
 }
 
