@@ -4,10 +4,10 @@ class SuggestionBarView: UIView {
     override class func requiresConstraintBasedLayout() -> Bool { return true }
     
     func initStuff(target: AnyObject, action: Selector) {
-        var buttonForSuggestion = UIButton.buttonWithType(.Custom) as! UIButton
+        let buttonForSuggestion = UIButton(type: .Custom)
         buttonForSuggestion.setTitleColor(UIColor.lightGrayColor(), forState: .Normal)
         buttonForSuggestion.setTitle("Claudi", forState: .Normal)
-        buttonForSuggestion.setTranslatesAutoresizingMaskIntoConstraints(false)
+        buttonForSuggestion.translatesAutoresizingMaskIntoConstraints = false
         buttonForSuggestion.addTarget(target, action: action, forControlEvents: .TouchUpInside)
         
         addSubview(buttonForSuggestion)
@@ -16,7 +16,7 @@ class SuggestionBarView: UIView {
     }
     
     static func create(target: AnyObject, action: Selector) -> UIView {
-        var suggestionBar = SuggestionBarView()
+        let suggestionBar = SuggestionBarView()
         suggestionBar.initStuff(target, action: action)
         return suggestionBar
     }

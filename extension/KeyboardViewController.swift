@@ -22,10 +22,10 @@ class KeyboardViewController: UIInputViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        document = Document(proxy: textDocumentProxy as! UITextDocumentProxy)
+        document = Document(proxy: textDocumentProxy )
 
-        var suggestionBar = SuggestionBarView.create(self, action: "didTapSuggestion:")
-        suggestionBar.setTranslatesAutoresizingMaskIntoConstraints(false)
+        let suggestionBar = SuggestionBarView.create(self, action: "didTapSuggestion:")
+        suggestionBar.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(suggestionBar)
         
         self.view.backgroundColor = UIColor.darkGrayColor()
@@ -35,7 +35,7 @@ class KeyboardViewController: UIInputViewController {
             model: keyboardModel)
         
         keyboardView = KeyboardView.create(keyboardModel)
-        keyboardView?.setTranslatesAutoresizingMaskIntoConstraints(false)
+        keyboardView?.translatesAutoresizingMaskIntoConstraints = false
         keyboardModel.delegate = keyboardView
         
         self.view.addSubview(keyboardView!)

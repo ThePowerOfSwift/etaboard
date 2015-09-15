@@ -7,7 +7,7 @@ class KeyPressHandler {
     
     init(inputViewController: UIInputViewController,
         model: KeyboardModel) {
-        let input = inputViewController.textDocumentProxy as! UIKeyInput
+        let input = inputViewController.textDocumentProxy as UIKeyInput
         self.input = input
         self.model = model
         let keyboardViewController = (inputViewController as! KeyboardViewController)

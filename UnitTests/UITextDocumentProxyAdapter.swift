@@ -19,8 +19,8 @@ class UITextDocumentProxyAdapter: NSObject, UITextDocumentProxy {
     // var secureTextEntry: Bool
     
     // for UITextDocumentProxy
-    @objc var documentContextAfterInput: String!
-    @objc var documentContextBeforeInput: String!
+    @objc var documentContextAfterInput: String?
+    @objc var documentContextBeforeInput: String?
     @objc func adjustTextPositionByCharacterOffset(offset: Int) {}
 }
 

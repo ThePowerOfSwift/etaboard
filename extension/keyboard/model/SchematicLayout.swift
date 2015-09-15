@@ -39,6 +39,6 @@ class SchematicLayout {
     }
 
     private static func isNormalKey(key: String) -> Bool {
-        return count(key) == 1
+        return key.characters.count == 1
     }
 }

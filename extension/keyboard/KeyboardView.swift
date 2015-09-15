@@ -3,7 +3,7 @@ import UIKit
 class KeyboardView: UIView, KeyboardModelDelegate {
     var buttonSize: CGFloat = 0
     var buttonOffset: CGFloat = 0
-    var attributes: [NSObject: AnyObject]?
+    var attributes: [String: AnyObject]?
     
     var model: KeyboardModel?
     let representations = [
@@ -63,13 +63,13 @@ class KeyboardView: UIView, KeyboardModelDelegate {
     }
     
     func drawPoint(at coordinates: (CGFloat, CGFloat)) {
-        var path = UIBezierPath(rect: CGRectMake(coordinates.0, coordinates.1, 1, 1))
+        let path = UIBezierPath(rect: CGRectMake(coordinates.0, coordinates.1, 1, 1))
         UIColor.redColor().setStroke()
         path.stroke()
     }
     
     static func create(model: KeyboardModel) -> KeyboardView {
-        var keyboardView = KeyboardView()
+        let keyboardView = KeyboardView()
         keyboardView.backgroundColor = UIColor.darkGrayColor()
         keyboardView.initButtonAttributes()
         keyboardView.model = model

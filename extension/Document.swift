@@ -15,9 +15,9 @@ class Document {
     func deleteCurrentWord() {
         if let contextBefore = proxy.documentContextBeforeInput {
             if contextBefore.hasSuffix(" ") { return }
-            var wordsBefore = split(contextBefore) {$0 == " "}
+            let wordsBefore = contextBefore.characters.split {$0 == " "}.map { String($0) }
             let lastWord = wordsBefore.last
-            for i in 0..<count(lastWord!) {
+            for _ in 0..<(lastWord!).characters.count {
                 proxy.deleteBackward()
             }
         }

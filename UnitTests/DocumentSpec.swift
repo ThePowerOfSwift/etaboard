@@ -12,7 +12,7 @@ class SomeSpec: QuickSpec {
     override func spec() {
         describe("Document") {
             it("passes string to proxy unchaged") {
-                var document = Document(proxy: SomeTextDocumentProxy())
+                let document = Document(proxy: SomeTextDocumentProxy())
                 document.insert("foo")
             }
         }
