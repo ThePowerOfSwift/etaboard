@@ -10,7 +10,7 @@
 		200C471A1BA3374500FA59D3 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20317D9E1BA0B677008A4303 /* Document.swift */; };
 		200C471C1BA337B200FA59D3 /* UITextDocumentProxyAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200C471B1BA337B200FA59D3 /* UITextDocumentProxyAdapter.swift */; };
 		20317D9B1BA09D3E008A4303 /* SuggestionBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20317D9A1BA09D3E008A4303 /* SuggestionBarView.swift */; };
-		20317D9D1BA0A9B1008A4303 /* ViewExtensionsForLayoutConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20317D9C1BA0A9B1008A4303 /* ViewExtensionsForLayoutConstraints.swift */; };
+		20317D9D1BA0A9B1008A4303 /* UIView+LayoutConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20317D9C1BA0A9B1008A4303 /* UIView+LayoutConstraints.swift */; };
 		20317D9F1BA0B677008A4303 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20317D9E1BA0B677008A4303 /* Document.swift */; };
 		20317DE71BA2EEF2008A4303 /* DocumentSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20317DE61BA2EEF2008A4303 /* DocumentSpec.swift */; };
 		206ECC151B83D44300B62EA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206ECC141B83D44300B62EA0 /* AppDelegate.swift */; };
@@ -80,7 +80,7 @@
 		200C471E1BA33C8600FA59D3 /* Cartfile.private */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile.private; sourceTree = "<group>"; };
 		200C471F1BA33C8600FA59D3 /* Cartfile.resolved */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile.resolved; sourceTree = "<group>"; };
 		20317D9A1BA09D3E008A4303 /* SuggestionBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionBarView.swift; sourceTree = "<group>"; };
-		20317D9C1BA0A9B1008A4303 /* ViewExtensionsForLayoutConstraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewExtensionsForLayoutConstraints.swift; sourceTree = "<group>"; };
+		20317D9C1BA0A9B1008A4303 /* UIView+LayoutConstraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+LayoutConstraints.swift"; sourceTree = "<group>"; };
 		20317D9E1BA0B677008A4303 /* Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		20317DE21BA2EEF2008A4303 /* UnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		20317DE51BA2EEF2008A4303 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -244,7 +244,7 @@
 			children = (
 				C21642694BABA9BBCF0D1925 /* Bridging-Header.h */,
 				206ECC3B1B83D4C900B62EA0 /* Info.plist */,
-				20317D9C1BA0A9B1008A4303 /* ViewExtensionsForLayoutConstraints.swift */,
+				20317D9C1BA0A9B1008A4303 /* UIView+LayoutConstraints.swift */,
 			);
 			path = helpers;
 			sourceTree = "<group>";
@@ -392,7 +392,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20317D9D1BA0A9B1008A4303 /* ViewExtensionsForLayoutConstraints.swift in Sources */,
+				20317D9D1BA0A9B1008A4303 /* UIView+LayoutConstraints.swift in Sources */,
 				C21CC63D023DE56856F324EF /* SchematicLayout.swift in Sources */,
 				C217DE1857A2A3DB936D4FBC /* KeyboardModel.swift in Sources */,
 				20317D9B1BA09D3E008A4303 /* SuggestionBarView.swift in Sources */,
