@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		200C471A1BA3374500FA59D3 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20317D9E1BA0B677008A4303 /* Document.swift */; };
 		200C471C1BA337B200FA59D3 /* UITextDocumentProxyAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200C471B1BA337B200FA59D3 /* UITextDocumentProxyAdapter.swift */; };
-		200C47201BA33C8600FA59D3 /* Cartfile.private in Resources */ = {isa = PBXBuildFile; fileRef = 200C471E1BA33C8600FA59D3 /* Cartfile.private */; };
-		200C47211BA33C8600FA59D3 /* Cartfile.resolved in Resources */ = {isa = PBXBuildFile; fileRef = 200C471F1BA33C8600FA59D3 /* Cartfile.resolved */; };
 		20317D9B1BA09D3E008A4303 /* SuggestionBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20317D9A1BA09D3E008A4303 /* SuggestionBarView.swift */; };
 		20317D9D1BA0A9B1008A4303 /* ViewExtensionsForLayoutConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20317D9C1BA0A9B1008A4303 /* ViewExtensionsForLayoutConstraints.swift */; };
 		20317D9F1BA0B677008A4303 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20317D9E1BA0B677008A4303 /* Document.swift */; };
@@ -260,7 +258,6 @@
 			buildPhases = (
 				20317DDE1BA2EEF2008A4303 /* Sources */,
 				20317DDF1BA2EEF2008A4303 /* Frameworks */,
-				20317DE01BA2EEF2008A4303 /* Resources */,
 				20D5F64C1BA2F4CA00956BE8 /* CopyFiles */,
 			);
 			buildRules = (
@@ -352,15 +349,6 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		20317DE01BA2EEF2008A4303 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				200C47201BA33C8600FA59D3 /* Cartfile.private in Resources */,
-				200C47211BA33C8600FA59D3 /* Cartfile.resolved in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		206ECC0D1B83D44300B62EA0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
