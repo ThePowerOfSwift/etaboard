@@ -1,6 +1,6 @@
 import UIKit
 
-class KeyboardView: UIView, KeyboardModelDelegate {
+class KeyboardView: UIView{
     var buttonSize: CGFloat = 0
     var buttonOffset: CGFloat = 0
     var attributes: [String: AnyObject]?
@@ -75,7 +75,10 @@ class KeyboardView: UIView, KeyboardModelDelegate {
         keyboardView.model = model
         return keyboardView
     }
-    
+}
+
+// MARK: - KeyboardModelDelegate
+extension KeyboardView: KeyboardModelDelegate {
     func keyboardChanged() {
         setNeedsDisplay()
     }
