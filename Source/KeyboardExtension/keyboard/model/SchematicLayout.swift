@@ -11,10 +11,10 @@ class SchematicLayout {
     static let ToEmojis = "x9"
 
     static let Lowercase = [
-        "\(ToUppercase) \(Space) , . \(Backspace) \(Enter) \(ToSymbols) \(ToEmojis)",
-        "q w e r t z u i o p ü",
-        "a s d f g h j k l ö ä",
-        "' y x c v b n m - ! ?",
+        "\(ToUppercase) \(Space) , . \(Backspace)",
+        "q w e r t z u i o p ü \(Enter)",
+        "a s d f g h j k l ö ä \(ToEmojis)",
+        "' y x c v b n m - ! ? \(ToSymbols)",
         "1 2 3 4 5 6 7 8 9 0 ß \(NextSystemKeyboard)",
     ]
     
