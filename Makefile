@@ -23,7 +23,7 @@ build:
 	xcodebuild build
 
 release: clean test bump-build-number
-	xcodebuild archive
+	xcodebuild archive -scheme EtaBoard
 
 test-build-chain: clean build test bump-build-number
 	echo "You might want to revert the version bump."
