@@ -2,8 +2,9 @@ import XCTest
 import Nimble
 
 class SomeTextDocumentProxy: UITextDocumentProxyAdapter {
+    var insertTextCalledWith: String? = nil
     override func insertText(text: String) {
-        expect(text).to(equal("foo"))
+        insertTextCalledWith = text
     }
 }
 
@@ -21,8 +22,10 @@ class TextDocumentProxyWithTextBefore: UITextDocumentProxyAdapter {
 class DocumentTests: XCTestCase {
     
     func testPassesStringToProxyUnchanged() {
-        let document = Document(proxy: SomeTextDocumentProxy())
+        let mock = SomeTextDocumentProxy()
+        let document = Document(proxy: mock)
         document.insert("foo")
+        expect(mock.insertTextCalledWith).to(equal("foo"))
     }
     
     func testDeleteCurrentWord_DeletesBackToLastSpaceExcludingTheSpace() {
