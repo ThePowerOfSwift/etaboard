@@ -82,7 +82,7 @@
 		20317DE21BA2EEF2008A4303 /* UnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		20317DE51BA2EEF2008A4303 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20317DE61BA2EEF2008A4303 /* DocumentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentTests.swift; sourceTree = "<group>"; };
-		206ECC0F1B83D44300B62EA0 /* Alex’s Keyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "Alex’s Keyboard.app"; path = EtaBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		206ECC0F1B83D44300B62EA0 /* EtaBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EtaBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		206ECC131B83D44300B62EA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		206ECC141B83D44300B62EA0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		206ECC161B83D44300B62EA0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -163,7 +163,7 @@
 		206ECC101B83D44300B62EA0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				206ECC0F1B83D44300B62EA0 /* Alex’s Keyboard.app */,
+				206ECC0F1B83D44300B62EA0 /* EtaBoard.app */,
 				206ECC381B83D4C900B62EA0 /* Alex’s Keyboard extension.appex */,
 				20317DE21BA2EEF2008A4303 /* UnitTests.xctest */,
 			);
@@ -280,7 +280,7 @@
 			);
 			name = EtaBoard;
 			productName = "Alex’s Keyboard";
-			productReference = 206ECC0F1B83D44300B62EA0 /* Alex’s Keyboard.app */;
+			productReference = 206ECC0F1B83D44300B62EA0 /* EtaBoard.app */;
 			productType = "com.apple.product-type.application";
 		};
 		206ECC371B83D4C900B62EA0 /* Alex’s Keyboard extension */ = {
