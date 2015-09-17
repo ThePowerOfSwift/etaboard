@@ -1,7 +1,7 @@
 plist := /usr/libexec/PlistBuddy -c
 
-container_info := 'Alex’s Keyboard/Info.plist'
-extension_info := 'extension/helpers/Info.plist'
+container_info := 'Source/ContainerApp/Info.plist'
+extension_info := 'Source/KeyboardExtension/helpers/Info.plist'
 
 old_build_number:=$(shell $(plist) 'Print CFBundleVersion' $(container_info))
 new_build_number:=$(shell echo $(old_build_number)+1 | bc)
