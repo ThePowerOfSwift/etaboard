@@ -16,19 +16,23 @@ class UITextDocumentProxyMock: UITextDocumentProxyAdapter {
 
 class DocumentTests: XCTestCase {
 
+    var mock: UITextDocumentProxyMock!
+    var document: Document!
+
+    override func setUp() {
+        mock = UITextDocumentProxyMock()
+        document = Document(proxy: mock)
+    }
+
     func testPassesStringToProxyUnchanged() {
-        let mock = UITextDocumentProxyMock()
-        let document = Document(proxy: mock)
         document.insert("foo")
-        expect(mock.insertTextCalledWith).to(equal("foo"))
+        expect(self.mock.insertTextCalledWith).to(equal("foo"))
     }
     
     func testDeleteCurrentWord_DeletesBackToLastSpaceExcludingTheSpace() {
-        let mock = UITextDocumentProxyMock()
         mock.documentContextBeforeInput = "foo bar"
-        let document = Document(proxy: mock)
         document.deleteCurrentWord()
-        expect(mock.deleteBackwardCalled).to(equal(3))
+        expect(self.mock.deleteBackwardCalled).to(equal(3))
     }
 
 }
