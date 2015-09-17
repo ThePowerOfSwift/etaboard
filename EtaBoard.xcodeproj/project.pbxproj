@@ -322,7 +322,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 206ECC0A1B83D44300B62EA0 /* Build configuration list for PBXProject "Alex's Keyboard" */;
+			buildConfigurationList = 206ECC0A1B83D44300B62EA0 /* Build configuration list for PBXProject "EtaBoard" */;
 			compatibilityVersion = "Xcode 6.3";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -607,7 +607,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		206ECC0A1B83D44300B62EA0 /* Build configuration list for PBXProject "Alex's Keyboard" */ = {
+		206ECC0A1B83D44300B62EA0 /* Build configuration list for PBXProject "EtaBoard" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				206ECC2C1B83D44300B62EA0 /* Debug */,
