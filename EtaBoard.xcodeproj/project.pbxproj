@@ -95,7 +95,7 @@
 		C2109E4AA5A6B55793E1A243 /* MyTapRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTapRecognizer.swift; sourceTree = "<group>"; };
 		C2132E72EC680EEB62955CD4 /* ConcreteLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcreteLayout.swift; sourceTree = "<group>"; };
 		C2155C8BA414427799A129F4 /* KeyboardModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardModel.swift; sourceTree = "<group>"; };
-		C21642694BABA9BBCF0D1925 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Bridging-Header.h"; path = "extension/helpers/Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
+		C21642694BABA9BBCF0D1925 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		C218C70011E8ACF9B9DFAEF1 /* KeyPressHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyPressHandler.swift; sourceTree = "<group>"; };
 		C21912EDF510A3371CD7F635 /* SchematicLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchematicLayout.swift; sourceTree = "<group>"; };
 		C21AC261406FBCF7ABB89D22 /* KeyboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
@@ -151,7 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				206ECC111B83D44300B62EA0 /* ContainerApp */,
-				C2161F83BEA9648952561B04 /* extension */,
+				C2161F83BEA9648952561B04 /* KeyboardExtension */,
 				20317DE31BA2EEF2008A4303 /* UnitTests */,
 				206ECC101B83D44300B62EA0 /* Products */,
 				200C471D1BA33C4B00FA59D3 /* Readme.md */,
@@ -201,7 +201,7 @@
 			path = model;
 			sourceTree = "<group>";
 		};
-		C2161F83BEA9648952561B04 /* extension */ = {
+		C2161F83BEA9648952561B04 /* KeyboardExtension */ = {
 			isa = PBXGroup;
 			children = (
 				C21CAAA051B10D718C442C60 /* helpers */,
@@ -210,7 +210,8 @@
 				C21DF7BC99AC431E9EA856D8 /* KeyboardViewController.swift */,
 				20317D9E1BA0B677008A4303 /* Document.swift */,
 			);
-			path = extension;
+			name = KeyboardExtension;
+			path = Source/KeyboardExtension;
 			sourceTree = "<group>";
 		};
 		C21741DE8AD26B91F90FC940 /* suggestionbar */ = {
@@ -571,12 +572,12 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = extension/helpers/Info.plist;
+				INFOPLIST_FILE = Source/KeyboardExtension/helpers/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.bepple.alex.keyboard.extension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "extension/helpers/Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Source/KeyboardExtension/helpers/Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -585,12 +586,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				INFOPLIST_FILE = extension/helpers/Info.plist;
+				INFOPLIST_FILE = Source/KeyboardExtension/helpers/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.bepple.alex.keyboard.extension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "extension/helpers/Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Source/KeyboardExtension/helpers/Bridging-Header.h";
 			};
 			name = Release;
 		};
