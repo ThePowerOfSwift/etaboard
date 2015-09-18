@@ -3,6 +3,7 @@ import UIKit
 class KeyboardViewController: UIInputViewController {
     var document: Document!
 
+    var suggester = Suggester()
     var suggestionBar: SuggestionBarView!
 
     var keyboardModel = KeyboardModel()
@@ -12,7 +13,8 @@ class KeyboardViewController: UIInputViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.darkGrayColor()
-        document = Document(proxy: textDocumentProxy )
+        
+        initDocument()
         initSuggestionBar()
         initKeyboardView()
         layoutSubviews()
@@ -25,6 +27,23 @@ class KeyboardViewController: UIInputViewController {
     }
 }
 
+
+// MARK: -
+extension KeyboardViewController {
+    private func initDocument() {
+        document = Document(proxy: textDocumentProxy )
+        document.delegate = self
+    }
+}
+
+extension KeyboardViewController: DocumentDelegate {
+    func didChangeCurrentWord(newCurrentWord: String?) {
+        let suggestion = suggester.suggestCompletion(to: newCurrentWord)
+        suggestionBar.displaySuggestion(suggestion)
+    }
+}
+
+// MARK: -
 extension KeyboardViewController {
     private func initKeyboardView() {
         keyPressHandler = KeyPressHandler(
@@ -50,13 +69,18 @@ extension KeyboardViewController {
     }
 }
 
+// MARK: -
 extension KeyboardViewController {
     private func initSuggestionBar() {
         suggestionBar = SuggestionBarView(target: self, action: "didTapSuggestion:")
         suggestionBar.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(suggestionBar)
         
-        document.delegate = suggestionBar
+        requestSupplementaryLexiconWithCompletion { lexicon in
+            let allEntries = lexicon.entries.map { $0.documentText }
+            NSLog("entries in lexicon: \(allEntries.count)")
+//            self.suggester.words.appendContentsOf(allEntries)
+        }
     }
     
     func didTapSuggestion(sender: AnyObject?) {

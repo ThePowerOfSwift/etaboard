@@ -1,5 +1,5 @@
 class Suggester {
-    let words = ["Moin", "mwa", "Claudi"]
+    var words = ["Moin", "mwa", "Claudi"]
     
     func suggestCompletion(to currentContext: String?) -> String {
         if let currentWord = currentContext {

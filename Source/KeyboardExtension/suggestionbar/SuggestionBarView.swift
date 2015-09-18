@@ -1,7 +1,5 @@
 
 class SuggestionBarView: UIView {
-    let suggester = Suggester()
-    
     override class func requiresConstraintBasedLayout() -> Bool { return true }
     let buttonForSuggestion = UIButton(type: .Custom)
     
@@ -17,14 +15,7 @@ class SuggestionBarView: UIView {
         displaySuggestion("Claudi")
     }
     
-    private func displaySuggestion(suggestion: String) {
+    func displaySuggestion(suggestion: String) {
         buttonForSuggestion.setTitle(suggestion, forState: .Normal)
-    }
-}
-
-extension SuggestionBarView: DocumentDelegate {
-    func didChangeCurrentWord(newCurrentWord: String?) {
-        let suggestion = suggester.suggestCompletion(to: newCurrentWord)
-        displaySuggestion(suggestion)
     }
 }
