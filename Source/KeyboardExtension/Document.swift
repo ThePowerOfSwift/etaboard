@@ -1,7 +1,7 @@
 import UIKit
 
 protocol DocumentDelegate {
-    func didChangeCurrentWord(newCurrentWord: String)
+    func didChangeCurrentWord(newCurrentWord: String?)
 }
 
 class Document {
@@ -17,12 +17,18 @@ class Document {
         insert(text)
     }
     
-    func deleteCurrentWord() {
+    func currentWord() -> String? {
         if let contextBefore = proxy.documentContextBeforeInput {
-            if contextBefore.hasSuffix(" ") { return }
+            if contextBefore.hasSuffix(" ") { return nil }
             let wordsBefore = contextBefore.characters.split {$0 == " "}.map { String($0) }
-            let lastWord = wordsBefore.last
-            for _ in 0..<(lastWord!).characters.count {
+            return wordsBefore.last
+        }
+        return nil
+    }
+    
+    func deleteCurrentWord() {
+        if let currentWord = currentWord() {
+            for _ in 0..<currentWord.characters.count {
                 deleteBackward()
             }
         }
@@ -34,6 +40,6 @@ class Document {
     
     func insert(text: String) {
         proxy.insertText(text)
-        delegate?.didChangeCurrentWord("foo")
+        delegate?.didChangeCurrentWord(currentWord())
     }
 }

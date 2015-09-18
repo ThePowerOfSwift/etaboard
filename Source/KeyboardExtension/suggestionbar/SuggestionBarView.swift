@@ -19,7 +19,7 @@ class SuggestionBarView: UIView {
 }
 
 extension SuggestionBarView: DocumentDelegate {
-    func didChangeCurrentWord(newCurrentWord: String) {
+    func didChangeCurrentWord(newCurrentWord: String?) {
         buttonForSuggestion.setTitle(newCurrentWord, forState: .Normal)
     }
 }
