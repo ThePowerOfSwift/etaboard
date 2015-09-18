@@ -1,29 +1,28 @@
 
 class KeyPressHandler {
     let keyboardViewController: KeyboardViewController
-    let input: UIKeyInput
-    let model: KeyboardModel
+    let keyboard: KeyboardModel
+    let document: Document
     var dedicatedReactions: [String: () -> Void]
     
     init(inputViewController: UIInputViewController,
-        model: KeyboardModel) {
-        let input = inputViewController.textDocumentProxy as UIKeyInput
-        self.input = input
-        self.model = model
+        keyboard: KeyboardModel, document: Document) {
+        self.keyboard = keyboard
+        self.document = document
         let keyboardViewController = (inputViewController as! KeyboardViewController)
         self.keyboardViewController = keyboardViewController
         
         dedicatedReactions = [
-            SchematicLayout.Enter: { input.insertText("\n") },
-            SchematicLayout.Backspace: { input.deleteBackward() },
-            SchematicLayout.Space: { input.insertText(" ") },
+            SchematicLayout.Enter: { document.insert("\n") },
+            SchematicLayout.Backspace: { document.deleteBackward() },
+            SchematicLayout.Space: { document.insert(" ") },
             SchematicLayout.NextSystemKeyboard: { inputViewController.advanceToNextInputMode() },
             
-            SchematicLayout.ToUppercase: { model.proceedToPage(.Uppercase) },
-            SchematicLayout.ToLowercase: { model.proceedToPage(.Lowercase) },
-            SchematicLayout.ToSymbols: { model.proceedToPage(.Symbols) },
-            SchematicLayout.ToLetters: { model.proceedToPage(.Lowercase) },
-            SchematicLayout.ToEmojis: { model.proceedToPage(.Emojis) },
+            SchematicLayout.ToUppercase: { keyboard.proceedToPage(.Uppercase) },
+            SchematicLayout.ToLowercase: { keyboard.proceedToPage(.Lowercase) },
+            SchematicLayout.ToSymbols: { keyboard.proceedToPage(.Symbols) },
+            SchematicLayout.ToLetters: { keyboard.proceedToPage(.Lowercase) },
+            SchematicLayout.ToEmojis: { keyboard.proceedToPage(.Emojis) },
         ]
     }
     
@@ -32,8 +31,8 @@ class KeyPressHandler {
             dedicatedReaction()
         }
         else {
-            input.insertText(key)
-            model.proceedToPage(.Lowercase)
+            document.insert(key)
+            keyboard.proceedToPage(.Lowercase)
         }
     }
 }

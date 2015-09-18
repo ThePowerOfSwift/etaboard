@@ -32,7 +32,8 @@ class KeyboardViewController: UIInputViewController {
         
         keyPressHandler = KeyPressHandler(
             inputViewController: self,
-            model: keyboardModel)
+            keyboard: keyboardModel,
+            document: document!)
         
         keyboardView = KeyboardView.create(keyboardModel)
         keyboardView?.translatesAutoresizingMaskIntoConstraints = false

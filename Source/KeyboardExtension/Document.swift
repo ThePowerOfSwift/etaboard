@@ -18,9 +18,13 @@ class Document {
             let wordsBefore = contextBefore.characters.split {$0 == " "}.map { String($0) }
             let lastWord = wordsBefore.last
             for _ in 0..<(lastWord!).characters.count {
-                proxy.deleteBackward()
+                deleteBackward()
             }
         }
+    }
+    
+    func deleteBackward() {
+        proxy.deleteBackward()
     }
     
     func insert(text: String) {
