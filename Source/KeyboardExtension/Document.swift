@@ -1,7 +1,12 @@
 import UIKit
 
+protocol DocumentDelegate {
+    func didChangeCurrentWord(newCurrentWord: String)
+}
+
 class Document {
     let proxy: UITextDocumentProxy
+    var delegate: DocumentDelegate?
     
     init(proxy: UITextDocumentProxy) {
         self.proxy = proxy
@@ -29,5 +34,6 @@ class Document {
     
     func insert(text: String) {
         proxy.insertText(text)
+        delegate?.didChangeCurrentWord("foo")
     }
 }

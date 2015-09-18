@@ -28,6 +28,8 @@ class KeyboardViewController: UIInputViewController {
         suggestionBar.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(suggestionBar)
         
+        document?.delegate = suggestionBar
+        
         self.view.backgroundColor = UIColor.darkGrayColor()
         
         keyPressHandler = KeyPressHandler(
