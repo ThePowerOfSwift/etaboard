@@ -24,7 +24,7 @@ class KeyboardViewController: UIInputViewController {
         
         document = Document(proxy: textDocumentProxy )
 
-        let suggestionBar = SuggestionBarView.create(self, action: "didTapSuggestion:")
+        let suggestionBar = SuggestionBarView(target: self, action: "didTapSuggestion:")
         suggestionBar.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(suggestionBar)
         
