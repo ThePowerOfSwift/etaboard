@@ -34,5 +34,17 @@ class DocumentTests: XCTestCase {
         document.deleteCurrentWord()
         expect(self.mock.deleteBackward_calls) == 3
     }
+    
+    func testDeleteCurrentWord_DoesNothingAtTheBeginningOfDocument() {
+        mock.documentContextBeforeInput = nil
+        document.deleteCurrentWord()
+        expect(self.mock.deleteBackward_calls) == 0
+    }
+    
+    func testDeleteCurrentWord_DoesNothingRightAfterSpace() {
+        mock.documentContextBeforeInput = " "
+        document.deleteCurrentWord()
+        expect(self.mock.deleteBackward_calls) == 0
+    }
 
 }
