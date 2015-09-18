@@ -2,14 +2,14 @@ import XCTest
 import Nimble
 
 class UITextDocumentProxyMock: UITextDocumentProxyAdapter {
-    var insertTextCalledWith: String? = nil
+    var insertText_calledWith: String? = nil
     override func insertText(text: String) {
-        insertTextCalledWith = text
+        insertText_calledWith = text
     }
     
-    var deleteBackwardCalled = 0
+    var deleteBackward_calls = 0
     override func deleteBackward() {
-        deleteBackwardCalled++
+        deleteBackward_calls++
     }
 }
 
@@ -26,13 +26,13 @@ class DocumentTests: XCTestCase {
 
     func testPassesStringToProxyUnchanged() {
         document.insert("foo")
-        expect(self.mock.insertTextCalledWith).to(equal("foo"))
+        expect(self.mock.insertText_calledWith) == "foo"
     }
     
     func testDeleteCurrentWord_DeletesBackToLastSpaceExcludingTheSpace() {
         mock.documentContextBeforeInput = "foo bar"
         document.deleteCurrentWord()
-        expect(self.mock.deleteBackwardCalled).to(equal(3))
+        expect(self.mock.deleteBackward_calls) == 3
     }
 
 }
