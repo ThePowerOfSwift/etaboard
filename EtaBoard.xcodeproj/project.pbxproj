@@ -20,6 +20,9 @@
 		206ECC1F1B83D44300B62EA0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 206ECC1D1B83D44300B62EA0 /* LaunchScreen.xib */; };
 		206ECC401B83D4C900B62EA0 /* EtaBoardExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 206ECC381B83D4C900B62EA0 /* EtaBoardExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		20925E361BACA64700FBCFE4 /* Suggester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20925E351BACA64700FBCFE4 /* Suggester.swift */; settings = {ASSET_TAGS = (); }; };
+		20925E381BACABDE00FBCFE4 /* LevenshteinDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20925E371BACABDE00FBCFE4 /* LevenshteinDistance.swift */; settings = {ASSET_TAGS = (); }; };
+		20925E3A1BACABF700FBCFE4 /* LevenshteinDistanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20925E391BACABF700FBCFE4 /* LevenshteinDistanceTests.swift */; settings = {ASSET_TAGS = (); }; };
+		20925E3B1BACAD9E00FBCFE4 /* LevenshteinDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20925E371BACABDE00FBCFE4 /* LevenshteinDistance.swift */; settings = {ASSET_TAGS = (); }; };
 		20D5F64A1BA2F4C100956BE8 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20D5F6481BA2F4C100956BE8 /* Nimble.framework */; };
 		20D5F64E1BA2F4DA00956BE8 /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 20D5F6481BA2F4C100956BE8 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C211CB0B7AE6315B6481428E /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21DF7BC99AC431E9EA856D8 /* KeyboardViewController.swift */; };
@@ -93,6 +96,8 @@
 		206ECC381B83D4C900B62EA0 /* EtaBoardExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = EtaBoardExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		206ECC3B1B83D4C900B62EA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20925E351BACA64700FBCFE4 /* Suggester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Suggester.swift; sourceTree = "<group>"; };
+		20925E371BACABDE00FBCFE4 /* LevenshteinDistance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevenshteinDistance.swift; sourceTree = "<group>"; };
+		20925E391BACABF700FBCFE4 /* LevenshteinDistanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevenshteinDistanceTests.swift; sourceTree = "<group>"; };
 		20D5F6481BA2F4C100956BE8 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = SOURCE_ROOT; };
 		C2109E4AA5A6B55793E1A243 /* MyTapRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTapRecognizer.swift; sourceTree = "<group>"; };
 		C2132E72EC680EEB62955CD4 /* ConcreteLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcreteLayout.swift; sourceTree = "<group>"; };
@@ -134,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				20317DE61BA2EEF2008A4303 /* DocumentTests.swift */,
+				20925E391BACABF700FBCFE4 /* LevenshteinDistanceTests.swift */,
 				20317DE41BA2EEF2008A4303 /* Supporting Files */,
 				20D5F6481BA2F4C100956BE8 /* Nimble.framework */,
 			);
@@ -199,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				20925E351BACA64700FBCFE4 /* Suggester.swift */,
+				20925E371BACABDE00FBCFE4 /* LevenshteinDistance.swift */,
 			);
 			path = suggester;
 			sourceTree = "<group>";
@@ -380,6 +387,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20925E3A1BACABF700FBCFE4 /* LevenshteinDistanceTests.swift in Sources */,
+				20925E3B1BACAD9E00FBCFE4 /* LevenshteinDistance.swift in Sources */,
 				200C471A1BA3374500FA59D3 /* Document.swift in Sources */,
 				20317DE71BA2EEF2008A4303 /* DocumentTests.swift in Sources */,
 				200C471C1BA337B200FA59D3 /* UITextDocumentProxyAdapter.swift in Sources */,
@@ -399,6 +408,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20925E381BACABDE00FBCFE4 /* LevenshteinDistance.swift in Sources */,
 				20317D9D1BA0A9B1008A4303 /* UIView+LayoutConstraints.swift in Sources */,
 				C21CC63D023DE56856F324EF /* SchematicLayout.swift in Sources */,
 				C217DE1857A2A3DB936D4FBC /* KeyboardModel.swift in Sources */,
