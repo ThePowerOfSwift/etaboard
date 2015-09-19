@@ -38,8 +38,13 @@ extension KeyboardViewController {
 
 extension KeyboardViewController: DocumentDelegate {
     func didChangeCurrentWord(newCurrentWord: String?) {
-        let suggestion = suggester.suggestCompletion(to: newCurrentWord)
-        suggestionBar.displaySuggestion(suggestion)
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+            let suggestion = self.suggester.suggestCompletion(to: newCurrentWord)
+            dispatch_async(dispatch_get_main_queue(), {
+                self.suggestionBar.displaySuggestion(suggestion)
+            })
+        })
+
     }
 }
 
@@ -80,6 +85,7 @@ extension KeyboardViewController {
             let allEntries = lexicon.entries.map { $0.documentText }
             NSLog("entries in lexicon: \(allEntries.count)")
 //            self.suggester.words.appendContentsOf(allEntries)
+            NSLog("suggester dictionary size: \(self.suggester.words.count)")
         }
     }
     
