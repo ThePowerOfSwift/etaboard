@@ -84,7 +84,7 @@ extension KeyboardViewController {
         requestSupplementaryLexiconWithCompletion { lexicon in
             let allEntries = lexicon.entries.map { $0.documentText }
             NSLog("entries in lexicon: \(allEntries.count)")
-//            self.suggester.words.appendContentsOf(allEntries)
+            self.suggester.words.appendContentsOf(allEntries)
             NSLog("suggester dictionary size: \(self.suggester.words.count)")
         }
     }
