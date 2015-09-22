@@ -22,6 +22,7 @@
 		207F2C9C1BADB1350049AEB9 /* SuggesterPerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F2C9B1BADB1350049AEB9 /* SuggesterPerformanceTests.swift */; settings = {ASSET_TAGS = (); }; };
 		207F2C9D1BADB2FC0049AEB9 /* Suggester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20925E351BACA64700FBCFE4 /* Suggester.swift */; settings = {ASSET_TAGS = (); }; };
 		2083F4E61BAE2B1500EBAFCC /* SuggesterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2083F4E51BAE2B1500EBAFCC /* SuggesterTests.swift */; settings = {ASSET_TAGS = (); }; };
+		2083F4E81BB1BECE00EBAFCC /* LevenshteinPerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2083F4E71BB1BECE00EBAFCC /* LevenshteinPerformanceTests.swift */; settings = {ASSET_TAGS = (); }; };
 		20925E361BACA64700FBCFE4 /* Suggester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20925E351BACA64700FBCFE4 /* Suggester.swift */; settings = {ASSET_TAGS = (); }; };
 		20925E381BACABDE00FBCFE4 /* LevenshteinDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20925E371BACABDE00FBCFE4 /* LevenshteinDistance.swift */; settings = {ASSET_TAGS = (); }; };
 		20925E3A1BACABF700FBCFE4 /* LevenshteinDistanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20925E391BACABF700FBCFE4 /* LevenshteinDistanceTests.swift */; settings = {ASSET_TAGS = (); }; };
@@ -100,6 +101,7 @@
 		206ECC3B1B83D4C900B62EA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		207F2C9B1BADB1350049AEB9 /* SuggesterPerformanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggesterPerformanceTests.swift; sourceTree = "<group>"; };
 		2083F4E51BAE2B1500EBAFCC /* SuggesterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggesterTests.swift; sourceTree = "<group>"; };
+		2083F4E71BB1BECE00EBAFCC /* LevenshteinPerformanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevenshteinPerformanceTests.swift; sourceTree = "<group>"; };
 		20925E351BACA64700FBCFE4 /* Suggester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Suggester.swift; sourceTree = "<group>"; };
 		20925E371BACABDE00FBCFE4 /* LevenshteinDistance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevenshteinDistance.swift; sourceTree = "<group>"; };
 		20925E391BACABF700FBCFE4 /* LevenshteinDistanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevenshteinDistanceTests.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 			children = (
 				20317DE61BA2EEF2008A4303 /* DocumentTests.swift */,
 				20925E391BACABF700FBCFE4 /* LevenshteinDistanceTests.swift */,
+				2083F4E71BB1BECE00EBAFCC /* LevenshteinPerformanceTests.swift */,
 				2083F4E51BAE2B1500EBAFCC /* SuggesterTests.swift */,
 				207F2C9B1BADB1350049AEB9 /* SuggesterPerformanceTests.swift */,
 				20317DE41BA2EEF2008A4303 /* Supporting Files */,
@@ -397,6 +400,7 @@
 				20925E3A1BACABF700FBCFE4 /* LevenshteinDistanceTests.swift in Sources */,
 				20925E3B1BACAD9E00FBCFE4 /* LevenshteinDistance.swift in Sources */,
 				200C471A1BA3374500FA59D3 /* Document.swift in Sources */,
+				2083F4E81BB1BECE00EBAFCC /* LevenshteinPerformanceTests.swift in Sources */,
 				2083F4E61BAE2B1500EBAFCC /* SuggesterTests.swift in Sources */,
 				207F2C9C1BADB1350049AEB9 /* SuggesterPerformanceTests.swift in Sources */,
 				207F2C9D1BADB2FC0049AEB9 /* Suggester.swift in Sources */,
