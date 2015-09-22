@@ -32,8 +32,8 @@ private class Array2D {
 }
 
 func levenshteinDistance(aStr: String, s2 bStr: String) -> Int {
-    let a = Array(aStr.characters)
-    let b = Array(bStr.characters)
+    let a = Array(aStr.utf16)
+    let b = Array(bStr.utf16)
     
     if a.count == 0 { return b.count }
     if b.count == 0 { return a.count }
