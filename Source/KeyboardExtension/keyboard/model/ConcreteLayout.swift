@@ -7,7 +7,7 @@ struct ConcreteLayout {
         for (rowIdx, row) in rows.enumerate() {
             let y = size.height / noOfRowSegments * (CGFloat(rowIdx) * 2 + 1)
             
-            let keysInRow = row.componentsSeparatedByString(" ")
+            let keysInRow = row.split(" ")
             let numberOfKeySegments = CGFloat(keysInRow.count * 2)
             for (posInRow, key) in keysInRow.enumerate() {
                 let x = size.width / numberOfKeySegments * (CGFloat(posInRow) * 2 + 1)

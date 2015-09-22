@@ -20,7 +20,7 @@ class Document {
     func currentWord() -> String? {
         if let contextBefore = proxy.documentContextBeforeInput {
             if contextBefore.hasSuffix(" ") { return nil }
-            let wordsBefore = contextBefore.componentsSeparatedByString(" ")
+            let wordsBefore = contextBefore.split(" ")
             return wordsBefore.last
         }
         return nil
