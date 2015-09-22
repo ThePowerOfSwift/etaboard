@@ -1,3 +1,8 @@
+private func myMin(a: Int, b: Int, c: Int) -> Int {
+    if a < b { return a < c ? a : c }
+    else { return b < c ? b : c }
+}
+
 private class Array2D {
     var cols: Int, rows: Int
     var matrix: [Int]
@@ -53,10 +58,10 @@ func levenshteinDistance(aStr: String, s2 bStr: String) -> Int {
                 let delete = dist[i-1, j] + 1
                 let insert = dist[i, j-1] + 1
                 let substitute = dist[i-1, j-1] + 1
-                dist[i, j] = min(
+                dist[i, j] = myMin(
                     delete,
-                    insert,
-                    substitute
+                    b: insert,
+                    c: substitute
                 )
             }
         }
