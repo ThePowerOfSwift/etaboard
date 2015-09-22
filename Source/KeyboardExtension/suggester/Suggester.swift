@@ -1,5 +1,21 @@
+public extension SequenceType {
+    func groupBy<U : Hashable>(@noescape keyFunc: Generator.Element -> U) -> [U:[Generator.Element]] {
+        var dict: [U:[Generator.Element]] = [:]
+        for el in self {
+            let key = keyFunc(el)
+            dict[key]?.append(el) ?? {dict[key] = [el]}()
+        }
+        return dict
+    }
+}
+
 class Suggester {
-    var words = ["Moin", "mwa", "Claudi"]
+    var wordsByLength: [Int: [String]]!
+    var words = ["Moin", "mwa", "Claudi"] {
+        didSet {
+            wordsByLength = words.groupBy { $0.characters.count }
+        }
+    }
     
     func suggestCompletion(to currentContext: String?) -> String? {
         if let currentWord = currentContext {
@@ -9,8 +25,7 @@ class Suggester {
     }
     
     func findClosestWord(to word: String) -> String? {
-        let lengthOfCurrentWord = word.characters.count
-        let wordsOfSameLength = words.filter { $0.characters.count == lengthOfCurrentWord }
+        let wordsOfSameLength = wordsByLength[word.characters.count] ?? []
         return findClosestWord(to: word, from: wordsOfSameLength)
     }
     
