@@ -4,7 +4,7 @@ import Nimble
 class SuggesterPerformanceTests: XCTestCase {
     
     func testIsFast() {
-        let suggester = createSuggester(dictionarySize: 5000, maxWordLength: 12)
+        let suggester = createSuggester(dictionarySize: 10000, maxWordLength: 12)
         let needle = randomString(length: 6)
         measureBlock {
             suggester.suggestCompletion(to: needle)

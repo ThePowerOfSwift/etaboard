@@ -33,7 +33,6 @@ class Suggester {
         let byDistanceTo = { base in
             { levenshteinDistance($0, s2: base) < levenshteinDistance($1, s2: base) }
         }
-        let wordsByEditDistance = words.sort(byDistanceTo(word))
-        return wordsByEditDistance.first
+        return words.minElement(byDistanceTo(word))
     }
 }
