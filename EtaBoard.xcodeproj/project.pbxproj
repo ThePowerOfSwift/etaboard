@@ -102,6 +102,7 @@
 		207F2C9B1BADB1350049AEB9 /* SuggesterPerformanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggesterPerformanceTests.swift; sourceTree = "<group>"; };
 		2083F4E51BAE2B1500EBAFCC /* SuggesterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggesterTests.swift; sourceTree = "<group>"; };
 		2083F4E71BB1BECE00EBAFCC /* LevenshteinPerformanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevenshteinPerformanceTests.swift; sourceTree = "<group>"; };
+		2083F4E91BB1CF6C00EBAFCC /* Playground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = Playground.playground; path = temp/Playground.playground; sourceTree = "<group>"; };
 		20925E351BACA64700FBCFE4 /* Suggester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Suggester.swift; sourceTree = "<group>"; };
 		20925E371BACABDE00FBCFE4 /* LevenshteinDistance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevenshteinDistance.swift; sourceTree = "<group>"; };
 		20925E391BACABF700FBCFE4 /* LevenshteinDistanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevenshteinDistanceTests.swift; sourceTree = "<group>"; };
@@ -169,6 +170,7 @@
 		206ECC061B83D44300B62EA0 = {
 			isa = PBXGroup;
 			children = (
+				2083F4E91BB1CF6C00EBAFCC /* Playground.playground */,
 				206ECC111B83D44300B62EA0 /* ContainerApp */,
 				C2161F83BEA9648952561B04 /* KeyboardExtension */,
 				20317DE31BA2EEF2008A4303 /* UnitTests */,
