@@ -5,7 +5,7 @@ class LevenshteinPerformanceTests: XCTestCase {
     
     func testIsFast() {
         measureBlock {
-            for _ in 1...100 {
+            for _ in 1...1000 {
                 levenshteinDistance(self.generateRandomString(length: 4),
                     s2: self.generateRandomString(length: 4))
             }

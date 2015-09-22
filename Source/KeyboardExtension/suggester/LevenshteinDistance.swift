@@ -1,38 +1,44 @@
 
-private func memoize<T1: Hashable, T2: Hashable, U>(body: ((T1, T2) -> U, T1, T2) -> U) -> ((T1, T2) -> U) {
-    var memo = [T1: [T2: U]]()
-    var result: ((T1, T2) -> U)!
-    result = {
-        (value1: T1, value2: T2) -> U in
-        if let cached = memo[value1]?[value2] { return cached }
-        
-        let toCache = body(result, value1, value2)
-        if memo[value1] == nil { memo[value1] = [:] }
-        memo[value1]![value2] = toCache
-        return toCache
-    }
-    return result
-}
-
-private let levenshteinDistanceInternal = memoize {
-    (levenshteinDistance: (String, String) -> Int, s1: String, s2: String) -> Int in
-    if s1.characters.count == 0 { return s2.characters.count }
-    if s2.characters.count == 0 { return s1.characters.count }
+func levenshteinDistance(aStr: String, s2 bStr: String) -> Int {
+    // create character arrays
+    let a = Array(aStr.characters)
+    let b = Array(bStr.characters)
     
-    // drop first letter of each string
-    let s1Crop = s1[s1.startIndex.successor()..<s1.endIndex]
-    let s2Crop = s2[s2.startIndex.successor()..<s2.endIndex]
+    if a.count == 0 { return b.count }
+    if b.count == 0 { return a.count }
     
-    // if first characters are equal, continue with both cropped
-    if s1[s1.startIndex] == s2[s2.startIndex] {
-        return levenshteinDistance(s1Crop, s2Crop)
+    // initialize matrix of size |a|+1 * |b|+1 to zero
+    var dist = [[Int]]()
+    for _ in 0...a.count {
+        dist.append([Int](count: b.count + 1, repeatedValue: 0))
     }
     
-    // otherwise find smallest of the three options
-    let (c1, c2, c3) = (levenshteinDistance(s1Crop, s2), levenshteinDistance(s1, s2Crop), levenshteinDistance(s1Crop, s2Crop))
-    return 1 + min(min(c1, c2), c3)
-}
-
-func levenshteinDistance(s1: String, s2: String) -> Int {
-    return levenshteinDistanceInternal(s1, s2)
+    // 'a' prefixes can be transformed into empty string by deleting every char
+    for i in 1...a.count {
+        dist[i][0] = i
+    }
+    
+    // 'b' prefixes can be created from empty string by inserting every char
+    for j in 1...b.count {
+        dist[0][j] = j
+    }
+    
+    for i in 1...a.count {
+        for j in 1...b.count {
+            if a[i-1] == b[j-1] {
+                dist[i][j] = dist[i-1][j-1]  // noop
+            } else {
+                let delete = dist[i-1][j] + 1
+                let insert = dist[i][j-1] + 1
+                let substitute = dist[i-1][j-1] + 1
+                dist[i][j] = min(
+                    delete,
+                    insert,
+                    substitute
+                )
+            }
+        }
+    }
+    
+    return dist[a.count][b.count]
 }
