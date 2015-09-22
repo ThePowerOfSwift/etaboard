@@ -7,7 +7,7 @@ class LevenshteinPerformanceTests: XCTestCase {
         measureBlock {
             for _ in 1...100 {
                 levenshteinDistance(self.generateRandomString(length: 4),
-                    self.generateRandomString(length: 4))
+                    s2: self.generateRandomString(length: 4))
             }
         }
     }

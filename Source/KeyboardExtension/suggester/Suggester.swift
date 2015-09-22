@@ -16,7 +16,7 @@ class Suggester {
     
     func findClosestWord(to word: String, from words: [String]) -> String? {
         let byDistanceTo = { base in
-            { levenshteinDistance($0, base) < levenshteinDistance($1, base) }
+            { levenshteinDistance($0, s2: base) < levenshteinDistance($1, s2: base) }
         }
         let wordsByEditDistance = words.sort(byDistanceTo(word))
         return wordsByEditDistance.first

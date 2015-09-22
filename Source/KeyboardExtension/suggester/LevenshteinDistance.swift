@@ -1,5 +1,5 @@
 
-func memoize<T1: Hashable, T2: Hashable, U>(body: ((T1, T2) -> U, T1, T2) -> U) -> ((T1, T2) -> U) {
+private func memoize<T1: Hashable, T2: Hashable, U>(body: ((T1, T2) -> U, T1, T2) -> U) -> ((T1, T2) -> U) {
     var memo = [T1: [T2: U]]()
     var result: ((T1, T2) -> U)!
     result = {
@@ -14,7 +14,7 @@ func memoize<T1: Hashable, T2: Hashable, U>(body: ((T1, T2) -> U, T1, T2) -> U) 
     return result
 }
 
-let levenshteinDistance = memoize {
+private let levenshteinDistanceInternal = memoize {
     (levenshteinDistance: (String, String) -> Int, s1: String, s2: String) -> Int in
     if s1.characters.count == 0 { return s2.characters.count }
     if s2.characters.count == 0 { return s1.characters.count }
@@ -31,4 +31,8 @@ let levenshteinDistance = memoize {
     // otherwise find smallest of the three options
     let (c1, c2, c3) = (levenshteinDistance(s1Crop, s2), levenshteinDistance(s1, s2Crop), levenshteinDistance(s1Crop, s2Crop))
     return 1 + min(min(c1, c2), c3)
+}
+
+func levenshteinDistance(s1: String, s2: String) -> Int {
+    return levenshteinDistanceInternal(s1, s2)
 }
