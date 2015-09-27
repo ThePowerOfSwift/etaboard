@@ -81,5 +81,6 @@ class KeyboardView: UIView{
 extension KeyboardView: KeyboardModelDelegate {
     func keyboardChanged() {
         setNeedsDisplay()
+        layer.displayIfNeeded()
     }
 }
