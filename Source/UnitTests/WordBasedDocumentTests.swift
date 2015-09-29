@@ -1,5 +1,6 @@
 import XCTest
 import Nimble
+import UIKit
 
 class UITextDocumentProxyMock: UITextDocumentProxyAdapter {
     var insertText_calledWith: String? = nil
@@ -14,14 +15,14 @@ class UITextDocumentProxyMock: UITextDocumentProxyAdapter {
 }
 
 
-class DocumentTests: XCTestCase {
+class WordBasedDocumentTests: XCTestCase {
 
     var mock: UITextDocumentProxyMock!
-    var document: Document!
+    var document: WordBasedDocument!
 
     override func setUp() {
         mock = UITextDocumentProxyMock()
-        document = Document(proxy: mock)
+        document = WordBasedDocument(proxy: mock)
     }
 
     func testPassesStringToProxyUnchanged() {

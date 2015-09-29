@@ -28,11 +28,12 @@ class KeyboardViewController: UIInputViewController {
 }
 
 
-// MARK: -
+// MARK: - Document
 extension KeyboardViewController {
     private func initDocument() {
-        document = Document(proxy: textDocumentProxy )
-        document.delegate = self
+        let newDocument = NotifyingDocument(wrapping: WordBasedDocument(proxy: textDocumentProxy))
+        newDocument.delegate = self
+        document = newDocument
     }
 }
 
@@ -44,11 +45,10 @@ extension KeyboardViewController: DocumentDelegate {
                 self.suggestionBar.displaySuggestion(suggestion)
             })
         })
-
     }
 }
 
-// MARK: -
+// MARK: - Keyboard
 extension KeyboardViewController {
     private func initKeyboardView() {
         keyPressHandler = KeyPressHandler(
@@ -74,7 +74,7 @@ extension KeyboardViewController {
     }
 }
 
-// MARK: -
+// MARK: - Suggestion Bar
 extension KeyboardViewController {
     private func initSuggestionBar() {
         suggestionBar = SuggestionBarView(target: self, action: "didTapSuggestion:")
