@@ -13,14 +13,20 @@ class NotifyingDocument: Document {
     
     func replaceCurrentWord(text: String) {
         wrappedDocument.replaceCurrentWord(text)
+        notify()
     }
     
     func deleteBackward() {
         wrappedDocument.deleteBackward()
+        notify()
     }
     
     func insert(text: String) {
         wrappedDocument.insert(text)
+        notify()
+    }
+    
+    private func notify() {
         delegate?.didChangeCurrentWord(wrappedDocument.currentWord())
     }
 }

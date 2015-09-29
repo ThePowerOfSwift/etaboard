@@ -1,3 +1,5 @@
+import Foundation
+
 public extension SequenceType {
     func groupBy<U : Hashable>(@noescape keyFunc: Generator.Element -> U) -> [U:[Generator.Element]] {
         var dict: [U:[Generator.Element]] = [:]
@@ -18,18 +20,19 @@ class Suggester {
     }
     
     func suggestCompletion(to currentContext: String?) -> String? {
+        NSLog("asked for suggestion for: \(currentContext)")
         if let currentWord = currentContext {
             return findClosestWord(to: currentWord)
         }
         return "😊"
     }
     
-    func findClosestWord(to word: String) -> String? {
+    private func findClosestWord(to word: String) -> String? {
         let wordsOfSameLength = wordsByLength[word.characters.count] ?? []
         return findClosestWord(to: word, from: wordsOfSameLength)
     }
     
-    func findClosestWord(to word: String, from words: [String]) -> String? {
+    private func findClosestWord(to word: String, from words: [String]) -> String? {
         var bestDistance = Int.max
         var bestCandidate: String? = nil
         for candidate in words {
