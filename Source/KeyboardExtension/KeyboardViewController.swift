@@ -81,20 +81,28 @@ extension KeyboardViewController {
         suggestionBar.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(suggestionBar)
         
+        loadSuggestionsFromSystem()
+        loadSuggestionsFromMiscDictionary()
+    }
+    
+    private func loadSuggestionsFromSystem() {
         requestSupplementaryLexiconWithCompletion { lexicon in
             let allEntries = lexicon.entries.map { $0.documentText }
             NSLog("entries in lexicon: \(allEntries.count)")
             self.suggester.words.appendContentsOf(allEntries)
             NSLog("suggester dictionary size: \(self.suggester.words.count)")
         }
-        
+    }
+    
+    private func loadSuggestionsFromMiscDictionary() {
         let path = NSBundle.mainBundle().pathForResource("misc", ofType: "txt")
         do {
             let dictionaryAsString = try String(contentsOfFile: path!, encoding: NSUTF8StringEncoding)
-            self.suggester.words.append(dictionaryAsString)
-            NSLog("loaded dictionary: \(dictionaryAsString)")
+            let words = dictionaryAsString.split("\n")
+            self.suggester.words.appendContentsOf(words)
+            NSLog("entries in dictionary: \(words.count)")
         } catch _ as NSError {
-            NSLog("could not load dictionary")
+            NSLog("could not load dictionary from path \(path)")
         }
     }
     
