@@ -159,12 +159,9 @@
 		20317DE31BA2EEF2008A4303 /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
-				20317DE61BA2EEF2008A4303 /* WordBasedDocumentTests.swift */,
-				20925E391BACABF700FBCFE4 /* LevenshteinDistanceTests.swift */,
-				2083F4E71BB1BECE00EBAFCC /* LevenshteinPerformanceTests.swift */,
+				20C304C61BBB070800C3460E /* suggester */,
+				20C304C71BBB071600C3460E /* document */,
 				207686621BB21300004B1F57 /* String+split_Tests.swift */,
-				2083F4E51BAE2B1500EBAFCC /* SuggesterTests.swift */,
-				207F2C9B1BADB1350049AEB9 /* SuggesterPerformanceTests.swift */,
 				20317DE41BA2EEF2008A4303 /* Supporting Files */,
 				20D5F6481BA2F4C100956BE8 /* Nimble.framework */,
 				20C304BD1BB833C600C3460E /* +random.swift */,
@@ -243,6 +240,25 @@
 				20C304C01BBAFD1000C3460E /* Document.swift */,
 				20317D9E1BA0B677008A4303 /* NotifyingDocument.swift */,
 				20C304C31BBAFF6B00C3460E /* WordBasedDocument.swift */,
+			);
+			name = document;
+			sourceTree = "<group>";
+		};
+		20C304C61BBB070800C3460E /* suggester */ = {
+			isa = PBXGroup;
+			children = (
+				20925E391BACABF700FBCFE4 /* LevenshteinDistanceTests.swift */,
+				2083F4E71BB1BECE00EBAFCC /* LevenshteinPerformanceTests.swift */,
+				2083F4E51BAE2B1500EBAFCC /* SuggesterTests.swift */,
+				207F2C9B1BADB1350049AEB9 /* SuggesterPerformanceTests.swift */,
+			);
+			name = suggester;
+			sourceTree = "<group>";
+		};
+		20C304C71BBB071600C3460E /* document */ = {
+			isa = PBXGroup;
+			children = (
+				20317DE61BA2EEF2008A4303 /* WordBasedDocumentTests.swift */,
 			);
 			name = document;
 			sourceTree = "<group>";
