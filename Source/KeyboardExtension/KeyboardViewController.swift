@@ -90,7 +90,7 @@ extension KeyboardViewController {
         
         let path = NSBundle.mainBundle().pathForResource("misc", ofType: "txt")
         do {
-            let dictionaryAsString = try String(contentsOfFile: path!)
+            let dictionaryAsString = try String(contentsOfFile: path!, encoding: NSUTF8StringEncoding)
             self.suggester.words.append(dictionaryAsString)
             NSLog("loaded dictionary: \(dictionaryAsString)")
         } catch _ as NSError {
