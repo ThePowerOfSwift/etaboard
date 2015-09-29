@@ -83,6 +83,8 @@ extension KeyboardViewController {
         
         loadSuggestionsFromSystem()
         loadSuggestionsFromMiscDictionary()
+        loadSuggestionsFromUniLeipzigDe()
+        loadSuggestionsFromUniLeipzigEn()
     }
     
     private func loadSuggestionsFromSystem() {
@@ -106,6 +108,36 @@ extension KeyboardViewController {
         }
     }
     
+    private func loadSuggestionsFromUniLeipzigDe() {
+        guard let path = NSBundle.mainBundle().pathForResource("top10000de", ofType: "txt") else {
+            NSLog("could not find German dictionary")
+            return
+        }
+        do {
+            let dictionaryAsString = try String(contentsOfFile: path, encoding: NSUTF8StringEncoding)
+            let words = dictionaryAsString.split("\n")
+            self.suggester.words.appendContentsOf(words)
+            NSLog("entries in German dictionary: \(words.count)")
+        } catch _ as NSError {
+            NSLog("could not load dictionary from path \(path)")
+        }
+    }
+    
+    private func loadSuggestionsFromUniLeipzigEn() {
+        guard let path = NSBundle.mainBundle().pathForResource("top10000en", ofType: "txt") else {
+            NSLog("could not find English dictionary")
+            return
+        }
+        do {
+            let dictionaryAsString = try String(contentsOfFile: path, encoding: NSUTF8StringEncoding)
+            let words = dictionaryAsString.split("\n")
+            self.suggester.words.appendContentsOf(words)
+            NSLog("entries in English dictionary: \(words.count)")
+        } catch _ as NSError {
+            NSLog("could not load dictionary from path \(path)")
+        }
+    }
+
     func didTapSuggestion(sender: AnyObject?) {
         let button = sender as! UIButton
         let title = button.titleForState(.Normal)
