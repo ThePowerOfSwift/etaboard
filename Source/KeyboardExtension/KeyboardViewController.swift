@@ -87,6 +87,15 @@ extension KeyboardViewController {
             self.suggester.words.appendContentsOf(allEntries)
             NSLog("suggester dictionary size: \(self.suggester.words.count)")
         }
+        
+        let path = NSBundle.mainBundle().pathForResource("misc", ofType: "txt")
+        do {
+            let dictionaryAsString = try String(contentsOfFile: path!)
+            self.suggester.words.append(dictionaryAsString)
+            NSLog("loaded dictionary: \(dictionaryAsString)")
+        } catch _ as NSError {
+            NSLog("could not load dictionary")
+        }
     }
     
     func didTapSuggestion(sender: AnyObject?) {
