@@ -11,8 +11,6 @@ class SuggestionBarView: UIView {
         buttonForSuggestion.addTarget(target, action: action, forControlEvents: .TouchUpInside)
         addSubview(buttonForSuggestion)
         align([.Top, .Height, .CenterX], of: buttonForSuggestion)
-        
-        displaySuggestion("Claudi")
     }
     
     func displaySuggestion(suggestion: String?) {

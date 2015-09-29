@@ -13,7 +13,7 @@ public extension SequenceType {
 
 class Suggester {
     var wordsByLength: [Int: [String]]!
-    var words = ["Moin", "mwa", "Claudi"] {
+    var words = [String]() {
         didSet {
             wordsByLength = words.groupBy { $0.characters.count }
         }
@@ -24,7 +24,7 @@ class Suggester {
         if let currentWord = currentContext {
             return findClosestWord(to: currentWord)
         }
-        return "😊"
+        return nil
     }
     
     private func findClosestWord(to word: String) -> String? {
