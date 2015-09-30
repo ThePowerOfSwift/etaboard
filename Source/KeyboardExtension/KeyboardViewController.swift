@@ -82,8 +82,11 @@ extension KeyboardViewController {
         self.view.addSubview(suggestionBar)
         
         loadSuggestionsFromSystem()
-        ["misc", "top10000de", "top10000en"]
-            .forEach { loadSuggestionsFromDictionary($0) }
+        ["misc", "top10000de", "top10000en"].forEach { dictionary in
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+                self.loadSuggestionsFromDictionary(dictionary)
+            })
+        }
     }
     
     private func loadSuggestionsFromSystem() {
