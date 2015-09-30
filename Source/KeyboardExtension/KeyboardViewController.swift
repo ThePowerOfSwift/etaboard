@@ -82,62 +82,36 @@ extension KeyboardViewController {
         self.view.addSubview(suggestionBar)
         
         loadSuggestionsFromSystem()
-        loadSuggestionsFromMiscDictionary()
-        loadSuggestionsFromUniLeipzigDe()
-        loadSuggestionsFromUniLeipzigEn()
+        ["misc", "top10000de", "top10000en"]
+            .forEach { loadSuggestionsFromDictionary($0) }
     }
     
     private func loadSuggestionsFromSystem() {
         requestSupplementaryLexiconWithCompletion { lexicon in
             let allEntries = lexicon.entries.map { $0.documentText }
-            NSLog("entries in lexicon: \(allEntries.count)")
-            self.suggester.words.appendContentsOf(allEntries)
-            NSLog("suggester dictionary size: \(self.suggester.words.count)")
+            self.addSuggestions(allEntries, from: "System Lexicon")
         }
     }
     
-    private func loadSuggestionsFromMiscDictionary() {
-        let path = NSBundle.mainBundle().pathForResource("misc", ofType: "txt")
-        do {
-            let dictionaryAsString = try String(contentsOfFile: path!, encoding: NSUTF8StringEncoding)
-            let words = dictionaryAsString.split("\n")
-            self.suggester.words.appendContentsOf(words)
-            NSLog("entries in dictionary: \(words.count)")
-        } catch _ as NSError {
-            NSLog("could not load dictionary from path \(path)")
-        }
-    }
-    
-    private func loadSuggestionsFromUniLeipzigDe() {
-        guard let path = NSBundle.mainBundle().pathForResource("top10000de", ofType: "txt") else {
-            NSLog("could not find German dictionary")
+    private func loadSuggestionsFromDictionary(basename: String) {
+        guard let path = NSBundle.mainBundle().pathForResource(basename, ofType: "txt") else {
+            NSLog("could not find dictionary '\(basename)'")
             return
         }
         do {
             let dictionaryAsString = try String(contentsOfFile: path, encoding: NSUTF8StringEncoding)
             let words = dictionaryAsString.split("\n")
-            self.suggester.words.appendContentsOf(words)
-            NSLog("entries in German dictionary: \(words.count)")
+            addSuggestions(words, from: basename)
         } catch _ as NSError {
             NSLog("could not load dictionary from path \(path)")
         }
     }
     
-    private func loadSuggestionsFromUniLeipzigEn() {
-        guard let path = NSBundle.mainBundle().pathForResource("top10000en", ofType: "txt") else {
-            NSLog("could not find English dictionary")
-            return
-        }
-        do {
-            let dictionaryAsString = try String(contentsOfFile: path, encoding: NSUTF8StringEncoding)
-            let words = dictionaryAsString.split("\n")
-            self.suggester.words.appendContentsOf(words)
-            NSLog("entries in English dictionary: \(words.count)")
-        } catch _ as NSError {
-            NSLog("could not load dictionary from path \(path)")
-        }
+    private func addSuggestions(words: [String], from dictionary: String) {
+        self.suggester.words.appendContentsOf(words)
+        NSLog("entries in dictionary '\(dictionary)': \(words.count)")
     }
-
+    
     func didTapSuggestion(sender: AnyObject?) {
         let button = sender as! UIButton
         let title = button.titleForState(.Normal)
