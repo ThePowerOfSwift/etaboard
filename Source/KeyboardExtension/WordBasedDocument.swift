@@ -13,19 +13,18 @@ class WordBasedDocument: Document {
     }
     
     func currentWord() -> String? {
-        if let contextBefore = proxy.documentContextBeforeInput {
-            if contextBefore.hasSuffix(" ") { return nil }
-            let wordsBefore = contextBefore.split(" ")
-            return wordsBefore.last
-        }
-        return nil
+        guard let contextBefore = proxy.documentContextBeforeInput else { return nil }
+        if contextBefore.hasSuffix(" ") { return nil }
+        
+        let wordsBefore = contextBefore.split(" ")
+        return wordsBefore.last
     }
     
     func deleteCurrentWord() {
-        if let currentWord = currentWord() {
-            for _ in 0..<currentWord.characters.count {
-                deleteBackward()
-            }
+        guard let currentWord = currentWord() else { return }
+        
+        for _ in 0..<currentWord.characters.count {
+            deleteBackward()
         }
     }
     
