@@ -1,11 +1,11 @@
-private func myMin(a: Int, b: Int, c: Int) -> Int {
+private func myMin(a: Double, b: Double, c: Double) -> Double {
     if a < b { return a < c ? a : c }
     else { return b < c ? b : c }
 }
 
 private class Array2D {
     var cols: Int, rows: Int
-    var matrix: [Int]
+    var matrix: [Double]
     
     init(cols: Int, rows: Int) {
         self.cols = cols
@@ -13,7 +13,7 @@ private class Array2D {
         matrix = Array(count:cols*rows, repeatedValue:0)
     }
     
-    subscript(col: Int, row: Int) -> Int {
+    subscript(col: Int, row: Int) -> Double {
         get {
             return matrix[cols * row + col]
         }
@@ -31,23 +31,23 @@ private class Array2D {
     }
 }
 
-func levenshteinDistance(aStr: String, s2 bStr: String) -> Int {
+func levenshteinDistance(aStr: String, s2 bStr: String) -> Double {
     let a = Array(aStr.utf16)
     let b = Array(bStr.utf16)
     
-    if a.count == 0 { return b.count }
-    if b.count == 0 { return a.count }
+    if a.count == 0 { return Double(b.count) }
+    if b.count == 0 { return Double(a.count) }
     
     let dist = Array2D(cols: a.count + 1, rows: b.count + 1)
     
     // 'a' prefixes can be transformed into empty string by deleting every char
     for i in 1...a.count {
-        dist[i, 0] = i
+        dist[i, 0] = Double(i)
     }
     
     // 'b' prefixes can be created from empty string by inserting every char
     for j in 1...b.count {
-        dist[0, j] = j
+        dist[0, j] = Double(j)
     }
     
     for i in 1...a.count {

@@ -33,7 +33,7 @@ class Suggester {
     }
     
     private func findClosestWord(to word: String, from words: [String]) -> String? {
-        var bestDistance = Int.max
+        var bestDistance = Double(Int.max)
         var bestCandidate: String? = nil
         for candidate in words {
             let distance = levenshteinDistance(word, s2: candidate)
