@@ -13,6 +13,10 @@
 		20317D9D1BA0A9B1008A4303 /* UIView+LayoutConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20317D9C1BA0A9B1008A4303 /* UIView+LayoutConstraints.swift */; };
 		20317D9F1BA0B677008A4303 /* NotifyingDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20317D9E1BA0B677008A4303 /* NotifyingDocument.swift */; };
 		20317DE71BA2EEF2008A4303 /* WordBasedDocumentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20317DE61BA2EEF2008A4303 /* WordBasedDocumentTests.swift */; };
+		205A41391BC4978E00E659E1 /* KeyDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205A41371BC4978000E659E1 /* KeyDistance.swift */; settings = {ASSET_TAGS = (); }; };
+		205A413A1BC4978E00E659E1 /* KeyDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205A41371BC4978000E659E1 /* KeyDistance.swift */; settings = {ASSET_TAGS = (); }; };
+		205A413D1BC4999900E659E1 /* ConcreteLayout_DistanceBetweenChars_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205A413C1BC4999900E659E1 /* ConcreteLayout_DistanceBetweenChars_Tests.swift */; settings = {ASSET_TAGS = (); }; };
+		205A413E1BC499AA00E659E1 /* ConcreteLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2132E72EC680EEB62955CD4 /* ConcreteLayout.swift */; settings = {ASSET_TAGS = (); }; };
 		206ECC151B83D44300B62EA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206ECC141B83D44300B62EA0 /* AppDelegate.swift */; };
 		206ECC171B83D44300B62EA0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206ECC161B83D44300B62EA0 /* ViewController.swift */; };
 		206ECC1A1B83D44300B62EA0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 206ECC181B83D44300B62EA0 /* Main.storyboard */; };
@@ -101,6 +105,9 @@
 		20317DE21BA2EEF2008A4303 /* UnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		20317DE51BA2EEF2008A4303 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20317DE61BA2EEF2008A4303 /* WordBasedDocumentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordBasedDocumentTests.swift; sourceTree = "<group>"; };
+		205A41361BC4912F00E659E1 /* KeyDistanceGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyDistanceGenerator.swift; sourceTree = "<group>"; };
+		205A41371BC4978000E659E1 /* KeyDistance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyDistance.swift; sourceTree = "<group>"; };
+		205A413C1BC4999900E659E1 /* ConcreteLayout_DistanceBetweenChars_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcreteLayout_DistanceBetweenChars_Tests.swift; sourceTree = "<group>"; };
 		206ECC0F1B83D44300B62EA0 /* EtaBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EtaBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		206ECC131B83D44300B62EA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		206ECC141B83D44300B62EA0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -165,6 +172,7 @@
 		20317DE31BA2EEF2008A4303 /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
+				205A413B1BC4998A00E659E1 /* keyboard */,
 				20C304C61BBB070800C3460E /* suggester */,
 				20C304C71BBB071600C3460E /* document */,
 				207686621BB21300004B1F57 /* String+split_Tests.swift */,
@@ -183,6 +191,14 @@
 				20317DE51BA2EEF2008A4303 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		205A413B1BC4998A00E659E1 /* keyboard */ = {
+			isa = PBXGroup;
+			children = (
+				205A413C1BC4999900E659E1 /* ConcreteLayout_DistanceBetweenChars_Tests.swift */,
+			);
+			name = keyboard;
 			sourceTree = "<group>";
 		};
 		206ECC061B83D44300B62EA0 = {
@@ -246,6 +262,8 @@
 			children = (
 				20925E351BACA64700FBCFE4 /* Suggester.swift */,
 				20925E371BACABDE00FBCFE4 /* LevenshteinDistance.swift */,
+				205A41361BC4912F00E659E1 /* KeyDistanceGenerator.swift */,
+				205A41371BC4978000E659E1 /* KeyDistance.swift */,
 			);
 			path = suggester;
 			sourceTree = "<group>";
@@ -463,6 +481,7 @@
 			files = (
 				20925E3A1BACABF700FBCFE4 /* LevenshteinDistanceTests.swift in Sources */,
 				20925E3B1BACAD9E00FBCFE4 /* LevenshteinDistance.swift in Sources */,
+				205A413D1BC4999900E659E1 /* ConcreteLayout_DistanceBetweenChars_Tests.swift in Sources */,
 				200C471A1BA3374500FA59D3 /* NotifyingDocument.swift in Sources */,
 				2083F4E81BB1BECE00EBAFCC /* LevenshteinPerformanceTests.swift in Sources */,
 				2083F4E61BAE2B1500EBAFCC /* SuggesterTests.swift in Sources */,
@@ -472,9 +491,11 @@
 				20C304C51BBAFF6B00C3460E /* WordBasedDocument.swift in Sources */,
 				20C304BE1BB833C600C3460E /* +random.swift in Sources */,
 				20C304C21BBAFE5800C3460E /* Document.swift in Sources */,
+				205A413A1BC4978E00E659E1 /* KeyDistance.swift in Sources */,
 				20317DE71BA2EEF2008A4303 /* WordBasedDocumentTests.swift in Sources */,
 				200C471C1BA337B200FA59D3 /* UITextDocumentProxyAdapter.swift in Sources */,
 				207686631BB21300004B1F57 /* String+split_Tests.swift in Sources */,
+				205A413E1BC499AA00E659E1 /* ConcreteLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -491,6 +512,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				205A41391BC4978E00E659E1 /* KeyDistance.swift in Sources */,
 				20925E381BACABDE00FBCFE4 /* LevenshteinDistance.swift in Sources */,
 				207686601BB211BE004B1F57 /* String+split.swift in Sources */,
 				20317D9D1BA0A9B1008A4303 /* UIView+LayoutConstraints.swift in Sources */,

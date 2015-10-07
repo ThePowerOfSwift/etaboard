@@ -57,7 +57,7 @@ func levenshteinDistance(aStr: String, s2 bStr: String) -> Double {
             } else {
                 let delete = dist[i-1, j] + 1
                 let insert = dist[i, j-1] + 1
-                let substitute = dist[i-1, j-1] + 1
+                let substitute = dist[i-1, j-1] + distanceBetweenUInt16Chars(a[i-1], and: b[j-1])
                 dist[i, j] = myMin(
                     delete,
                     b: insert,

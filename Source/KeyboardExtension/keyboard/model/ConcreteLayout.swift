@@ -1,5 +1,9 @@
+import CoreGraphics
+
+
 struct ConcreteLayout {
     var keysWithCoordinates = [String: (CGFloat, CGFloat)]()
+    let hypotenuseLength: Double
 
     init(schematicLayout: [String], size: CGSize) {
         let rows = schematicLayout
@@ -14,12 +18,15 @@ struct ConcreteLayout {
                 keysWithCoordinates[key] = (x, y)
             }
         }
+        
+        hypotenuseLength = Double(sqrt(size.width*size.width + size.height*size.height))
     }
     
     init(basedOn: ConcreteLayout, transformer: (String) -> String) {
         for (key, keyCoordinates) in basedOn.keysWithCoordinates {
             keysWithCoordinates[transformer(key)] = keyCoordinates
         }
+        hypotenuseLength = basedOn.hypotenuseLength
     }
 
     func closestKey(to tap: CGPoint) -> String {
@@ -29,6 +36,14 @@ struct ConcreteLayout {
             keyForDistance[distanceBetween(keyCenter, and: tap)] = key
         }
         return keyForDistance[keyForDistance.keys.minElement()!]!
+    }
+    
+    func normalizedDistanceBetween(keyA: String, and keyB: String) -> Double {
+        if keyA == keyB { return 0 }
+        guard let pointA = keysWithCoordinates[keyA] else { return 1 }
+        guard let pointB = keysWithCoordinates[keyB] else { return 1 }
+        let pointBAsCGPoint = CGPointMake(pointB.0, pointB.1)
+        return Double(distanceBetween(pointA, and: pointBAsCGPoint)) / hypotenuseLength
     }
 
     private func distanceBetween(pointA: (CGFloat, CGFloat), and pointB: CGPoint) -> CGFloat {

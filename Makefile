@@ -11,6 +11,14 @@ bump-build-number:
 	$(plist) 'Set :CFBundleVersion $(new_build_number)' $(extension_info)
 
 
+helpers:=Source/KeyboardExtension/helpers
+model:=Source/KeyboardExtension/keyboard/model
+suggester:=Source/KeyboardExtension/suggester
+key_distance:=Source/KeyboardExtension/suggester/KeyDistance.swift
+generate-key-distances:
+	rm -f $(key_distance)
+	cat $(helpers)/String+split.swift $(model)/ConcreteLayout.swift $(model)/SchematicLayout.swift $(suggester)/KeyDistanceGenerator.swift | swift - > $(key_distance)
+
 
 test:
 	xcodebuild test -scheme EtaBoard -destination 'name=iPhone 6'
