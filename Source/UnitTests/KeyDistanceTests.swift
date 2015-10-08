@@ -10,14 +10,20 @@ func distanceBetweenChars(charA: String, and charB: String) -> Double {
 }
 
 class KeyDistanceTests: XCTestCase {
-    func testConsidersLowercaseAndUppercaseEqual() {
+    func testLowercaseAndUppercaseAreEquivalent() {
         expect(distanceBetweenChars("A", and: "a")) == 0
         expect(distanceBetweenChars("a", and: "A")) == 0
     }
-    func testLowercaseAndUppercaseHaveSameNeighborhoods() {
+    func testEquivalentCharsHaveSameNeighborhoods() {
         expect(distanceBetweenChars("a", and: "b")) ==
                distanceBetweenChars("a", and: "B")
         expect(distanceBetweenChars("a", and: "b")) ==
                distanceBetweenChars("A", and: "b")
+    }
+    func testUmlautsAndNonUmlautsAreEquivalent() {
+        expect(distanceBetweenChars("a", and: "ä")) == 0
+        expect(distanceBetweenChars("a", and: "Ä")) == 0
+        expect(distanceBetweenChars("a", and: "á")) == 0
+        expect(distanceBetweenChars("s", and: "ß")) == 0
     }
 }
