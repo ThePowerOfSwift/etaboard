@@ -11,7 +11,7 @@ class SchematicLayout {
     static let ToEmojis = "x9"
 
     static let Lowercase = [
-        ", \(ToUppercase) \(Space) \(Backspace) .",
+        "\(ToUppercase) , \(Space) . \(Backspace)",
         "q w e r t z u i o p \(Enter)",
         "a s d f g h j k l \(ToEmojis)",
         "- y x c v b n m ! ? \(ToSymbols)",
