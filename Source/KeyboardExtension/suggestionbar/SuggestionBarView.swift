@@ -16,4 +16,8 @@ class SuggestionBarView: UIView {
     func displaySuggestion(suggestion: String?) {
         buttonForSuggestion.setTitle(suggestion, forState: .Normal)
     }
+    
+    func getCurrentSuggestion() -> String? {
+        return buttonForSuggestion.titleForState(.Normal)
+    }
 }

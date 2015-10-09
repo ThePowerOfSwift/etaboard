@@ -81,6 +81,9 @@ extension KeyboardViewController {
         suggestionBar.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(suggestionBar)
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:"didActivateUppercase:",
+            name: KeyPressHandler.NotificationUppercaseActivatedName, object: nil)
+        
         loadSuggestionsFromSystem()
         ["misc", "top10000de", "top10000en"].forEach { dictionary in
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
@@ -120,5 +123,9 @@ extension KeyboardViewController {
         let title = button.titleForState(.Normal)
         
         document?.replaceCurrentWord(title!)
+    }
+    
+    func didActivateUppercase(notification: NSNotification) {
+        suggestionBar.displaySuggestion(suggester.capitalize(suggestionBar.getCurrentSuggestion()))
     }
 }

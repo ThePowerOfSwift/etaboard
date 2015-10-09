@@ -25,9 +25,13 @@ class Suggester {
         
         let suggestion = findClosestWord(to: currentWord)
         if (containsCapitalLetter(currentWord)) {
-            return suggestion?.capitalizedString
+            return capitalize(suggestion)
         }
         return suggestion
+    }
+    
+    func capitalize(string: String?) -> String? {
+        return string?.capitalizedString
     }
     
     private func containsCapitalLetter(string: String) -> Bool {
