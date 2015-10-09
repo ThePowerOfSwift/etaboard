@@ -17,7 +17,10 @@ class KeyPressHandler {
         dedicatedReactions = [
             SchematicLayout.Enter: { document.insert("\n") },
             SchematicLayout.Backspace: { document.deleteBackward() },
-            SchematicLayout.Space: { document.insert(" ") },
+            SchematicLayout.Space: {
+                document.insert(" ")
+                keyboard.proceedToPage(.Lowercase)
+            },
             SchematicLayout.NextSystemKeyboard: { inputViewController.advanceToNextInputMode() },
             SchematicLayout.ToLowercase: { keyboard.proceedToPage(.Lowercase) },
             SchematicLayout.ToSymbols: { keyboard.proceedToPage(.Symbols) },
