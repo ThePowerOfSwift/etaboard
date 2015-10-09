@@ -41,7 +41,7 @@
 		209616351BC5A20A003D1E81 /* KeyDistanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209616341BC5A20A003D1E81 /* KeyDistanceTests.swift */; settings = {ASSET_TAGS = (); }; };
 		2097421D1BBB3ED300B62380 /* top10000de.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2097421C1BBB3ED300B62380 /* top10000de.txt */; settings = {ASSET_TAGS = (); }; };
 		2097421F1BBB410700B62380 /* top10000en.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2097421E1BBB410700B62380 /* top10000en.txt */; settings = {ASSET_TAGS = (); }; };
-		20C304BE1BB833C600C3460E /* +random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C304BD1BB833C600C3460E /* +random.swift */; settings = {ASSET_TAGS = (); }; };
+		20C304BE1BB833C600C3460E /* Int,String+random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C304BD1BB833C600C3460E /* Int,String+random.swift */; settings = {ASSET_TAGS = (); }; };
 		20C304C11BBAFD1000C3460E /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C304C01BBAFD1000C3460E /* Document.swift */; settings = {ASSET_TAGS = (); }; };
 		20C304C21BBAFE5800C3460E /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C304C01BBAFD1000C3460E /* Document.swift */; settings = {ASSET_TAGS = (); }; };
 		20C304C41BBAFF6B00C3460E /* WordBasedDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C304C31BBAFF6B00C3460E /* WordBasedDocument.swift */; settings = {ASSET_TAGS = (); }; };
@@ -136,7 +136,7 @@
 		209616341BC5A20A003D1E81 /* KeyDistanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyDistanceTests.swift; sourceTree = "<group>"; };
 		2097421C1BBB3ED300B62380 /* top10000de.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = top10000de.txt; sourceTree = "<group>"; };
 		2097421E1BBB410700B62380 /* top10000en.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = top10000en.txt; sourceTree = "<group>"; };
-		20C304BD1BB833C600C3460E /* +random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "+random.swift"; sourceTree = "<group>"; };
+		20C304BD1BB833C600C3460E /* Int,String+random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int,String+random.swift"; sourceTree = "<group>"; };
 		20C304C01BBAFD1000C3460E /* Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		20C304C31BBAFF6B00C3460E /* WordBasedDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordBasedDocument.swift; sourceTree = "<group>"; };
 		20D5F6481BA2F4C100956BE8 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = SOURCE_ROOT; };
@@ -185,7 +185,7 @@
 				207686621BB21300004B1F57 /* String+split_Tests.swift */,
 				20317DE41BA2EEF2008A4303 /* Supporting Files */,
 				20D5F6481BA2F4C100956BE8 /* Nimble.framework */,
-				20C304BD1BB833C600C3460E /* +random.swift */,
+				20C304BD1BB833C600C3460E /* Int,String+random.swift */,
 			);
 			name = UnitTests;
 			path = Source/UnitTests;
@@ -501,7 +501,7 @@
 				207F2C9C1BADB1350049AEB9 /* SuggesterPerformanceTests.swift in Sources */,
 				207F2C9D1BADB2FC0049AEB9 /* Suggester.swift in Sources */,
 				20C304C51BBAFF6B00C3460E /* WordBasedDocument.swift in Sources */,
-				20C304BE1BB833C600C3460E /* +random.swift in Sources */,
+				20C304BE1BB833C600C3460E /* Int,String+random.swift in Sources */,
 				20C304C21BBAFE5800C3460E /* Document.swift in Sources */,
 				205A413A1BC4978E00E659E1 /* KeyDistance.swift in Sources */,
 				20317DE71BA2EEF2008A4303 /* WordBasedDocumentTests.swift in Sources */,
