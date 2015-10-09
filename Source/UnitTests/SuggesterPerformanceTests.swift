@@ -3,11 +3,18 @@ import Nimble
 
 class SuggesterPerformanceTests: XCTestCase {
     
-    func testIsFast() {
+    func testSuggestsQuickly() {
         let suggester = createSuggester(dictionarySize: 10000, maxWordLength: 12)
         let needle = String.random(length: 6)
         measureBlock {
             suggester.suggestCompletion(to: needle)
+        }
+    }
+    
+    func testAddsNewWordsQuickly() {
+        let suggester = createSuggester(dictionarySize: 10000, maxWordLength: 12)
+        measureBlock {
+            suggester.add([String.random()])
         }
     }
 
@@ -15,17 +22,11 @@ class SuggesterPerformanceTests: XCTestCase {
         let suggester = Suggester()
         let noOfWordsPerLength = dictionarySize/maxWordLength
         
-        var dictionary = [String]()
         for wordLength in (1...maxWordLength) {
-            let randomWords = (1...noOfWordsPerLength).map { _ in String.random(length: wordLength) }
-            dictionary.appendContentsOf(randomWords)
+            let randomWords = (1...noOfWordsPerLength).map { _ in
+                String.random(length: wordLength) }
+            suggester.add(randomWords)
         }
-        expect(dictionary.count) >= dictionarySize - maxWordLength
-        expect(dictionary.count) <= dictionarySize + maxWordLength
-
-        
-        suggester.words = dictionary
         return suggester
-    }
-    
+    }    
 }

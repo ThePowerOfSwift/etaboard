@@ -25,4 +25,8 @@ extension String {
         }
         return result
     }
+    
+    static func random() -> String {
+        return random(length: Int.random(min: 1, max: 20))
+    }
 }

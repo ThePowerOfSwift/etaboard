@@ -5,17 +5,22 @@ class SuggesterTests: XCTestCase {
     let suggester = Suggester()
     
     func testDoesNotCrashWithAnEmptyDictionary() {
-        suggester.words = []
         suggester.suggestCompletion(to: "")
     }
     
     func testSuggestsTheWordItselfIfItsInTheDictionary() {
-        suggester.words = ["foo", "bar"]
+        suggester.add(["foo", "bar"])
         expect(self.suggester.suggestCompletion(to: "foo")) == "foo"
     }
     
     func testCapitalizesSuggestionIfCurrentWordContainsCapitalLetter() {
-        suggester.words = ["foo"]
+        suggester.add(["foo"])
         expect(self.suggester.suggestCompletion(to: "foO")) == "Foo"
+    }
+    
+    func testPreservesEarlierWordsWhenAddingNewWords() {
+        suggester.add(["foo"])
+        suggester.add(["bar"])
+        expect(self.suggester.suggestCompletion(to: "foo")) == "foo"
     }
 }

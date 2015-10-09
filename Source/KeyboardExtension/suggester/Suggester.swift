@@ -1,10 +1,16 @@
 import Foundation
 
 class Suggester {
-    var wordsByLength: [Int: [String]]!
-    var words = [String]() {
-        didSet {
-            wordsByLength = words.groupBy { $0.characters.count }
+    private var wordsByLength = [Int: [String]]()
+    
+    func add(newWords: [String]) {
+        let newWordsByLength = newWords.groupBy { $0.characters.count }
+        for (length, newWordsForLength) in newWordsByLength {
+            if var existingWordsForLength = wordsByLength[length] {
+                existingWordsForLength.appendContentsOf(newWordsForLength)
+            } else {
+                wordsByLength[length] = newWordsForLength
+            }
         }
     }
     
