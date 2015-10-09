@@ -114,8 +114,8 @@ extension KeyboardViewController {
     }
     
     private func addSuggestions(words: [String], from dictionary: String) {
-        self.suggester.add(words)
         NSLog("entries in dictionary '\(dictionary)': \(words.count)")
+        self.suggester.add(words)
     }
     
     func didTapSuggestion(sender: AnyObject?) {

@@ -18,6 +18,12 @@ class SuggesterTests: XCTestCase {
         expect(self.suggester.suggestCompletion(to: "foO")) == "Foo"
     }
     
+    func testAddsNewWordsOfSameLength() {
+        suggester.add(["foo"])
+        suggester.add(["bar"])
+        expect(self.suggester.suggestCompletion(to: "bar")) == "bar"
+    }
+
     func testPreservesEarlierWordsWhenAddingNewWords() {
         suggester.add(["foo"])
         suggester.add(["bar"])

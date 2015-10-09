@@ -6,12 +6,15 @@ class Suggester {
     func add(newWords: [String]) {
         let newWordsByLength = newWords.groupBy { $0.characters.count }
         for (length, newWordsForLength) in newWordsByLength {
-            if var existingWordsForLength = wordsByLength[length] {
-                existingWordsForLength.appendContentsOf(newWordsForLength)
+            if let existingWordsForLength = wordsByLength[length] {
+                wordsByLength[length] = existingWordsForLength + newWordsForLength
             } else {
                 wordsByLength[length] = newWordsForLength
             }
         }
+        
+        let newSize = wordsByLength.values.map { $0.count } .reduce(0, combine: +)
+        NSLog("new size of suggester dictionary: \(newSize)")
     }
     
     func suggestCompletion(to currentContext: String?) -> String? {
