@@ -14,6 +14,8 @@
 		20317D9F1BA0B677008A4303 /* NotifyingDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20317D9E1BA0B677008A4303 /* NotifyingDocument.swift */; };
 		20317DE71BA2EEF2008A4303 /* WordBasedDocumentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20317DE61BA2EEF2008A4303 /* WordBasedDocumentTests.swift */; };
 		2045E7BE1BC84A2700045CEB /* pipe-forward.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2045E7BD1BC84A2700045CEB /* pipe-forward.swift */; settings = {ASSET_TAGS = (); }; };
+		2045E7C01BC8584200045CEB /* SequenceType+groupBy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2045E7BF1BC8584200045CEB /* SequenceType+groupBy.swift */; settings = {ASSET_TAGS = (); }; };
+		2045E7C11BC858F900045CEB /* SequenceType+groupBy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2045E7BF1BC8584200045CEB /* SequenceType+groupBy.swift */; settings = {ASSET_TAGS = (); }; };
 		205A41391BC4978E00E659E1 /* KeyDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205A41371BC4978000E659E1 /* KeyDistance.swift */; settings = {ASSET_TAGS = (); }; };
 		205A413A1BC4978E00E659E1 /* KeyDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205A41371BC4978000E659E1 /* KeyDistance.swift */; settings = {ASSET_TAGS = (); }; };
 		205A413D1BC4999900E659E1 /* ConcreteLayout_DistanceBetweenChars_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205A413C1BC4999900E659E1 /* ConcreteLayout_DistanceBetweenChars_Tests.swift */; settings = {ASSET_TAGS = (); }; };
@@ -108,6 +110,7 @@
 		20317DE51BA2EEF2008A4303 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20317DE61BA2EEF2008A4303 /* WordBasedDocumentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordBasedDocumentTests.swift; sourceTree = "<group>"; };
 		2045E7BD1BC84A2700045CEB /* pipe-forward.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "pipe-forward.swift"; sourceTree = "<group>"; };
+		2045E7BF1BC8584200045CEB /* SequenceType+groupBy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SequenceType+groupBy.swift"; sourceTree = "<group>"; };
 		205A41361BC4912F00E659E1 /* KeyDistanceGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyDistanceGenerator.swift; sourceTree = "<group>"; };
 		205A41371BC4978000E659E1 /* KeyDistance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyDistance.swift; sourceTree = "<group>"; };
 		205A413C1BC4999900E659E1 /* ConcreteLayout_DistanceBetweenChars_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcreteLayout_DistanceBetweenChars_Tests.swift; sourceTree = "<group>"; };
@@ -351,9 +354,10 @@
 			children = (
 				C21642694BABA9BBCF0D1925 /* Bridging-Header.h */,
 				206ECC3B1B83D4C900B62EA0 /* Info.plist */,
-				20317D9C1BA0A9B1008A4303 /* UIView+LayoutConstraints.swift */,
-				2076865F1BB211BE004B1F57 /* String+split.swift */,
 				2045E7BD1BC84A2700045CEB /* pipe-forward.swift */,
+				2045E7BF1BC8584200045CEB /* SequenceType+groupBy.swift */,
+				2076865F1BB211BE004B1F57 /* String+split.swift */,
+				20317D9C1BA0A9B1008A4303 /* UIView+LayoutConstraints.swift */,
 			);
 			path = helpers;
 			sourceTree = "<group>";
@@ -493,6 +497,7 @@
 				2083F4E81BB1BECE00EBAFCC /* LevenshteinPerformanceTests.swift in Sources */,
 				2083F4E61BAE2B1500EBAFCC /* SuggesterTests.swift in Sources */,
 				207686611BB212D6004B1F57 /* String+split.swift in Sources */,
+				2045E7C11BC858F900045CEB /* SequenceType+groupBy.swift in Sources */,
 				207F2C9C1BADB1350049AEB9 /* SuggesterPerformanceTests.swift in Sources */,
 				207F2C9D1BADB2FC0049AEB9 /* Suggester.swift in Sources */,
 				20C304C51BBAFF6B00C3460E /* WordBasedDocument.swift in Sources */,
@@ -522,6 +527,7 @@
 				205A41391BC4978E00E659E1 /* KeyDistance.swift in Sources */,
 				20925E381BACABDE00FBCFE4 /* LevenshteinDistance.swift in Sources */,
 				207686601BB211BE004B1F57 /* String+split.swift in Sources */,
+				2045E7C01BC8584200045CEB /* SequenceType+groupBy.swift in Sources */,
 				20317D9D1BA0A9B1008A4303 /* UIView+LayoutConstraints.swift in Sources */,
 				C21CC63D023DE56856F324EF /* SchematicLayout.swift in Sources */,
 				20C304C41BBAFF6B00C3460E /* WordBasedDocument.swift in Sources */,
