@@ -21,10 +21,17 @@ class Suggester {
     
     func suggestCompletion(to currentContext: String?) -> String? {
         NSLog("asked for suggestion for: \(currentContext)")
-        if let currentWord = currentContext {
-            return findClosestWord(to: currentWord)
+        guard let currentWord = currentContext else { return nil }
+        
+        let suggestion = findClosestWord(to: currentWord)
+        if (containsCapitalLetter(currentWord)) {
+            return suggestion?.capitalizedString
         }
-        return nil
+        return suggestion
+    }
+    
+    private func containsCapitalLetter(string: String) -> Bool {
+        return string != string.lowercaseString
     }
     
     private func findClosestWord(to word: String) -> String? {
