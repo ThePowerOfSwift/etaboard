@@ -126,6 +126,8 @@ extension KeyboardViewController {
     }
     
     func didActivateUppercase(notification: NSNotification) {
-        suggestionBar.displaySuggestion(suggester.capitalize(suggestionBar.getCurrentSuggestion()))
+        suggestionBar.getCurrentSuggestion()
+            |> suggester.capitalize
+            |> suggestionBar.displaySuggestion
     }
 }
