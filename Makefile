@@ -11,14 +11,20 @@ bump-build-number:
 	$(plist) 'Set :CFBundleVersion $(new_build_number)' $(extension_info)
 
 
-helpers:=Source/KeyboardExtension/helpers
-model:=Source/KeyboardExtension/keyboard/model
+extension:=Source/KeyboardExtension
+helpers:=$(extension)/helpers
+model:=$(extension)/keyboard/model
 suggester:=Source/KeyboardExtension/suggester
 key_distance:=Source/KeyboardExtension/suggester/KeyDistance.swift
 generate-key-distances:
 	rm -f $(key_distance)
 	cat $(helpers)/String+split.swift $(model)/ConcreteLayout.swift $(model)/SchematicLayout.swift $(suggester)/KeyDistanceGenerator.swift | swift - > $(key_distance)
 
+dictionaries:=$(extension)/dictionaries
+derewo_excerpt:=$(dictionaries)/derewo.txt
+generate-derewo:
+	rm -f $(derewo_excerpt)
+	cat $(helpers)/String+split.swift $(dictionaries)/DerewoExcerpt.swift $(dictionaries)/DerewoImporter.swift | swift - /Users/ab/code/etaboard/temp/derewo-v-ww-bll-320000g-2012-12-31-1.0/derewo-v-ww-bll-320000g-2012-12-31-1.0.txt > $(derewo_excerpt) 15
 
 test:
 	xcodebuild test -scheme EtaBoard -destination 'name=iPhone 6'
