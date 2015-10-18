@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		200C471A1BA3374500FA59D3 /* NotifyingDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20317D9E1BA0B677008A4303 /* NotifyingDocument.swift */; };
 		200C471C1BA337B200FA59D3 /* UITextDocumentProxyAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200C471B1BA337B200FA59D3 /* UITextDocumentProxyAdapter.swift */; };
-		2022B1EB1BC9897D00903CF8 /* derewo.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2045E7C81BC971F200045CEB /* derewo.txt */; settings = {ASSET_TAGS = (); }; };
 		20317D9B1BA09D3E008A4303 /* SuggestionBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20317D9A1BA09D3E008A4303 /* SuggestionBarView.swift */; };
 		20317D9D1BA0A9B1008A4303 /* UIView+LayoutConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20317D9C1BA0A9B1008A4303 /* UIView+LayoutConstraints.swift */; };
 		20317D9F1BA0B677008A4303 /* NotifyingDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20317D9E1BA0B677008A4303 /* NotifyingDocument.swift */; };
@@ -39,8 +38,8 @@
 		20925E381BACABDE00FBCFE4 /* LevenshteinDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20925E371BACABDE00FBCFE4 /* LevenshteinDistance.swift */; settings = {ASSET_TAGS = (); }; };
 		20925E3A1BACABF700FBCFE4 /* LevenshteinDistanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20925E391BACABF700FBCFE4 /* LevenshteinDistanceTests.swift */; settings = {ASSET_TAGS = (); }; };
 		20925E3B1BACAD9E00FBCFE4 /* LevenshteinDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20925E371BACABDE00FBCFE4 /* LevenshteinDistance.swift */; settings = {ASSET_TAGS = (); }; };
+		2092B2221BD438E40099AC6D /* de.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2092B2201BD436FC0099AC6D /* de.txt */; settings = {ASSET_TAGS = (); }; };
 		209616351BC5A20A003D1E81 /* KeyDistanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209616341BC5A20A003D1E81 /* KeyDistanceTests.swift */; settings = {ASSET_TAGS = (); }; };
-		2097421D1BBB3ED300B62380 /* top10000de.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2097421C1BBB3ED300B62380 /* top10000de.txt */; settings = {ASSET_TAGS = (); }; };
 		2097421F1BBB410700B62380 /* top10000en.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2097421E1BBB410700B62380 /* top10000en.txt */; settings = {ASSET_TAGS = (); }; };
 		20C304BE1BB833C600C3460E /* Int,String+random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C304BD1BB833C600C3460E /* Int,String+random.swift */; settings = {ASSET_TAGS = (); }; };
 		20C304C11BBAFD1000C3460E /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C304C01BBAFD1000C3460E /* Document.swift */; settings = {ASSET_TAGS = (); }; };
@@ -112,7 +111,6 @@
 		20317DE61BA2EEF2008A4303 /* WordBasedDocumentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordBasedDocumentTests.swift; sourceTree = "<group>"; };
 		2045E7BD1BC84A2700045CEB /* pipe-forward.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "pipe-forward.swift"; sourceTree = "<group>"; };
 		2045E7BF1BC8584200045CEB /* SequenceType+groupBy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SequenceType+groupBy.swift"; sourceTree = "<group>"; };
-		2045E7C81BC971F200045CEB /* derewo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = derewo.txt; sourceTree = "<group>"; };
 		205A41361BC4912F00E659E1 /* KeyDistanceGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyDistanceGenerator.swift; sourceTree = "<group>"; };
 		205A41371BC4978000E659E1 /* KeyDistance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyDistance.swift; sourceTree = "<group>"; };
 		205A413C1BC4999900E659E1 /* ConcreteLayout_DistanceBetweenChars_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcreteLayout_DistanceBetweenChars_Tests.swift; sourceTree = "<group>"; };
@@ -135,8 +133,8 @@
 		20925E351BACA64700FBCFE4 /* Suggester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Suggester.swift; sourceTree = "<group>"; };
 		20925E371BACABDE00FBCFE4 /* LevenshteinDistance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevenshteinDistance.swift; sourceTree = "<group>"; };
 		20925E391BACABF700FBCFE4 /* LevenshteinDistanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevenshteinDistanceTests.swift; sourceTree = "<group>"; };
+		2092B2201BD436FC0099AC6D /* de.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = de.txt; sourceTree = "<group>"; };
 		209616341BC5A20A003D1E81 /* KeyDistanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyDistanceTests.swift; sourceTree = "<group>"; };
-		2097421C1BBB3ED300B62380 /* top10000de.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = top10000de.txt; sourceTree = "<group>"; };
 		2097421E1BBB410700B62380 /* top10000en.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = top10000en.txt; sourceTree = "<group>"; };
 		20C304BD1BB833C600C3460E /* Int,String+random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int,String+random.swift"; sourceTree = "<group>"; };
 		20C304C01BBAFD1000C3460E /* Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
@@ -259,9 +257,8 @@
 		207FA5AF1BBB190C003BEF91 /* dictionaries */ = {
 			isa = PBXGroup;
 			children = (
-				2045E7C81BC971F200045CEB /* derewo.txt */,
+				2092B2201BD436FC0099AC6D /* de.txt */,
 				2097421E1BBB410700B62380 /* top10000en.txt */,
-				2097421C1BBB3ED300B62380 /* top10000de.txt */,
 				207FA5AD1BBB150A003BEF91 /* misc.txt */,
 			);
 			path = dictionaries;
@@ -481,8 +478,7 @@
 			files = (
 				207FA5AE1BBB150A003BEF91 /* misc.txt in Resources */,
 				2097421F1BBB410700B62380 /* top10000en.txt in Resources */,
-				2022B1EB1BC9897D00903CF8 /* derewo.txt in Resources */,
-				2097421D1BBB3ED300B62380 /* top10000de.txt in Resources */,
+				2092B2221BD438E40099AC6D /* de.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
