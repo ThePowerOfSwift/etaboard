@@ -1,0 +1,13 @@
+{
+  "private": true,
+  "dependencies": {
+    "livescript": "1.4.0",
+    "q": "1.4.1",
+    "ramda": "0.17.1"
+  },
+  "devDependencies": {
+    "mocha": "2.3.3",
+    "mocha-unfunk-reporter": "0.4.0",
+	"hamjest": "2.12.0"
+  }
+}

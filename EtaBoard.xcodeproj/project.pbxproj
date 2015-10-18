@@ -17,8 +17,6 @@
 		2045E7BE1BC84A2700045CEB /* pipe-forward.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2045E7BD1BC84A2700045CEB /* pipe-forward.swift */; settings = {ASSET_TAGS = (); }; };
 		2045E7C01BC8584200045CEB /* SequenceType+groupBy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2045E7BF1BC8584200045CEB /* SequenceType+groupBy.swift */; settings = {ASSET_TAGS = (); }; };
 		2045E7C11BC858F900045CEB /* SequenceType+groupBy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2045E7BF1BC8584200045CEB /* SequenceType+groupBy.swift */; settings = {ASSET_TAGS = (); }; };
-		2045E7C31BC96DA200045CEB /* DerewoExcerptTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2045E7C21BC96DA200045CEB /* DerewoExcerptTests.swift */; settings = {ASSET_TAGS = (); }; };
-		2045E7C91BC9777B00045CEB /* DerewoExcerpt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2045E7C71BC96E5500045CEB /* DerewoExcerpt.swift */; settings = {ASSET_TAGS = (); }; };
 		205A41391BC4978E00E659E1 /* KeyDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205A41371BC4978000E659E1 /* KeyDistance.swift */; settings = {ASSET_TAGS = (); }; };
 		205A413A1BC4978E00E659E1 /* KeyDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205A41371BC4978000E659E1 /* KeyDistance.swift */; settings = {ASSET_TAGS = (); }; };
 		205A413D1BC4999900E659E1 /* ConcreteLayout_DistanceBetweenChars_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205A413C1BC4999900E659E1 /* ConcreteLayout_DistanceBetweenChars_Tests.swift */; settings = {ASSET_TAGS = (); }; };
@@ -114,9 +112,6 @@
 		20317DE61BA2EEF2008A4303 /* WordBasedDocumentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordBasedDocumentTests.swift; sourceTree = "<group>"; };
 		2045E7BD1BC84A2700045CEB /* pipe-forward.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "pipe-forward.swift"; sourceTree = "<group>"; };
 		2045E7BF1BC8584200045CEB /* SequenceType+groupBy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SequenceType+groupBy.swift"; sourceTree = "<group>"; };
-		2045E7C21BC96DA200045CEB /* DerewoExcerptTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DerewoExcerptTests.swift; sourceTree = "<group>"; };
-		2045E7C51BC96DD000045CEB /* DerewoImporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DerewoImporter.swift; sourceTree = "<group>"; };
-		2045E7C71BC96E5500045CEB /* DerewoExcerpt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DerewoExcerpt.swift; sourceTree = "<group>"; };
 		2045E7C81BC971F200045CEB /* derewo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = derewo.txt; sourceTree = "<group>"; };
 		205A41361BC4912F00E659E1 /* KeyDistanceGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyDistanceGenerator.swift; sourceTree = "<group>"; };
 		205A41371BC4978000E659E1 /* KeyDistance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyDistance.swift; sourceTree = "<group>"; };
@@ -186,7 +181,6 @@
 		20317DE31BA2EEF2008A4303 /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
-				2045E7C41BC96DB000045CEB /* dictionaries */,
 				205A413B1BC4998A00E659E1 /* keyboard */,
 				20C304C61BBB070800C3460E /* suggester */,
 				20C304C71BBB071600C3460E /* document */,
@@ -206,14 +200,6 @@
 				20317DE51BA2EEF2008A4303 /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		2045E7C41BC96DB000045CEB /* dictionaries */ = {
-			isa = PBXGroup;
-			children = (
-				2045E7C21BC96DA200045CEB /* DerewoExcerptTests.swift */,
-			);
-			name = dictionaries;
 			sourceTree = "<group>";
 		};
 		205A413B1BC4998A00E659E1 /* keyboard */ = {
@@ -273,8 +259,6 @@
 		207FA5AF1BBB190C003BEF91 /* dictionaries */ = {
 			isa = PBXGroup;
 			children = (
-				2045E7C71BC96E5500045CEB /* DerewoExcerpt.swift */,
-				2045E7C51BC96DD000045CEB /* DerewoImporter.swift */,
 				2045E7C81BC971F200045CEB /* derewo.txt */,
 				2097421E1BBB410700B62380 /* top10000en.txt */,
 				2097421C1BBB3ED300B62380 /* top10000de.txt */,
@@ -515,13 +499,11 @@
 				200C471A1BA3374500FA59D3 /* NotifyingDocument.swift in Sources */,
 				209616351BC5A20A003D1E81 /* KeyDistanceTests.swift in Sources */,
 				2083F4E81BB1BECE00EBAFCC /* LevenshteinPerformanceTests.swift in Sources */,
-				2045E7C91BC9777B00045CEB /* DerewoExcerpt.swift in Sources */,
 				2083F4E61BAE2B1500EBAFCC /* SuggesterTests.swift in Sources */,
 				207686611BB212D6004B1F57 /* String+split.swift in Sources */,
 				2045E7C11BC858F900045CEB /* SequenceType+groupBy.swift in Sources */,
 				207F2C9C1BADB1350049AEB9 /* SuggesterPerformanceTests.swift in Sources */,
 				207F2C9D1BADB2FC0049AEB9 /* Suggester.swift in Sources */,
-				2045E7C31BC96DA200045CEB /* DerewoExcerptTests.swift in Sources */,
 				20C304C51BBAFF6B00C3460E /* WordBasedDocument.swift in Sources */,
 				20C304BE1BB833C600C3460E /* Int,String+random.swift in Sources */,
 				20C304C21BBAFE5800C3460E /* Document.swift in Sources */,
