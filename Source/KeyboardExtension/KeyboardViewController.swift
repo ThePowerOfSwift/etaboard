@@ -88,10 +88,13 @@ extension KeyboardViewController {
     }
     
     private func loadSuggestionsFromSystem() {
+        if SuggesterWithDictionaries.systemLexiconLoaded { return }
+        
         requestSupplementaryLexiconWithCompletion { lexicon in
             let allEntries = lexicon.entries.map { $0.documentText }
             NSLog("entries in dictionary 'System Lexicon': \(allEntries.count)")
             self.suggester.add(allEntries)
+            SuggesterWithDictionaries.systemLexiconLoaded = true
         }
     }
 
