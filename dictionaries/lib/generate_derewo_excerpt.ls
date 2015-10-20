@@ -27,7 +27,7 @@ createFormsDictionary = r.pipe(
 	r.mapObj r.map(r.prop('form'))
 )
 
-formsByBase = u.readFile 'temp/morphy-mapping-20110717/morphy-mapping-20110717.csv'
+formsByBase = u.readFile 'vendor/morphy/morphy-mapping-20110717.csv'
 	.then splitLines
 	.then createFormsDictionary
 

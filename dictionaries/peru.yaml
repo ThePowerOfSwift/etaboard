@@ -1,0 +1,14 @@
+imports:
+    morphy: vendor/morphy
+    derewo: vendor/derewo
+
+curl module morphy:
+    url: http://www.danielnaber.de/morphologie/morphy-mapping-20110717.tar.gz
+    unpack: tar
+    sha1: e94d019dfe724c135f0305e813224744a62cc16f
+
+curl module derewo:
+    url: http://www1.ids-mannheim.de/fileadmin/kl/derewo/derewo-v-ww-bll-320000g-2012-12-31-1.0.zip
+    unpack: zip
+    sha1: 7160bf027881f542fc2d1c9b619ceebf8f465487
+
