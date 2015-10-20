@@ -3,6 +3,12 @@ import Foundation
 class Suggester {
     private var wordsByLength = [Int: [String]]()
     
+    var size: Int {
+        get {
+            return wordsByLength.values.map { $0.count } .reduce(0, combine: +)
+        }
+    }
+    
     func add(newWords: [String]) {
         let newWordsByLength = newWords.groupBy { $0.characters.count }
         for (length, newWordsForLength) in newWordsByLength {
@@ -13,8 +19,7 @@ class Suggester {
             }
         }
         
-        let newSize = wordsByLength.values.map { $0.count } .reduce(0, combine: +)
-        NSLog("new size of suggester dictionary: \(newSize)")
+        NSLog("new size of suggester dictionary: \(self.size)")
     }
     
     func suggestCompletion(to currentContext: String?) -> String? {

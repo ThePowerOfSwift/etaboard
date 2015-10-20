@@ -13,6 +13,7 @@
 		20317D9D1BA0A9B1008A4303 /* UIView+LayoutConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20317D9C1BA0A9B1008A4303 /* UIView+LayoutConstraints.swift */; };
 		20317D9F1BA0B677008A4303 /* NotifyingDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20317D9E1BA0B677008A4303 /* NotifyingDocument.swift */; };
 		20317DE71BA2EEF2008A4303 /* WordBasedDocumentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20317DE61BA2EEF2008A4303 /* WordBasedDocumentTests.swift */; };
+		204008BC1BD6D30300FAD96C /* SuggesterWithDictionaries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204008BB1BD6D30300FAD96C /* SuggesterWithDictionaries.swift */; settings = {ASSET_TAGS = (); }; };
 		2045E7BE1BC84A2700045CEB /* pipe-forward.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2045E7BD1BC84A2700045CEB /* pipe-forward.swift */; settings = {ASSET_TAGS = (); }; };
 		2045E7C01BC8584200045CEB /* SequenceType+groupBy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2045E7BF1BC8584200045CEB /* SequenceType+groupBy.swift */; settings = {ASSET_TAGS = (); }; };
 		2045E7C11BC858F900045CEB /* SequenceType+groupBy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2045E7BF1BC8584200045CEB /* SequenceType+groupBy.swift */; settings = {ASSET_TAGS = (); }; };
@@ -109,6 +110,7 @@
 		20317DE21BA2EEF2008A4303 /* UnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		20317DE51BA2EEF2008A4303 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20317DE61BA2EEF2008A4303 /* WordBasedDocumentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordBasedDocumentTests.swift; sourceTree = "<group>"; };
+		204008BB1BD6D30300FAD96C /* SuggesterWithDictionaries.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggesterWithDictionaries.swift; sourceTree = "<group>"; };
 		2045E7BD1BC84A2700045CEB /* pipe-forward.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "pipe-forward.swift"; sourceTree = "<group>"; };
 		2045E7BF1BC8584200045CEB /* SequenceType+groupBy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SequenceType+groupBy.swift"; sourceTree = "<group>"; };
 		205A41361BC4912F00E659E1 /* KeyDistanceGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyDistanceGenerator.swift; sourceTree = "<group>"; };
@@ -325,6 +327,7 @@
 				20925E341BACA5CF00FBCFE4 /* suggester */,
 				20C304BF1BBAFB9A00C3460E /* document */,
 				C21DF7BC99AC431E9EA856D8 /* KeyboardViewController.swift */,
+				204008BB1BD6D30300FAD96C /* SuggesterWithDictionaries.swift */,
 			);
 			name = KeyboardExtension;
 			path = Source/KeyboardExtension;
@@ -533,6 +536,7 @@
 				20C304C41BBAFF6B00C3460E /* WordBasedDocument.swift in Sources */,
 				2045E7BE1BC84A2700045CEB /* pipe-forward.swift in Sources */,
 				C217DE1857A2A3DB936D4FBC /* KeyboardModel.swift in Sources */,
+				204008BC1BD6D30300FAD96C /* SuggesterWithDictionaries.swift in Sources */,
 				20317D9B1BA09D3E008A4303 /* SuggestionBarView.swift in Sources */,
 				20925E361BACA64700FBCFE4 /* Suggester.swift in Sources */,
 				20317D9F1BA0B677008A4303 /* NotifyingDocument.swift in Sources */,

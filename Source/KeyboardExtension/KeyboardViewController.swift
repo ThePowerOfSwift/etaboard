@@ -3,7 +3,7 @@ import UIKit
 class KeyboardViewController: UIInputViewController {
     var document: Document!
 
-    var suggester = Suggester()
+    var suggester = SuggesterWithDictionaries.instance
     var suggestionBar: SuggestionBarView!
 
     var keyboardModel = KeyboardModel()
@@ -85,39 +85,16 @@ extension KeyboardViewController {
             name: KeyPressHandler.NotificationUppercaseActivatedName, object: nil)
         
         loadSuggestionsFromSystem()
-        ["misc", "de", "top10000en"].forEach { dictionary in
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
-                self.loadSuggestionsFromDictionary(dictionary)
-            })
-        }
     }
     
     private func loadSuggestionsFromSystem() {
         requestSupplementaryLexiconWithCompletion { lexicon in
             let allEntries = lexicon.entries.map { $0.documentText }
-            self.addSuggestions(allEntries, from: "System Lexicon")
+            NSLog("entries in dictionary 'System Lexicon': \(allEntries.count)")
+            self.suggester.add(allEntries)
         }
     }
-    
-    private func loadSuggestionsFromDictionary(basename: String) {
-        guard let path = NSBundle.mainBundle().pathForResource(basename, ofType: "txt") else {
-            NSLog("could not find dictionary '\(basename)'")
-            return
-        }
-        do {
-            let dictionaryAsString = try String(contentsOfFile: path, encoding: NSUTF8StringEncoding)
-            let words = dictionaryAsString.split("\n")
-            addSuggestions(words, from: basename)
-        } catch _ as NSError {
-            NSLog("could not load dictionary from path \(path)")
-        }
-    }
-    
-    private func addSuggestions(words: [String], from dictionary: String) {
-        NSLog("entries in dictionary '\(dictionary)': \(words.count)")
-        self.suggester.add(words)
-    }
-    
+
     func didTapSuggestion(sender: AnyObject?) {
         let button = sender as! UIButton
         let title = button.titleForState(.Normal)
