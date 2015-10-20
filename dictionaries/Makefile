@@ -3,10 +3,11 @@ lsc := $(bin)/lsc
 
 build := build
 lib := lib
+vendor := vendor
 
-derewo := vendor/derewo
-derewo_original:=$(derewo)/derewo-v-ww-bll-320000g-2012-12-31-1.0.txt
-$(derewo_original):
+derewo_original:=$(vendor)/derewo/derewo-v-ww-bll-320000g-2012-12-31-1.0.txt
+morphy := $(vendor)/morphy/morphy-mapping-20110717.csv
+$(derewo_original) $(morphy):
 	peru sync
 
 derewo_utf:=$(build)/derewo_utf.txt
@@ -15,9 +16,9 @@ $(derewo_utf): $(derewo_original)
 	iconv -f iso-8859-1 -t utf-8 < $< > $@
 
 german_dict:=$(build)/de.txt
-$(german_dict): $(derewo_utf)
+$(german_dict): $(derewo_utf) $(morphy)
 	mkdir -p $(build)
-	$(lsc) $(lib)/generate_de $< $@
+	$(lsc) $(lib)/generate_de $@ $^
 german-dictionary: $(german_dict)
 clean-german-dictionary:
 	rm -f $(german_dict)

@@ -9,10 +9,7 @@ splitLines = r.split('\n')
 joinLines = r.join('\n')
 
 
-
-
-[source, sink] = process.argv[2, 3]
-
+[germanDictionaryFile, derewoFile, morphyFile] = process.argv[2 to 4]
 
 isComment = (x) -> x.startsWith('#')
 
@@ -27,11 +24,11 @@ createFormsDictionary = r.pipe(
 	r.mapObj r.map(r.prop('form'))
 )
 
-formsByBase = u.readFile 'vendor/morphy/morphy-mapping-20110717.csv'
+formsByBase = u.readFile morphyFile
 	.then splitLines
 	.then createFormsDictionary
 
-derewoExcerpt = u.readFile source
+derewoExcerpt = u.readFile derewoFile
 	.then splitLines
 	.then r.flip(derewo.excerpt)(maxFrequencyClass: 15)
 
@@ -42,6 +39,6 @@ augmentWithForms = (baseForms, additionalForms) ->
 q [derewoExcerpt, formsByBase]
 	.spread augmentWithForms
 	.then joinLines
-	.then u.writeToFile sink
+	.then u.writeToFile germanDictionaryFile
 	.done()
 
