@@ -11,15 +11,16 @@ $(derewo_original):
 
 derewo_utf:=$(build)/derewo_utf.txt
 $(derewo_utf): $(derewo_original)
+	mkdir -p $(build)
 	iconv -f iso-8859-1 -t utf-8 < $< > $@
 
-derewo_excerpt:=$(build)/derewo.txt
-$(derewo_excerpt): $(derewo_utf)
+german_dict:=$(build)/de.txt
+$(german_dict): $(derewo_utf)
 	mkdir -p $(build)
-	$(lsc) $(lib)/generate_derewo_excerpt $< $@
-derewo-excerpt: $(derewo_excerpt)
-clean-derewo-excerpt:
-	rm -f $(derewo_excerpt)
+	$(lsc) $(lib)/generate_de $< $@
+german-dictionary: $(german_dict)
+clean-german-dictionary:
+	rm -f $(german_dict)
 
 args =
 .PHONY: check
