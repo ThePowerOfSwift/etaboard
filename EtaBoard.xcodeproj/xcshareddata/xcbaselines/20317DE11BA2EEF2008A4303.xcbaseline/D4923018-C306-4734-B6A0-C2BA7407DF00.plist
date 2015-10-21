@@ -19,12 +19,22 @@
 		</dict>
 		<key>SuggesterPerformanceTests</key>
 		<dict>
-			<key>testAddsNewWordsQuickly()</key>
+			<key>testAddsNewWordsOfSameLengthQuickly()</key>
 			<dict>
 				<key>com.apple.XCTPerformanceMetric_WallClockTime</key>
 				<dict>
 					<key>baselineAverage</key>
-					<real>0.00015662</real>
+					<real>0.0094206</real>
+					<key>baselineIntegrationDisplayName</key>
+					<string>Local Baseline</string>
+				</dict>
+			</dict>
+			<key>testAddsNewWordsOfVaryingLengthsQuickly()</key>
+			<dict>
+				<key>com.apple.XCTPerformanceMetric_WallClockTime</key>
+				<dict>
+					<key>baselineAverage</key>
+					<real>0.0059626</real>
 					<key>baselineIntegrationDisplayName</key>
 					<string>Local Baseline</string>
 				</dict>
