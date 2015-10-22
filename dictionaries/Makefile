@@ -4,6 +4,7 @@ lsc := $(bin)/lsc
 build := build
 lib := lib
 vendor := vendor
+bundle := $(build)/Dictionaries.bundle
 
 derewo_original:=$(vendor)/derewo/derewo-v-ww-bll-320000g-2012-12-31-1.0.txt
 morphy := $(vendor)/morphy/morphy-mapping-20110717.csv
@@ -27,4 +28,15 @@ args =
 .PHONY: check
 check:
 	$(bin)/mocha --compilers ls:LiveScript --recursive check --reporter mocha-unfunk-reporter $(args)
+
+
+
+manual-dictionaries:
+	ditto manual/*.txt $(bundle)/
+
+
+bundle: manual-dictionaries
+
+clean:
+	rm -r $(build)
 
