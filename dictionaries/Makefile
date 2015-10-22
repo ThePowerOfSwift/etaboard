@@ -16,7 +16,7 @@ $(derewo_utf): $(derewo_original)
 	mkdir -p $(build)
 	iconv -f iso-8859-1 -t utf-8 < $< > $@
 
-german_dict:=$(build)/de.txt
+german_dict:=$(bundle)/de.txt
 $(german_dict): $(derewo_utf) $(morphy)
 	mkdir -p $(build)
 	$(lsc) $(lib)/generate_de $@ $^
@@ -35,7 +35,7 @@ manual-dictionaries:
 	ditto manual/*.txt $(bundle)/
 
 
-bundle: manual-dictionaries
+bundle: manual-dictionaries german-dictionary
 
 clean:
 	rm -r $(build)

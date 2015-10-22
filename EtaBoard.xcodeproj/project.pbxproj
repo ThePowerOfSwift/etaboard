@@ -39,7 +39,6 @@
 		20925E381BACABDE00FBCFE4 /* LevenshteinDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20925E371BACABDE00FBCFE4 /* LevenshteinDistance.swift */; };
 		20925E3A1BACABF700FBCFE4 /* LevenshteinDistanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20925E391BACABF700FBCFE4 /* LevenshteinDistanceTests.swift */; };
 		20925E3B1BACAD9E00FBCFE4 /* LevenshteinDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20925E371BACABDE00FBCFE4 /* LevenshteinDistance.swift */; };
-		2092B2221BD438E40099AC6D /* de.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2092B2201BD436FC0099AC6D /* de.txt */; };
 		209616351BC5A20A003D1E81 /* KeyDistanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209616341BC5A20A003D1E81 /* KeyDistanceTests.swift */; };
 		20C304BE1BB833C600C3460E /* Int,String+random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C304BD1BB833C600C3460E /* Int,String+random.swift */; };
 		20C304C11BBAFD1000C3460E /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C304C01BBAFD1000C3460E /* Document.swift */; };
@@ -135,7 +134,6 @@
 		20925E351BACA64700FBCFE4 /* Suggester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Suggester.swift; sourceTree = "<group>"; };
 		20925E371BACABDE00FBCFE4 /* LevenshteinDistance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevenshteinDistance.swift; sourceTree = "<group>"; };
 		20925E391BACABF700FBCFE4 /* LevenshteinDistanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevenshteinDistanceTests.swift; sourceTree = "<group>"; };
-		2092B2201BD436FC0099AC6D /* de.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = de.txt; sourceTree = "<group>"; };
 		209616341BC5A20A003D1E81 /* KeyDistanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyDistanceTests.swift; sourceTree = "<group>"; };
 		20C304BD1BB833C600C3460E /* Int,String+random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int,String+random.swift"; sourceTree = "<group>"; };
 		20C304C01BBAFD1000C3460E /* Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
@@ -259,7 +257,6 @@
 		207FA5AF1BBB190C003BEF91 /* dictionaries */ = {
 			isa = PBXGroup;
 			children = (
-				2092B2201BD436FC0099AC6D /* de.txt */,
 				207FA5AD1BBB150A003BEF91 /* misc.txt */,
 			);
 			path = dictionaries;
@@ -481,7 +478,6 @@
 			files = (
 				207FA5AE1BBB150A003BEF91 /* misc.txt in Resources */,
 				20F1DE191BD9519A00A33A86 /* Dictionaries.bundle in Resources */,
-				2092B2221BD438E40099AC6D /* de.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
