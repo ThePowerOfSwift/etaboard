@@ -18,7 +18,7 @@ getAdditionalFormsByBaseForm = u.readFile morphyFile
 
 getBaseForms = u.readFile derewoFile
 	.then splitLines
-	.then r.flip(derewo.excerpt)(maxFrequencyClass: 12)
+	.then r.flip(derewo.excerpt)(maxFrequencyClass: 15)
 
 augmentWithForms = (baseForms, additionalForms) ->
 	getAllFormsForForm = (form) ->
