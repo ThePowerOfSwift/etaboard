@@ -10,7 +10,7 @@ class SuggesterWithDictionaries {
         NSLog("paths: \(paths)")
         paths.forEach { path in
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
-                loadSuggestionsFromDictionaryAt(path)
+                loadSuggestionsFromDictionaryAt(path) |> addSuggestions
             })
         }
 
@@ -18,26 +18,27 @@ class SuggesterWithDictionaries {
         NSLog("de paths: \(de_paths)")
         de_paths.forEach { path in
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
-                loadSuggestionsFromDictionaryAt(path)
+                loadSuggestionsFromDictionaryAt(path) |> addSuggestions
             })
         }
 
         return suggester
     }
     
-    private static func loadSuggestionsFromDictionaryAt(path: String) {
+    private static func loadSuggestionsFromDictionaryAt(path: String) -> [String] {
         let basename = path.split("/").last
         do {
             let dictionaryAsString = try String(contentsOfFile: path, encoding: NSUTF8StringEncoding)
             let words = dictionaryAsString.split("\n")
-            addSuggestions(words, from: basename)
+            NSLog("entries in dictionary '\(basename!)': \(words.count)")
+            return words
         } catch _ as NSError {
             NSLog("could not load dictionary from path \(path)")
+            return []
         }
     }
 
-    static func addSuggestions(words: [String], from dictionary: String? = "<unknown>") {
-        NSLog("entries in dictionary '\(dictionary!)': \(words.count)")
+    static func addSuggestions(words: [String]) {
         instance.add(words)
         NSLog("suggester size: \(instance.size)")
     }
