@@ -10,7 +10,7 @@ splitLines = r.split('\n')
 joinLines = r.join('\n')
 
 
-[germanDictionaryFile, derewoFile, morphyFile] = process.argv[2 to 4]
+[germanDictionaryFolder, derewoFile, morphyFile] = process.argv[2 to 4]
 
 getAdditionalFormsByBaseForm = u.readFile morphyFile
 	.then splitLines
@@ -25,9 +25,18 @@ augmentWithForms = (baseForms, additionalForms) ->
 		r.concat [form] r.defaultTo([], additionalForms[form])
 	r.chain(getAllFormsForForm)(baseForms)
 
+writeToFilesGroupedByLength = (forms) ->
+	writeToFile = (formsForLength, length) ->
+		path = "#germanDictionaryFolder/#{length}.txt"
+		(u.writeToFile path) (joinLines formsForLength)
+	forms
+	|> r.groupBy r.length
+	|> r.mapObjIndexed writeToFile
+	|> r.values
+	|> q.all
+
 q [getBaseForms, getAdditionalFormsByBaseForm]
 	.spread augmentWithForms
-	.then joinLines
-	.then u.writeToFile germanDictionaryFile
+	.then writeToFilesGroupedByLength
 	.done()
 

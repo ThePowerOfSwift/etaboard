@@ -16,13 +16,12 @@ $(derewo_utf): $(derewo_original)
 	mkdir -p $(build)
 	iconv -f iso-8859-1 -t utf-8 < $< > $@
 
-german_dict:=$(bundle)/de.txt
-$(german_dict): $(derewo_utf) $(morphy)
-	mkdir -p $(build)
-	$(lsc) $(lib)/generate_de $@ $^
-german-dictionary: $(german_dict)
+german_dict_folder:=$(bundle)/de
+german-dictionary: $(derewo_utf) $(morphy)
+	mkdir -p $(german_dict_folder)
+	$(lsc) $(lib)/generate_de $(german_dict_folder) $^
 clean-german-dictionary:
-	rm -f $(german_dict)
+	rm -f $(german_dict_folder)
 
 args =
 .PHONY: check

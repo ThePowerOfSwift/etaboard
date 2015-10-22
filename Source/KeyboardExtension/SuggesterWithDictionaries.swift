@@ -7,12 +7,21 @@ class SuggesterWithDictionaries {
         let suggester = Suggester()
         
         let paths = NSBundle.mainBundle().pathsForResourcesOfType("txt", inDirectory: "Dictionaries.bundle")
+        NSLog("paths: \(paths)")
         paths.forEach { path in
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
                 loadSuggestionsFromDictionaryAt(path)
             })
         }
-        
+
+        let de_paths = NSBundle.mainBundle().pathsForResourcesOfType("txt", inDirectory: "Dictionaries.bundle/de")
+        NSLog("de paths: \(de_paths)")
+        de_paths.forEach { path in
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+                loadSuggestionsFromDictionaryAt(path)
+            })
+        }
+
         return suggester
     }
     
