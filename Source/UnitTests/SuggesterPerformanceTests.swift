@@ -23,7 +23,7 @@ class SuggesterPerformanceTests: XCTestCase {
         let suggester = createSuggester(dictionarySize: 10000, maxWordLength: 12)
         let randomWords = generateRandomStrings(10000, length: 10)
         measureBlock {
-            suggester.add(randomWords, length: 10)
+            suggester.addSameLength(randomWords)
         }
     }
 

@@ -11,16 +11,18 @@ class Suggester {
     
     func add(newWords: [String]) {
         let newWordsByLength = newWords.groupBy { $0.characters.count }
-        for (length, newWordsForLength) in newWordsByLength {
-            add(newWordsForLength, length: length)
+        for (_, newWordsForLength) in newWordsByLength {
+            addSameLength(newWordsForLength)
         }
     }
     
-    func add(newWordsForLength: [String], length: Int) {
-        if let existingWordsForLength = wordsByLength[length] {
-            wordsByLength[length] = existingWordsForLength + newWordsForLength
-        } else {
-            wordsByLength[length] = newWordsForLength
+    func addSameLength(newWordsForLength: [String]) {
+        if let length = newWordsForLength.first?.characters.count {
+            if let existingWordsForLength = wordsByLength[length] {
+                wordsByLength[length] = existingWordsForLength + newWordsForLength
+            } else {
+                wordsByLength[length] = newWordsForLength
+            }
         }
     }
     

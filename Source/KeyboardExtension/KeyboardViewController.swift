@@ -65,6 +65,8 @@ extension KeyboardViewController {
         let tapRecognizer = MyTapRecognizer(
             target: self, action: "handleTap:")
         keyboardView.addGestureRecognizer(tapRecognizer)
+        
+        NSLog("suggester size: \(SuggesterWithDictionaries.instance.size)")
     }
     
     func handleTap(recognizer: UIGestureRecognizer) {
@@ -92,8 +94,7 @@ extension KeyboardViewController {
         
         requestSupplementaryLexiconWithCompletion { lexicon in
             let allEntries = lexicon.entries.map { $0.documentText }
-            NSLog("entries in System Lexicon': \(allEntries.count)")
-            SuggesterWithDictionaries.addSuggestions(allEntries)
+            SuggesterWithDictionaries.instance.add(allEntries)
             SuggesterWithDictionaries.systemLexiconLoaded = true
         }
     }
