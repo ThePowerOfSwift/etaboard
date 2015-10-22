@@ -32,5 +32,6 @@ class SuggesterWithDictionaries {
     static func addSuggestions(words: [String], from dictionary: String) {
         NSLog("entries in dictionary '\(dictionary)': \(words.count)")
         instance.add(words)
+        NSLog("suggester size: \(instance.size)")
     }
 }

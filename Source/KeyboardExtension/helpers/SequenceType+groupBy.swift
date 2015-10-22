@@ -4,7 +4,8 @@ public extension SequenceType {
         var dict: [U:[Generator.Element]] = [:]
         for el in self {
             let key = keyFunc(el)
-            dict[key]?.append(el) ?? {dict[key] = [el]}()
+            if let _ = dict[key] { dict[key]!.append(el) }
+            else { dict[key] = [el] }
         }
         return dict
     }
