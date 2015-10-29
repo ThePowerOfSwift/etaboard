@@ -1,4 +1,5 @@
 require! {
+	path
 	q
 	ramda:r
 	'./util': u
@@ -27,8 +28,8 @@ augmentWithForms = (baseForms, additionalForms) ->
 
 writeToFilesGroupedByLength = (forms) ->
 	writeToFile = (formsForLength, length) ->
-		path = "#germanDictionaryFolder/#{length}.txt"
-		(u.writeToFile path) (joinLines formsForLength)
+		filePath = path.join germanDictionaryFolder, "#{length}.txt"
+		(u.writeToFile filePath) (joinLines formsForLength)
 	forms
 	|> r.groupBy r.length
 	|> r.mapObjIndexed writeToFile
