@@ -15,10 +15,10 @@ extension:=Source/KeyboardExtension
 helpers:=$(extension)/helpers
 model:=$(extension)/keyboard/model
 suggester:=Source/KeyboardExtension/suggester
-key_distance:=Source/KeyboardExtension/suggester/KeyDistance.swift
-generate-key-distances:
-	rm -f $(key_distance)
-	cat $(helpers)/String+split.swift $(model)/ConcreteLayout.swift $(model)/SchematicLayout.swift $(suggester)/KeyDistanceGenerator.swift | swift - > $(key_distance)
+character_distance:=Source/KeyboardExtension/suggester/CharacterDistance.swift
+generate-character-distances:
+	rm -f $(character_distance)
+	cat $(helpers)/String+split.swift $(model)/ConcreteLayout.swift $(model)/SchematicLayout.swift $(suggester)/CharacterDistanceGenerator.swift | swift - > $(character_distance)
 
 
 test:
