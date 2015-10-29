@@ -20,18 +20,19 @@ generate-character-distances:
 	rm -f $(character_distance)
 	cat $(helpers)/String+split.swift $(model)/ConcreteLayout.swift $(model)/SchematicLayout.swift $(suggester)/CharacterDistanceGenerator.swift | swift - > $(character_distance)
 
+generate-code: generate-character-distances
 
-test:
+test: generate-code
 	xcodebuild test -scheme EtaBoard -destination 'name=iPhone 6'
 
 clean:
 	xcodebuild clean
 
 .PHONY: build
-build:
+build: generate-code
 	xcodebuild build
 
-release: clean test bump-build-number
+release: clean test generate-code bump-build-number
 	xcodebuild archive -scheme EtaBoard
 
 test-build-chain: clean build test bump-build-number
