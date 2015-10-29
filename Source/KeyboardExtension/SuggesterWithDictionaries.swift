@@ -10,7 +10,7 @@ class SuggesterWithDictionaries {
         NSLog("paths: \(paths)")
         paths.forEach { path in
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
-                loadSuggestionsFromDictionaryAt(path) |> instance.add
+                loadSuggestionsFromDictionaryAt(path) |> instance.addUnknownLengths
             })
         }
 
@@ -34,10 +34,5 @@ class SuggesterWithDictionaries {
             NSLog("could not load dictionary from path \(path)")
             return []
         }
-    }
-
-    static func addSuggestions(words: [String]) {
-        instance.add(words)
-        NSLog("suggester size: \(instance.size)")
     }
 }

@@ -94,7 +94,7 @@ extension KeyboardViewController {
         
         requestSupplementaryLexiconWithCompletion { lexicon in
             let allEntries = lexicon.entries.map { $0.documentText }
-            SuggesterWithDictionaries.instance.add(allEntries)
+            SuggesterWithDictionaries.instance.addUnknownLengths(allEntries)
             SuggesterWithDictionaries.systemLexiconLoaded = true
         }
     }

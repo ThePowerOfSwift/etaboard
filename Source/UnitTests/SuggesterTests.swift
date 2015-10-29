@@ -9,24 +9,36 @@ class SuggesterTests: XCTestCase {
     }
     
     func testSuggestsTheWordItselfIfItsInTheDictionary() {
-        suggester.add(["foo", "bar"])
+        suggester.addSameLength(["foo", "bar"])
         expect(self.suggester.suggestCompletion(to: "foo")) == "foo"
     }
     
     func testCapitalizesSuggestionIfCurrentWordContainsCapitalLetter() {
-        suggester.add(["foo"])
+        suggester.addSameLength(["foo"])
         expect(self.suggester.suggestCompletion(to: "foO")) == "Foo"
     }
     
-    func testAddsNewWordsOfSameLength() {
-        suggester.add(["foo"])
-        suggester.add(["bar"])
+    func testAddsNewWordsOfSameLengthWhenLengthKnown() {
+        suggester.addSameLength(["foo"])
+        suggester.addSameLength(["bar"])
         expect(self.suggester.suggestCompletion(to: "bar")) == "bar"
     }
 
-    func testPreservesEarlierWordsWhenAddingNewWords() {
-        suggester.add(["foo"])
-        suggester.add(["bar"])
+    func testAddsNewWordsOfSameLengthWhenLengthUnknown() {
+        suggester.addSameLength(["foo"])
+        suggester.addUnknownLengths(["bar"])
+        expect(self.suggester.suggestCompletion(to: "bar")) == "bar"
+    }
+
+    func testPreservesEarlierWordsWhenAddingNewWordsOfSameLength() {
+        suggester.addSameLength(["foo"])
+        suggester.addSameLength(["bar"])
+        expect(self.suggester.suggestCompletion(to: "foo")) == "foo"
+    }
+
+    func testPreservesEarlierWordsWhenAddingNewWordsOfUnknownLength() {
+        suggester.addSameLength(["foo"])
+        suggester.addUnknownLengths(["bar"])
         expect(self.suggester.suggestCompletion(to: "foo")) == "foo"
     }
 }

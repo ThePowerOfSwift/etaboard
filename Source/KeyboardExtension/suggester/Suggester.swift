@@ -9,7 +9,7 @@ class Suggester {
         }
     }
     
-    func add(newWords: [String]) {
+    func addUnknownLengths(newWords: [String]) {
         let newWordsByLength = newWords.groupBy { $0.characters.count }
         for (_, newWordsForLength) in newWordsByLength {
             addSameLength(newWordsForLength)

@@ -15,7 +15,7 @@ class SuggesterPerformanceTests: XCTestCase {
         let suggester = createSuggester(dictionarySize: 10000, maxWordLength: 12)
         let randomWords = generateRandomStrings(500)
         measureBlock {
-            suggester.add(randomWords)
+            suggester.addUnknownLengths(randomWords)
         }
     }
     
@@ -32,7 +32,7 @@ class SuggesterPerformanceTests: XCTestCase {
         let noOfWordsPerLength = dictionarySize/maxWordLength
         
         for wordLength in (1...maxWordLength) {
-            suggester.add(generateRandomStrings(noOfWordsPerLength, length: wordLength))
+            suggester.addSameLength(generateRandomStrings(noOfWordsPerLength, length: wordLength))
         }
         return suggester
     }
