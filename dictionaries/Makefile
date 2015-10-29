@@ -39,3 +39,7 @@ bundle: manual-dictionaries german-dictionary
 clean:
 	rm -r $(build)
 
+
+clean-build: clean bundle
+
+.DEFAULT_GOAL := clean-build

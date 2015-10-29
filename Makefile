@@ -22,6 +22,10 @@ generate-character-distances:
 
 generate-code: generate-character-distances
 
+.PHONY: dictionaries
+dictionaries:
+	$(MAKE) -C $@
+
 test: generate-code
 	xcodebuild test -scheme EtaBoard -destination 'name=iPhone 6'
 
@@ -32,7 +36,7 @@ clean:
 build: generate-code
 	xcodebuild build
 
-release: clean test generate-code bump-build-number
+release: clean test generate-code dictionaries bump-build-number
 	xcodebuild archive -scheme EtaBoard
 
 test-build-chain: clean build test bump-build-number
