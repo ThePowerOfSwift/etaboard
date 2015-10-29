@@ -55,7 +55,7 @@ class Suggester {
         var bestDistance = Double(Int.max)
         var bestCandidate: String? = nil
         for candidate in words {
-            let distance = levenshteinDistance(word, s2: candidate)
+            let distance = wordDistance(word, s2: candidate)
             if distance < bestDistance {
                 bestDistance = distance
                 bestCandidate = candidate

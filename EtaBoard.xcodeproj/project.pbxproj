@@ -33,11 +33,11 @@
 		207F2C9C1BADB1350049AEB9 /* SuggesterPerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F2C9B1BADB1350049AEB9 /* SuggesterPerformanceTests.swift */; };
 		207F2C9D1BADB2FC0049AEB9 /* Suggester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20925E351BACA64700FBCFE4 /* Suggester.swift */; };
 		2083F4E61BAE2B1500EBAFCC /* SuggesterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2083F4E51BAE2B1500EBAFCC /* SuggesterTests.swift */; };
-		2083F4E81BB1BECE00EBAFCC /* LevenshteinPerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2083F4E71BB1BECE00EBAFCC /* LevenshteinPerformanceTests.swift */; };
+		2083F4E81BB1BECE00EBAFCC /* WordDistancePerfTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2083F4E71BB1BECE00EBAFCC /* WordDistancePerfTests.swift */; };
 		20925E361BACA64700FBCFE4 /* Suggester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20925E351BACA64700FBCFE4 /* Suggester.swift */; };
-		20925E381BACABDE00FBCFE4 /* LevenshteinDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20925E371BACABDE00FBCFE4 /* LevenshteinDistance.swift */; };
-		20925E3A1BACABF700FBCFE4 /* LevenshteinDistanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20925E391BACABF700FBCFE4 /* LevenshteinDistanceTests.swift */; };
-		20925E3B1BACAD9E00FBCFE4 /* LevenshteinDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20925E371BACABDE00FBCFE4 /* LevenshteinDistance.swift */; };
+		20925E381BACABDE00FBCFE4 /* WordDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20925E371BACABDE00FBCFE4 /* WordDistance.swift */; };
+		20925E3A1BACABF700FBCFE4 /* WordDistanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20925E391BACABF700FBCFE4 /* WordDistanceTests.swift */; };
+		20925E3B1BACAD9E00FBCFE4 /* WordDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20925E371BACABDE00FBCFE4 /* WordDistance.swift */; };
 		209616351BC5A20A003D1E81 /* KeyDistanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209616341BC5A20A003D1E81 /* KeyDistanceTests.swift */; };
 		20C304BE1BB833C600C3460E /* Int,String+random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C304BD1BB833C600C3460E /* Int,String+random.swift */; };
 		20C304C11BBAFD1000C3460E /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C304C01BBAFD1000C3460E /* Document.swift */; };
@@ -127,11 +127,11 @@
 		207686621BB21300004B1F57 /* String+split_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+split_Tests.swift"; sourceTree = "<group>"; };
 		207F2C9B1BADB1350049AEB9 /* SuggesterPerformanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggesterPerformanceTests.swift; sourceTree = "<group>"; };
 		2083F4E51BAE2B1500EBAFCC /* SuggesterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggesterTests.swift; sourceTree = "<group>"; };
-		2083F4E71BB1BECE00EBAFCC /* LevenshteinPerformanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevenshteinPerformanceTests.swift; sourceTree = "<group>"; };
+		2083F4E71BB1BECE00EBAFCC /* WordDistancePerfTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordDistancePerfTests.swift; sourceTree = "<group>"; };
 		2083F4E91BB1CF6C00EBAFCC /* Playground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = Playground.playground; path = temp/Playground.playground; sourceTree = "<group>"; };
 		20925E351BACA64700FBCFE4 /* Suggester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Suggester.swift; sourceTree = "<group>"; };
-		20925E371BACABDE00FBCFE4 /* LevenshteinDistance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevenshteinDistance.swift; sourceTree = "<group>"; };
-		20925E391BACABF700FBCFE4 /* LevenshteinDistanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevenshteinDistanceTests.swift; sourceTree = "<group>"; };
+		20925E371BACABDE00FBCFE4 /* WordDistance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordDistance.swift; sourceTree = "<group>"; };
+		20925E391BACABF700FBCFE4 /* WordDistanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordDistanceTests.swift; sourceTree = "<group>"; };
 		209616341BC5A20A003D1E81 /* KeyDistanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyDistanceTests.swift; sourceTree = "<group>"; };
 		20C304BD1BB833C600C3460E /* Int,String+random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int,String+random.swift"; sourceTree = "<group>"; };
 		20C304C01BBAFD1000C3460E /* Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
@@ -256,7 +256,7 @@
 			isa = PBXGroup;
 			children = (
 				20925E351BACA64700FBCFE4 /* Suggester.swift */,
-				20925E371BACABDE00FBCFE4 /* LevenshteinDistance.swift */,
+				20925E371BACABDE00FBCFE4 /* WordDistance.swift */,
 				205A41361BC4912F00E659E1 /* KeyDistanceGenerator.swift */,
 				205A41371BC4978000E659E1 /* KeyDistance.swift */,
 			);
@@ -276,8 +276,8 @@
 		20C304C61BBB070800C3460E /* suggester */ = {
 			isa = PBXGroup;
 			children = (
-				20925E391BACABF700FBCFE4 /* LevenshteinDistanceTests.swift */,
-				2083F4E71BB1BECE00EBAFCC /* LevenshteinPerformanceTests.swift */,
+				20925E391BACABF700FBCFE4 /* WordDistanceTests.swift */,
+				2083F4E71BB1BECE00EBAFCC /* WordDistancePerfTests.swift */,
 				2083F4E51BAE2B1500EBAFCC /* SuggesterTests.swift */,
 				207F2C9B1BADB1350049AEB9 /* SuggesterPerformanceTests.swift */,
 				209616341BC5A20A003D1E81 /* KeyDistanceTests.swift */,
@@ -476,12 +476,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20925E3A1BACABF700FBCFE4 /* LevenshteinDistanceTests.swift in Sources */,
-				20925E3B1BACAD9E00FBCFE4 /* LevenshteinDistance.swift in Sources */,
+				20925E3A1BACABF700FBCFE4 /* WordDistanceTests.swift in Sources */,
+				20925E3B1BACAD9E00FBCFE4 /* WordDistance.swift in Sources */,
 				205A413D1BC4999900E659E1 /* ConcreteLayout_DistanceBetweenChars_Tests.swift in Sources */,
 				200C471A1BA3374500FA59D3 /* NotifyingDocument.swift in Sources */,
 				209616351BC5A20A003D1E81 /* KeyDistanceTests.swift in Sources */,
-				2083F4E81BB1BECE00EBAFCC /* LevenshteinPerformanceTests.swift in Sources */,
+				2083F4E81BB1BECE00EBAFCC /* WordDistancePerfTests.swift in Sources */,
 				2083F4E61BAE2B1500EBAFCC /* SuggesterTests.swift in Sources */,
 				207686611BB212D6004B1F57 /* String+split.swift in Sources */,
 				2045E7C11BC858F900045CEB /* SequenceType+groupBy.swift in Sources */,
@@ -512,7 +512,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				205A41391BC4978E00E659E1 /* KeyDistance.swift in Sources */,
-				20925E381BACABDE00FBCFE4 /* LevenshteinDistance.swift in Sources */,
+				20925E381BACABDE00FBCFE4 /* WordDistance.swift in Sources */,
 				207686601BB211BE004B1F57 /* String+split.swift in Sources */,
 				2045E7C01BC8584200045CEB /* SequenceType+groupBy.swift in Sources */,
 				20317D9D1BA0A9B1008A4303 /* UIView+LayoutConstraints.swift in Sources */,

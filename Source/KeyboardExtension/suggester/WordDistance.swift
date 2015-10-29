@@ -31,7 +31,7 @@ private class Array2D {
     }
 }
 
-func levenshteinDistance(aStr: String, s2 bStr: String) -> Double {
+func wordDistance(aStr: String, s2 bStr: String) -> Double {
     let a = Array(aStr.utf16)
     let b = Array(bStr.utf16)
     
