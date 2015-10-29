@@ -9,7 +9,7 @@ func distanceBetweenChars(charA: String, and charB: String) -> Double {
     return distanceBetweenUInt16Chars(characterToUInt16(charA), and: characterToUInt16(charB))
 }
 
-class KeyDistanceTests: XCTestCase {
+class CharacterDistanceTests: XCTestCase {
     func testLowercaseAndUppercaseAreEquivalent() {
         expect(distanceBetweenChars("A", and: "a")) == 0
         expect(distanceBetweenChars("a", and: "A")) == 0
