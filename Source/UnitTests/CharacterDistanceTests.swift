@@ -1,14 +1,6 @@
 import XCTest
 import Nimble
 
-func characterToUInt16(character: String) -> UInt16 {
-    return Array(character.utf16)[0]
-}
-
-func distanceBetweenChars(charA: String, _ charB: String) -> Double {
-    return distanceBetweenUInt16Chars(characterToUInt16(charA), and: characterToUInt16(charB))
-}
-
 class CharacterDistanceTests: XCTestCase {
     func testCharacterIsEqualToItself() {
         expect(distanceBetweenChars("a", "a")) == 0
@@ -19,22 +11,43 @@ class CharacterDistanceTests: XCTestCase {
     }
 
     func testLowercaseIsSimilarToUppercase() {
-        expect(distanceBetweenChars("a", "A")) > 0
-        expect(distanceBetweenChars("a", "A")) < distanceBetweenChars("a", "s")
+        expect("A").to(beSimilarTo("a"))
     }
-    
+
     func testBetweenLowercaseAndUppercaseIsCommutative() {
         expect(distanceBetweenChars("A", "a")) ==
                distanceBetweenChars("a", "A")
     }
     
     func testDiacriticalMarksAreSimilarToBaseCharacter() {
-        expect(distanceBetweenChars("a", "ä")) > 0
-        expect(distanceBetweenChars("a", "ä")) < distanceBetweenChars("a", "s")
+        expect("ä").to(beSimilarTo("a"))
     }
     
     func testBetweenCharsWithAndWithoutDiacriticalMarksIsCommutative() {
         expect(distanceBetweenChars("ä", "a")) ==
                distanceBetweenChars("a", "ä")
+    }
+}
+
+
+func characterToUInt16(character: String) -> UInt16 {
+    return Array(character.utf16)[0]
+}
+
+func distanceBetweenChars(charA: String, _ charB: String) -> Double {
+    return distanceBetweenUInt16Chars(characterToUInt16(charA), and: characterToUInt16(charB))
+}
+
+func beSimilarTo(expected: String) -> MatcherFunc<String> {
+    return MatcherFunc { actualExpression, failureMessage in
+        guard let actual = try actualExpression.evaluate() else {
+            return false
+        }
+        
+        let distance = distanceBetweenChars(expected, actual)
+        failureMessage.postfixMessage = "be similar to <\(expected)>"
+        failureMessage.postfixActual = " (distance: \(String(distance)))"
+        return distance > 0 &&
+            distance < distanceBetweenChars("a", "s")
     }
 }
