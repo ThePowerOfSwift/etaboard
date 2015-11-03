@@ -5,25 +5,36 @@ func characterToUInt16(character: String) -> UInt16 {
     return Array(character.utf16)[0]
 }
 
-func distanceBetweenChars(charA: String, and charB: String) -> Double {
+func distanceBetweenChars(charA: String, _ charB: String) -> Double {
     return distanceBetweenUInt16Chars(characterToUInt16(charA), and: characterToUInt16(charB))
 }
 
 class CharacterDistanceTests: XCTestCase {
-    func testLowercaseAndUppercaseAreEquivalent() {
-        expect(distanceBetweenChars("A", and: "a")) == 0
-        expect(distanceBetweenChars("a", and: "A")) == 0
+    func testCharacterIsEqualToItself() {
+        expect(distanceBetweenChars("a", "a")) == 0
     }
-    func testEquivalentCharsHaveSameNeighborhoods() {
-        expect(distanceBetweenChars("a", and: "b")) ==
-               distanceBetweenChars("a", and: "B")
-        expect(distanceBetweenChars("a", and: "b")) ==
-               distanceBetweenChars("A", and: "b")
+    
+    func testIs1ForCharacterFarApart() {
+        expect(distanceBetweenChars("a", "l")) == 1
     }
-    func testUmlautsAndNonUmlautsAreEquivalent() {
-        expect(distanceBetweenChars("a", and: "ä")) == 0
-        expect(distanceBetweenChars("a", and: "Ä")) == 0
-        expect(distanceBetweenChars("a", and: "á")) == 0
-        expect(distanceBetweenChars("s", and: "ß")) == 0
+
+    func testLowercaseIsSimilarToUppercase() {
+        expect(distanceBetweenChars("a", "A")) > 0
+        expect(distanceBetweenChars("a", "A")) < distanceBetweenChars("a", "s")
+    }
+    
+    func testBetweenLowercaseAndUppercaseIsCommutative() {
+        expect(distanceBetweenChars("A", "a")) ==
+               distanceBetweenChars("a", "A")
+    }
+    
+    func testDiacriticalMarksAreSimilarToBaseCharacter() {
+        expect(distanceBetweenChars("a", "ä")) > 0
+        expect(distanceBetweenChars("a", "ä")) < distanceBetweenChars("a", "s")
+    }
+    
+    func testBetweenCharsWithAndWithoutDiacriticalMarksIsCommutative() {
+        expect(distanceBetweenChars("ä", "a")) ==
+               distanceBetweenChars("a", "ä")
     }
 }

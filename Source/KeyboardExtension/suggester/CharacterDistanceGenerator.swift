@@ -4,33 +4,37 @@ import CoreGraphics
 
 let iPhone6Layout = ConcreteLayout(schematicLayout: SchematicLayout.Lowercase, size: CGSizeMake(375, 182))
 let alphabet = "abcdefghijklmnopqrstuvwxyz"
-let allEquivalentChars = [
+let allLowercaseSimilarChars = [
     "a": "äáàâ",
     "o": "öø",
     "s": "ß",
     "u": "üú",
 ]
 
-func characterToUInt16(character: Character) -> UInt16 {
-    return characterToUInt16(String(character))
+typealias CharacterCode = UInt16
+let similarDistance = 0.01
+
+func codeFor(character: Character) -> UInt16 {
+    return codeFor(String(character))
 }
-func characterToUInt16(character: String) -> UInt16 {
+func codeFor(character: String) -> UInt16 {
     return Array(character.utf16)[0]
 }
-func codesLowercaseAndUppercase(char: Character) -> [UInt16] {
-    let lowercase = characterToUInt16(char)
-    let uppercase = characterToUInt16(String(char).uppercaseString)
-    return [lowercase, uppercase]
+func firstCharacter(string: String) -> Character {
+    return Array(string.characters)[0]
 }
-func equivalentChars(char: Character) -> [Character] {
-    if let equivalentChars = allEquivalentChars[String(char)] {
-        return Array(equivalentChars.characters)
+func uppercase(char: Character) -> Character {
+    return firstCharacter(String(char).uppercaseString)
+}
+func similarCharsFor(char: Character) -> [Character] {
+    let uppercaseChar = [uppercase(char)]
+    if let similarChars = allLowercaseSimilarChars[String(char)] {
+        return uppercaseChar + Array(similarChars.characters)
     }
-    return []
+    return uppercaseChar
 }
-func allCodesFor(char: Character) -> String {
-    let equivalents = [char] + equivalentChars(char)
-    return equivalents.flatMap(codesLowercaseAndUppercase)
+func similarCodesFor(char: Character) -> String {
+    return similarCharsFor(char).map(codeFor)
         .map(String.init).joinWithSeparator(",")
 }
 
@@ -39,28 +43,36 @@ func allCodesFor(char: Character) -> String {
 var lines = [
     "// generated",
     "import Foundation",
-    "func distanceBetweenUInt16Chars(keyA: UInt16, and keyB: UInt16) -> Double {",
-    "if keyA == keyB { return 0 }",
-    "switch (keyA) {",
+    "func distanceBetweenUInt16Chars(codeA: UInt16, and codeB: UInt16) -> Double {",
+    "if codeA == codeB { return 0 }",
+    "switch (codeA) {",
 ]
 
-for keyA in alphabet.characters {
+for charA in alphabet.characters {
     lines.appendContentsOf([
-        "case \(allCodesFor(keyA)):  // \(keyA)",
-        "    switch (keyB) {",
+        "case \(codeFor(charA)):  // \(charA)",
+        "    switch (codeB) {",
         ])
-    for keyB in alphabet.characters {
-        let distance = iPhone6Layout.normalizedDistanceBetween(String(keyA), and: String(keyB))
+    for charB in alphabet.characters {
+        let distance = iPhone6Layout.normalizedDistanceBetween(String(charA), and: String(charB))
         if distance < 0.15 {
-            lines.append("    case \(allCodesFor(keyB)): return \(distance)  // \(keyB)")
+            lines.append("    case \(codeFor(charB)): return \(distance)  // \(charB)")
         }
     }
     lines.appendContentsOf([
+        "    case \(similarCodesFor(charA)): return \(similarDistance)  // \(similarCharsFor(charA))",
+        "    default: return 1",
+        "    }",
+        ])
+
+    lines.appendContentsOf([
+        "case \(similarCodesFor(charA)):  // \(similarCharsFor(charA))",
+        "    switch (codeB) {",
+        "    case \(codeFor(charA)): return \(similarDistance)  // \(charA)",
         "    default: return 1",
         "    }",
         ])
 }
-
 
 lines.appendContentsOf([
     "default: return 1",
