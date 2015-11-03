@@ -2,5 +2,5 @@
 ## Development setup
 
 * Install Carthage, e.g. `brew install carthage`
-* `carthage update`
+* `carthage build --platform iOS`
 * open XCode project
