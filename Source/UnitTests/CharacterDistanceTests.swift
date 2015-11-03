@@ -30,21 +30,17 @@ class CharacterDistanceTests: XCTestCase {
 }
 
 
-func characterToUInt16(character: String) -> UInt16 {
-    return Array(character.utf16)[0]
+func distanceBetweenChars(charA: Character, _ charB: Character) -> Distance {
+    return distanceBetweenUInt16Chars(charA.code(), and: charB.code())
 }
 
-func distanceBetweenChars(charA: String, _ charB: String) -> Double {
-    return distanceBetweenUInt16Chars(characterToUInt16(charA), and: characterToUInt16(charB))
-}
-
-func beSimilarTo(expected: String) -> MatcherFunc<String> {
+func beSimilarTo(expected: Character) -> MatcherFunc<String> {
     return MatcherFunc { actualExpression, failureMessage in
         guard let actual = try actualExpression.evaluate() else {
             return false
         }
         
-        let distance = distanceBetweenChars(expected, actual)
+        let distance = distanceBetweenChars(expected, actual.first())
         failureMessage.postfixMessage = "be similar to <\(expected)>"
         failureMessage.postfixActual = " (distance: \(String(distance)))"
         return distance > 0 &&

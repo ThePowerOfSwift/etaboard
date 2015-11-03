@@ -10,6 +10,7 @@
 		200B84951BE9740B00E9D998 /* Character+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200B84941BE9740B00E9D998 /* Character+.swift */; };
 		200B84971BE979A000E9D998 /* Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200B84961BE979A000E9D998 /* Distance.swift */; };
 		200B84981BE97B1500E9D998 /* Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200B84961BE979A000E9D998 /* Distance.swift */; };
+		200B84991BE97B7500E9D998 /* Character+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200B84941BE9740B00E9D998 /* Character+.swift */; };
 		200C471A1BA3374500FA59D3 /* NotifyingDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20317D9E1BA0B677008A4303 /* NotifyingDocument.swift */; };
 		200C471C1BA337B200FA59D3 /* UITextDocumentProxyAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200C471B1BA337B200FA59D3 /* UITextDocumentProxyAdapter.swift */; };
 		20317D9B1BA09D3E008A4303 /* SuggestionBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20317D9A1BA09D3E008A4303 /* SuggestionBarView.swift */; };
@@ -485,6 +486,7 @@
 			files = (
 				20925E3A1BACABF700FBCFE4 /* WordDistanceTests.swift in Sources */,
 				20925E3B1BACAD9E00FBCFE4 /* WordDistance.swift in Sources */,
+				200B84991BE97B7500E9D998 /* Character+.swift in Sources */,
 				205A413D1BC4999900E659E1 /* ConcreteLayout_DistanceBetweenChars_Tests.swift in Sources */,
 				200C471A1BA3374500FA59D3 /* NotifyingDocument.swift in Sources */,
 				200B84981BE97B1500E9D998 /* Distance.swift in Sources */,
