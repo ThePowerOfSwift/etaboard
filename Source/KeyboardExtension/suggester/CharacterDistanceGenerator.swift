@@ -3,6 +3,10 @@ import CoreGraphics
 
 
 let iPhone6Layout = ConcreteLayout(schematicLayout: SchematicLayout.Lowercase, size: CGSizeMake(375, 182))
+func distanceBetween(charA: Character, and charB: Character) -> Double {
+    return iPhone6Layout.normalizedDistanceBetween(String(charA), and: String(charB))
+}
+
 let alphabet = "abcdefghijklmnopqrstuvwxyz"
 let allLowercaseSimilarChars = [
     "a": "äáàâ",
@@ -11,30 +15,17 @@ let allLowercaseSimilarChars = [
     "u": "üú",
 ]
 
-typealias CharacterCode = UInt16
 let similarDistance = 0.01
 
-func codeFor(character: Character) -> UInt16 {
-    return codeFor(String(character))
-}
-func codeFor(character: String) -> UInt16 {
-    return Array(character.utf16)[0]
-}
-func firstCharacter(string: String) -> Character {
-    return Array(string.characters)[0]
-}
-func uppercase(char: Character) -> Character {
-    return firstCharacter(String(char).uppercaseString)
-}
 func similarCharsFor(char: Character) -> [Character] {
-    let uppercaseChar = [uppercase(char)]
+    let uppercaseChar = [char.uppercase()]
     if let similarChars = allLowercaseSimilarChars[String(char)] {
         return uppercaseChar + Array(similarChars.characters)
     }
     return uppercaseChar
 }
 func similarCodesFor(char: Character) -> String {
-    return similarCharsFor(char).map(codeFor)
+    return similarCharsFor(char).map { $0.code() }
         .map(String.init).joinWithSeparator(",")
 }
 
@@ -50,13 +41,13 @@ var lines = [
 
 for charA in alphabet.characters {
     lines.appendContentsOf([
-        "case \(codeFor(charA)):  // \(charA)",
+        "case \(charA.code()):  // \(charA)",
         "    switch (codeB) {",
         ])
     for charB in alphabet.characters {
-        let distance = iPhone6Layout.normalizedDistanceBetween(String(charA), and: String(charB))
+        let distance = distanceBetween(charA, and: charB)
         if distance < 0.15 {
-            lines.append("    case \(codeFor(charB)): return \(distance)  // \(charB)")
+            lines.append("    case \(charB.code()): return \(distance)  // \(charB)")
         }
     }
     lines.appendContentsOf([
@@ -68,7 +59,7 @@ for charA in alphabet.characters {
     lines.appendContentsOf([
         "case \(similarCodesFor(charA)):  // \(similarCharsFor(charA))",
         "    switch (codeB) {",
-        "    case \(codeFor(charA)): return \(similarDistance)  // \(charA)",
+        "    case \(charA.code()): return \(similarDistance)  // \(charA)",
         "    default: return 1",
         "    }",
         ])

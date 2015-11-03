@@ -18,7 +18,7 @@ suggester:=Source/KeyboardExtension/suggester
 character_distance:=Source/KeyboardExtension/suggester/CharacterDistance.swift
 generate-character-distances:
 	rm -f $(character_distance)
-	cat $(helpers)/String+split.swift $(model)/ConcreteLayout.swift $(model)/SchematicLayout.swift $(suggester)/CharacterDistanceGenerator.swift | swift - > $(character_distance)
+	cat $(helpers)/String+.swift $(helpers)/Character+.swift $(model)/ConcreteLayout.swift $(model)/SchematicLayout.swift $(suggester)/CharacterDistanceGenerator.swift | swift - > $(character_distance)
 
 generate-code: generate-character-distances
 
