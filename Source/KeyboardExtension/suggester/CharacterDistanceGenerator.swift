@@ -3,7 +3,7 @@ import CoreGraphics
 
 
 let iPhone6Layout = ConcreteLayout(schematicLayout: SchematicLayout.Lowercase, size: CGSizeMake(375, 182))
-func distanceBetween(charA: Character, and charB: Character) -> Double {
+func distanceBetween(charA: Character, and charB: Character) -> Distance {
     return iPhone6Layout.normalizedDistanceBetween(String(charA), and: String(charB))
 }
 
@@ -34,7 +34,7 @@ func similarCodesFor(char: Character) -> String {
 var lines = [
     "// generated",
     "import Foundation",
-    "func distanceBetweenUInt16Chars(codeA: UInt16, and codeB: UInt16) -> Double {",
+    "func distanceBetweenUInt16Chars(codeA: UInt16, and codeB: UInt16) -> Distance {",
     "if codeA == codeB { return 0 }",
     "switch (codeA) {",
 ]

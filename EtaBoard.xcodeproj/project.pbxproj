@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		200B84951BE9740B00E9D998 /* Character+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200B84941BE9740B00E9D998 /* Character+.swift */; };
+		200B84971BE979A000E9D998 /* Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200B84961BE979A000E9D998 /* Distance.swift */; };
+		200B84981BE97B1500E9D998 /* Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200B84961BE979A000E9D998 /* Distance.swift */; };
 		200C471A1BA3374500FA59D3 /* NotifyingDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20317D9E1BA0B677008A4303 /* NotifyingDocument.swift */; };
 		200C471C1BA337B200FA59D3 /* UITextDocumentProxyAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200C471B1BA337B200FA59D3 /* UITextDocumentProxyAdapter.swift */; };
 		20317D9B1BA09D3E008A4303 /* SuggestionBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20317D9A1BA09D3E008A4303 /* SuggestionBarView.swift */; };
@@ -100,6 +102,7 @@
 
 /* Begin PBXFileReference section */
 		200B84941BE9740B00E9D998 /* Character+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Character+.swift"; sourceTree = "<group>"; };
+		200B84961BE979A000E9D998 /* Distance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Distance.swift; sourceTree = "<group>"; };
 		200C471B1BA337B200FA59D3 /* UITextDocumentProxyAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextDocumentProxyAdapter.swift; sourceTree = "<group>"; };
 		200C471D1BA33C4B00FA59D3 /* Readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
 		200C471E1BA33C8600FA59D3 /* Cartfile.private */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile.private; sourceTree = "<group>"; };
@@ -316,6 +319,7 @@
 				20C304BF1BBAFB9A00C3460E /* document */,
 				C21DF7BC99AC431E9EA856D8 /* KeyboardViewController.swift */,
 				204008BB1BD6D30300FAD96C /* SuggesterWithDictionaries.swift */,
+				200B84961BE979A000E9D998 /* Distance.swift */,
 			);
 			name = KeyboardExtension;
 			path = Source/KeyboardExtension;
@@ -483,6 +487,7 @@
 				20925E3B1BACAD9E00FBCFE4 /* WordDistance.swift in Sources */,
 				205A413D1BC4999900E659E1 /* ConcreteLayout_DistanceBetweenChars_Tests.swift in Sources */,
 				200C471A1BA3374500FA59D3 /* NotifyingDocument.swift in Sources */,
+				200B84981BE97B1500E9D998 /* Distance.swift in Sources */,
 				209616351BC5A20A003D1E81 /* CharacterDistanceTests.swift in Sources */,
 				2083F4E81BB1BECE00EBAFCC /* WordDistancePerfTests.swift in Sources */,
 				2083F4E61BAE2B1500EBAFCC /* SuggesterTests.swift in Sources */,
@@ -523,6 +528,7 @@
 				20C304C41BBAFF6B00C3460E /* WordBasedDocument.swift in Sources */,
 				2045E7BE1BC84A2700045CEB /* pipe-forward.swift in Sources */,
 				C217DE1857A2A3DB936D4FBC /* KeyboardModel.swift in Sources */,
+				200B84971BE979A000E9D998 /* Distance.swift in Sources */,
 				204008BC1BD6D30300FAD96C /* SuggesterWithDictionaries.swift in Sources */,
 				20317D9B1BA09D3E008A4303 /* SuggestionBarView.swift in Sources */,
 				20925E361BACA64700FBCFE4 /* Suggester.swift in Sources */,

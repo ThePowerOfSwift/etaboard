@@ -1,11 +1,11 @@
-private func myMin(a: Double, b: Double, c: Double) -> Double {
+private func myMin(a: Distance, b: Distance, c: Distance) -> Distance {
     if a < b { return a < c ? a : c }
     else { return b < c ? b : c }
 }
 
 private class Array2D {
     var cols: Int, rows: Int
-    var matrix: [Double]
+    var matrix: [Distance]
     
     init(cols: Int, rows: Int) {
         self.cols = cols
@@ -13,7 +13,7 @@ private class Array2D {
         matrix = Array(count:cols*rows, repeatedValue:0)
     }
     
-    subscript(col: Int, row: Int) -> Double {
+    subscript(col: Int, row: Int) -> Distance {
         get {
             return matrix[cols * row + col]
         }
@@ -31,7 +31,7 @@ private class Array2D {
     }
 }
 
-func wordDistance(aStr: String, s2 bStr: String) -> Double {
+func wordDistance(aStr: String, s2 bStr: String) -> Distance {
     let a = Array(aStr.utf16)
     let b = Array(bStr.utf16)
     

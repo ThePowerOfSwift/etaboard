@@ -1,6 +1,6 @@
 // generated
 import Foundation
-func distanceBetweenUInt16Chars(codeA: UInt16, and codeB: UInt16) -> Double {
+func distanceBetweenUInt16Chars(codeA: UInt16, and codeB: UInt16) -> Distance {
 if codeA == codeB { return 0 }
 switch (codeA) {
 case 97:  // a
