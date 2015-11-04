@@ -40,6 +40,6 @@ clean:
 	rm -r $(build)
 
 
-clean-build: clean bundle
+clean-build: clean check bundle
 
 .DEFAULT_GOAL := clean-build
