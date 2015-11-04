@@ -17,9 +17,10 @@ $(derewo_utf): $(derewo_original)
 	iconv -f iso-8859-1 -t utf-8 < $< > $@
 
 german_dict_folder:=$(bundle)/de
-german-dictionary: $(derewo_utf) $(morphy)
+$(german_dict_folder): $(derewo_utf) $(morphy)
 	mkdir -p $(german_dict_folder)
 	$(lsc) $(lib)/generate_de $(german_dict_folder) $^
+german-dictionary: $(german_dict_folder)
 clean-german-dictionary:
 	rm -f $(german_dict_folder)
 
