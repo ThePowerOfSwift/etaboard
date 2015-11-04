@@ -14,6 +14,7 @@ expandShortNotation = (shortForm) ->
 	suffixesAsOneString = matches[2]
 	return suffixesAsOneString
 		|> r.split(',')
+		|> r.prepend ''
 		|> r.map(prependString(prefix))
 
 fitsFrequencyClass = (maxFrequencyClass, entry) -->
