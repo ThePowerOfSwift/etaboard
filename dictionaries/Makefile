@@ -22,13 +22,17 @@ $(german_dict_folder): $(derewo_utf) $(morphy)
 	$(lsc) $(lib)/generate_de $(german_dict_folder) $^
 german-dictionary: $(german_dict_folder)
 clean-german-dictionary:
-	rm -r $(german_dict_folder)
+	rm -rf $(german_dict_folder)
 
 args =
 .PHONY: check
 check:
 	$(bin)/mocha --compilers ls:LiveScript --recursive check --reporter mocha-unfunk-reporter $(args)
 
+
+.PHONY: check-bundle
+check-bundle:
+	./check/bundle/german_dictionary.sh
 
 
 manual-dictionaries:
@@ -38,9 +42,16 @@ manual-dictionaries:
 bundle: manual-dictionaries german-dictionary
 
 clean:
-	rm -r $(build)
+	rm -rf $(build)
 
 
-clean-build: clean check bundle
+clean-build: deps clean check bundle check-bundle
+
+
+deps:
+	bpkg install lehmannro/assert.sh@v1.1
+clean-deps:
+	rm -rf deps
+
 
 .DEFAULT_GOAL := clean-build

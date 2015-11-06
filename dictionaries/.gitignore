@@ -1,5 +1,7 @@
 node_modules/
+deps/
 vendor/
-temp/
 .peru/
+
+temp/
 
