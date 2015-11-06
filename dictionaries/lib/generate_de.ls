@@ -1,15 +1,21 @@
 require! {
 	path
 	q
-	ramda:r
+	ramda: r
 	'./util': u
 	'./derewo'
 	'./morphy'
+	hamjest: {assertThat, hasItems}
 }
 
 splitLines = r.split('\n')
 joinLines = r.join('\n')
 
+hasWords = (words) ->
+	baseMatcher = hasItems(words)
+	baseMatcher.describeMismatch = (actual, description) ->
+		description.append "had #{r.length actual} other words"
+	baseMatcher
 
 [germanDictionaryFolder, derewoFile, morphyFile] = process.argv[2 to 4]
 
@@ -21,9 +27,9 @@ getBaseForms = u.readFile derewoFile
 	.then splitLines
 	.then r.flip(derewo.excerpt)(maxFrequencyClass: 15)
 
-augmentWithForms = (baseForms, additionalForms) ->
+mergeBaseFormsWithAdditionalForms = (baseForms, additionalFormsByBaseForm) ->
 	getAllFormsForForm = (form) ->
-		r.concat [form] r.defaultTo([], additionalForms[form])
+		r.concat [form] r.defaultTo([], additionalFormsByBaseForm[form])
 	r.chain(getAllFormsForForm)(baseForms)
 
 writeToFilesGroupedByLength = (forms) ->
@@ -36,8 +42,13 @@ writeToFilesGroupedByLength = (forms) ->
 	|> r.values
 	|> q.all
 
+verifyDictionaryContents = (words) ->
+	assertThat words, (hasWords 'jede')
+	words
+
 q [getBaseForms, getAdditionalFormsByBaseForm]
-	.spread augmentWithForms
+	.spread mergeBaseFormsWithAdditionalForms
+	.then verifyDictionaryContents
 	.then writeToFilesGroupedByLength
 	.done()
 
