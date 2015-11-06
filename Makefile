@@ -26,7 +26,7 @@ dictionaries := $(MAKE) -C dictionaries
 dictionaries-from-scratch:
 	$(dictionaries) clean all
 
-test: generate-code
+precheck: generate-code
 	xcodebuild test -scheme EtaBoard -destination 'name=iPhone 6'
 
 clean:
@@ -36,7 +36,7 @@ clean:
 build: generate-code
 	xcodebuild build
 
-archive: dictionaries-from-scratch clean test generate-code bump-build-number
+archive: dictionaries-from-scratch clean precheck generate-code bump-build-number
 	xcodebuild archive -scheme EtaBoard
 	echo "Commit the version bump."
 
