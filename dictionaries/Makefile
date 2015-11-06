@@ -22,7 +22,7 @@ $(german_dict_folder): $(derewo_utf) $(morphy)
 	$(lsc) $(lib)/generate_de $(german_dict_folder) $^
 german-dictionary: $(german_dict_folder)
 clean-german-dictionary:
-	rm -f $(german_dict_folder)
+	rm -r $(german_dict_folder)
 
 args =
 .PHONY: check
