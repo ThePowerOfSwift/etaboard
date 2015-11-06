@@ -22,9 +22,9 @@ generate-character-distances:
 
 generate-code: generate-character-distances
 
-.PHONY: dictionaries
-dictionaries:
-	$(MAKE) -C $@
+dictionaries := $(MAKE) -C dictionaries
+dictionaries-from-scratch:
+	$(dictionaries) clean all
 
 test: generate-code
 	xcodebuild test -scheme EtaBoard -destination 'name=iPhone 6'
@@ -36,14 +36,12 @@ clean:
 build: generate-code
 	xcodebuild build
 
-release: clean test generate-code dictionaries bump-build-number
+archive: dictionaries-from-scratch clean test generate-code bump-build-number
 	xcodebuild archive -scheme EtaBoard
-
-test-build-chain: clean build test bump-build-number
-	echo "You might want to revert the version bump."
+	echo "Commit the version bump."
 
 
 Carthage:
 	carthage bootstrap --platform iOS
 configure: Carthage
-	$(MAKE) -C dictionaries configure
+	$(dictionaries) configure

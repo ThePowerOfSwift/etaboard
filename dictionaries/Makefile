@@ -25,13 +25,12 @@ clean-german-dictionary:
 	rm -rf $(german_dict_folder)
 
 args =
-.PHONY: check
-check:
+precheck:
 	$(bin)/mocha --compilers ls:LiveScript --recursive check --reporter mocha-unfunk-reporter $(args)
 
 
-.PHONY: check-bundle
-check-bundle:
+.PHONY: check
+check:
 	./check/bundle/german_dictionary.sh
 
 
@@ -41,11 +40,12 @@ manual-dictionaries:
 
 bundle: manual-dictionaries german-dictionary
 
+all: precheck bundle check
+
 clean:
 	rm -rf $(build)
 
 
-clean-build: clean check bundle check-bundle
 
 
 deps:
@@ -55,4 +55,4 @@ node_modules:
 configure: deps node_modules
 
 
-.DEFAULT_GOAL := clean-build
+.DEFAULT_GOAL := all
