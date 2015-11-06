@@ -41,3 +41,9 @@ release: clean test generate-code dictionaries bump-build-number
 
 test-build-chain: clean build test bump-build-number
 	echo "You might want to revert the version bump."
+
+
+Carthage:
+	carthage bootstrap --platform iOS
+configure: Carthage
+	$(MAKE) -C dictionaries configure

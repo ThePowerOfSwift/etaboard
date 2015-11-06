@@ -45,13 +45,14 @@ clean:
 	rm -rf $(build)
 
 
-clean-build: deps clean check bundle check-bundle
+clean-build: clean check bundle check-bundle
 
 
 deps:
 	bpkg install lehmannro/assert.sh@v1.1
-clean-deps:
-	rm -rf deps
+node_modules:
+	npm i
+configure: deps node_modules
 
 
 .DEFAULT_GOAL := clean-build
