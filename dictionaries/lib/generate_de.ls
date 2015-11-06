@@ -11,22 +11,6 @@ require! {
 splitLines = r.split('\n')
 joinLines = r.join('\n')
 
-hasWords = (words) ->
-	baseMatcher = hasItems(words)
-	baseMatcher.describeMismatch = (actual, description) ->
-		description.append "had #{r.length actual} other words"
-	baseMatcher
-
-[germanDictionaryFolder, derewoFile, morphyFile] = process.argv[2 to 4]
-
-getAdditionalFormsByBaseForm = u.readFile morphyFile
-	.then splitLines
-	.then morphy.createFormsDictionary
-
-getBaseForms = u.readFile derewoFile
-	.then splitLines
-	.then r.flip(derewo.excerpt)(maxFrequencyClass: 15)
-
 mergeBaseFormsWithAdditionalForms = (baseForms, additionalFormsByBaseForm) ->
 	getAllFormsForForm = (form) ->
 		r.concat [form] r.defaultTo([], additionalFormsByBaseForm[form])
@@ -42,9 +26,27 @@ writeToFilesGroupedByLength = (forms) ->
 	|> r.values
 	|> q.all
 
+hasWords = (words) ->
+	baseMatcher = hasItems(words)
+	baseMatcher.describeMismatch = (actual, description) ->
+		description.append "had #{r.length actual} other words"
+	baseMatcher
+
 verifyDictionaryContents = (words) ->
 	assertThat words, (hasWords 'jede')
 	words
+
+
+
+[germanDictionaryFolder, derewoFile, morphyFile] = process.argv[2 to 4]
+
+getAdditionalFormsByBaseForm = u.readFile morphyFile
+	.then splitLines
+	.then morphy.createFormsDictionary
+
+getBaseForms = u.readFile derewoFile
+	.then splitLines
+	.then r.flip(derewo.excerpt)(maxFrequencyClass: 15)
 
 q [getBaseForms, getAdditionalFormsByBaseForm]
 	.spread mergeBaseFormsWithAdditionalForms
