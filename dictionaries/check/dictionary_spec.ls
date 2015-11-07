@@ -1,5 +1,5 @@
 require! {
-	hamjest: {assertThat}: _
+	hamjest: {assertThat}: __
 	'../lib/dictionary'
 }
 
@@ -10,9 +10,9 @@ describe 'hasWords matcher' ->
 			matcher := dictionary.hasWords('foo')
 
 		specify 'matches when the word is there' ->
-			assertThat matcher, _.matches ['foo']
+			assertThat matcher, __.matches ['foo']
 		specify 'fails to match the word is missing' ->
-			assertThat matcher, _.failsToMatch []
+			assertThat matcher, __.failsToMatch []
 
 	describe 'for multiple words' ->
 		var matcher
@@ -20,11 +20,11 @@ describe 'hasWords matcher' ->
 			matcher := dictionary.hasWords('foo', 'bar')
 
 		specify 'matches when both words are there' ->
-			assertThat matcher, _.matches ['foo', 'bar']
+			assertThat matcher, __.matches ['foo', 'bar']
 		specify 'fails to match when either of the words are missing' ->
-			assertThat matcher, _.failsToMatch ['foo']
-			assertThat matcher, _.failsToMatch ['bar']
-			assertThat matcher, _.failsToMatch []
+			assertThat matcher, __.failsToMatch ['foo']
+			assertThat matcher, __.failsToMatch ['bar']
+			assertThat matcher, __.failsToMatch []
 
 
 describe 'notHasWords matcher' ->
@@ -34,9 +34,9 @@ describe 'notHasWords matcher' ->
 			matcher := dictionary.notHasWords('foo')
 
 		specify 'matches when the word is missing' ->
-			assertThat matcher, _.matches []
+			assertThat matcher, __.matches []
 		specify 'fails to match when the word is there' ->
-			assertThat matcher, _.failsToMatch ['foo']
+			assertThat matcher, __.failsToMatch ['foo']
 
 	describe 'for multiple words' ->
 		var matcher
@@ -44,8 +44,9 @@ describe 'notHasWords matcher' ->
 			matcher := dictionary.notHasWords('foo', 'bar')
 
 		specify 'matches when both words are missing' ->
-			assertThat matcher, _.matches []
+			assertThat matcher, __.matches []
 		specify 'fails to match when either word is there' ->
-			assertThat matcher, _.failsToMatch ['foo']
-			assertThat matcher, _.failsToMatch ['bar']
-			assertThat matcher, _.failsToMatch ['foo', 'bar']
+			assertThat matcher, __.failsToMatch ['foo']
+			assertThat matcher, __.failsToMatch ['bar']
+			assertThat matcher, __.failsToMatch ['foo', 'bar']
+
