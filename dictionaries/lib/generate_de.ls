@@ -5,7 +5,9 @@ require! {
 	'./util': u
 	'./derewo'
 	'./morphy'
-	hamjest: {assertThat, hasItems}
+
+	hamjest: {assertThat}
+	'./dictionary': {hasWords, hasNoWords}
 }
 
 splitLines = r.split('\n')
@@ -26,14 +28,10 @@ writeToFilesGroupedByLength = (forms) ->
 	|> r.values
 	|> q.all
 
-hasWords = (words) ->
-	baseMatcher = hasItems(words)
-	baseMatcher.describeMismatch = (actual, description) ->
-		description.append "had #{r.length actual} other words"
-	baseMatcher
 
 verifyDictionaryContents = (words) ->
 	assertThat words, (hasWords 'jede')
+	assertThat words, (hasNoWords 'xxx')
 	words
 
 
