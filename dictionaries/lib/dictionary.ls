@@ -18,10 +18,14 @@ notHasWords = ->
 	baseMatcher
 
 compact = (words) ->
+	leastLowercaseWord = (words) ->
+		lowercaseHead = r.toLower r.head words
+		words |> r.ifElse r.contains(lowercaseHead), r.always(lowercaseHead), r.head
+
 	words
 	|> r.groupBy r.toLower
 	|> r.values
-	|> r.chain r.head >> r.toLower
+	|> r.chain leastLowercaseWord
 
 
 module.exports = {

@@ -30,7 +30,7 @@ writeToFilesGroupedByLength = (forms) ->
 
 
 verifyDictionaryContents = (words) ->
-	assertThat words, (hasWords 'jede')
+	assertThat words, (hasWords 'jede' 'Tag')
 	assertThat words, (notHasWords 'Essen')
 	words
 

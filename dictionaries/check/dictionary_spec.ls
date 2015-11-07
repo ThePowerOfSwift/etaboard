@@ -56,4 +56,6 @@ describe 'compact' ->
 		assertThat dictionary.compact(['foo', 'Foo']), __.equalTo ['foo']
 	specify 'removes capitalized duplicate that comes first' ->
 		assertThat dictionary.compact(['Foo', 'foo']), __.equalTo ['foo']
+	specify 'keeps capitalized word if it is not a capitalized duplicate' ->
+		assertThat dictionary.compact(['Foo']), __.equalTo ['Foo']
 
