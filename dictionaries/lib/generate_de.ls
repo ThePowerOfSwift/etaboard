@@ -7,7 +7,7 @@ require! {
 	'./morphy'
 
 	hamjest: {assertThat}
-	'./dictionary': {hasWords, notHasWords}
+	'./dictionary': {hasWords, notHasWords, compact}
 }
 
 splitLines = r.split('\n')
@@ -31,7 +31,7 @@ writeToFilesGroupedByLength = (forms) ->
 
 verifyDictionaryContents = (words) ->
 	assertThat words, (hasWords 'jede')
-	assertThat words, (notHasWords 'xxx')
+	assertThat words, (notHasWords 'Essen')
 	words
 
 
@@ -48,6 +48,7 @@ getBaseForms = u.readFile derewoFile
 
 q [getBaseForms, getAdditionalFormsByBaseForm]
 	.spread mergeBaseFormsWithAdditionalForms
+	.then compact
 	.then verifyDictionaryContents
 	.then writeToFilesGroupedByLength
 	.done()

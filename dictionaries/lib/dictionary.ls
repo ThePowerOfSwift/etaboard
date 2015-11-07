@@ -17,7 +17,15 @@ notHasWords = ->
 		description.append "the array contained at least one of the words"
 	baseMatcher
 
+compact = (words) ->
+	words
+	|> r.groupBy r.toLower
+	|> r.values
+	|> r.chain r.head >> r.toLower
+
+
 module.exports = {
 	hasWords
 	notHasWords
+	compact
 }

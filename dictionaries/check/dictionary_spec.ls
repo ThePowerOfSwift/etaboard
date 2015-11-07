@@ -50,3 +50,10 @@ describe 'notHasWords matcher' ->
 			assertThat matcher, __.failsToMatch ['bar']
 			assertThat matcher, __.failsToMatch ['foo', 'bar']
 
+
+describe 'compact' ->
+	specify 'removes capitalized duplicate that comes second' ->
+		assertThat dictionary.compact(['foo', 'Foo']), __.equalTo ['foo']
+	specify 'removes capitalized duplicate that comes first' ->
+		assertThat dictionary.compact(['Foo', 'foo']), __.equalTo ['foo']
+
