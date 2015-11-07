@@ -9,7 +9,7 @@ hasWords = ->
 		description.append "had not all of the words"
 	baseMatcher
 
-hasNoWords = ->
+notHasWords = ->
 	hasNotItem = r.compose __.not, __.hasItem
 	individualMatchers = r.map hasNotItem, &
 	baseMatcher = r.apply __.allOf, individualMatchers
@@ -19,5 +19,5 @@ hasNoWords = ->
 
 module.exports = {
 	hasWords
-	hasNoWords
+	notHasWords
 }

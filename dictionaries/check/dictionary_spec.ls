@@ -27,11 +27,11 @@ describe 'hasWords matcher' ->
 			assertThat matcher, _.failsToMatch []
 
 
-describe 'hasNoWords matcher' ->
+describe 'notHasWords matcher' ->
 	describe 'for one word' ->
 		var matcher
 		beforeEach ->
-			matcher := dictionary.hasNoWords('foo')
+			matcher := dictionary.notHasWords('foo')
 
 		specify 'matches when the word is missing' ->
 			assertThat matcher, _.matches []
@@ -41,7 +41,7 @@ describe 'hasNoWords matcher' ->
 	describe 'for multiple words' ->
 		var matcher
 		beforeEach ->
-			matcher := dictionary.hasNoWords('foo', 'bar')
+			matcher := dictionary.notHasWords('foo', 'bar')
 
 		specify 'matches when both words are missing' ->
 			assertThat matcher, _.matches []

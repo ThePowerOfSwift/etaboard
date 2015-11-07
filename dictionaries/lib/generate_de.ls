@@ -7,7 +7,7 @@ require! {
 	'./morphy'
 
 	hamjest: {assertThat}
-	'./dictionary': {hasWords, hasNoWords}
+	'./dictionary': {hasWords, notHasWords}
 }
 
 splitLines = r.split('\n')
@@ -31,7 +31,7 @@ writeToFilesGroupedByLength = (forms) ->
 
 verifyDictionaryContents = (words) ->
 	assertThat words, (hasWords 'jede')
-	assertThat words, (hasNoWords 'xxx')
+	assertThat words, (notHasWords 'xxx')
 	words
 
 
