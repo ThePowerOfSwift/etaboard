@@ -44,7 +44,7 @@ getAdditionalFormsByBaseForm = u.readFile morphyFile
 
 getBaseForms = u.readFile derewoFile
 	.then splitLines
-	.then r.flip(derewo.excerpt)(maxFrequencyClass: 15)
+	.then r.flip(derewo.excerpt)(maxFrequencyClass: 16)
 
 q [getBaseForms, getAdditionalFormsByBaseForm]
 	.spread mergeBaseFormsWithAdditionalForms
