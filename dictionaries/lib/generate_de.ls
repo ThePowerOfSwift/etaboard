@@ -29,16 +29,20 @@ writeToFilesGroupedByLength = (forms) ->
 		|> q.all
 
 verifyDictionaryContents = (words) ->
-	assertThat words, (hasWords 'jede' 'Tag', 'jedem')
+	assertThat words, (hasWords 'jede' 'Tag' 'jedem' 'nächste' 'anderes')
 	assertThat words, (notHasWords 'Essen')
 	words
 
 
-[germanDictionaryFolder, derewoFile, morphyFile] = process.argv[2 to 4]
+[germanDictionaryFolder, morphyFile, derewoFile1, derewoFile2] = process.argv[2 to 5]
 
-rawList = u.readFile derewoFile
-	.then splitLines
-	.then r.flip(derewo.rawList)(maxFrequencyClass: 16)
+getRawList = (derewoLikeFile) ->
+	u.readFile derewoLikeFile
+		.then splitLines
+		.then r.flip(derewo.rawList)(maxFrequencyClass: 16)
+
+rawList = q.all [ getRawList(derewoFile1), getRawList(derewoFile2) ]
+	.then concatAll
 
 normalBaseForms = rawList.then derewo.getBaseForms
 abnormalBaseForms = rawList.then derewo.getAbnormalBaseForms

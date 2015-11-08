@@ -19,7 +19,7 @@ $(derewo_utf): $(derewo_original)
 german_dict_folder:=$(bundle)/de
 $(german_dict_folder): $(derewo_utf) $(morphy)
 	mkdir -p $(german_dict_folder)
-	$(lsc) $(lib)/generate_de $(german_dict_folder) $^
+	$(lsc) $(lib)/generate_de $(german_dict_folder) $(morphy) $(derewo_utf) derewo/manual_additions.txt
 german-dictionary: $(german_dict_folder)
 clean-german-dictionary:
 	rm -rf $(german_dict_folder)
