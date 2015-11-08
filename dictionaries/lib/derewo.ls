@@ -38,10 +38,15 @@ getBaseForms = r.pipe(
 	r.chain expandMultipleWords
 	)
 
-getAbnormalBaseForms = ->
-	#r.filter (-> it.endsWith 'e(r,s)')
-	if r.contains '<x>e(r,s)', it then return ['<x>']
-	['jed']
+toAbnormalBaseForm = r.pipe(
+	r.match /(.+)e\(r,s\)/
+	r.tail
+	r.head
+)
+getAbnormalBaseForms = r.pipe(
+	r.filter (-> it.endsWith 'e(r,s)')
+	r.map toAbnormalBaseForm
+	)
 
 module.exports = {
 	rawList

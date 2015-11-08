@@ -1,17 +1,17 @@
 require! {
-	hamjest:{assertThat,equalTo}
+	hamjest:{assertThat,equalTo}: __
 	'../lib/derewo':{getBaseForms, rawList, getAbnormalBaseForms}
 }
 
 describe 'Derewo raw list' ->
 	specify 'discards comments' ->
-		assertThat rawList(['#comment']), equalTo []
+		assertThat rawList(['#comment']), __.isEmpty()
 	specify 'drops frequency class' ->
 		assertThat rawList(['foo 0']), equalTo ['foo']
 	specify 'drops frequency class and word type' ->
 		assertThat rawList(['foo 0 BAR']), equalTo ['foo']
 	specify 'drops words not within given frequency class' ->
-		assertThat rawList(['foo 1'], maxFrequencyClass: 0), equalTo []
+		assertThat rawList(['foo 1'], maxFrequencyClass: 0), __.isEmpty()
 
 describe 'Derewo base forms' ->
 	specify 'come from multiple words in one line' ->
@@ -22,4 +22,6 @@ describe 'Derewo base forms' ->
 describe 'Derewo abnormal base forms' ->
 	specify 'come from (.*)e(r,s) entries' ->
 		assertThat getAbnormalBaseForms(['<x>e(r,s)']), equalTo ['<x>']
+	specify 'ignores normal base forms' ->
+		assertThat getAbnormalBaseForms(['foo']), __.isEmpty()
 
