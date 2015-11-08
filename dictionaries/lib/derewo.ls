@@ -26,16 +26,26 @@ dropFrequencyClassAndWordType = r.split(' ') >> r.head
 
 expandMultipleWords = r.split(',')
 
-excerpt = (derewoEntries, {maxFrequencyClass}={maxFrequencyClass: 0}) ->
+rawList = (derewoEntries, {maxFrequencyClass}={maxFrequencyClass: 0}) ->
 	r.pipe(
 		r.filter r.complement(isComment)
 		r.filter fitsFrequencyClass(maxFrequencyClass)
 		r.map dropFrequencyClassAndWordType
-		r.chain expandShortNotation
-		r.chain expandMultipleWords
-	) derewoEntries
+		) derewoEntries
+
+getBaseForms = r.pipe(
+	r.chain expandShortNotation
+	r.chain expandMultipleWords
+	)
+
+getAbnormalBaseForms = ->
+	#r.filter (-> it.endsWith 'e(r,s)')
+	if r.contains '<x>e(r,s)', it then return ['<x>']
+	['jed']
 
 module.exports = {
-	excerpt
-}
+	rawList
+	getBaseForms
+	getAbnormalBaseForms
+	}
 

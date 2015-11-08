@@ -23,10 +23,10 @@ writeToFilesGroupedByLength = (forms) ->
 		filePath = path.join germanDictionaryFolder, "#{length}.txt"
 		(u.writeToFile filePath) (joinLines formsForLength)
 	forms
-	|> r.groupBy r.length
-	|> r.mapObjIndexed writeToFile
-	|> r.values
-	|> q.all
+		|> r.groupBy r.length
+		|> r.mapObjIndexed writeToFile
+		|> r.values
+		|> q.all
 
 verifyDictionaryContents = (words) ->
 	assertThat words, (hasWords 'jede' 'Tag', 'jedem')
@@ -36,11 +36,12 @@ verifyDictionaryContents = (words) ->
 
 [germanDictionaryFolder, derewoFile, morphyFile] = process.argv[2 to 4]
 
-normalBaseForms = u.readFile derewoFile
+rawList = u.readFile derewoFile
 	.then splitLines
-	.then r.flip(derewo.excerpt)(maxFrequencyClass: 16)
+	.then r.flip(derewo.rawList)(maxFrequencyClass: 16)
 
-abnormalBaseForms = ['jed']
+normalBaseForms = rawList.then derewo.getBaseForms
+abnormalBaseForms = rawList.then derewo.getAbnormalBaseForms
 
 additionalFormsByBaseForm = u.readFile morphyFile
 	.then splitLines
