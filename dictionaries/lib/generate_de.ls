@@ -12,10 +12,10 @@ require! {
 
 splitLines = r.split('\n')
 joinLines = r.join('\n')
+concatAll = r.reduce r.concat, []
 
-mergeBaseFormsWithAdditionalForms = (baseForms, additionalFormsByBaseForm) ->
-	getAllFormsForForm = (form) ->
-		r.concat [form] r.defaultTo([], additionalFormsByBaseForm[form])
+getAdditionalFormsForForms = (baseForms, additionalFormsByBaseForm) ->
+	getAllFormsForForm = -> r.defaultTo([], additionalFormsByBaseForm[it])
 	r.chain(getAllFormsForForm)(baseForms)
 
 writeToFilesGroupedByLength = (forms) ->
@@ -28,28 +28,37 @@ writeToFilesGroupedByLength = (forms) ->
 	|> r.values
 	|> q.all
 
-
 verifyDictionaryContents = (words) ->
-	assertThat words, (hasWords 'jede' 'Tag')
+	assertThat words, (hasWords 'jede' 'Tag', 'jedem')
 	assertThat words, (notHasWords 'Essen')
 	words
 
 
-
 [germanDictionaryFolder, derewoFile, morphyFile] = process.argv[2 to 4]
 
-getAdditionalFormsByBaseForm = u.readFile morphyFile
-	.then splitLines
-	.then morphy.createFormsDictionary
-
-getBaseForms = u.readFile derewoFile
+normalBaseForms = u.readFile derewoFile
 	.then splitLines
 	.then r.flip(derewo.excerpt)(maxFrequencyClass: 16)
 
-q [getBaseForms, getAdditionalFormsByBaseForm]
-	.spread mergeBaseFormsWithAdditionalForms
-	.then compact
-	.then verifyDictionaryContents
-	.then writeToFilesGroupedByLength
-	.done()
+abnormalBaseForms = ['jed']
+
+additionalFormsByBaseForm = u.readFile morphyFile
+	.then splitLines
+	.then morphy.createFormsDictionary
+
+getAdditionalForms = (baseForms) ->
+	q.all [baseForms, additionalFormsByBaseForm]
+		.spread getAdditionalFormsForForms
+
+
+q.all [
+	normalBaseForms
+	getAdditionalForms(normalBaseForms)
+	getAdditionalForms(abnormalBaseForms)
+]
+.then concatAll
+.then compact
+.then verifyDictionaryContents
+.then writeToFilesGroupedByLength
+.done()
 
