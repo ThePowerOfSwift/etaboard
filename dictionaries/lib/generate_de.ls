@@ -29,7 +29,7 @@ writeToFilesGroupedByLength = (forms) ->
 		|> q.all
 
 verifyDictionaryContents = (words) ->
-	assertThat words, (hasWords 'jede' 'Tag' 'jedem' 'nächste' 'anderes')
+	assertThat words, (hasWords 'jede' 'Tag' 'jedem' 'nächste' 'anderes' 'frühstücken' 'Zwischenstand')
 	assertThat words, (notHasWords 'Essen')
 	words
 
