@@ -28,7 +28,7 @@ class KeyboardView: UIView{
             NSParagraphStyleAttributeName: paraStyle
         ]
         
-        let maxWidth = "⌨".sizeWithAttributes(attributes).width
+        let maxWidth = "⌫".sizeWithAttributes(attributes).width
         
         buttonSize = max(maxWidth, font.pointSize + abs(font.descender))
         buttonOffset = buttonSize / 2
