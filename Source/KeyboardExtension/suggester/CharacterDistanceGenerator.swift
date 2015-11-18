@@ -15,17 +15,17 @@ let allLowercaseSimilarChars = [
     "u": "üú",
 ]
 
+let uppercaseDistance = 0.01
 let similarDistance = 0.02
 
 func similarCharsFor(char: Character) -> [Character] {
-    let uppercaseChar = [char.uppercase()]
     if let similarChars = allLowercaseSimilarChars[String(char)] {
-        return uppercaseChar + Array(similarChars.characters)
+        return Array(similarChars.characters)
     }
-    return uppercaseChar
+    return []
 }
-func similarCodesFor(char: Character) -> String {
-    return similarCharsFor(char).map { $0.code() }
+func codes(chars: [Character]) -> String {
+    return chars.map { $0.code() }
         .map(String.init).joinWithSeparator(",")
 }
 
@@ -50,12 +50,15 @@ for charA in alphabet.characters {
             lines.append("    case \(charB.code()): return \(distance)  // \(charB)")
         }
     }
-    lines.appendContentsOf([
-        "    case \(charA.uppercase().code()): return \(0.01)  // \(charA.uppercase()))",
-        ])
-    lines.appendContentsOf([
-        "    case \(similarCodesFor(charA)): return \(similarDistance)  // \(similarCharsFor(charA))",
-        ])
+    lines.append(
+        "    case \(charA.uppercase().code()): return \(uppercaseDistance)  // \(charA.uppercase()))"
+        )
+    let similarChars = similarCharsFor(charA)
+    if !similarChars.isEmpty {
+        lines.append(
+            "    case \(codes(similarChars)): return \(similarDistance)  // \(similarChars)"
+            )
+    }
     lines.appendContentsOf([
         "    default: return 1",
         "    }",
@@ -64,15 +67,19 @@ for charA in alphabet.characters {
     lines.appendContentsOf([
         "case \(charA.uppercase().code()):  // \(charA.uppercase())",
         "    switch (codeB) {",
-        "    case \(charA.code()): return \(0.01)  // \(charA)",
-        "    default: return 1",
-        "    }",
-        "case \(similarCodesFor(charA)):  // \(similarCharsFor(charA))",
-        "    switch (codeB) {",
-        "    case \(charA.code()): return \(similarDistance)  // \(charA)",
+        "    case \(charA.code()): return \(uppercaseDistance)  // \(charA)",
         "    default: return 1",
         "    }",
         ])
+    if !similarChars.isEmpty {
+        lines.appendContentsOf([
+            "case \(codes(similarChars)):  // \(similarChars)",
+            "    switch (codeB) {",
+            "    case \(charA.code()): return \(similarDistance)  // \(charA)",
+            "    default: return 1",
+            "    }",
+            ])
+    }
 }
 
 lines.appendContentsOf([
