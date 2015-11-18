@@ -27,6 +27,11 @@ class CharacterDistanceTests: XCTestCase {
         expect(distanceBetweenChars("ä", "a")) ==
                distanceBetweenChars("a", "ä")
     }
+    
+    func testUppercaseIsCloserThanWithDiacriticalMark() {
+        expect(distanceBetweenChars("a", "A")) <
+               distanceBetweenChars("a", "ä")
+    }
 }
 
 

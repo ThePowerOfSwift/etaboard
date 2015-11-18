@@ -15,7 +15,7 @@ let allLowercaseSimilarChars = [
     "u": "üú",
 ]
 
-let similarDistance = 0.01
+let similarDistance = 0.02
 
 func similarCharsFor(char: Character) -> [Character] {
     let uppercaseChar = [char.uppercase()]
@@ -51,12 +51,22 @@ for charA in alphabet.characters {
         }
     }
     lines.appendContentsOf([
+        "    case \(charA.uppercase().code()): return \(0.01)  // \(charA.uppercase()))",
+        ])
+    lines.appendContentsOf([
         "    case \(similarCodesFor(charA)): return \(similarDistance)  // \(similarCharsFor(charA))",
+        ])
+    lines.appendContentsOf([
         "    default: return 1",
         "    }",
         ])
 
     lines.appendContentsOf([
+        "case \(charA.uppercase().code()):  // \(charA.uppercase())",
+        "    switch (codeB) {",
+        "    case \(charA.code()): return \(0.01)  // \(charA)",
+        "    default: return 1",
+        "    }",
         "case \(similarCodesFor(charA)):  // \(similarCharsFor(charA))",
         "    switch (codeB) {",
         "    case \(charA.code()): return \(similarDistance)  // \(charA)",
