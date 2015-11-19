@@ -31,31 +31,25 @@ func codes(chars: [Character]) -> String {
 
 typealias Distances = [Character: [Character: Distance]]
 var distances: Distances = [:]
-func addDistance(distances: Distances, _ charA: Character, _ charB: Character, _ distance: Distance) -> Distances {
-    if charA.code() > charB.code() { return addDistance(distances, charB, charA, distance) }
+func addDistance(charA: Character, _ charB: Character, _ distance: Distance) {
+    if charA.code() > charB.code() { return addDistance(charB, charA, distance) }
 
-    var newDistances = distances
-    if let _ = newDistances[charA] {
-        newDistances[charA]![charB] = distance
+    if let _ = distances[charA] {
+        distances[charA]![charB] = distance
     } else {
-        newDistances[charA] = [charB: distance]
+        distances[charA] = [charB: distance]
     }
-    return newDistances
 }
 
 
 for charA in alphabet.characters {
     for charB in alphabet.characters {
         let distance = distanceBetween(charA, and: charB)
-        if distance < 0.15 {
-            distances = addDistance(distances, charA, charB, distance)
-        }
+        if distance < 0.15 { addDistance(charA, charB, distance) }
     }
-    
-    distances = addDistance(distances, charA, charA.uppercase(), uppercaseDistance)
-    
+    addDistance(charA, charA.uppercase(), uppercaseDistance)
     for similarChar in similarCharsFor(charA) {
-        distances = addDistance(distances, charA, similarChar, similarDistance)
+        addDistance(charA, similarChar, similarDistance)
     }
 }
 
