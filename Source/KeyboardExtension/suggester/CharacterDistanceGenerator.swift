@@ -29,57 +29,58 @@ func codes(chars: [Character]) -> String {
         .map(String.init).joinWithSeparator(",")
 }
 
+typealias Distances = [Character: [Character: Distance]]
+var distances: Distances = [:]
+func addDistance(distances: Distances, _ charA: Character, _ charB: Character, _ distance: Distance) -> Distances {
+    if charA.code() > charB.code() { return addDistance(distances, charB, charA, distance) }
+
+    var newDistances = distances
+    if let _ = newDistances[charA] {
+        newDistances[charA]![charB] = distance
+    } else {
+        newDistances[charA] = [charB: distance]
+    }
+    return newDistances
+}
+
+
+for charA in alphabet.characters {
+    for charB in alphabet.characters {
+        let distance = distanceBetween(charA, and: charB)
+        if distance < 0.15 {
+            distances = addDistance(distances, charA, charB, distance)
+        }
+    }
+    
+    distances = addDistance(distances, charA, charA.uppercase(), uppercaseDistance)
+    
+    for similarChar in similarCharsFor(charA) {
+        distances = addDistance(distances, charA, similarChar, similarDistance)
+    }
+}
 
 
 var lines = [
     "// generated",
     "import Foundation",
-    "func distanceBetweenUInt16Chars(codeA: UInt16, and codeB: UInt16) -> Distance {",
+    "func distanceBetweenUInt16Chars(codeA: CharacterCode, and codeB: CharacterCode) -> Distance {",
     "if codeA == codeB { return 0 }",
+    "if codeA > codeB { return distanceBetweenUInt16Chars(codeB, and: codeA) }",
     "switch (codeA) {",
 ]
 
-for charA in alphabet.characters {
+for (charA, distancesForCharA) in distances {
     lines.appendContentsOf([
         "case \(charA.code()):  // \(charA)",
         "    switch (codeB) {",
         ])
-    for charB in alphabet.characters {
-        let distance = distanceBetween(charA, and: charB)
-        if distance < 0.15 {
-            lines.append("    case \(charB.code()): return \(distance)  // \(charB)")
-        }
-    }
-    lines.append(
-        "    case \(charA.uppercase().code()): return \(uppercaseDistance)  // \(charA.uppercase()))"
-        )
-    let similarChars = similarCharsFor(charA)
-    if !similarChars.isEmpty {
-        lines.append(
-            "    case \(codes(similarChars)): return \(similarDistance)  // \(similarChars)"
-            )
+    for (charB, distance) in distancesForCharA {
+        lines.append("    case \(charB.code()): return \(distance)  // \(charB)")
     }
     lines.appendContentsOf([
         "    default: return 1",
         "    }",
         ])
-
-    lines.appendContentsOf([
-        "case \(charA.uppercase().code()):  // \(charA.uppercase())",
-        "    switch (codeB) {",
-        "    case \(charA.code()): return \(uppercaseDistance)  // \(charA)",
-        "    default: return 1",
-        "    }",
-        ])
-    if !similarChars.isEmpty {
-        lines.appendContentsOf([
-            "case \(codes(similarChars)):  // \(similarChars)",
-            "    switch (codeB) {",
-            "    case \(charA.code()): return \(similarDistance)  // \(charA)",
-            "    default: return 1",
-            "    }",
-            ])
-    }
 }
 
 lines.appendContentsOf([
@@ -87,4 +88,6 @@ lines.appendContentsOf([
     "}",
     "}",
     ])
+
+
 print(lines.joinWithSeparator("\n"))
