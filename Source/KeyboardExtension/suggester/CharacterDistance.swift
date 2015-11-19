@@ -6,6 +6,13 @@ if codeA > codeB { return distanceBetweenUInt16Chars(codeB, and: codeA) }
 switch (codeA) {
 case 72:  // H
     switch (codeB) {
+    case 72: return 0.0  // H
+    case 78: return 0.0947639998412172  // N
+    case 85: return 0.0947639998412172  // U
+    case 74: return 0.0899642804759983  // J
+    case 73: return 0.147272298828553  // I
+    case 77: return 0.147272298828553  // M
+    case 90: return 0.0982298625374924  // Z
     case 104: return 0.01  // h
     default: return 1
     }
@@ -22,17 +29,36 @@ case 120:  // x
     }
 case 83:  // S
     switch (codeB) {
+    case 88: return 0.111617403896946  // X
     case 115: return 0.01  // s
+    case 87: return 0.0881828399128482  // W
+    case 83: return 0.02  // S
+    case 89: return 0.0881828399128482  // Y
     default: return 1
     }
 case 65:  // A
     switch (codeB) {
+    case 196: return 0.02  // Ä
+    case 192: return 0.02  // À
+    case 65: return 0.0  // A
     case 97: return 0.01  // a
+    case 194: return 0.02  // Â
+    case 89: return 0.116886471687297  // Y
+    case 193: return 0.02  // Á
+    case 87: return 0.116886471687297  // W
+    case 83: return 0.0899642804759983  // S
+    case 81: return 0.0874210226973429  // Q
     default: return 1
     }
 case 67:  // C
     switch (codeB) {
+    case 88: return 0.0817857095236349  // X
+    case 86: return 0.0817857095236349  // V
+    case 67: return 0.0  // C
+    case 68: return 0.106715605641952  // D
     case 99: return 0.01  // c
+    case 71: return 0.147272298828553  // G
+    case 70: return 0.0918972441552164  // F
     default: return 1
     }
 case 114:  // r
@@ -53,6 +79,8 @@ case 99:  // c
     }
 case 82:  // R
     switch (codeB) {
+    case 82: return 0.0  // R
+    case 84: return 0.0817857095236349  // T
     case 114: return 0.01  // r
     default: return 1
     }
@@ -67,12 +95,23 @@ case 101:  // e
     }
 case 71:  // G
     switch (codeB) {
+    case 72: return 0.0899642804759983  // H
+    case 86: return 0.0947639998412171  // V
+    case 84: return 0.0947639998412172  // T
+    case 82: return 0.147272298828553  // R
+    case 71: return 0.0  // G
     case 103: return 0.01  // g
+    case 90: return 0.0982298625374924  // Z
     default: return 1
     }
 case 69:  // E
     switch (codeB) {
+    case 82: return 0.0817857095236349  // R
     case 101: return 0.01  // e
+    case 87: return 0.0817857095236349  // W
+    case 70: return 0.140770157928472  // F
+    case 83: return 0.111617403896947  // S
+    case 69: return 0.0  // E
     default: return 1
     }
 case 106:  // j
@@ -88,6 +127,7 @@ case 106:  // j
 case 86:  // V
     switch (codeB) {
     case 118: return 0.01  // v
+    case 86: return 0.0  // V
     default: return 1
     }
 case 112:  // p
@@ -97,11 +137,21 @@ case 112:  // p
     }
 case 66:  // B
     switch (codeB) {
+    case 72: return 0.0982298625374923  // H
+    case 66: return 0.0  // B
+    case 71: return 0.0982298625374923  // G
+    case 86: return 0.0817857095236348  // V
+    case 78: return 0.0817857095236349  // N
     case 98: return 0.01  // b
     default: return 1
     }
 case 75:  // K
     switch (codeB) {
+    case 76: return 0.0899642804759983  // L
+    case 79: return 0.0896870634282693  // O
+    case 75: return 0.0  // K
+    case 77: return 0.106715605641952  // M
+    case 80: return 0.134451191031589  // P
     case 107: return 0.01  // k
     default: return 1
     }
@@ -115,6 +165,7 @@ case 111:  // o
     }
 case 87:  // W
     switch (codeB) {
+    case 87: return 0.0  // W
     case 119: return 0.01  // w
     default: return 1
     }
@@ -134,6 +185,8 @@ case 105:  // i
     }
 case 84:  // T
     switch (codeB) {
+    case 84: return 0.0  // T
+    case 90: return 0.0817857095236348  // Z
     case 116: return 0.01  // t
     default: return 1
     }
@@ -146,17 +199,28 @@ case 108:  // l
     }
 case 80:  // P
     switch (codeB) {
+    case 80: return 0.0  // P
     case 112: return 0.01  // p
     default: return 1
     }
 case 88:  // X
     switch (codeB) {
+    case 88: return 0.0  // X
     case 120: return 0.01  // x
+    case 89: return 0.0817857095236349  // Y
     default: return 1
     }
 case 68:  // D
     switch (codeB) {
+    case 88: return 0.0896870634282692  // X
+    case 68: return 0.0  // D
+    case 89: return 0.134451191031589  // Y
+    case 82: return 0.106715605641952  // R
+    case 87: return 0.134451191031589  // W
+    case 70: return 0.0899642804759983  // F
     case 100: return 0.01  // d
+    case 83: return 0.0899642804759983  // S
+    case 69: return 0.0896870634282693  // E
     default: return 1
     }
 case 110:  // n
@@ -167,6 +231,12 @@ case 110:  // n
 case 74:  // J
     switch (codeB) {
     case 106: return 0.01  // j
+    case 78: return 0.102233918872401  // N
+    case 85: return 0.102233918872401  // U
+    case 74: return 0.0  // J
+    case 79: return 0.140770157928472  // O
+    case 75: return 0.0899642804759983  // K
+    case 77: return 0.0918972441552164  // M
     default: return 1
     }
 case 117:  // u
@@ -179,12 +249,19 @@ case 117:  // u
     }
 case 73:  // I
     switch (codeB) {
+    case 74: return 0.0918972441552164  // J
+    case 79: return 0.0817857095236349  // O
+    case 73: return 0.0  // I
+    case 75: return 0.106715605641952  // K
     case 105: return 0.01  // i
+    case 85: return 0.0817857095236348  // U
     default: return 1
     }
 case 77:  // M
     switch (codeB) {
+    case 78: return 0.0817857095236348  // N
     case 109: return 0.01  // m
+    case 77: return 0.0  // M
     default: return 1
     }
 case 113:  // q
@@ -201,6 +278,7 @@ case 118:  // v
     }
 case 90:  // Z
     switch (codeB) {
+    case 90: return 0.0  // Z
     case 122: return 0.01  // z
     default: return 1
     }
@@ -215,12 +293,14 @@ case 98:  // b
     }
 case 78:  // N
     switch (codeB) {
+    case 78: return 0.0  // N
     case 110: return 0.01  // n
     default: return 1
     }
 case 89:  // Y
     switch (codeB) {
     case 121: return 0.01  // y
+    case 89: return 0.0  // Y
     default: return 1
     }
 case 121:  // y
@@ -241,12 +321,19 @@ case 104:  // h
     }
 case 85:  // U
     switch (codeB) {
+    case 218: return 0.02  // Ú
     case 117: return 0.01  // u
+    case 220: return 0.02  // Ü
+    case 85: return 0.0  // U
+    case 90: return 0.0817857095236349  // Z
     default: return 1
     }
 case 76:  // L
     switch (codeB) {
+    case 76: return 0.0  // L
+    case 79: return 0.111617403896946  // O
     case 108: return 0.01  // l
+    case 80: return 0.0881828399128482  // P
     default: return 1
     }
 case 102:  // f
@@ -261,12 +348,22 @@ case 102:  // f
     }
 case 79:  // O
     switch (codeB) {
+    case 214: return 0.02  // Ö
+    case 79: return 0.0  // O
     case 111: return 0.01  // o
+    case 80: return 0.0817857095236348  // P
+    case 216: return 0.02  // Ø
     default: return 1
     }
 case 70:  // F
     switch (codeB) {
+    case 88: return 0.140770157928472  // X
+    case 86: return 0.102233918872402  // V
+    case 84: return 0.102233918872402  // T
+    case 82: return 0.0918972441552164  // R
+    case 71: return 0.0899642804759983  // G
     case 102: return 0.01  // f
+    case 70: return 0.0  // F
     default: return 1
     }
 case 107:  // k
@@ -336,7 +433,10 @@ case 103:  // g
     }
 case 81:  // Q
     switch (codeB) {
+    case 87: return 0.0817857095236349  // W
     case 113: return 0.01  // q
+    case 83: return 0.12834245681794  // S
+    case 81: return 0.0  // Q
     default: return 1
     }
 default: return 1

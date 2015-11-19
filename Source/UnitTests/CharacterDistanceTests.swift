@@ -32,6 +32,16 @@ class CharacterDistanceTests: XCTestCase {
         expect(distanceBetweenChars("a", "A")) <
                distanceBetweenChars("a", "ä")
     }
+    
+    func testUppercaseVariantsOfBaseCharactersHaveSameDistanceAsLowercaseVariants() {
+        expect(distanceBetweenChars("K", "L")) ==
+               distanceBetweenChars("k", "l")
+    }
+
+    func testUppercaseVariantsOfDiacriticalCharactersHaveSameDistanceAsLowercaseVariants() {
+        expect(distanceBetweenChars("A", "Ä")) ==
+               distanceBetweenChars("a", "ä")
+    }
 }
 
 

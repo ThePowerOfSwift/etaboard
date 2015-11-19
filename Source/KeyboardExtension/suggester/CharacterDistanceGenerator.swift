@@ -45,11 +45,15 @@ func addDistance(charA: Character, _ charB: Character, _ distance: Distance) {
 for charA in alphabet.characters {
     for charB in alphabet.characters {
         let distance = distanceBetween(charA, and: charB)
-        if distance < 0.15 { addDistance(charA, charB, distance) }
+        if distance < 0.15 {
+            addDistance(charA, charB, distance)
+            addDistance(charA.uppercase(), charB.uppercase(), distance)
+        }
     }
     addDistance(charA, charA.uppercase(), uppercaseDistance)
     for similarChar in similarCharsFor(charA) {
         addDistance(charA, similarChar, similarDistance)
+        addDistance(charA.uppercase(), similarChar.uppercase(), similarDistance)
     }
 }
 
