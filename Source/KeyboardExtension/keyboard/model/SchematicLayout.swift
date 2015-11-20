@@ -22,7 +22,7 @@ class SchematicLayout {
         "\(ToLetters) \(Space) \(Backspace) \(Enter)",
         "@ & : ; + * / =",
         "( ) { } [ ] < >",
-        "' \" € $ ä ö ü ß",
+        "' \" € $ ä é ö ü ß",
     ]
 
     static let Emojis = [
