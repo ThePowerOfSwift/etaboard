@@ -9,10 +9,11 @@ func distanceBetween(charA: Character, and charB: Character) -> Distance {
 
 let alphabet = "abcdefghijklmnopqrstuvwxyz"
 let allLowercaseSimilarChars = [
-    "a": "äáàâ",
+    "a": "åäáàâ",
+    "e": "éèê",
     "o": "öø",
     "s": "ß",
-    "u": "üú",
+    "u": "üúùû",
 ]
 
 let uppercaseDistance = 0.05

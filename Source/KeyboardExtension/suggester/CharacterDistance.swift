@@ -46,6 +46,7 @@ case 65:  // A
     case 89: return 0.116886471687297  // Y
     case 193: return 0.06  // Á
     case 87: return 0.116886471687297  // W
+    case 197: return 0.06  // Å
     case 83: return 0.0899642804759983  // S
     case 81: return 0.0874210226973429  // Q
     default: return 1
@@ -86,11 +87,14 @@ case 82:  // R
     }
 case 101:  // e
     switch (codeB) {
+    case 119: return 0.0817857095236349  // w
+    case 114: return 0.0817857095236349  // r
+    case 233: return 0.06  // é
     case 101: return 0.0  // e
     case 102: return 0.140770157928472  // f
     case 115: return 0.111617403896947  // s
-    case 114: return 0.0817857095236349  // r
-    case 119: return 0.0817857095236349  // w
+    case 232: return 0.06  // è
+    case 234: return 0.06  // ê
     default: return 1
     }
 case 71:  // G
@@ -106,6 +110,9 @@ case 71:  // G
     }
 case 69:  // E
     switch (codeB) {
+    case 201: return 0.06  // É
+    case 200: return 0.06  // È
+    case 202: return 0.06  // Ê
     case 82: return 0.0817857095236349  // R
     case 101: return 0.05  // e
     case 87: return 0.0817857095236349  // W
@@ -241,8 +248,10 @@ case 74:  // J
     }
 case 117:  // u
     switch (codeB) {
+    case 249: return 0.06  // ù
     case 117: return 0.0  // u
     case 252: return 0.06  // ü
+    case 251: return 0.06  // û
     case 122: return 0.0817857095236349  // z
     case 250: return 0.06  // ú
     default: return 1
@@ -322,9 +331,11 @@ case 104:  // h
 case 85:  // U
     switch (codeB) {
     case 218: return 0.06  // Ú
+    case 217: return 0.06  // Ù
+    case 85: return 0.0  // U
     case 117: return 0.05  // u
     case 220: return 0.06  // Ü
-    case 85: return 0.0  // U
+    case 219: return 0.06  // Û
     case 90: return 0.0817857095236349  // Z
     default: return 1
     }
@@ -402,6 +413,7 @@ case 97:  // a
     case 226: return 0.06  // â
     case 224: return 0.06  // à
     case 115: return 0.0899642804759983  // s
+    case 229: return 0.06  // å
     case 113: return 0.0874210226973429  // q
     case 121: return 0.116886471687297  // y
     default: return 1
