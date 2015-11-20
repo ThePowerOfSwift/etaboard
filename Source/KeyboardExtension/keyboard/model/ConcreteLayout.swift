@@ -7,14 +7,14 @@ struct ConcreteLayout {
 
     init(schematicLayout: [String], size: CGSize) {
         let rows = schematicLayout
-        let noOfRowSegments = CGFloat(rows.count * 2)
+        let keyHeight = size.height / CGFloat(rows.count)
         for (rowIdx, row) in rows.enumerate() {
-            let y = size.height / noOfRowSegments * (CGFloat(rowIdx) * 2 + 1)
+            let y = keyHeight * (CGFloat(rowIdx) + 0.5)
             
             let keysInRow = row.split(" ")
-            let numberOfKeySegments = CGFloat(keysInRow.count * 2)
+            let keyWidth = size.width / CGFloat(keysInRow.count)
             for (posInRow, key) in keysInRow.enumerate() {
-                let x = size.width / numberOfKeySegments * (CGFloat(posInRow) * 2 + 1)
+                let x = keyWidth * (CGFloat(posInRow) + 0.5)
                 keysWithCoordinates[key] = (x, y)
             }
         }
