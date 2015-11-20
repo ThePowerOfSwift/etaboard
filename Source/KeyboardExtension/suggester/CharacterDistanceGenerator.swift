@@ -15,8 +15,8 @@ let allLowercaseSimilarChars = [
     "u": "üú",
 ]
 
-let uppercaseDistance = 0.01
-let similarDistance = 0.02
+let uppercaseDistance = 0.05
+let similarDistance = 0.06
 
 func similarCharsFor(char: Character) -> [Character] {
     if let similarChars = allLowercaseSimilarChars[String(char)] {
