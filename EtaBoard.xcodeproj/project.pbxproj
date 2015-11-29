@@ -21,6 +21,8 @@
 		2045E7BE1BC84A2700045CEB /* pipe-forward.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2045E7BD1BC84A2700045CEB /* pipe-forward.swift */; };
 		2045E7C01BC8584200045CEB /* SequenceType+groupBy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2045E7BF1BC8584200045CEB /* SequenceType+groupBy.swift */; };
 		2045E7C11BC858F900045CEB /* SequenceType+groupBy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2045E7BF1BC8584200045CEB /* SequenceType+groupBy.swift */; };
+		2051CABC1C0BA9D400744586 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2051CABA1C0BA9D400744586 /* Realm.framework */; };
+		2051CABD1C0BA9D400744586 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2051CABB1C0BA9D400744586 /* RealmSwift.framework */; };
 		205A41391BC4978E00E659E1 /* CharacterDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205A41371BC4978000E659E1 /* CharacterDistance.swift */; };
 		205A413A1BC4978E00E659E1 /* CharacterDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205A41371BC4978000E659E1 /* CharacterDistance.swift */; };
 		205A413D1BC4999900E659E1 /* ConcreteLayout_DistanceBetweenChars_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205A413C1BC4999900E659E1 /* ConcreteLayout_DistanceBetweenChars_Tests.swift */; };
@@ -117,6 +119,8 @@
 		204008BB1BD6D30300FAD96C /* SuggesterWithDictionaries.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggesterWithDictionaries.swift; sourceTree = "<group>"; };
 		2045E7BD1BC84A2700045CEB /* pipe-forward.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "pipe-forward.swift"; sourceTree = "<group>"; };
 		2045E7BF1BC8584200045CEB /* SequenceType+groupBy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SequenceType+groupBy.swift"; sourceTree = "<group>"; };
+		2051CABA1C0BA9D400744586 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = SOURCE_ROOT; };
+		2051CABB1C0BA9D400744586 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = SOURCE_ROOT; };
 		205A41361BC4912F00E659E1 /* CharacterDistanceGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDistanceGenerator.swift; sourceTree = "<group>"; };
 		205A41371BC4978000E659E1 /* CharacterDistance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterDistance.swift; sourceTree = "<group>"; };
 		205A413C1BC4999900E659E1 /* ConcreteLayout_DistanceBetweenChars_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcreteLayout_DistanceBetweenChars_Tests.swift; sourceTree = "<group>"; };
@@ -174,6 +178,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2051CABC1C0BA9D400744586 /* Realm.framework in Frameworks */,
+				2051CABD1C0BA9D400744586 /* RealmSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,6 +208,15 @@
 				20317DE51BA2EEF2008A4303 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2051CAC01C0BBAE800744586 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2051CABA1C0BA9D400744586 /* Realm.framework */,
+				2051CABB1C0BA9D400744586 /* RealmSwift.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		205A413B1BC4998A00E659E1 /* keyboard */ = {
@@ -321,6 +336,7 @@
 				C21DF7BC99AC431E9EA856D8 /* KeyboardViewController.swift */,
 				204008BB1BD6D30300FAD96C /* SuggesterWithDictionaries.swift */,
 				200B84961BE979A000E9D998 /* Distance.swift */,
+				2051CAC01C0BBAE800744586 /* Frameworks */,
 			);
 			name = KeyboardExtension;
 			path = Source/KeyboardExtension;
@@ -406,6 +422,7 @@
 				206ECC341B83D4C900B62EA0 /* Sources */,
 				206ECC351B83D4C900B62EA0 /* Frameworks */,
 				206ECC361B83D4C900B62EA0 /* Resources */,
+				2051CABE1C0BA9DE00744586 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -478,6 +495,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2051CABE1C0BA9DE00744586 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		20317DDE1BA2EEF2008A4303 /* Sources */ = {
@@ -714,6 +749,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -732,6 +771,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Source/KeyboardExtension/helpers/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.bepple.alex.keyboard.extension;

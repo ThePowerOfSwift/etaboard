@@ -1,3 +1,11 @@
+import RealmSwift
+
+class UserDictionaryEntry: Object {
+    dynamic var word = ""
+    override static func primaryKey() -> String? {
+        return "word"
+    }
+}
 
 class SuggesterWithDictionaries {
     static var systemLexiconLoaded = false
@@ -6,14 +14,31 @@ class SuggesterWithDictionaries {
     class func createSuggester() -> Suggester {
         let suggester = Suggester()
         
-        loadDictionaries(from: ".", with: suggester.addUnknownLengths)
-        loadDictionaries(from: "de", with: suggester.addSameLength)
+        loadDictionaries(from: ".", then: suggester.addUnknownLengths)
+        loadDictionaries(from: "de", then: suggester.addSameLength)
+        loadUserDictionary(then: suggester.addUnknownLengths)
         
         return suggester
     }
     
+    private static func loadUserDictionary(then functor: [String] -> ()) {
+        do {
+            let word = UserDictionaryEntry(value: ["Andalusien"])
+            let realm = try Realm()
+            try realm.write {
+                realm.add(word, update: true)
+            }
+            
+            let entries = realm.objects(UserDictionaryEntry)
+            let words = entries.map { $0.word }
+            words |> functor
+        } catch _ {
+            NSLog("could not load user dictionary")
+        }
+    }
+    
     private static func loadDictionaries(from pathInBundle: String,
-        with functor: [String] -> ()) {
+        then functor: [String] -> ()) {
             
         let bundlePath = "Dictionaries.bundle"
         let directory = NSURL.fileURLWithPathComponents([bundlePath, pathInBundle])?.path
