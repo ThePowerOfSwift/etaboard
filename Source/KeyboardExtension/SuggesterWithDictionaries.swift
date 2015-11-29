@@ -23,12 +23,7 @@ class SuggesterWithDictionaries {
     
     private static func loadUserDictionary(then functor: [String] -> ()) {
         do {
-            let word = UserDictionaryEntry(value: ["Andalusien"])
             let realm = try Realm()
-            try realm.write {
-                realm.add(word, update: true)
-            }
-            
             let entries = realm.objects(UserDictionaryEntry)
             let words = entries.map { $0.word }
             words |> functor

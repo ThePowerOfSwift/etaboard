@@ -1,4 +1,5 @@
 import UIKit
+import RealmSwift
 
 class KeyboardViewController: UIInputViewController {
     var document: Document!
@@ -42,6 +43,7 @@ extension KeyboardViewController: DocumentDelegate {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
             let suggestion = self.suggester.suggestCompletion(to: newCurrentWord)
             dispatch_async(dispatch_get_main_queue(), {
+                self.suggestionBar.displayVerbatim(newCurrentWord)
                 self.suggestionBar.displaySuggestion(suggestion)
             })
         })
@@ -81,6 +83,7 @@ extension KeyboardViewController {
     private func initSuggestionBar() {
         suggestionBar = SuggestionBarView(target: self, action: "didTapSuggestion:")
         suggestionBar.translatesAutoresizingMaskIntoConstraints = false
+        suggestionBar.onVerbatim(target: self, action: "didTapVerbatim:")
         self.view.addSubview(suggestionBar)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector:"didActivateUppercase:",
@@ -104,6 +107,26 @@ extension KeyboardViewController {
         let title = button.titleForState(.Normal)
         
         document?.replaceCurrentWord(title!)
+    }
+    
+    func didTapVerbatim(sender: AnyObject?) {
+        didTapSuggestion(sender)
+        
+        let button = sender as! UIButton
+        let title = button.titleForState(.Normal)
+
+        suggester.addUnknownLengths([title!])
+            
+        do {
+            let word = UserDictionaryEntry()
+            word.word = title!
+            let realm = try Realm()
+            try realm.write {
+                realm.add(word, update: true)
+            }
+        } catch _ {
+            NSLog("could not add '\(title)' to user dictionary")
+        }
     }
     
     func didActivateUppercase(notification: NSNotification) {
