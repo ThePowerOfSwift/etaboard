@@ -15,7 +15,6 @@ class SuggestionBarView: UIView {
 
         verbatimButton.setTitleColor(UIColor.lightGrayColor(), forState: .Normal)
         verbatimButton.translatesAutoresizingMaskIntoConstraints = false
-        verbatimButton.addTarget(target, action: action, forControlEvents: .TouchUpInside)
         addSubview(verbatimButton)
         align([.Top, .Height, .Left], of: verbatimButton)
     }
