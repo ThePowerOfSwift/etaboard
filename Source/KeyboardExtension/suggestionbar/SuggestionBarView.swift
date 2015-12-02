@@ -17,6 +17,8 @@ class SuggestionBarView: UIView {
         verbatimButton.translatesAutoresizingMaskIntoConstraints = false
         addSubview(verbatimButton)
         align([.Top, .Height, .Left], of: verbatimButton)
+        
+        align(.Right, of: verbatimButton, with: .Left, of: buttonForSuggestion)
     }
     
     func displayVerbatim(verbatim: String?) {
