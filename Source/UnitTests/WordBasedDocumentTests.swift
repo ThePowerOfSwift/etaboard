@@ -47,5 +47,10 @@ class WordBasedDocumentTests: XCTestCase {
         document.deleteCurrentWord()
         expect(self.mock.deleteBackward_calls) == 0
     }
+    
+    func testThereIsNoCurrentWordAtBeginningOfLine() {
+        mock.documentContextBeforeInput = "\n"
+        expect(self.document.currentWord()).to(beNil())
+    }
 
 }

@@ -14,7 +14,7 @@ class WordBasedDocument: Document {
     
     func currentWord() -> String? {
         guard let contextBefore = proxy.documentContextBeforeInput else { return nil }
-        if contextBefore.hasSuffix(" ") { return nil }
+        if contextBefore.hasSuffix(" ") || contextBefore.hasSuffix("\n") { return nil }
         
         let wordsBefore = contextBefore.split(" ")
         return wordsBefore.last
