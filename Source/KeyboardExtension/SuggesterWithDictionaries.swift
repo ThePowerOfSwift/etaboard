@@ -22,14 +22,16 @@ class SuggesterWithDictionaries {
     }
     
     private static func loadUserDictionary(then functor: [String] -> ()) {
-        do {
-            let realm = try Realm()
-            let entries = realm.objects(UserDictionaryEntry)
-            let words = entries.map { $0.word }
-            words |> functor
-        } catch _ {
-            NSLog("could not load user dictionary")
-        }
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+            do {
+                let realm = try Realm()
+                let entries = realm.objects(UserDictionaryEntry)
+                let words = entries.map { $0.word }
+                words |> functor
+            } catch _ {
+                NSLog("could not load user dictionary")
+            }
+        })
     }
     
     private static func loadDictionaries(from pathInBundle: String,
@@ -39,7 +41,6 @@ class SuggesterWithDictionaries {
         let directory = NSURL.fileURLWithPathComponents([bundlePath, pathInBundle])?.path
         let paths = NSBundle.mainBundle().pathsForResourcesOfType("txt",
             inDirectory: directory)
-        NSLog("paths: \(paths)")
         paths.forEach { path in
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
                 loadSuggestionsFromDictionaryAt(path) |> functor
