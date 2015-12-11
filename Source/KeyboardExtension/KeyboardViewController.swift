@@ -104,7 +104,7 @@ extension KeyboardViewController {
 
     func buttonTitle(sender: AnyObject?) -> String? {
         let button = sender as! UIButton
-        return button.titleForState(.Normal)
+        return button.currentTitle
     }
     
     func didTapSuggestion(sender: AnyObject?) {
