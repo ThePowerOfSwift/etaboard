@@ -102,30 +102,36 @@ extension KeyboardViewController {
         }
     }
 
-    func didTapSuggestion(sender: AnyObject?) {
+    func buttonTitle(sender: AnyObject?) -> String? {
         let button = sender as! UIButton
-        let title = button.titleForState(.Normal)
-        
-        document?.replaceCurrentWord(title!)
+        return button.titleForState(.Normal)
     }
     
+    func didTapSuggestion(sender: AnyObject?) {
+        if let word = buttonTitle(sender) { didSelectSuggestion(word) }
+    }
     func didTapVerbatim(sender: AnyObject?) {
-        didTapSuggestion(sender)
-        
-        let button = sender as! UIButton
-        let title = button.titleForState(.Normal)
+        if let word = buttonTitle(sender) { didSelectVerbatim(word) }
+    }
+    
+    func didSelectSuggestion(word: String) {
+        document?.replaceCurrentWord(word)
+    }
 
-        suggester.addUnknownLengths([title!])
+    func didSelectVerbatim(verbatimWord: String) {
+        didSelectSuggestion(verbatimWord)
+        
+        suggester.addUnknownLengths([verbatimWord])
             
         do {
-            let word = UserDictionaryEntry()
-            word.word = title!
+            let newDictionaryEntry = UserDictionaryEntry()
+            newDictionaryEntry.word = verbatimWord
             let realm = try Realm()
             try realm.write {
-                realm.add(word, update: true)
+                realm.add(newDictionaryEntry, update: true)
             }
         } catch _ {
-            NSLog("could not add '\(title)' to user dictionary")
+            NSLog("could not add '\(verbatimWord)' to user dictionary")
         }
     }
     
