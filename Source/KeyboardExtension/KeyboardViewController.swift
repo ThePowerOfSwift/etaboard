@@ -122,16 +122,18 @@ extension KeyboardViewController {
         didSelectSuggestion(verbatimWord)
         
         suggester.addUnknownLengths([verbatimWord])
-            
-        do {
-            let newDictionaryEntry = UserDictionaryEntry()
-            newDictionaryEntry.word = verbatimWord
-            let realm = try Realm()
-            try realm.write {
-                realm.add(newDictionaryEntry, update: true)
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+            do {
+                let newDictionaryEntry = UserDictionaryEntry()
+                newDictionaryEntry.word = verbatimWord
+                let realm = try Realm()
+                try realm.write {
+                    realm.add(newDictionaryEntry, update: true)
+                }
+            } catch _ {
+                NSLog("could not add '\(verbatimWord)' to user dictionary")
             }
-        } catch _ {
-            NSLog("could not add '\(verbatimWord)' to user dictionary")
         }
     }
     
