@@ -1,4 +1,5 @@
 import RealmSwift
+import GCDKit
 
 class UserDictionaryEntry: Object {
     dynamic var word = ""
@@ -22,7 +23,7 @@ class SuggesterWithDictionaries {
     }
     
     private static func loadUserDictionary(then functor: [String] -> ()) {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+        GCDQueue.Default.async {
             do {
                 let realm = try Realm()
                 let entries = realm.objects(UserDictionaryEntry)
@@ -31,7 +32,7 @@ class SuggesterWithDictionaries {
             } catch _ {
                 NSLog("could not load user dictionary")
             }
-        })
+        }
     }
     
     private static func loadDictionaries(from pathInBundle: String,
@@ -42,9 +43,9 @@ class SuggesterWithDictionaries {
         let paths = NSBundle.mainBundle().pathsForResourcesOfType("txt",
             inDirectory: directory)
         paths.forEach { path in
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+            GCDQueue.Default.async {
                 loadSuggestionsFromDictionaryAt(path) |> functor
-            })
+            }
         }
     }
     

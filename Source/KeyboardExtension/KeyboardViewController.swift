@@ -1,5 +1,6 @@
 import UIKit
 import RealmSwift
+import GCDKit
 
 class KeyboardViewController: UIInputViewController {
     var document: Document!
@@ -40,13 +41,13 @@ extension KeyboardViewController {
 
 extension KeyboardViewController: DocumentDelegate {
     func didChangeCurrentWord(newCurrentWord: String?) {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+        GCDQueue.Default.async {
             let suggestion = self.suggester.suggestCompletion(to: newCurrentWord)
-            dispatch_async(dispatch_get_main_queue(), {
+            GCDQueue.Main.async {
                 self.suggestionBar.displayVerbatim(newCurrentWord)
                 self.suggestionBar.displaySuggestion(suggestion)
-            })
-        })
+            }
+        }
     }
 }
 
@@ -124,7 +125,7 @@ extension KeyboardViewController {
         
         suggester.addUnknownLengths([verbatimWord])
         
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+        GCDQueue.Default.async {
             do {
                 let newDictionaryEntry = UserDictionaryEntry()
                 newDictionaryEntry.word = verbatimWord

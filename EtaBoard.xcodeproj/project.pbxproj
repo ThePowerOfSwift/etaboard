@@ -33,6 +33,7 @@
 		206ECC1C1B83D44300B62EA0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 206ECC1B1B83D44300B62EA0 /* Images.xcassets */; };
 		206ECC1F1B83D44300B62EA0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 206ECC1D1B83D44300B62EA0 /* LaunchScreen.xib */; };
 		206ECC401B83D4C900B62EA0 /* EtaBoardExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 206ECC381B83D4C900B62EA0 /* EtaBoardExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		206FF6EE1C1B8B6100294BE6 /* GCDKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 206FF6ED1C1B8B6100294BE6 /* GCDKit.framework */; };
 		207686601BB211BE004B1F57 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2076865F1BB211BE004B1F57 /* String+.swift */; };
 		207686611BB212D6004B1F57 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2076865F1BB211BE004B1F57 /* String+.swift */; };
 		207686631BB21300004B1F57 /* String+split_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207686621BB21300004B1F57 /* String+split_Tests.swift */; };
@@ -133,6 +134,7 @@
 		206ECC1E1B83D44300B62EA0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		206ECC381B83D4C900B62EA0 /* EtaBoardExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = EtaBoardExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		206ECC3B1B83D4C900B62EA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		206FF6ED1C1B8B6100294BE6 /* GCDKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GCDKit.framework; path = Carthage/Build/iOS/GCDKit.framework; sourceTree = SOURCE_ROOT; };
 		2076865F1BB211BE004B1F57 /* String+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		207686621BB21300004B1F57 /* String+split_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+split_Tests.swift"; sourceTree = "<group>"; };
 		207F2C9B1BADB1350049AEB9 /* SuggesterPerformanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggesterPerformanceTests.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				206FF6EE1C1B8B6100294BE6 /* GCDKit.framework in Frameworks */,
 				2051CABC1C0BA9D400744586 /* Realm.framework in Frameworks */,
 				2051CABD1C0BA9D400744586 /* RealmSwift.framework in Frameworks */,
 			);
@@ -213,6 +216,7 @@
 		2051CAC01C0BBAE800744586 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				206FF6ED1C1B8B6100294BE6 /* GCDKit.framework */,
 				2051CABA1C0BA9D400744586 /* Realm.framework */,
 				2051CABB1C0BA9D400744586 /* RealmSwift.framework */,
 			);
@@ -505,6 +509,7 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/GCDKit.framework",
 			);
 			outputPaths = (
 			);
@@ -748,6 +753,7 @@
 		206ECC421B83D4C900B62EA0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = NO;
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -770,6 +776,7 @@
 		206ECC431B83D4C900B62EA0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = NO;
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
