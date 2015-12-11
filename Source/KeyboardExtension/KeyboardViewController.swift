@@ -73,7 +73,8 @@ extension KeyboardViewController {
     
     func handleTap(recognizer: UIGestureRecognizer) {
         let touchPoint = recognizer.locationInView(self.keyboardView)
-        let key = keyboardModel.closestKey(to: touchPoint)
+        let intendedTouchPoint = CGPointMake(touchPoint.x, touchPoint.y + 10)
+        let key = keyboardModel.closestKey(to: intendedTouchPoint)
         keyPressHandler?.handle(key)
     }
 }
