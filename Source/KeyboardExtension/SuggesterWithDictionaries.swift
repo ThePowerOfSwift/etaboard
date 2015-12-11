@@ -23,7 +23,7 @@ class SuggesterWithDictionaries {
     }
     
     private static func loadUserDictionary(then functor: [String] -> ()) {
-        GCDQueue.Default.async {
+        GCDQueue.UserInitiated.async {
             do {
                 let realm = try Realm()
                 let entries = realm.objects(UserDictionaryEntry)
@@ -43,7 +43,7 @@ class SuggesterWithDictionaries {
         let paths = NSBundle.mainBundle().pathsForResourcesOfType("txt",
             inDirectory: directory)
         paths.forEach { path in
-            GCDQueue.Default.async {
+            GCDQueue.UserInitiated.async {
                 loadSuggestionsFromDictionaryAt(path) |> functor
             }
         }

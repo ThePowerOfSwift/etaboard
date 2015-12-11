@@ -41,7 +41,7 @@ extension KeyboardViewController {
 
 extension KeyboardViewController: DocumentDelegate {
     func didChangeCurrentWord(newCurrentWord: String?) {
-        GCDQueue.Default.async {
+        GCDQueue.UserInteractive.async {
             let suggestion = self.suggester.suggestCompletion(to: newCurrentWord)
             GCDQueue.Main.async {
                 self.suggestionBar.displayVerbatim(newCurrentWord)
@@ -125,7 +125,7 @@ extension KeyboardViewController {
         
         suggester.addUnknownLengths([verbatimWord])
         
-        GCDQueue.Default.async {
+        GCDQueue.UserInitiated.async {
             do {
                 let newDictionaryEntry = UserDictionaryEntry()
                 newDictionaryEntry.word = verbatimWord
