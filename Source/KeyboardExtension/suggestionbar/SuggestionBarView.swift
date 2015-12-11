@@ -15,10 +15,10 @@ class SuggestionBarView: UIView {
 
         verbatimButton.setTitleColor(UIColor.lightGrayColor(), forState: .Normal)
         verbatimButton.translatesAutoresizingMaskIntoConstraints = false
+        verbatimButton.contentEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0)
         addSubview(verbatimButton)
         align([.Top, .Height, .Left], of: verbatimButton)
         
-        align(.Right, of: verbatimButton, with: .Left, of: buttonForSuggestion)
     }
     
     func displayVerbatim(verbatim: String?) {
