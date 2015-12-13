@@ -1,5 +1,6 @@
 import RealmSwift
 import GCDKit
+import PromiseKit
 
 class UserDictionaryEntry: Object {
     dynamic var word = ""
@@ -17,10 +18,11 @@ class SuggesterWithDictionaries {
         
         loadDictionaries(from: ".", then: suggester.addUnknownLengths)
         loadDictionaries(from: "de", then: suggester.addSameLength)
-        loadUserDictionary(then: suggester.addUnknownLengths)
+        dispatch_promise { loadUserDictionary() }.thenInBackground(suggester.addUnknownLengths)
         
         return suggester
     }
+ 
     
     private static func loadUserDictionary(then functor: [String] -> ()) {
         GCDQueue.UserInitiated.async {
@@ -34,7 +36,19 @@ class SuggesterWithDictionaries {
             }
         }
     }
-    
+
+    private static func loadUserDictionary() -> [String] {
+        do {
+            let realm = try Realm()
+            let entries = realm.objects(UserDictionaryEntry)
+            let words = entries.map { $0.word }
+            return words
+        } catch {
+            NSLog("could not load user dictionary")
+            return []
+        }
+    }
+
     private static func loadDictionaries(from pathInBundle: String,
         then functor: [String] -> ()) {
             
@@ -48,6 +62,7 @@ class SuggesterWithDictionaries {
             }
         }
     }
+
     
     private static func loadSuggestionsFromDictionaryAt(path: String) -> [String] {
         do {

@@ -39,6 +39,7 @@
 		207686631BB21300004B1F57 /* String+split_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207686621BB21300004B1F57 /* String+split_Tests.swift */; };
 		207F2C9C1BADB1350049AEB9 /* SuggesterPerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F2C9B1BADB1350049AEB9 /* SuggesterPerformanceTests.swift */; };
 		207F2C9D1BADB2FC0049AEB9 /* Suggester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20925E351BACA64700FBCFE4 /* Suggester.swift */; };
+		207FBA111C1DDF1D00FCA904 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 207FBA101C1DDF1D00FCA904 /* PromiseKit.framework */; };
 		2083F4E61BAE2B1500EBAFCC /* SuggesterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2083F4E51BAE2B1500EBAFCC /* SuggesterTests.swift */; };
 		2083F4E81BB1BECE00EBAFCC /* WordDistancePerfTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2083F4E71BB1BECE00EBAFCC /* WordDistancePerfTests.swift */; };
 		20925E361BACA64700FBCFE4 /* Suggester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20925E351BACA64700FBCFE4 /* Suggester.swift */; };
@@ -138,6 +139,7 @@
 		2076865F1BB211BE004B1F57 /* String+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		207686621BB21300004B1F57 /* String+split_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+split_Tests.swift"; sourceTree = "<group>"; };
 		207F2C9B1BADB1350049AEB9 /* SuggesterPerformanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggesterPerformanceTests.swift; sourceTree = "<group>"; };
+		207FBA101C1DDF1D00FCA904 /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = Carthage/Build/iOS/PromiseKit.framework; sourceTree = SOURCE_ROOT; };
 		2083F4E51BAE2B1500EBAFCC /* SuggesterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggesterTests.swift; sourceTree = "<group>"; };
 		2083F4E71BB1BECE00EBAFCC /* WordDistancePerfTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordDistancePerfTests.swift; sourceTree = "<group>"; };
 		2083F4E91BB1CF6C00EBAFCC /* Playground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = Playground.playground; path = temp/Playground.playground; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 				206FF6EE1C1B8B6100294BE6 /* GCDKit.framework in Frameworks */,
 				2051CABC1C0BA9D400744586 /* Realm.framework in Frameworks */,
 				2051CABD1C0BA9D400744586 /* RealmSwift.framework in Frameworks */,
+				207FBA111C1DDF1D00FCA904 /* PromiseKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,6 +219,7 @@
 		2051CAC01C0BBAE800744586 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				207FBA101C1DDF1D00FCA904 /* PromiseKit.framework */,
 				206FF6ED1C1B8B6100294BE6 /* GCDKit.framework */,
 				2051CABA1C0BA9D400744586 /* Realm.framework */,
 				2051CABB1C0BA9D400744586 /* RealmSwift.framework */,
@@ -510,6 +514,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/GCDKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/PromiseKit.framework",
 			);
 			outputPaths = (
 			);

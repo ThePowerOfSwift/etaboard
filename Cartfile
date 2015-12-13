@@ -1,2 +1,3 @@
 github "realm/realm-cocoa"
 github "JohnEstropia/GCDKit"
+github "mxcl/PromiseKit"
