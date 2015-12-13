@@ -8,6 +8,12 @@ class UserDictionaryEntry: Object {
     }
 }
 
+enum VendingMachineError: ErrorType {
+    case InvalidSelection
+    case InsufficientFunds(coinsNeeded: Int)
+    case OutOfStock
+}
+
 class SuggesterWithDictionaries {
     static var systemLexiconLoaded = false
     static let instance = SuggesterWithDictionaries.createSuggester()
@@ -18,26 +24,22 @@ class SuggesterWithDictionaries {
         getPathsOfWordLists(from: "." ).forEach(loadWordList(with: suggester.addUnknownLengths))
         getPathsOfWordLists(from: "de").forEach(loadWordList(with: suggester.addSameLength))
         
-        dispatch_promise { loadUserDictionary() }.thenInBackground(suggester.addUnknownLengths)
+        dispatch_promise { try loadUserDictionary() }
+            .thenInBackground(suggester.addUnknownLengths)
         
         return suggester
     }
 
-    private static func loadUserDictionary() -> [String] {
-        do {
-            let realm = try Realm()
-            let entries = realm.objects(UserDictionaryEntry)
-            let words = entries.map { $0.word }
-            return words
-        } catch {
-            NSLog("could not load user dictionary")
-            return []
-        }
+    private static func loadUserDictionary() throws -> [String] {
+        let realm = try Realm()
+        let entries = realm.objects(UserDictionaryEntry)
+        let words = entries.map { $0.word }
+        return words
     }
 
     private static func loadWordList(with functor: [String] -> ()) -> (String -> ()) {
         return { path in
-            dispatch_promise { loadWordsAt(path) }.thenInBackground(functor)
+            dispatch_promise { try loadWordsAt(path) }.thenInBackground(functor)
         }
     }
     
@@ -49,14 +51,9 @@ class SuggesterWithDictionaries {
         return paths
     }
 
-    private static func loadWordsAt(path: String) -> [String] {
-        do {
-            let dictionaryAsString = try String(contentsOfFile: path, encoding: NSUTF8StringEncoding)
-            let words = dictionaryAsString.split("\n")
-            return words
-        } catch _ as NSError {
-            NSLog("could not load dictionary from path \(path)")
-            return []
-        }
+    private static func loadWordsAt(path: String) throws -> [String] {
+        let dictionaryAsString = try String(contentsOfFile: path, encoding: NSUTF8StringEncoding)
+        let words = dictionaryAsString.split("\n")
+        return words
     }
 }
