@@ -41,7 +41,9 @@ archive: dictionaries-from-scratch clean precheck generate-code bump-build-numbe
 	echo "Commit the version bump."
 
 
-Carthage:
+dependencies:
 	carthage bootstrap --platform iOS
-configure: Carthage
+update-dependencies:
+	carthage update --platform iOS
+configure: dependencies
 	$(dictionaries) configure
