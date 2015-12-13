@@ -6,3 +6,4 @@ build/
 temp/
 
 Carthage/
+test_output/

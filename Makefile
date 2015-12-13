@@ -27,7 +27,7 @@ dictionaries-from-scratch:
 	$(dictionaries) clean all
 
 precheck: generate-code
-	xcodebuild test -scheme EtaBoard -destination 'name=iPhone 6'
+	scan
 
 clean:
 	xcodebuild clean
@@ -40,6 +40,8 @@ archive: dictionaries-from-scratch clean precheck generate-code bump-build-numbe
 	xcodebuild archive -scheme EtaBoard
 	echo "Commit the version bump."
 
+tools:
+	bundle install
 
 dependencies:
 	carthage bootstrap --platform iOS
@@ -47,5 +49,5 @@ update-dependencies:
 	carthage update --platform iOS
 clean-dependencies:
 	rm -rf Carthage
-configure: dependencies
+configure: dependencies tools
 	$(dictionaries) configure
