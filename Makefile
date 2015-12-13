@@ -45,5 +45,7 @@ dependencies:
 	carthage bootstrap --platform iOS
 update-dependencies:
 	carthage update --platform iOS
+clean-dependencies:
+	rm -rf Carthage
 configure: dependencies
 	$(dictionaries) configure
