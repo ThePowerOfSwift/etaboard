@@ -1,6 +1,5 @@
 import UIKit
 import RealmSwift
-import GCDKit
 import PromiseKit
 
 class KeyboardViewController: UIInputViewController {
@@ -121,18 +120,17 @@ extension KeyboardViewController {
         didSelectSuggestion(verbatimWord)
         
         suggester.addUnknownLengths([verbatimWord])
-        
-        GCDQueue.UserInitiated.async {
-            do {
-                let newDictionaryEntry = UserDictionaryEntry()
-                newDictionaryEntry.word = verbatimWord
-                let realm = try Realm()
-                try realm.write {
-                    realm.add(newDictionaryEntry, update: true)
-                }
-            } catch {
-                NSLog("could not add '\(verbatimWord)' to user dictionary")
+
+        dispatch_promise {
+            let newDictionaryEntry = UserDictionaryEntry()
+            newDictionaryEntry.word = verbatimWord
+            let realm = try Realm()
+            try realm.write {
+                realm.add(newDictionaryEntry, update: true)
             }
+        }.error { error in
+            NSLog("Could not add '\(verbatimWord)' to user dictionary")
+            NSLog("Underlying error: \(error)")
         }
     }
     
