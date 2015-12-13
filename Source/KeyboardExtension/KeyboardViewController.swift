@@ -1,6 +1,7 @@
 import UIKit
 import RealmSwift
 import GCDKit
+import PromiseKit
 
 class KeyboardViewController: UIInputViewController {
     var document: Document!
@@ -41,13 +42,9 @@ extension KeyboardViewController {
 
 extension KeyboardViewController: DocumentDelegate {
     func didChangeCurrentWord(newCurrentWord: String?) {
-        GCDQueue.UserInteractive.async {
-            let suggestion = self.suggester.suggestCompletion(to: newCurrentWord)
-            GCDQueue.Main.async {
-                self.suggestionBar.displayVerbatim(newCurrentWord)
-                self.suggestionBar.displaySuggestion(suggestion)
-            }
-        }
+        dispatch_promise { self.suggester.suggestCompletion(to: newCurrentWord) }
+            .then(self.suggestionBar.displaySuggestion)
+        self.suggestionBar.displayVerbatim(newCurrentWord)
     }
 }
 
@@ -133,7 +130,7 @@ extension KeyboardViewController {
                 try realm.write {
                     realm.add(newDictionaryEntry, update: true)
                 }
-            } catch _ {
+            } catch {
                 NSLog("could not add '\(verbatimWord)' to user dictionary")
             }
         }
