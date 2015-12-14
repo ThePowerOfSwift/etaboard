@@ -16,8 +16,8 @@ let allLowercaseSimilarChars = [
     "u": "üúùû",
 ]
 
-let uppercaseDistance = 0.05
-let similarDistance = 0.06
+let uppercaseDistance = 0.03
+let similarDistance = 0.04
 
 func similarCharsFor(char: Character) -> [Character] {
     if let similarChars = allLowercaseSimilarChars[String(char)] {
@@ -44,17 +44,28 @@ func addDistance(charA: Character, _ charB: Character, _ distance: Distance) {
 
 
 for charA in alphabet.characters {
+    addDistance(charA, charA.uppercase(), uppercaseDistance)
+
+    for similarChar in similarCharsFor(charA) {
+        addDistance(similarChar, similarChar.uppercase(), uppercaseDistance)
+
+        addDistance(charA, similarChar, similarDistance)
+        addDistance(charA.uppercase(), similarChar.uppercase(), similarDistance)
+
+        addDistance(charA, similarChar.uppercase(), similarDistance + uppercaseDistance)
+    }
+    
     for charB in alphabet.characters {
         let distance = distanceBetween(charA, and: charB)
         if distance < 0.15 {
             addDistance(charA, charB, distance)
             addDistance(charA.uppercase(), charB.uppercase(), distance)
+            
+            addDistance(charA, charB.uppercase(), distance + uppercaseDistance)
+            for similarChar in similarCharsFor(charA) {
+                addDistance(charB, similarChar, distance + similarDistance)
+            }
         }
-    }
-    addDistance(charA, charA.uppercase(), uppercaseDistance)
-    for similarChar in similarCharsFor(charA) {
-        addDistance(charA, similarChar, similarDistance)
-        addDistance(charA.uppercase(), similarChar.uppercase(), similarDistance)
     }
 }
 

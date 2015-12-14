@@ -19,7 +19,7 @@ class CharacterDistanceTests: XCTestCase {
                distanceBetweenChars("a", "A")
     }
     
-    func testDiacriticalMarksAreSimilarToBaseCharacter() {
+    func testDiacriticalVariantIsSimilarToBaseCharacter() {
         expect("ä").to(beSimilarTo("a"))
     }
     
@@ -28,6 +28,24 @@ class CharacterDistanceTests: XCTestCase {
                distanceBetweenChars("a", "ä")
     }
     
+    func testUppercaseDiacriticalVariantIsSimilarToBaseCharacter() {
+        expect("Ä").to(beSimilarTo("a"))
+    }
+
+    func testUppercaseDiacriticalVariantIsSimilarToLowercaseDiacriticalVariant() {
+        expect("Ä").to(beSimilarTo("ä"))
+    }
+
+    func testCharsWithDiacricticalMarksRemainCloseToNeighboringChars() {
+        expect(distanceBetweenChars("ä", "s")) ≈
+               distanceBetweenChars("ä", "a") + distanceBetweenChars("a", "s")
+    }
+
+    func testUppercaseCharsRemainCloseToNeighboringChars() {
+        expect(distanceBetweenChars("A", "s")) ≈
+            distanceBetweenChars("A", "a") + distanceBetweenChars("a", "s")
+    }
+
     func testUppercaseIsCloserThanWithDiacriticalMark() {
         expect(distanceBetweenChars("a", "A")) <
                distanceBetweenChars("a", "ä")
@@ -42,6 +60,7 @@ class CharacterDistanceTests: XCTestCase {
         expect(distanceBetweenChars("A", "Ä")) ==
                distanceBetweenChars("a", "ä")
     }
+    
 }
 
 
@@ -49,16 +68,21 @@ func distanceBetweenChars(charA: Character, _ charB: Character) -> Distance {
     return distanceBetweenUInt16Chars(charA.code(), and: charB.code())
 }
 
+private func formatDistance(distance: Distance) -> String {
+    return String(format: "%.3f", distance)
+}
+
 func beSimilarTo(expected: Character) -> MatcherFunc<String> {
+    let limit = distanceBetweenChars("a", "s")
+    
     return MatcherFunc { actualExpression, failureMessage in
         guard let actual = try actualExpression.evaluate() else {
             return false
         }
         
         let distance = distanceBetweenChars(expected, actual.first())
-        failureMessage.postfixMessage = "be similar to <\(expected)>"
-        failureMessage.postfixActual = " (distance: \(String(distance)))"
-        return distance > 0 &&
-            distance < distanceBetweenChars("a", "s")
+        failureMessage.postfixMessage = "be closer than <\(formatDistance(limit))>"
+        failureMessage.postfixActual = " (distance: \(formatDistance(distance)))"
+        return distance > 0 && distance < limit
     }
 }
