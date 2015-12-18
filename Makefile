@@ -27,7 +27,7 @@ dictionaries-from-scratch:
 	$(dictionaries) clean all
 
 precheck: generate-code
-	scan
+	bundle exec scan
 
 clean:
 	xcodebuild clean
