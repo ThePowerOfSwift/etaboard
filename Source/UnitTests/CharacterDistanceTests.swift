@@ -21,6 +21,8 @@ class CharacterDistanceTests: XCTestCase {
     }
     
     func testUppercaseAndDiacriticalVariantsArePartOfTheFamily() {
+        // the six basic relations
+        
         expect("ä").to(beSimilarTo("a"))
         expect("Ä").to(beSimilarTo("a"))
         expect("A").to(beSimilarTo("a"))
@@ -30,16 +32,29 @@ class CharacterDistanceTests: XCTestCase {
         
         expect("Ä").to(beSimilarTo("ä"))
     }
-    
 
-    func testCharsWithDiacricticalMarksRemainCloseToNeighboringChars() {
+    func testCharFamilyRemainsCloseToNeighboringLowercaseChar() {
+        let baseDistance = distanceBetweenChars("a", "s")
+        expect(distanceBetweenChars("A", "s")) ≈
+               distanceBetweenChars("A", "a") + baseDistance
+
         expect(distanceBetweenChars("ä", "s")) ≈
-               distanceBetweenChars("ä", "a") + distanceBetweenChars("a", "s")
+               distanceBetweenChars("ä", "a") + baseDistance
+        
+        expect(distanceBetweenChars("Ä", "s")) ≈
+               distanceBetweenChars("Ä", "a") + baseDistance
     }
 
-    func testUppercaseCharsRemainCloseToNeighboringChars() {
-        expect(distanceBetweenChars("A", "s")) ≈
-            distanceBetweenChars("A", "a") + distanceBetweenChars("a", "s")
+    func testCharFamilyRemainsCloseToNeighboringUppercaseChar() {
+        let baseDistance = distanceBetweenChars("a", "s")
+        
+        // a–S follows by symmetry
+        
+        expect(distanceBetweenChars("ä", "S")) ≈
+               distanceBetweenChars("ä", "A") + baseDistance
+        
+        expect(distanceBetweenChars("Ä", "S")) ≈
+            distanceBetweenChars("Ä", "A") + baseDistance
     }
 
     func testUppercaseIsCloserThanWithDiacriticalMark() {

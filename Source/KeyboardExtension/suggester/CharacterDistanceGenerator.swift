@@ -42,19 +42,21 @@ func addDistance(charA: Character, _ charB: Character, _ distance: Distance) {
     }
 }
 
+func addDistancesToSimilarCharsFor(refChar: Character, similarityBase: Character, offset: Distance) {
+    for similarChar in similarCharsFor(similarityBase) {
+        addDistance(similarChar, similarChar.uppercase(), uppercaseDistance)
+        
+        addDistance(refChar, similarChar, similarDistance + offset)
+        addDistance(refChar.uppercase(), similarChar.uppercase(), similarDistance + offset)
+        addDistance(refChar, similarChar.uppercase(), similarDistance + uppercaseDistance + offset)
+        addDistance(refChar.uppercase(), similarChar, similarDistance + uppercaseDistance + offset)
+    }
+}
 
 for charA in alphabet.characters {
     addDistance(charA, charA.uppercase(), uppercaseDistance)
 
-    for similarChar in similarCharsFor(charA) {
-        addDistance(similarChar, similarChar.uppercase(), uppercaseDistance)
-
-        addDistance(charA, similarChar, similarDistance)
-        addDistance(charA.uppercase(), similarChar.uppercase(), similarDistance)
-
-        addDistance(charA, similarChar.uppercase(), similarDistance + uppercaseDistance)
-        addDistance(charA.uppercase(), similarChar, similarDistance + uppercaseDistance)
-    }
+    addDistancesToSimilarCharsFor(charA, similarityBase: charA, offset: 0)
     
     for charB in alphabet.characters {
         let distance = distanceBetween(charA, and: charB)
@@ -63,9 +65,8 @@ for charA in alphabet.characters {
             addDistance(charA.uppercase(), charB.uppercase(), distance)
             
             addDistance(charA, charB.uppercase(), distance + uppercaseDistance)
-            for similarChar in similarCharsFor(charA) {
-                addDistance(charB, similarChar, distance + similarDistance)
-            }
+            
+            addDistancesToSimilarCharsFor(charB, similarityBase: charA, offset: distance)
         }
     }
 }
