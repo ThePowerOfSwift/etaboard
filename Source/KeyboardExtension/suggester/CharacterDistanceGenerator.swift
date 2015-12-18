@@ -53,6 +53,7 @@ for charA in alphabet.characters {
         addDistance(charA.uppercase(), similarChar.uppercase(), similarDistance)
 
         addDistance(charA, similarChar.uppercase(), similarDistance + uppercaseDistance)
+        addDistance(charA.uppercase(), similarChar, similarDistance + uppercaseDistance)
     }
     
     for charB in alphabet.characters {

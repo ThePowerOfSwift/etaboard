@@ -2,39 +2,35 @@ import XCTest
 import Nimble
 
 class CharacterDistanceTests: XCTestCase {
-    func testCharacterIsEqualToItself() {
+    func testIs0ToItself() {
         expect(distanceBetweenChars("a", "a")) == 0
     }
     
-    func testIs1ForCharacterFarApart() {
+    func testIs1ToCharFarApart() {
         expect(distanceBetweenChars("a", "l")) == 1
     }
-
-    func testLowercaseIsSimilarToUppercase() {
-        expect("A").to(beSimilarTo("a"))
+    
+    func testIsInBetweenToNeighboringChar() {
+        expect(distanceBetweenChars("a", "s")) > 0
+        expect(distanceBetweenChars("a", "s")) < 1
     }
-
-    func testBetweenLowercaseAndUppercaseIsCommutative() {
+    
+    func testIsCommutative() {
         expect(distanceBetweenChars("A", "a")) ==
-               distanceBetweenChars("a", "A")
+            distanceBetweenChars("a", "A")
     }
     
-    func testDiacriticalVariantIsSimilarToBaseCharacter() {
+    func testUppercaseAndDiacriticalVariantsArePartOfTheFamily() {
         expect("ä").to(beSimilarTo("a"))
-    }
-    
-    func testBetweenCharsWithAndWithoutDiacriticalMarksIsCommutative() {
-        expect(distanceBetweenChars("ä", "a")) ==
-               distanceBetweenChars("a", "ä")
-    }
-    
-    func testUppercaseDiacriticalVariantIsSimilarToBaseCharacter() {
         expect("Ä").to(beSimilarTo("a"))
-    }
-
-    func testUppercaseDiacriticalVariantIsSimilarToLowercaseDiacriticalVariant() {
+        expect("A").to(beSimilarTo("a"))
+        
+        expect("A").to(beSimilarTo("Ä"))
+        expect("A").to(beSimilarTo("ä"))
+        
         expect("Ä").to(beSimilarTo("ä"))
     }
+    
 
     func testCharsWithDiacricticalMarksRemainCloseToNeighboringChars() {
         expect(distanceBetweenChars("ä", "s")) ≈
