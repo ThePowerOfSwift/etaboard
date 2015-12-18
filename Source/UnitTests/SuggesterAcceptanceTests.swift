@@ -8,4 +8,14 @@ class SuggesterAcceptanceTests: XCTestCase {
         suggester.addUnknownLengths(["kneifend", "übrigens"])
         expect(self.suggester.suggestCompletion(to: "ibrigens")) == "übrigens"
     }
+    
+    func testPrefersSimplerMistakes() {
+        suggester.addUnknownLengths(["küßt", "Lust"])
+        expect(self.suggester.suggestCompletion(to: "Kust")) == "Lust"
+    }
+    
+    func testPrefersCapitalizationMistakesToDiacriticalOnes() {
+        suggester.addUnknownLengths(["Größe", "große"])
+        expect(self.suggester.suggestCompletion(to: "Grose")) == "Große"
+    }
 }
