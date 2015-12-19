@@ -1,6 +1,4 @@
 import UIKit
-import RealmSwift
-import PromiseKit
 
 class KeyboardViewController: UIInputViewController {
     var document: Document!
@@ -16,36 +14,27 @@ class KeyboardViewController: UIInputViewController {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.darkGrayColor()
         
-        initDocument()
-        initSuggestionBar()
+        let newDocument = NotifyingDocument(wrapping: WordBasedDocument(proxy: textDocumentProxy))
+        document = newDocument
+        
+        let suggestionBarController = SuggestionBarController(
+            inputController: self, document: document)
+        addChildViewController(suggestionBarController)
+        self.view.addSubview(suggestionBarController.view)
+        
+        newDocument.delegate = suggestionBarController
+
         initKeyboardView()
-        layoutSubviews()
+        layoutSubviews(suggestionBarController)
     }
     
-    private func layoutSubviews() {
-        self.view.align([.Top, .Width], of: suggestionBar)
+    private func layoutSubviews(suggestionBar: SuggestionBarController) {
+        self.view.align([.Top, .Width], of: suggestionBar.view)
         self.view.align([.Width, .Bottom], of: keyboardView!)
-        self.view.align(.Top, of: keyboardView!, with: .Bottom, of: suggestionBar)
+        self.view.align(.Top, of: keyboardView!, with: .Bottom, of: suggestionBar.view)
     }
 }
 
-
-// MARK: - Document
-extension KeyboardViewController {
-    private func initDocument() {
-        let newDocument = NotifyingDocument(wrapping: WordBasedDocument(proxy: textDocumentProxy))
-        newDocument.delegate = self
-        document = newDocument
-    }
-}
-
-extension KeyboardViewController: DocumentDelegate {
-    func didChangeCurrentWord(newCurrentWord: String?) {
-        dispatch_promise { self.suggester.suggestCompletion(to: newCurrentWord) }
-            .then(self.suggestionBar.displaySuggestion)
-        self.suggestionBar.displayVerbatim(newCurrentWord)
-    }
-}
 
 // MARK: - Keyboard
 extension KeyboardViewController {
@@ -73,70 +62,5 @@ extension KeyboardViewController {
         let intendedTouchPoint = CGPointMake(touchPoint.x, touchPoint.y + 5)
         let key = keyboardModel.closestKey(to: intendedTouchPoint)
         keyPressHandler?.handle(key)
-    }
-}
-
-// MARK: - Suggestion Bar
-extension KeyboardViewController {
-    private func initSuggestionBar() {
-        suggestionBar = SuggestionBarView(target: self, action: "didTapSuggestion:")
-        suggestionBar.translatesAutoresizingMaskIntoConstraints = false
-        suggestionBar.onVerbatim(target: self, action: "didTapVerbatim:")
-        self.view.addSubview(suggestionBar)
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector:"didActivateUppercase:",
-            name: KeyPressHandler.NotificationUppercaseActivatedName, object: nil)
-        
-        loadSuggestionsFromSystem()
-    }
-    
-    private func loadSuggestionsFromSystem() {
-        if SuggesterWithDictionaries.systemLexiconLoaded { return }
-        
-        requestSupplementaryLexiconWithCompletion { lexicon in
-            let allEntries = lexicon.entries.map { $0.documentText }
-            SuggesterWithDictionaries.instance.addUnknownLengths(allEntries)
-            SuggesterWithDictionaries.systemLexiconLoaded = true
-        }
-    }
-
-    func buttonTitle(sender: AnyObject?) -> String? {
-        let button = sender as! UIButton
-        return button.currentTitle
-    }
-    
-    func didTapSuggestion(sender: AnyObject?) {
-        if let word = buttonTitle(sender) { didSelectSuggestion(word) }
-    }
-    func didTapVerbatim(sender: AnyObject?) {
-        if let word = buttonTitle(sender) { didSelectVerbatim(word) }
-    }
-    
-    func didSelectSuggestion(word: String) {
-        document?.replaceCurrentWord(word)
-    }
-
-    func didSelectVerbatim(verbatimWord: String) {
-        didSelectSuggestion(verbatimWord)
-        
-        suggester.addUnknownLengths([verbatimWord])
-
-        dispatch_promise {
-            let newDictionaryEntry = UserDictionaryEntry()
-            newDictionaryEntry.word = verbatimWord
-            let realm = try Realm()
-            try realm.write {
-                realm.add(newDictionaryEntry, update: true)
-            }
-        }.error { error in
-            NSLog("Could not add '\(verbatimWord)' to user dictionary")
-            NSLog("Underlying error: \(error)")
-        }
-    }
-    
-    func didActivateUppercase(notification: NSNotification) {
-        suggestionBar.getCurrentSuggestion()
-            |> suggester.capitalize
-            |> suggestionBar.displaySuggestion
     }
 }
