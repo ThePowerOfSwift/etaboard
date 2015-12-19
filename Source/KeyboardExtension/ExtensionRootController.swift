@@ -1,10 +1,6 @@
 import UIKit
 
 class ExtensionRootController: UIInputViewController {
-    let keyboardModel = KeyboardModel()
-    var keyboardView: KeyboardView?
-    var keyPressHandler: KeyPressHandler?
-
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.darkGrayColor()
@@ -13,16 +9,14 @@ class ExtensionRootController: UIInputViewController {
         let suggestionBarController = initSuggestionBar(document)
         document.delegate = suggestionBarController
 
-        keyPressHandler = KeyPressHandler(
-            nextKeyboardAction: { [unowned self] in self.advanceToNextInputMode() },
-            keyboard: keyboardModel,
-            document: document)
-        
-        let keyboardView = initKeyboardView(keyboardModel)
-        self.keyboardView = keyboardView
-        keyboardModel.delegate = keyboardView
+        let keyboardController = KeyboardController(document: document,
+            nextKeyboardAction: { [unowned self] in self.advanceToNextInputMode() })
+        addChildViewController(keyboardController)
+        view.addSubview(keyboardController.view)
 
-        layoutSubviews(suggestionBar: suggestionBarController.view, keyboard: keyboardView)
+        layoutSubviews(
+            suggestionBar: suggestionBarController.view,
+            keyboard: keyboardController.view)
         
         NSLog("suggester size: \(SuggesterWithDictionaries.instance.size)")
     }
@@ -42,24 +36,3 @@ class ExtensionRootController: UIInputViewController {
     }
 }
 
-
-// MARK: - Keyboard
-extension ExtensionRootController {
-    private func initKeyboardView(model: KeyboardModel) -> KeyboardView {
-        let keyboardView = KeyboardView.create(model)
-        keyboardView.translatesAutoresizingMaskIntoConstraints = false
-        
-        let tapRecognizer = MyTapRecognizer(target: self, action: "handleTap:")
-        keyboardView.addGestureRecognizer(tapRecognizer)
-        
-        view.addSubview(keyboardView)
-        return keyboardView
-    }
-    
-    func handleTap(recognizer: UIGestureRecognizer) {
-        let touchPoint = recognizer.locationInView(keyboardView)
-        let intendedTouchPoint = CGPointMake(touchPoint.x, touchPoint.y + 5)
-        let key = keyboardModel.closestKey(to: intendedTouchPoint)
-        keyPressHandler?.handle(key)
-    }
-}
