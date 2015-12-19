@@ -14,7 +14,7 @@ class KeyboardViewController: UIInputViewController {
         document.delegate = suggestionBarController
 
         keyPressHandler = KeyPressHandler(
-            inputViewController: self,
+            nextKeyboardAction: { self.advanceToNextInputMode() },
             keyboard: keyboardModel,
             document: document)
         

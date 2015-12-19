@@ -2,17 +2,14 @@
 class KeyPressHandler {
     static let NotificationUppercaseActivatedName = "EBUppercaseActivated"
     
-    let keyboardViewController: KeyboardViewController
     let keyboard: KeyboardModel
     let document: Document
     var dedicatedReactions: [String: () -> Void]
     
-    init(inputViewController: UIInputViewController,
+    init(nextKeyboardAction: () -> Void,
         keyboard: KeyboardModel, document: Document) {
         self.keyboard = keyboard
         self.document = document
-        let keyboardViewController = (inputViewController as! KeyboardViewController)
-        self.keyboardViewController = keyboardViewController
             
         dedicatedReactions = [
             SchematicLayout.Enter: { document.insert("\n") },
@@ -21,7 +18,7 @@ class KeyPressHandler {
                 document.insert(" ")
                 keyboard.proceedToPage(.Lowercase)
             },
-            SchematicLayout.NextSystemKeyboard: { inputViewController.advanceToNextInputMode() },
+            SchematicLayout.NextSystemKeyboard: nextKeyboardAction,
             SchematicLayout.ToLowercase: { keyboard.proceedToPage(.Lowercase) },
             SchematicLayout.ToSymbols: { keyboard.proceedToPage(.Symbols) },
             SchematicLayout.ToLetters: { keyboard.proceedToPage(.Lowercase) },
