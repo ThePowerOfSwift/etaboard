@@ -56,7 +56,7 @@
 		20D909BA1C2492E8000A5DFD /* SuggesterAcceptanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D909B91C2492E8000A5DFD /* SuggesterAcceptanceTests.swift */; };
 		20D909BF1C253675000A5DFD /* SuggestionBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D909BE1C253675000A5DFD /* SuggestionBarController.swift */; };
 		20F1DE191BD9519A00A33A86 /* Dictionaries.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 20F1DE181BD9519A00A33A86 /* Dictionaries.bundle */; };
-		C211CB0B7AE6315B6481428E /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21DF7BC99AC431E9EA856D8 /* KeyboardViewController.swift */; };
+		C211CB0B7AE6315B6481428E /* ExtensionRootController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21DF7BC99AC431E9EA856D8 /* ExtensionRootController.swift */; };
 		C2138D2EB35AB7B000B3195D /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21AC261406FBCF7ABB89D22 /* KeyboardView.swift */; };
 		C214F72F655636D4EFF1A5EC /* KeyPressHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C218C70011E8ACF9B9DFAEF1 /* KeyPressHandler.swift */; };
 		C217DE1857A2A3DB936D4FBC /* KeyboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2155C8BA414427799A129F4 /* KeyboardModel.swift */; };
@@ -161,7 +161,7 @@
 		C218C70011E8ACF9B9DFAEF1 /* KeyPressHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyPressHandler.swift; sourceTree = "<group>"; };
 		C21912EDF510A3371CD7F635 /* SchematicLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchematicLayout.swift; sourceTree = "<group>"; };
 		C21AC261406FBCF7ABB89D22 /* KeyboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
-		C21DF7BC99AC431E9EA856D8 /* KeyboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
+		C21DF7BC99AC431E9EA856D8 /* ExtensionRootController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionRootController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -342,7 +342,7 @@
 				C21741DE8AD26B91F90FC940 /* suggestionbar */,
 				20925E341BACA5CF00FBCFE4 /* suggester */,
 				20C304BF1BBAFB9A00C3460E /* document */,
-				C21DF7BC99AC431E9EA856D8 /* KeyboardViewController.swift */,
+				C21DF7BC99AC431E9EA856D8 /* ExtensionRootController.swift */,
 				204008BB1BD6D30300FAD96C /* SuggesterWithDictionaries.swift */,
 				200B84961BE979A000E9D998 /* Distance.swift */,
 				2051CAC01C0BBAE800744586 /* Frameworks */,
@@ -586,7 +586,7 @@
 				20D909BF1C253675000A5DFD /* SuggestionBarController.swift in Sources */,
 				C214F72F655636D4EFF1A5EC /* KeyPressHandler.swift in Sources */,
 				200B84951BE9740B00E9D998 /* Character+.swift in Sources */,
-				C211CB0B7AE6315B6481428E /* KeyboardViewController.swift in Sources */,
+				C211CB0B7AE6315B6481428E /* ExtensionRootController.swift in Sources */,
 				C21BE9FE6042214E16CFE3BE /* MyTapRecognizer.swift in Sources */,
 				20C304C11BBAFD1000C3460E /* Document.swift in Sources */,
 				C21912CB7F82E9F3CA1C03FF /* ConcreteLayout.swift in Sources */,

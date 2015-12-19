@@ -1,6 +1,6 @@
 import UIKit
 
-class KeyboardViewController: UIInputViewController {
+class ExtensionRootController: UIInputViewController {
     let keyboardModel = KeyboardModel()
     var keyboardView: KeyboardView?
     var keyPressHandler: KeyPressHandler?
@@ -44,7 +44,7 @@ class KeyboardViewController: UIInputViewController {
 
 
 // MARK: - Keyboard
-extension KeyboardViewController {
+extension ExtensionRootController {
     private func initKeyboardView(model: KeyboardModel) -> KeyboardView {
         let keyboardView = KeyboardView.create(model)
         keyboardView.translatesAutoresizingMaskIntoConstraints = false
