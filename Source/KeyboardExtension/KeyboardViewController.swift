@@ -1,64 +1,63 @@
 import UIKit
 
 class KeyboardViewController: UIInputViewController {
-    var document: Document!
-
-    var suggester = SuggesterWithDictionaries.instance
-    var suggestionBar: SuggestionBarView!
-
-    var keyboardModel = KeyboardModel()
-    var keyboardView: KeyboardView!
+    let keyboardModel = KeyboardModel()
+    var keyboardView: KeyboardView?
     var keyPressHandler: KeyPressHandler?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.darkGrayColor()
+        view.backgroundColor = UIColor.darkGrayColor()
         
-        let newDocument = NotifyingDocument(wrapping: WordBasedDocument(proxy: textDocumentProxy))
-        document = newDocument
-        
-        let suggestionBarController = SuggestionBarController(
-            inputController: self, document: document)
-        addChildViewController(suggestionBarController)
-        self.view.addSubview(suggestionBarController.view)
-        
-        newDocument.delegate = suggestionBarController
+        let document = NotifyingDocument(wrapping: WordBasedDocument(proxy: textDocumentProxy))
+        let suggestionBarController = initSuggestionBar(document)
+        document.delegate = suggestionBarController
 
-        initKeyboardView()
-        layoutSubviews(suggestionBarController)
+        keyPressHandler = KeyPressHandler(
+            inputViewController: self,
+            keyboard: keyboardModel,
+            document: document)
+        
+        let keyboardView = initKeyboardView(keyboardModel)
+        self.keyboardView = keyboardView
+        keyboardModel.delegate = keyboardView
+
+        layoutSubviews(suggestionBar: suggestionBarController.view, keyboard: keyboardView)
+        
+        NSLog("suggester size: \(SuggesterWithDictionaries.instance.size)")
     }
     
-    private func layoutSubviews(suggestionBar: SuggestionBarController) {
-        self.view.align([.Top, .Width], of: suggestionBar.view)
-        self.view.align([.Width, .Bottom], of: keyboardView!)
-        self.view.align(.Top, of: keyboardView!, with: .Bottom, of: suggestionBar.view)
+    private func layoutSubviews(suggestionBar suggestionBar: UIView, keyboard: UIView) {
+        view.align([.Top, .Width], of: suggestionBar)
+        view.align([.Width, .Bottom], of: keyboard)
+        view.align(.Top, of: keyboard, with: .Bottom, of: suggestionBar)
+    }
+    
+    private func initSuggestionBar(document: Document) -> SuggestionBarController {
+        let suggestionBar = SuggestionBarController(
+            inputController: self, document: document)
+        addChildViewController(suggestionBar)
+        view.addSubview(suggestionBar.view)
+        return suggestionBar
     }
 }
 
 
 // MARK: - Keyboard
 extension KeyboardViewController {
-    private func initKeyboardView() {
-        keyPressHandler = KeyPressHandler(
-            inputViewController: self,
-            keyboard: keyboardModel,
-            document: document!)
-        
-        keyboardView = KeyboardView.create(keyboardModel)
+    private func initKeyboardView(model: KeyboardModel) -> KeyboardView {
+        let keyboardView = KeyboardView.create(model)
         keyboardView.translatesAutoresizingMaskIntoConstraints = false
-        keyboardModel.delegate = keyboardView
         
-        self.view.addSubview(keyboardView)
-        
-        let tapRecognizer = MyTapRecognizer(
-            target: self, action: "handleTap:")
+        let tapRecognizer = MyTapRecognizer(target: self, action: "handleTap:")
         keyboardView.addGestureRecognizer(tapRecognizer)
         
-        NSLog("suggester size: \(SuggesterWithDictionaries.instance.size)")
+        view.addSubview(keyboardView)
+        return keyboardView
     }
     
     func handleTap(recognizer: UIGestureRecognizer) {
-        let touchPoint = recognizer.locationInView(self.keyboardView)
+        let touchPoint = recognizer.locationInView(keyboardView)
         let intendedTouchPoint = CGPointMake(touchPoint.x, touchPoint.y + 5)
         let key = keyboardModel.closestKey(to: intendedTouchPoint)
         keyPressHandler?.handle(key)
