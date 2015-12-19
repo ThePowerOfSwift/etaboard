@@ -18,4 +18,9 @@ class SuggesterAcceptanceTests: XCTestCase {
         suggester.addUnknownLengths(["Größe", "große"])
         expect(self.suggester.suggestCompletion(to: "Grose")) == "Große"
     }
+    
+    func testUndervalueCapitalizationDifferencesComparedToKeyDistances() {
+        suggester.addUnknownLengths(["bold", "Bild"])
+        expect(self.suggester.suggestCompletion(to: "bjld")) == "Bild"
+    }
 }
