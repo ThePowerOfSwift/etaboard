@@ -1,7 +1,15 @@
+import Foundation
 import RealmSwift
 
 class UserDictionaryEntry: Object {
     dynamic var word = ""
+    
+    class func create(word: String) -> UserDictionaryEntry {
+        let entry = UserDictionaryEntry()
+        entry.word = word
+        return entry
+    }
+
     override static func primaryKey() -> String? {
         return "word"
     }
@@ -15,16 +23,21 @@ class UserDictionary {
         return words
     }
     
+    private func hasWord(word: String, realm: Realm) -> Bool {
+        if let _ = realm.objectForPrimaryKey(UserDictionaryEntry.self, key: word) {
+            return true
+        }
+        return false
+    }
+    
     func addWord(word: String) throws {
         let realm = try Realm()
-        if let _ = realm.objectForPrimaryKey(UserDictionaryEntry.self, key: word) {
-            return
-        }
+        if hasWord(word, realm: realm) { return }
 
-        let newDictionaryEntry = UserDictionaryEntry()
-        newDictionaryEntry.word = word
+        let newDictionaryEntry = UserDictionaryEntry.create(word)
         try realm.write {
             realm.add(newDictionaryEntry)
+            NSLog("adding new")
         }
     }
 }
