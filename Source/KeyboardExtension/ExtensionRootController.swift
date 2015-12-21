@@ -2,6 +2,7 @@ import UIKit
 
 class Instances {
     static let systemDictionaryLoader = SystemDictionaryLoader()
+    static let suggester = SuggesterWithDictionaries().createSuggester()
 }
 
 class ExtensionRootController: UIInputViewController {
@@ -12,7 +13,7 @@ class ExtensionRootController: UIInputViewController {
         let document = NotifyingDocument(wrapping: WordBasedDocument(proxy: textDocumentProxy))
         
         let suggestionBarController = SuggestionBarController(document: document,
-            suggester: SuggesterWithDictionaries.instance,
+            suggester: Instances.suggester,
             userDictionary: UserDictionary())
         addChild(suggestionBarController)
         
@@ -26,9 +27,9 @@ class ExtensionRootController: UIInputViewController {
             suggestionBar: suggestionBarController.view,
             keyboard: keyboardController.view)
         
-        Instances.systemDictionaryLoader.load(from: self, into: SuggesterWithDictionaries.instance)
+        Instances.systemDictionaryLoader.load(from: self, into: Instances.suggester)
         
-        NSLog("suggester size: \(SuggesterWithDictionaries.instance.size)")
+        NSLog("suggester size: \(Instances.suggester.size)")
     }
     
     private func layoutSubviews(suggestionBar suggestionBar: UIView, keyboard: UIView) {
