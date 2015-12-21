@@ -1,7 +1,6 @@
 import PromiseKit
 
 class SuggesterWithDictionaries {
-    static var systemLexiconLoaded = false
     static let instance = SuggesterWithDictionaries.createSuggester()
     
     class func createSuggester() -> Suggester {

@@ -1,5 +1,9 @@
 import UIKit
 
+class Instances {
+    static let systemDictionaryLoader = SystemDictionaryLoader()
+}
+
 class ExtensionRootController: UIInputViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +26,8 @@ class ExtensionRootController: UIInputViewController {
             suggestionBar: suggestionBarController.view,
             keyboard: keyboardController.view)
         
-        loadSuggestionsFromSystem()
+        Instances.systemDictionaryLoader.load(from: self, into: SuggesterWithDictionaries.instance)
+        
         NSLog("suggester size: \(SuggesterWithDictionaries.instance.size)")
     }
     
@@ -35,16 +40,6 @@ class ExtensionRootController: UIInputViewController {
     private func addChild(controller: UIViewController) {
         addChildViewController(controller)
         view.addSubview(controller.view)
-    }
-    
-    private func loadSuggestionsFromSystem() {
-        if SuggesterWithDictionaries.systemLexiconLoaded { return }
-        
-        requestSupplementaryLexiconWithCompletion { lexicon in
-            let allEntries = lexicon.entries.map { $0.documentText }
-            SuggesterWithDictionaries.instance.addUnknownLengths(allEntries)
-            SuggesterWithDictionaries.systemLexiconLoaded = true
-        }
     }
 }
 

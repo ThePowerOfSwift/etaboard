@@ -57,6 +57,7 @@
 		20D909BF1C253675000A5DFD /* SuggestionBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D909BE1C253675000A5DFD /* SuggestionBarController.swift */; };
 		20D909C11C25D4E7000A5DFD /* KeyboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D909C01C25D4E7000A5DFD /* KeyboardController.swift */; };
 		20D909C31C278815000A5DFD /* UserDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D909C21C278815000A5DFD /* UserDictionary.swift */; };
+		20D909C51C278F62000A5DFD /* SystemDictionaryLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D909C41C278F62000A5DFD /* SystemDictionaryLoader.swift */; };
 		20F1DE191BD9519A00A33A86 /* Dictionaries.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 20F1DE181BD9519A00A33A86 /* Dictionaries.bundle */; };
 		C211CB0B7AE6315B6481428E /* ExtensionRootController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21DF7BC99AC431E9EA856D8 /* ExtensionRootController.swift */; };
 		C2138D2EB35AB7B000B3195D /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21AC261406FBCF7ABB89D22 /* KeyboardView.swift */; };
@@ -157,6 +158,7 @@
 		20D909BE1C253675000A5DFD /* SuggestionBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionBarController.swift; sourceTree = "<group>"; };
 		20D909C01C25D4E7000A5DFD /* KeyboardController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardController.swift; sourceTree = "<group>"; };
 		20D909C21C278815000A5DFD /* UserDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDictionary.swift; sourceTree = "<group>"; };
+		20D909C41C278F62000A5DFD /* SystemDictionaryLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemDictionaryLoader.swift; sourceTree = "<group>"; };
 		20F1DE181BD9519A00A33A86 /* Dictionaries.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Dictionaries.bundle; path = dictionaries/build/Dictionaries.bundle; sourceTree = SOURCE_ROOT; };
 		C2109E4AA5A6B55793E1A243 /* MyTapRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTapRecognizer.swift; sourceTree = "<group>"; };
 		C2132E72EC680EEB62955CD4 /* ConcreteLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcreteLayout.swift; sourceTree = "<group>"; };
@@ -348,6 +350,7 @@
 				20C304BF1BBAFB9A00C3460E /* document */,
 				C21DF7BC99AC431E9EA856D8 /* ExtensionRootController.swift */,
 				204008BB1BD6D30300FAD96C /* SuggesterWithDictionaries.swift */,
+				20D909C41C278F62000A5DFD /* SystemDictionaryLoader.swift */,
 				20D909C21C278815000A5DFD /* UserDictionary.swift */,
 				200B84961BE979A000E9D998 /* Distance.swift */,
 				2051CAC01C0BBAE800744586 /* Frameworks */,
@@ -591,6 +594,7 @@
 				20317D9F1BA0B677008A4303 /* NotifyingDocument.swift in Sources */,
 				C2138D2EB35AB7B000B3195D /* KeyboardView.swift in Sources */,
 				20D909BF1C253675000A5DFD /* SuggestionBarController.swift in Sources */,
+				20D909C51C278F62000A5DFD /* SystemDictionaryLoader.swift in Sources */,
 				C214F72F655636D4EFF1A5EC /* KeyPressHandler.swift in Sources */,
 				200B84951BE9740B00E9D998 /* Character+.swift in Sources */,
 				C211CB0B7AE6315B6481428E /* ExtensionRootController.swift in Sources */,
