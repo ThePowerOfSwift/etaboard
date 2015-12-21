@@ -38,7 +38,6 @@ class SuggestionBarController: UIViewController {
     func didTapVerbatim(button: UIButton) {
         guard let verbatimWord = button.currentTitle else { return }
         
-        document.replaceCurrentWord(verbatimWord)
         suggester.addUnknownLengths([verbatimWord])
         dispatch_promise {
             try self.userDictionary.addWord(verbatimWord)
@@ -46,6 +45,8 @@ class SuggestionBarController: UIViewController {
             NSLog("Could not add '\(verbatimWord)' to user dictionary")
             NSLog("Underlying error: \(error)")
         }
+        
+        document.replaceCurrentWord(verbatimWord)
     }
     
     func didActivateUppercase(notification: NSNotification) {
