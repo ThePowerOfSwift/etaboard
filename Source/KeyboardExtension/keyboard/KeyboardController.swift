@@ -2,7 +2,7 @@
 class KeyboardController: UIViewController {
     private let keyboardModel = KeyboardModel()
     private let document: Document
-    private var keyPressHandler: KeyPressHandler
+    private let keyPressHandler: KeyPressHandler
     
     init(document: Document, nextKeyboardAction: () -> Void) {
         self.document = document

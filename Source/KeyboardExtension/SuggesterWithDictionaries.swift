@@ -8,11 +8,6 @@ class UserDictionaryEntry: Object {
     }
 }
 
-enum VendingMachineError: ErrorType {
-    case InvalidSelection
-    case InsufficientFunds(coinsNeeded: Int)
-    case OutOfStock
-}
 
 class SuggesterWithDictionaries {
     static var systemLexiconLoaded = false

@@ -2,16 +2,19 @@ import PromiseKit
 import RealmSwift
 
 class SuggestionBarController: UIViewController {
-    var document: Document
-    
-    var suggester = SuggesterWithDictionaries.instance
-    var suggestionBar: SuggestionBarView!
+    private let document: Document
+    private let suggester = SuggesterWithDictionaries.instance
+    private var suggestionBar: SuggestionBarView!
 
     init(inputController: UIInputViewController, document: Document) {
         self.document = document
         super.init(nibName: nil, bundle: nil)
         
         loadSuggestionsFromSystem(inputController)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func loadView() {
@@ -25,10 +28,6 @@ class SuggestionBarController: UIViewController {
             name: KeyPressHandler.NotificationUppercaseActivatedName, object: nil)
     }
 
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     private func loadSuggestionsFromSystem(inputController: UIInputViewController) {
         if SuggesterWithDictionaries.systemLexiconLoaded { return }
         

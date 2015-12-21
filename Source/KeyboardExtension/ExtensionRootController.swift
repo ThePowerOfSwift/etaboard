@@ -6,13 +6,16 @@ class ExtensionRootController: UIInputViewController {
         view.backgroundColor = UIColor.darkGrayColor()
         
         let document = NotifyingDocument(wrapping: WordBasedDocument(proxy: textDocumentProxy))
-        let suggestionBarController = initSuggestionBar(document)
+        
+        let suggestionBarController = SuggestionBarController(
+            inputController: self, document: document)
+        addChild(suggestionBarController)
+        
         document.delegate = suggestionBarController
 
         let keyboardController = KeyboardController(document: document,
             nextKeyboardAction: { [unowned self] in self.advanceToNextInputMode() })
-        addChildViewController(keyboardController)
-        view.addSubview(keyboardController.view)
+        addChild(keyboardController)
 
         layoutSubviews(
             suggestionBar: suggestionBarController.view,
@@ -27,12 +30,9 @@ class ExtensionRootController: UIInputViewController {
         view.align(.Top, of: keyboard, with: .Bottom, of: suggestionBar)
     }
     
-    private func initSuggestionBar(document: Document) -> SuggestionBarController {
-        let suggestionBar = SuggestionBarController(
-            inputController: self, document: document)
-        addChildViewController(suggestionBar)
-        view.addSubview(suggestionBar.view)
-        return suggestionBar
+    private func addChild(controller: UIViewController) {
+        addChildViewController(controller)
+        view.addSubview(controller.view)
     }
 }
 
