@@ -2,26 +2,31 @@ import UIKit
 
 class SuggestionBarView: UIView {
     override class func requiresConstraintBasedLayout() -> Bool { return true }
-    let suggestionButton = UIButton(type: .Custom)
-    let verbatimButton = UIButton(type: .Custom)
+    
+    let suggestionButton = SuggestionBarView.createButton(Colors.highlight)
+    let verbatimButton = SuggestionBarView.createButton()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        suggestionButton.setTitleColor(Colors.highlight, forState: .Normal)
-        suggestionButton.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(suggestionButton)
-        align([.Top, .Height, .CenterX], of: suggestionButton)
 
-        verbatimButton.setTitleColor(Colors.light, forState: .Normal)
-        verbatimButton.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(suggestionButton)
+        
         verbatimButton.contentEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0)
         addSubview(verbatimButton)
+        
+        align([.Top, .Height, .CenterX], of: suggestionButton)
         align([.Top, .Height, .Left], of: verbatimButton)
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+    }
+    
+    private static func createButton(titleColor: UIColor = Colors.light) -> UIButton {
+        let button = UIButton()
+        button.setTitleColor(titleColor, forState: .Normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
     }
     
     func displayVerbatim(verbatim: String?) {
