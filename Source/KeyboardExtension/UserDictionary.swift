@@ -16,11 +16,15 @@ class UserDictionary {
     }
     
     func addWord(word: String) throws {
+        let realm = try Realm()
+        if let _ = realm.objectForPrimaryKey(UserDictionaryEntry.self, key: word) {
+            return
+        }
+
         let newDictionaryEntry = UserDictionaryEntry()
         newDictionaryEntry.word = word
-        let realm = try Realm()
         try realm.write {
-            realm.add(newDictionaryEntry, update: true)
+            realm.add(newDictionaryEntry)
         }
     }
 }
