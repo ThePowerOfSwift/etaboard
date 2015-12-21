@@ -8,13 +8,13 @@ class SuggestionBarView: UIView {
     convenience init(target: AnyObject, action: Selector) {
         self.init()
         
-        buttonForSuggestion.setTitleColor(UIColor.lightGrayColor(), forState: .Normal)
+        buttonForSuggestion.setTitleColor(Colors.highlight, forState: .Normal)
         buttonForSuggestion.translatesAutoresizingMaskIntoConstraints = false
         buttonForSuggestion.addTarget(target, action: action, forControlEvents: .TouchUpInside)
         addSubview(buttonForSuggestion)
         align([.Top, .Height, .CenterX], of: buttonForSuggestion)
 
-        verbatimButton.setTitleColor(UIColor.lightGrayColor(), forState: .Normal)
+        verbatimButton.setTitleColor(Colors.light, forState: .Normal)
         verbatimButton.translatesAutoresizingMaskIntoConstraints = false
         verbatimButton.contentEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0)
         addSubview(verbatimButton)

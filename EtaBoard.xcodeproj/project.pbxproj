@@ -58,6 +58,8 @@
 		20D909C11C25D4E7000A5DFD /* KeyboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D909C01C25D4E7000A5DFD /* KeyboardController.swift */; };
 		20D909C31C278815000A5DFD /* UserDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D909C21C278815000A5DFD /* UserDictionary.swift */; };
 		20D909C51C278F62000A5DFD /* SystemDictionaryLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D909C41C278F62000A5DFD /* SystemDictionaryLoader.swift */; };
+		20D909C71C279789000A5DFD /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D909C61C279789000A5DFD /* UIColor+.swift */; };
+		20D909C91C27992B000A5DFD /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D909C81C27992B000A5DFD /* Colors.swift */; };
 		20F1DE191BD9519A00A33A86 /* Dictionaries.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 20F1DE181BD9519A00A33A86 /* Dictionaries.bundle */; };
 		C211CB0B7AE6315B6481428E /* ExtensionRootController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21DF7BC99AC431E9EA856D8 /* ExtensionRootController.swift */; };
 		C2138D2EB35AB7B000B3195D /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21AC261406FBCF7ABB89D22 /* KeyboardView.swift */; };
@@ -159,6 +161,8 @@
 		20D909C01C25D4E7000A5DFD /* KeyboardController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardController.swift; sourceTree = "<group>"; };
 		20D909C21C278815000A5DFD /* UserDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDictionary.swift; sourceTree = "<group>"; };
 		20D909C41C278F62000A5DFD /* SystemDictionaryLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemDictionaryLoader.swift; sourceTree = "<group>"; };
+		20D909C61C279789000A5DFD /* UIColor+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
+		20D909C81C27992B000A5DFD /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		20F1DE181BD9519A00A33A86 /* Dictionaries.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Dictionaries.bundle; path = dictionaries/build/Dictionaries.bundle; sourceTree = SOURCE_ROOT; };
 		C2109E4AA5A6B55793E1A243 /* MyTapRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTapRecognizer.swift; sourceTree = "<group>"; };
 		C2132E72EC680EEB62955CD4 /* ConcreteLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcreteLayout.swift; sourceTree = "<group>"; };
@@ -353,6 +357,7 @@
 				20D909C41C278F62000A5DFD /* SystemDictionaryLoader.swift */,
 				20D909C21C278815000A5DFD /* UserDictionary.swift */,
 				200B84961BE979A000E9D998 /* Distance.swift */,
+				20D909C81C27992B000A5DFD /* Colors.swift */,
 				2051CAC01C0BBAE800744586 /* Frameworks */,
 			);
 			name = KeyboardExtension;
@@ -390,6 +395,7 @@
 				2076865F1BB211BE004B1F57 /* String+.swift */,
 				20317D9C1BA0A9B1008A4303 /* UIView+LayoutConstraints.swift */,
 				200B84941BE9740B00E9D998 /* Character+.swift */,
+				20D909C61C279789000A5DFD /* UIColor+.swift */,
 			);
 			path = helpers;
 			sourceTree = "<group>";
@@ -587,6 +593,7 @@
 				20C304C41BBAFF6B00C3460E /* WordBasedDocument.swift in Sources */,
 				2045E7BE1BC84A2700045CEB /* pipe-forward.swift in Sources */,
 				C217DE1857A2A3DB936D4FBC /* KeyboardModel.swift in Sources */,
+				20D909C91C27992B000A5DFD /* Colors.swift in Sources */,
 				200B84971BE979A000E9D998 /* Distance.swift in Sources */,
 				204008BC1BD6D30300FAD96C /* SuggesterWithDictionaries.swift in Sources */,
 				20317D9B1BA09D3E008A4303 /* SuggestionBarView.swift in Sources */,
@@ -600,6 +607,7 @@
 				C211CB0B7AE6315B6481428E /* ExtensionRootController.swift in Sources */,
 				20D909C31C278815000A5DFD /* UserDictionary.swift in Sources */,
 				C21BE9FE6042214E16CFE3BE /* MyTapRecognizer.swift in Sources */,
+				20D909C71C279789000A5DFD /* UIColor+.swift in Sources */,
 				20C304C11BBAFD1000C3460E /* Document.swift in Sources */,
 				C21912CB7F82E9F3CA1C03FF /* ConcreteLayout.swift in Sources */,
 			);
