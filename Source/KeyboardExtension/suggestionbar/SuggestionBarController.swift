@@ -3,12 +3,13 @@ import PromiseKit
 
 class SuggestionBarController: UIViewController {
     private let document: Document
-    private let suggester = SuggesterWithDictionaries.instance
+    private let suggester: Suggester
     private let userDictionary: UserDictionary
     private var suggestionBar: SuggestionBarView!
 
-    init(document: Document, userDictionary: UserDictionary) {
+    init(document: Document, suggester: Suggester, userDictionary: UserDictionary) {
         self.document = document
+        self.suggester = suggester
         self.userDictionary = userDictionary
         super.init(nibName: nil, bundle: nil)
     }

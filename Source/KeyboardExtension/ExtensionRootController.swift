@@ -7,8 +7,9 @@ class ExtensionRootController: UIInputViewController {
         
         let document = NotifyingDocument(wrapping: WordBasedDocument(proxy: textDocumentProxy))
         
-        let suggestionBarController = SuggestionBarController(
-            document: document, userDictionary: UserDictionary())
+        let suggestionBarController = SuggestionBarController(document: document,
+            suggester: SuggesterWithDictionaries.instance,
+            userDictionary: UserDictionary())
         addChild(suggestionBarController)
         
         document.delegate = suggestionBarController
