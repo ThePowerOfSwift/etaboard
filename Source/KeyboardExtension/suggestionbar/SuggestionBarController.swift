@@ -19,8 +19,9 @@ class SuggestionBarController: UIViewController {
     }
     
     override func loadView() {
-        suggestionBar = SuggestionBarView(target: self, action: "didTapSuggestion:")
+        suggestionBar = SuggestionBarView()
         suggestionBar.translatesAutoresizingMaskIntoConstraints = false
+        suggestionBar.onSuggestion(target: self, action: "didTapSuggestion:")
         suggestionBar.onVerbatim(target: self, action: "didTapVerbatim:")
         
         self.view = suggestionBar
