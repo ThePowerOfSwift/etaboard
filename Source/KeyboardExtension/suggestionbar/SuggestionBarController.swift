@@ -1,5 +1,4 @@
 import PromiseKit
-import RealmSwift
 
 class SuggestionBarController: UIViewController {
     private let document: Document
@@ -7,14 +6,10 @@ class SuggestionBarController: UIViewController {
     private let userDictionary: UserDictionary
     private var suggestionBar: SuggestionBarView!
 
-    init(inputController: UIInputViewController, document: Document,
-        userDictionary: UserDictionary) {
-        
+    init(document: Document, userDictionary: UserDictionary) {
         self.document = document
         self.userDictionary = userDictionary
         super.init(nibName: nil, bundle: nil)
-        
-        loadSuggestionsFromSystem(inputController)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -32,16 +27,6 @@ class SuggestionBarController: UIViewController {
             name: KeyPressHandler.NotificationUppercaseActivatedName, object: nil)
     }
 
-    private func loadSuggestionsFromSystem(inputController: UIInputViewController) {
-        if SuggesterWithDictionaries.systemLexiconLoaded { return }
-        
-        inputController.requestSupplementaryLexiconWithCompletion { lexicon in
-            let allEntries = lexicon.entries.map { $0.documentText }
-            SuggesterWithDictionaries.instance.addUnknownLengths(allEntries)
-            SuggesterWithDictionaries.systemLexiconLoaded = true
-        }
-    }
-    
     func didTapSuggestion(button: UIButton) {
         guard let word = button.currentTitle else { return }
         document.replaceCurrentWord(word)
@@ -58,7 +43,6 @@ class SuggestionBarController: UIViewController {
             NSLog("Could not add '\(verbatimWord)' to user dictionary")
             NSLog("Underlying error: \(error)")
         }
-
     }
     
     func didActivateUppercase(notification: NSNotification) {

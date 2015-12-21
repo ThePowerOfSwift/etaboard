@@ -8,7 +8,7 @@ class ExtensionRootController: UIInputViewController {
         let document = NotifyingDocument(wrapping: WordBasedDocument(proxy: textDocumentProxy))
         
         let suggestionBarController = SuggestionBarController(
-            inputController: self, document: document, userDictionary: UserDictionary())
+            document: document, userDictionary: UserDictionary())
         addChild(suggestionBarController)
         
         document.delegate = suggestionBarController
@@ -21,6 +21,7 @@ class ExtensionRootController: UIInputViewController {
             suggestionBar: suggestionBarController.view,
             keyboard: keyboardController.view)
         
+        loadSuggestionsFromSystem()
         NSLog("suggester size: \(SuggesterWithDictionaries.instance.size)")
     }
     
@@ -33,6 +34,16 @@ class ExtensionRootController: UIInputViewController {
     private func addChild(controller: UIViewController) {
         addChildViewController(controller)
         view.addSubview(controller.view)
+    }
+    
+    private func loadSuggestionsFromSystem() {
+        if SuggesterWithDictionaries.systemLexiconLoaded { return }
+        
+        requestSupplementaryLexiconWithCompletion { lexicon in
+            let allEntries = lexicon.entries.map { $0.documentText }
+            SuggesterWithDictionaries.instance.addUnknownLengths(allEntries)
+            SuggesterWithDictionaries.systemLexiconLoaded = true
+        }
     }
 }
 
