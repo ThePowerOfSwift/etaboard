@@ -1,3 +1,4 @@
+import UIKit
 
 class SuggestionBarView: UIView {
     override class func requiresConstraintBasedLayout() -> Bool { return true }

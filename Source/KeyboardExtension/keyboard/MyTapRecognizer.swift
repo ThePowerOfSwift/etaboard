@@ -1,3 +1,4 @@
+import UIKit
 
 class MyTapRecognizer: UIGestureRecognizer {
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent) {

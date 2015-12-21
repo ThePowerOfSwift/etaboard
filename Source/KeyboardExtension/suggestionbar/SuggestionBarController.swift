@@ -1,3 +1,4 @@
+import UIKit
 import PromiseKit
 
 class SuggestionBarController: UIViewController {
