@@ -4,10 +4,14 @@ import RealmSwift
 class SuggestionBarController: UIViewController {
     private let document: Document
     private let suggester = SuggesterWithDictionaries.instance
+    private let userDictionary: UserDictionary
     private var suggestionBar: SuggestionBarView!
 
-    init(inputController: UIInputViewController, document: Document) {
+    init(inputController: UIInputViewController, document: Document,
+        userDictionary: UserDictionary) {
+        
         self.document = document
+        self.userDictionary = userDictionary
         super.init(nibName: nil, bundle: nil)
         
         loadSuggestionsFromSystem(inputController)
@@ -49,12 +53,7 @@ class SuggestionBarController: UIViewController {
         document.replaceCurrentWord(verbatimWord)
         suggester.addUnknownLengths([verbatimWord])
         dispatch_promise {
-            let newDictionaryEntry = UserDictionaryEntry()
-            newDictionaryEntry.word = verbatimWord
-            let realm = try Realm()
-            try realm.write {
-                realm.add(newDictionaryEntry, update: true)
-            }
+            try self.userDictionary.addWord(verbatimWord)
         }.error { error in
             NSLog("Could not add '\(verbatimWord)' to user dictionary")
             NSLog("Underlying error: \(error)")
