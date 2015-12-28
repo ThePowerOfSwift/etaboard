@@ -5,6 +5,7 @@ class Instances {
     static let suggester = SuggesterWithDictionaries().createSuggester()
 }
 
+@available(iOS 9.0, *)
 class ExtensionRootController: UIInputViewController {
     override func viewDidLoad() {
         super.viewDidLoad()

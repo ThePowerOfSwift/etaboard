@@ -1,21 +1,30 @@
 import UIKit
 
-class SuggestionBarView: UIView {
+@available(iOS 9.0, *)
+class SuggestionBarView: UIStackView {
     override class func requiresConstraintBasedLayout() -> Bool { return true }
     
-    let suggestionButton = SuggestionBarView.createButton(Colors.highlight)
-    let verbatimButton = SuggestionBarView.createButton()
+    private let verbatimButton = SuggestionBarView.createButton()
+    private let suggestionButton = SuggestionBarView.createButton(Colors.highlight)
+    private let auxiliarySuggestionButton = SuggestionBarView.createButton()
+    
+    init() {
+        super.init(arrangedSubviews: [])
+        
+        axis = .Horizontal
+        distribution = .FillEqually
+        alignment = .Fill
+        spacing = 5.0
+
+        verbatimButton.contentEdgeInsets = UIEdgeInsetsMake(0, spacing, 0, 0)
+        addArrangedSubview(verbatimButton)
+
+        addArrangedSubview(suggestionButton)
+        addArrangedSubview(auxiliarySuggestionButton)
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-
-        addSubview(suggestionButton)
-        
-        verbatimButton.contentEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0)
-        addSubview(verbatimButton)
-        
-        align([.Top, .Height, .CenterX], of: suggestionButton)
-        align([.Top, .Height, .Left], of: verbatimButton)
     }
 
     required init?(coder: NSCoder) {
@@ -26,6 +35,7 @@ class SuggestionBarView: UIView {
         let button = UIButton()
         button.setTitleColor(titleColor, forState: .Normal)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.titleLabel?.adjustsFontSizeToFitWidth = true
         return button
     }
     
@@ -38,6 +48,7 @@ class SuggestionBarView: UIView {
     
     func displaySuggestion(suggestion: String?) {
         suggestionButton.setTitle(suggestion, forState: .Normal)
+        auxiliarySuggestionButton.setTitle(suggestion, forState: .Normal)
     }
     func getCurrentSuggestion() -> String? {
         return suggestionButton.titleForState(.Normal)
