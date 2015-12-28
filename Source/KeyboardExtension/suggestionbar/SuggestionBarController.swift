@@ -25,11 +25,10 @@ class SuggestionBarController: UIViewController {
         suggestionBar.onVerbatim(target: self, action: "didTapVerbatim:")
         
         self.view = suggestionBar
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector:"didActivateUppercase:",
-            name: KeyPressHandler.NotificationUppercaseActivatedName, object: nil)
+     
+        toggleUppercase()
     }
-
+    
     func didTapSuggestion(button: UIButton) {
         guard let word = button.currentTitle else { return }
         document.replaceCurrentWord(word)
@@ -48,12 +47,18 @@ class SuggestionBarController: UIViewController {
         
         document.replaceCurrentWord(verbatimWord)
     }
-    
+}
+
+extension SuggestionBarController {
+    private func toggleUppercase() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:"didActivateUppercase:",
+            name: KeyPressHandler.NotificationUppercaseActivatedName, object: nil)
+    }    
     func didActivateUppercase(notification: NSNotification) {
         suggestionBar.getCurrentSuggestion()
             |> suggester.capitalize
             |> suggestionBar.displaySuggestion
-    }    
+    }
 }
 
 extension SuggestionBarController: DocumentDelegate {
