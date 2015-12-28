@@ -4,7 +4,7 @@ class SuggestionBarView: UIStackView {
     override class func requiresConstraintBasedLayout() -> Bool { return true }
     
     private let verbatimButton = SuggestionBarView.createButton()
-    private let suggestionButton = SuggestionBarView.createButton(Colors.highlight)
+    private let primarySuggestionButton = SuggestionBarView.createButton(Colors.highlight)
     private let auxiliarySuggestionButton = SuggestionBarView.createButton()
     
     init() {
@@ -18,7 +18,7 @@ class SuggestionBarView: UIStackView {
         verbatimButton.contentEdgeInsets = UIEdgeInsetsMake(0, spacing, 0, 0)
         addArrangedSubview(verbatimButton)
 
-        addArrangedSubview(suggestionButton)
+        addArrangedSubview(primarySuggestionButton)
         addArrangedSubview(auxiliarySuggestionButton)
     }
     
@@ -46,13 +46,13 @@ class SuggestionBarView: UIStackView {
     }
     
     func displaySuggestion(suggestion: String?) {
-        suggestionButton.setTitle(suggestion, forState: .Normal)
+        primarySuggestionButton.setTitle(suggestion, forState: .Normal)
         auxiliarySuggestionButton.setTitle(suggestion, forState: .Normal)
     }
     func getCurrentSuggestion() -> String? {
-        return suggestionButton.titleForState(.Normal)
+        return primarySuggestionButton.titleForState(.Normal)
     }
     func onSuggestion(target target: AnyObject, action: Selector) {
-        suggestionButton.addTarget(target, action: action, forControlEvents: .TouchUpInside)
+        primarySuggestionButton.addTarget(target, action: action, forControlEvents: .TouchUpInside)
     }
 }
