@@ -53,18 +53,18 @@ extension SuggestionBarController {
     private func toggleUppercase() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector:"didActivateUppercase:",
             name: KeyPressHandler.NotificationUppercaseActivatedName, object: nil)
-    }    
+    }
     func didActivateUppercase(notification: NSNotification) {
-        suggestionBar.getCurrentSuggestion()
-            |> suggester.capitalize
-            |> suggestionBar.displaySuggestion
+        suggestionBar.getCurrentSuggestions()
+            .map(suggester.capitalize)
+            |> suggestionBar.displaySuggestions
     }
 }
 
 extension SuggestionBarController: DocumentDelegate {
     func didChangeCurrentWord(newCurrentWord: String?) {
         dispatch_promise { self.suggester.suggestCompletion(to: newCurrentWord) }
-            .then(self.suggestionBar.displaySuggestion)
+            .then { self.suggestionBar.displaySuggestions([$0]) }
         self.suggestionBar.displayVerbatim(newCurrentWord)
     }
 }
