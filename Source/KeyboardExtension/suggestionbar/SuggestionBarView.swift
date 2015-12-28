@@ -4,8 +4,11 @@ class SuggestionBarView: UIStackView {
     override class func requiresConstraintBasedLayout() -> Bool { return true }
     
     private let verbatimButton = SuggestionBarView.createButton()
-    private let primarySuggestionButton = SuggestionBarView.createButton(Colors.highlight)
-    private let auxiliarySuggestionButton = SuggestionBarView.createButton()
+    
+    private var suggestionButtons = [
+        SuggestionBarView.createButton(Colors.highlight),
+        SuggestionBarView.createButton()
+    ]
     
     init() {
         super.init(arrangedSubviews: [])
@@ -18,8 +21,7 @@ class SuggestionBarView: UIStackView {
         verbatimButton.contentEdgeInsets = UIEdgeInsetsMake(0, spacing, 0, 0)
         addArrangedSubview(verbatimButton)
 
-        addArrangedSubview(primarySuggestionButton)
-        addArrangedSubview(auxiliarySuggestionButton)
+        suggestionButtons.forEach { addArrangedSubview($0) }
     }
     
     override init(frame: CGRect) {
@@ -46,13 +48,16 @@ class SuggestionBarView: UIStackView {
     }
     
     func displaySuggestion(suggestion: String?) {
-        primarySuggestionButton.setTitle(suggestion, forState: .Normal)
-        auxiliarySuggestionButton.setTitle(suggestion, forState: .Normal)
+        suggestionButtons.forEach { button in
+            button.setTitle(suggestion, forState: .Normal)
+        }
     }
     func getCurrentSuggestion() -> String? {
-        return primarySuggestionButton.titleForState(.Normal)
+        return suggestionButtons.first?.titleForState(.Normal)
     }
     func onSuggestion(target target: AnyObject, action: Selector) {
-        primarySuggestionButton.addTarget(target, action: action, forControlEvents: .TouchUpInside)
+        suggestionButtons.forEach { button in
+            button.addTarget(target, action: action, forControlEvents: .TouchUpInside)
+        }
     }
 }
