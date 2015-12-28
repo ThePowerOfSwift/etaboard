@@ -1,7 +1,6 @@
 import UIKit
 import PromiseKit
 
-@available(iOS 9.0, *)
 class SuggestionBarController: UIViewController {
     private let document: Document
     private let suggester: Suggester
@@ -57,7 +56,6 @@ class SuggestionBarController: UIViewController {
     }    
 }
 
-@available(iOS 9.0, *)
 extension SuggestionBarController: DocumentDelegate {
     func didChangeCurrentWord(newCurrentWord: String?) {
         dispatch_promise { self.suggester.suggestCompletion(to: newCurrentWord) }

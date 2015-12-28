@@ -1,6 +1,5 @@
 import UIKit
 
-@available(iOS 9.0, *)
 class SuggestionBarView: UIStackView {
     override class func requiresConstraintBasedLayout() -> Bool { return true }
     
