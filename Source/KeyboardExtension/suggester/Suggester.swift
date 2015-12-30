@@ -52,15 +52,10 @@ class Suggester {
     }
     
     private func findClosestWord(to word: String, from words: [String]) -> String? {
-        var bestDistance = Double(Int.max)
-        var bestCandidate: String? = nil
+        let collector = OneSuggestionCollector()
         for candidate in words {
-            let distance = wordDistance(word, s2: candidate)
-            if distance < bestDistance {
-                bestDistance = distance
-                bestCandidate = candidate
-            }
+            collector.addSuggestion(candidate, distance: wordDistance(word, s2: candidate))
         }
-        return bestCandidate
+        return collector.getBestSuggestion()
     }
 }
