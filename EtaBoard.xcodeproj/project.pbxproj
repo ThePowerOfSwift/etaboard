@@ -53,7 +53,7 @@
 		20C304C51BBAFF6B00C3460E /* WordBasedDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C304C31BBAFF6B00C3460E /* WordBasedDocument.swift */; };
 		20D5F64A1BA2F4C100956BE8 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20D5F6481BA2F4C100956BE8 /* Nimble.framework */; };
 		20D5F64E1BA2F4DA00956BE8 /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 20D5F6481BA2F4C100956BE8 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		20D909BA1C2492E8000A5DFD /* SuggesterAcceptanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D909B91C2492E8000A5DFD /* SuggesterAcceptanceTests.swift */; };
+		20D909BA1C2492E8000A5DFD /* WordDistanceAcceptanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D909B91C2492E8000A5DFD /* WordDistanceAcceptanceTests.swift */; };
 		20D909BF1C253675000A5DFD /* SuggestionBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D909BE1C253675000A5DFD /* SuggestionBarController.swift */; };
 		20D909C11C25D4E7000A5DFD /* KeyboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D909C01C25D4E7000A5DFD /* KeyboardController.swift */; };
 		20D909C31C278815000A5DFD /* UserDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D909C21C278815000A5DFD /* UserDictionary.swift */; };
@@ -169,7 +169,7 @@
 		20C304C01BBAFD1000C3460E /* Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		20C304C31BBAFF6B00C3460E /* WordBasedDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordBasedDocument.swift; sourceTree = "<group>"; };
 		20D5F6481BA2F4C100956BE8 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = SOURCE_ROOT; };
-		20D909B91C2492E8000A5DFD /* SuggesterAcceptanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggesterAcceptanceTests.swift; sourceTree = "<group>"; };
+		20D909B91C2492E8000A5DFD /* WordDistanceAcceptanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordDistanceAcceptanceTests.swift; sourceTree = "<group>"; };
 		20D909BE1C253675000A5DFD /* SuggestionBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionBarController.swift; sourceTree = "<group>"; };
 		20D909C01C25D4E7000A5DFD /* KeyboardController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardController.swift; sourceTree = "<group>"; };
 		20D909C21C278815000A5DFD /* UserDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDictionary.swift; sourceTree = "<group>"; };
@@ -350,9 +350,9 @@
 			isa = PBXGroup;
 			children = (
 				20925E391BACABF700FBCFE4 /* WordDistanceTests.swift */,
+				20D909B91C2492E8000A5DFD /* WordDistanceAcceptanceTests.swift */,
 				2083F4E71BB1BECE00EBAFCC /* WordDistancePerfTests.swift */,
 				2083F4E51BAE2B1500EBAFCC /* SuggesterTests.swift */,
-				20D909B91C2492E8000A5DFD /* SuggesterAcceptanceTests.swift */,
 				207F2C9B1BADB1350049AEB9 /* SuggesterPerformanceTests.swift */,
 				209616341BC5A20A003D1E81 /* CharacterDistanceTests.swift */,
 			);
@@ -599,7 +599,7 @@
 				200B84981BE97B1500E9D998 /* Distance.swift in Sources */,
 				209616351BC5A20A003D1E81 /* CharacterDistanceTests.swift in Sources */,
 				2083F4E81BB1BECE00EBAFCC /* WordDistancePerfTests.swift in Sources */,
-				20D909BA1C2492E8000A5DFD /* SuggesterAcceptanceTests.swift in Sources */,
+				20D909BA1C2492E8000A5DFD /* WordDistanceAcceptanceTests.swift in Sources */,
 				2083F4E61BAE2B1500EBAFCC /* SuggesterTests.swift in Sources */,
 				207686611BB212D6004B1F57 /* String+.swift in Sources */,
 				2045E7C11BC858F900045CEB /* SequenceType+groupBy.swift in Sources */,
