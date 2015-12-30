@@ -28,15 +28,6 @@ class Suggester {
 }
 
 extension Suggester {
-    private func collectSuggestionsWithDistancesFor(word: String,
-        into collector: SuggestionsCollector) {
-        
-        let wordsOfSameLength = wordsByLength[word.characters.count] ?? []
-        for candidate in wordsOfSameLength {
-            collector.addSuggestion(candidate, distance: wordDistance(word, candidate))
-        }
-    }
-    
     func collectSuggestionsFor(currentContext: String?, into collector: SuggestionsCollector) {
         NSLog("asked for suggestion for: \(currentContext)")
         guard let currentWord = currentContext else { return }
@@ -44,6 +35,15 @@ extension Suggester {
         collectSuggestionsWithDistancesFor(currentWord, into: collector)
         if (containsCapitalLetter(currentWord)) {
             return collector.mapSuggestions(capitalize)
+        }
+    }
+    
+    private func collectSuggestionsWithDistancesFor(word: String,
+        into collector: SuggestionsCollector) {
+        
+        let wordsOfSameLength = wordsByLength[word.characters.count] ?? []
+        for candidate in wordsOfSameLength {
+            collector.addSuggestion(candidate, distance: wordDistance(word, candidate))
         }
     }
 }
