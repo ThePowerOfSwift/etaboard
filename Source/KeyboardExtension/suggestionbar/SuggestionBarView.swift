@@ -53,13 +53,18 @@ class SuggestionBarView: UIStackView {
             button.setTitle(suggestion, forState: .Normal)
         }
     }
+    func mapSuggestions(transform: String -> String) {
+        getCurrentSuggestions()
+            .map(transform)
+            |> displaySuggestions
+    }
     private func clearSuggestions() {
         suggestionButtons.forEach { button in
             button.setTitle(nil, forState: .Normal)
         }
     }
-    func getCurrentSuggestions() -> [String?] {
-        return suggestionButtons.map { $0.titleForState(.Normal) }
+    private func getCurrentSuggestions() -> [String] {
+        return suggestionButtons.map { $0.titleForState(.Normal) }.flatMap { $0 }
     }
     func onSuggestion(target target: AnyObject, action: Selector) {
         suggestionButtons.forEach { button in

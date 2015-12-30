@@ -55,10 +55,7 @@ extension SuggestionBarController {
             name: KeyPressHandler.NotificationUppercaseActivatedName, object: nil)
     }
     func didActivateUppercase(notification: NSNotification) {
-        suggestionBar.getCurrentSuggestions()
-            .flatMap { $0 }
-            .map(suggester.capitalize)
-            |> suggestionBar.displaySuggestions
+        suggestionBar.mapSuggestions(suggester.capitalize)
     }
 }
 
