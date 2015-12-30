@@ -63,8 +63,11 @@ extension SuggestionBarController {
 
 extension SuggestionBarController: DocumentDelegate {
     func didChangeCurrentWord(newCurrentWord: String?) {
-        dispatch_promise { self.suggester.suggestCompletion(to: newCurrentWord) }
-            .then { self.suggestionBar.displaySuggestions([$0]) }
+        dispatch_promise {
+            let collector = OneSuggestionCollector()
+            self.suggester.collectSuggestionsFor(newCurrentWord, into: collector)
+            return collector.getBestSuggestion()
+        }.then { self.suggestionBar.displaySuggestions([$0]) }
         self.suggestionBar.displayVerbatim(newCurrentWord)
     }
 }

@@ -1,5 +1,11 @@
 import Foundation
 
+protocol SuggestionsCollector {
+    func addSuggestion(suggestion: String, distance: Distance)
+    func mapSuggestions(functor: String? -> String?)
+}
+
+
 class Suggester {
     private var wordsByLength = [Int: [String]]()
     
@@ -26,6 +32,25 @@ class Suggester {
         }
     }
     
+    func collectSuggestionsFor(currentContext: String?, into collector: SuggestionsCollector) {
+        NSLog("asked for suggestion for: \(currentContext)")
+        guard let currentWord = currentContext else { return }
+        
+        collectSuggestionsWithDistancesFor(currentWord, into: collector)
+        if (containsCapitalLetter(currentWord)) {
+            return collector.mapSuggestions(capitalize)
+        }
+    }
+
+    private func collectSuggestionsWithDistancesFor(word: String,
+        into collector: SuggestionsCollector) {
+        
+        let wordsOfSameLength = wordsByLength[word.characters.count] ?? []
+        for candidate in wordsOfSameLength {
+            collector.addSuggestion(candidate, distance: wordDistance(word, s2: candidate))
+        }
+    }
+
     
     func suggestCompletion(to currentContext: String?) -> String? {
         NSLog("asked for suggestion for: \(currentContext)")
