@@ -31,7 +31,7 @@ private class Array2D {
     }
 }
 
-func wordDistance(aStr: String, s2 bStr: String) -> Distance {
+func wordDistance(aStr: String, _ bStr: String) -> Distance {
     let a = Array(aStr.utf16)
     let b = Array(bStr.utf16)
     

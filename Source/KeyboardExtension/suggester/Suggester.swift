@@ -41,7 +41,7 @@ class Suggester {
         
         let wordsOfSameLength = wordsByLength[word.characters.count] ?? []
         for candidate in wordsOfSameLength {
-            collector.addSuggestion(candidate, distance: wordDistance(word, s2: candidate))
+            collector.addSuggestion(candidate, distance: wordDistance(word, candidate))
         }
     }
 
@@ -73,7 +73,7 @@ class Suggester {
     private func findClosestWord(to word: String, from words: [String]) -> String {
         let collector = OneSuggestionCollector()
         for candidate in words {
-            collector.addSuggestion(candidate, distance: wordDistance(word, s2: candidate))
+            collector.addSuggestion(candidate, distance: wordDistance(word, candidate))
         }
         return collector.getBestSuggestion()
     }

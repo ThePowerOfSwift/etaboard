@@ -1,7 +1,7 @@
 import XCTest
 import Nimble
 
-class SuggesterAcceptanceTests: XCTestCase {
+class WordDistanceAcceptanceTests: XCTestCase {
     let suggester = Suggester()
     
     func testStillSuggestsTheRightThingWhenMistypedAtTheDiacriticalChar() {
