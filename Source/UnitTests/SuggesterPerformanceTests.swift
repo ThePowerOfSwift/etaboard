@@ -7,7 +7,8 @@ class SuggesterPerformanceTests: XCTestCase {
         let suggester = createSuggester(dictionarySize: 10000, maxWordLength: 12)
         let needle = String.random(length: 6)
         measureBlock {
-            suggester.suggestCompletion(to: needle)
+            let collector = TwoSuggestionsCollector()
+            suggester.collectSuggestionsFor(needle, into: collector)
         }
     }
     

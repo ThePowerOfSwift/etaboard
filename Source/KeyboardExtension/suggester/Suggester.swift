@@ -25,6 +25,17 @@ class Suggester {
             }
         }
     }
+}
+
+extension Suggester {
+    private func collectSuggestionsWithDistancesFor(word: String,
+        into collector: SuggestionsCollector) {
+        
+        let wordsOfSameLength = wordsByLength[word.characters.count] ?? []
+        for candidate in wordsOfSameLength {
+            collector.addSuggestion(candidate, distance: wordDistance(word, candidate))
+        }
+    }
     
     func collectSuggestionsFor(currentContext: String?, into collector: SuggestionsCollector) {
         NSLog("asked for suggestion for: \(currentContext)")
@@ -35,46 +46,14 @@ class Suggester {
             return collector.mapSuggestions(capitalize)
         }
     }
+}
 
-    private func collectSuggestionsWithDistancesFor(word: String,
-        into collector: SuggestionsCollector) {
-        
-        let wordsOfSameLength = wordsByLength[word.characters.count] ?? []
-        for candidate in wordsOfSameLength {
-            collector.addSuggestion(candidate, distance: wordDistance(word, candidate))
-        }
-    }
-
-    
-    func suggestCompletion(to currentContext: String?) -> String? {
-        NSLog("asked for suggestion for: \(currentContext)")
-        guard let currentWord = currentContext else { return nil }
-        
-        let suggestion = findClosestWord(to: currentWord)
-        if (containsCapitalLetter(currentWord)) {
-            return capitalize(suggestion)
-        }
-        return suggestion
-    }
-    
+extension Suggester {
     func capitalize(string: String) -> String {
         return string.capitalizedString
     }
     
     private func containsCapitalLetter(string: String) -> Bool {
         return string != string.lowercaseString
-    }
-    
-    private func findClosestWord(to word: String) -> String {
-        let wordsOfSameLength = wordsByLength[word.characters.count] ?? []
-        return findClosestWord(to: word, from: wordsOfSameLength)
-    }
-    
-    private func findClosestWord(to word: String, from words: [String]) -> String {
-        let collector = OneSuggestionCollector()
-        for candidate in words {
-            collector.addSuggestion(candidate, distance: wordDistance(word, candidate))
-        }
-        return collector.getBestSuggestion()
     }
 }
