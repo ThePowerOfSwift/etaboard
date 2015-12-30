@@ -3,21 +3,21 @@ import Nimble
 
 class CharacterDistanceTests: XCTestCase {
     func testIs0ToItself() {
-        expect(distanceBetweenChars("a", "a")) == 0
+        expect(self.distanceBetweenChars("a", "a")) == 0
     }
     
     func testIs1ToCharFarApart() {
-        expect(distanceBetweenChars("a", "l")) == 1
+        expect(self.distanceBetweenChars("a", "l")) == 1
     }
     
     func testIsInBetweenToNeighboringChar() {
-        expect(distanceBetweenChars("a", "s")) > 0
-        expect(distanceBetweenChars("a", "s")) < 1
+        expect(self.distanceBetweenChars("a", "s")) > 0
+        expect(self.distanceBetweenChars("a", "s")) < 1
     }
     
     func testIsCommutative() {
-        expect(distanceBetweenChars("A", "a")) ==
-            distanceBetweenChars("a", "A")
+        expect(self.distanceBetweenChars("A", "a")) ==
+                    distanceBetweenChars("a", "A")
     }
     
     func testUppercaseAndDiacriticalVariantsArePartOfTheFamily() {
@@ -35,14 +35,14 @@ class CharacterDistanceTests: XCTestCase {
 
     func testCharFamilyRemainsCloseToNeighboringLowercaseChar() {
         let baseDistance = distanceBetweenChars("a", "s")
-        expect(distanceBetweenChars("A", "s")) ≈
-               distanceBetweenChars("A", "a") + baseDistance
+        expect(self.distanceBetweenChars("A", "s")) ≈
+                    distanceBetweenChars("A", "a") + baseDistance
 
-        expect(distanceBetweenChars("ä", "s")) ≈
-               distanceBetweenChars("ä", "a") + baseDistance
+        expect(self.distanceBetweenChars("ä", "s")) ≈
+                    distanceBetweenChars("ä", "a") + baseDistance
         
-        expect(distanceBetweenChars("Ä", "s")) ≈
-               distanceBetweenChars("Ä", "a") + baseDistance
+        expect(self.distanceBetweenChars("Ä", "s")) ≈
+                    distanceBetweenChars("Ä", "a") + baseDistance
     }
 
     func testCharFamilyRemainsCloseToNeighboringUppercaseChar() {
@@ -50,50 +50,52 @@ class CharacterDistanceTests: XCTestCase {
         
         // a–S follows by symmetry
         
-        expect(distanceBetweenChars("ä", "S")) ≈
-               distanceBetweenChars("ä", "A") + baseDistance
+        expect(self.distanceBetweenChars("ä", "S")) ≈
+                    distanceBetweenChars("ä", "A") + baseDistance
         
-        expect(distanceBetweenChars("Ä", "S")) ≈
-            distanceBetweenChars("Ä", "A") + baseDistance
+        expect(self.distanceBetweenChars("Ä", "S")) ≈
+                    distanceBetweenChars("Ä", "A") + baseDistance
     }
 
     func testUppercaseIsCloserThanWithDiacriticalMark() {
-        expect(distanceBetweenChars("a", "A")) <
-               distanceBetweenChars("a", "ä")
+        expect(self.distanceBetweenChars("a", "A")) <
+                    distanceBetweenChars("a", "ä")
     }
     
     func testUppercaseVariantsOfBaseCharactersHaveSameDistanceAsLowercaseVariants() {
-        expect(distanceBetweenChars("K", "L")) ==
-               distanceBetweenChars("k", "l")
+        expect(self.distanceBetweenChars("K", "L")) ==
+                    distanceBetweenChars("k", "l")
     }
 
     func testUppercaseVariantsOfDiacriticalCharactersHaveSameDistanceAsLowercaseVariants() {
-        expect(distanceBetweenChars("A", "Ä")) ==
-               distanceBetweenChars("a", "ä")
+        expect(self.distanceBetweenChars("A", "Ä")) ==
+                    distanceBetweenChars("a", "ä")
     }
     
 }
 
 
-func distanceBetweenChars(charA: Character, _ charB: Character) -> Distance {
-    return distanceBetweenUInt16Chars(charA.code(), and: charB.code())
-}
+extension CharacterDistanceTests {
+    func distanceBetweenChars(charA: Character, _ charB: Character) -> Distance {
+        return distanceBetweenUInt16Chars(charA.code(), and: charB.code())
+    }
 
-private func formatDistance(distance: Distance) -> String {
-    return String(format: "%.3f", distance)
-}
+    private func formatDistance(distance: Distance) -> String {
+        return String(format: "%.3f", distance)
+    }
 
-func beSimilarTo(expected: Character) -> MatcherFunc<String> {
-    let limit = distanceBetweenChars("a", "s")
-    
-    return MatcherFunc { actualExpression, failureMessage in
-        guard let actual = try actualExpression.evaluate() else {
-            return false
-        }
+    func beSimilarTo(expected: Character) -> MatcherFunc<String> {
+        let limit = distanceBetweenChars("a", "s")
         
-        let distance = distanceBetweenChars(expected, actual.first())
-        failureMessage.postfixMessage = "be closer than <\(formatDistance(limit))>"
-        failureMessage.postfixActual = " (distance: \(formatDistance(distance)))"
-        return distance > 0 && distance < limit
+        return MatcherFunc { actualExpression, failureMessage in
+            guard let actual = try actualExpression.evaluate() else {
+                return false
+            }
+            
+            let distance = self.distanceBetweenChars(expected, actual.first())
+            failureMessage.postfixMessage = "be closer than <\(self.formatDistance(limit))>"
+            failureMessage.postfixActual = " (distance: \(self.formatDistance(distance)))"
+            return distance > 0 && distance < limit
+        }
     }
 }
