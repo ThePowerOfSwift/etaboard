@@ -327,11 +327,11 @@
 			isa = PBXGroup;
 			children = (
 				20925E351BACA64700FBCFE4 /* Suggester.swift */,
+				20FBD3681C342C3C00FC8B34 /* SuggestionsCollector.swift */,
+				20FBD35F1C33E0D000FC8B34 /* OneSuggestionCollector.swift */,
 				20925E371BACABDE00FBCFE4 /* WordDistance.swift */,
 				205A41361BC4912F00E659E1 /* CharacterDistanceGenerator.swift */,
 				205A41371BC4978000E659E1 /* CharacterDistance.swift */,
-				20FBD35F1C33E0D000FC8B34 /* OneSuggestionCollector.swift */,
-				20FBD3681C342C3C00FC8B34 /* SuggestionsCollector.swift */,
 			);
 			path = suggester;
 			sourceTree = "<group>";
@@ -349,11 +349,11 @@
 		20C304C61BBB070800C3460E /* suggester */ = {
 			isa = PBXGroup;
 			children = (
+				2083F4E51BAE2B1500EBAFCC /* SuggesterTests.swift */,
+				207F2C9B1BADB1350049AEB9 /* SuggesterPerformanceTests.swift */,
 				20925E391BACABF700FBCFE4 /* WordDistanceTests.swift */,
 				20D909B91C2492E8000A5DFD /* WordDistanceAcceptanceTests.swift */,
 				2083F4E71BB1BECE00EBAFCC /* WordDistancePerfTests.swift */,
-				2083F4E51BAE2B1500EBAFCC /* SuggesterTests.swift */,
-				207F2C9B1BADB1350049AEB9 /* SuggesterPerformanceTests.swift */,
 				209616341BC5A20A003D1E81 /* CharacterDistanceTests.swift */,
 			);
 			name = suggester;
