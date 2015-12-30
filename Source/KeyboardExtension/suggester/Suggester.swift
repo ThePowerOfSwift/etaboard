@@ -1,11 +1,5 @@
 import Foundation
 
-protocol SuggestionsCollector {
-    func addSuggestion(suggestion: String, distance: Distance)
-    func mapSuggestions(functor: String? -> String?)
-}
-
-
 class Suggester {
     private var wordsByLength = [Int: [String]]()
     

@@ -47,9 +47,15 @@ class SuggestionBarView: UIStackView {
         verbatimButton.addTarget(target, action: action, forControlEvents: .TouchUpInside)
     }
     
-    func displaySuggestions(suggestions: [String?]) {
+
+    func displaySuggestions(suggestions: [String]) {
         for (button, suggestion) in zip(suggestionButtons, suggestions) {
             button.setTitle(suggestion, forState: .Normal)
+        }
+    }
+    private func clearSuggestions() {
+        suggestionButtons.forEach { button in
+            button.setTitle(nil, forState: .Normal)
         }
     }
     func getCurrentSuggestions() -> [String?] {

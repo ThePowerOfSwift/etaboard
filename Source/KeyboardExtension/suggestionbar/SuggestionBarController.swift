@@ -57,6 +57,7 @@ extension SuggestionBarController {
     func didActivateUppercase(notification: NSNotification) {
         suggestionBar.getCurrentSuggestions()
             .map(suggester.capitalize)
+            .flatMap { $0 }
             |> suggestionBar.displaySuggestions
     }
 }
@@ -64,10 +65,10 @@ extension SuggestionBarController {
 extension SuggestionBarController: DocumentDelegate {
     func didChangeCurrentWord(newCurrentWord: String?) {
         dispatch_promise {
-            let collector = OneSuggestionCollector()
+            let collector = TwoSuggestionsCollector()
             self.suggester.collectSuggestionsFor(newCurrentWord, into: collector)
-            return collector.getBestSuggestion()
-        }.then { self.suggestionBar.displaySuggestions([$0]) }
+            return collector.getSuggestions()
+        }.then(self.suggestionBar.displaySuggestions)
         self.suggestionBar.displayVerbatim(newCurrentWord)
     }
 }
