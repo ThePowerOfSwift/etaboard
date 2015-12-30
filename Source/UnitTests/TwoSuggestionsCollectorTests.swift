@@ -25,4 +25,10 @@ class TwoSuggestionsCollectorTests: XCTestCase {
         collector.addSuggestion("baz", distance: 0)
         expect(self.collector.getSuggestions()).to(haveCount(2))
     }
+    
+    func testAppliesTransformToAllSuggestions() {
+        collector.addSuggestion("foo", distance: 0)
+        collector.mapSuggestions { $0.capitalizedString }
+        expect(self.collector.getSuggestions()) == ["Foo"]
+    }
 }

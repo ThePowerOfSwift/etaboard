@@ -57,20 +57,20 @@ class Suggester {
         return suggestion
     }
     
-    func capitalize(string: String?) -> String? {
-        return string?.capitalizedString
+    func capitalize(string: String) -> String {
+        return string.capitalizedString
     }
     
     private func containsCapitalLetter(string: String) -> Bool {
         return string != string.lowercaseString
     }
     
-    private func findClosestWord(to word: String) -> String? {
+    private func findClosestWord(to word: String) -> String {
         let wordsOfSameLength = wordsByLength[word.characters.count] ?? []
         return findClosestWord(to: word, from: wordsOfSameLength)
     }
     
-    private func findClosestWord(to word: String, from words: [String]) -> String? {
+    private func findClosestWord(to word: String, from words: [String]) -> String {
         let collector = OneSuggestionCollector()
         for candidate in words {
             collector.addSuggestion(candidate, distance: wordDistance(word, s2: candidate))

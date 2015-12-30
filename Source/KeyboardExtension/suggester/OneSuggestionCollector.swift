@@ -1,7 +1,7 @@
 
 class OneSuggestionCollector: SuggestionsCollector {
     private var bestDistance = Double(Int.max)
-    private var bestSuggestion: String? = nil
+    private var bestSuggestion = ""
 
     func addSuggestion(suggestion: String, distance: Distance) {
         if distance < bestDistance {
@@ -10,11 +10,11 @@ class OneSuggestionCollector: SuggestionsCollector {
         }
     }
     
-    func mapSuggestions(functor: String? -> String?) {
+    func mapSuggestions(functor: String -> String) {
         bestSuggestion = functor(bestSuggestion)
     }
     
-    func getBestSuggestion() -> String? {
+    func getBestSuggestion() -> String {
         return bestSuggestion
     }
 }

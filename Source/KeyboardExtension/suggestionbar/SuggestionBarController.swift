@@ -56,8 +56,8 @@ extension SuggestionBarController {
     }
     func didActivateUppercase(notification: NSNotification) {
         suggestionBar.getCurrentSuggestions()
-            .map(suggester.capitalize)
             .flatMap { $0 }
+            .map(suggester.capitalize)
             |> suggestionBar.displaySuggestions
     }
 }
