@@ -5,12 +5,13 @@ class SuggestionBarController: UIViewController {
     private let document: Document
     private let suggester: Suggester
     private let userDictionary: UserDictionary
-    private var suggestionBar: SuggestionBarView!
+    private var suggestionBar: SuggestionBarView
 
     init(document: Document, suggester: Suggester, userDictionary: UserDictionary) {
         self.document = document
         self.suggester = suggester
         self.userDictionary = userDictionary
+        suggestionBar = SuggestionBarView()
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -19,7 +20,6 @@ class SuggestionBarController: UIViewController {
     }
     
     override func loadView() {
-        suggestionBar = SuggestionBarView()
         suggestionBar.translatesAutoresizingMaskIntoConstraints = false
         suggestionBar.onSuggestion(target: self, action: "didTapSuggestion:")
         suggestionBar.onVerbatim(target: self, action: "didTapVerbatim:")
