@@ -49,6 +49,7 @@ class SuggestionBarView: UIStackView {
     
 
     func displaySuggestions(suggestions: [String]) {
+        clearSuggestions()
         for (button, suggestion) in zip(suggestionButtons, suggestions) {
             button.setTitle(suggestion, forState: .Normal)
         }
