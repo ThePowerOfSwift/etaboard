@@ -6,6 +6,8 @@ class SuggestionBarController: UIViewController {
     private let suggester: Suggester
     private let userDictionary: UserDictionary
     private var suggestionBar: SuggestionBarView
+    private let completionQueue = dispatch_queue_create(
+        "de.bepple.etaboard.completions", DISPATCH_QUEUE_SERIAL)
 
     init(document: Document, suggester: Suggester, userDictionary: UserDictionary) {
         self.document = document
@@ -61,7 +63,7 @@ extension SuggestionBarController {
 
 extension SuggestionBarController: DocumentDelegate {
     func didChangeCurrentWord(newCurrentWord: String?) {
-        dispatch_promise {
+        dispatch_promise(on: completionQueue) {
             let collector = TwoSuggestionsCollector()
             self.suggester.collectSuggestionsFor(newCurrentWord, into: collector)
             return collector.getSuggestions()
