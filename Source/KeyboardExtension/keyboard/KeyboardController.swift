@@ -33,7 +33,7 @@ class KeyboardController: UIViewController {
     
     func handleTap(recognizer: UIGestureRecognizer) {
         let touchPoint = recognizer.locationInView(view)
-        let intendedTouchPoint = CGPointMake(touchPoint.x, touchPoint.y + 5)
+        let intendedTouchPoint = CGPointMake(touchPoint.x, touchPoint.y)
         let key = keyboardModel.closestKey(to: intendedTouchPoint)
         keyPressHandler.handle(key)
     }
