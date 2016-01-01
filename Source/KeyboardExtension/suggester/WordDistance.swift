@@ -10,7 +10,7 @@ private class Array2D {
     init(cols: Int, rows: Int) {
         self.cols = cols
         self.rows = rows
-        matrix = Array(count:cols*rows, repeatedValue:0)
+        matrix = Array(count:cols*rows, repeatedValue: 0)
     }
     
     subscript(col: Int, row: Int) -> Distance {
@@ -35,19 +35,19 @@ func wordDistance(aStr: String, _ bStr: String, threshold: Distance = .max) -> D
     let a = Array(aStr.utf16)
     let b = Array(bStr.utf16)
     
-    if a.count == 0 { return Double(b.count) }
-    if b.count == 0 { return Double(a.count) }
+    if a.count == 0 { return Distance(b.count) }
+    if b.count == 0 { return Distance(a.count) }
     
     let dist = Array2D(cols: a.count + 1, rows: b.count + 1)
     
     // 'a' prefixes can be transformed into empty string by deleting every char
     for i in 1...a.count {
-        dist[i, 0] = Double(i)
+        dist[i, 0] = Distance(i)
     }
     
     // 'b' prefixes can be created from empty string by inserting every char
     for j in 1...b.count {
-        dist[0, j] = Double(j)
+        dist[0, j] = Distance(j)
     }
     
     for i in 1...a.count {
