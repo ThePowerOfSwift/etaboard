@@ -1,4 +1,4 @@
-private func myMin(a: Distance, b: Distance, c: Distance) -> Distance {
+private func myMin(a: Distance, _ b: Distance, _ c: Distance) -> Distance {
     if a < b { return a < c ? a : c }
     else { return b < c ? b : c }
 }
@@ -31,7 +31,7 @@ private class Array2D {
     }
 }
 
-func wordDistance(aStr: String, _ bStr: String) -> Distance {
+func wordDistance(aStr: String, _ bStr: String, threshold: Distance = Double(Int.max)) -> Distance {
     let a = Array(aStr.utf16)
     let b = Array(bStr.utf16)
     
@@ -51,20 +51,22 @@ func wordDistance(aStr: String, _ bStr: String) -> Distance {
     }
     
     for i in 1...a.count {
+        var couldUndercutThreshold = false
         for j in 1...b.count {
+            var newValue: Distance
             if a[i-1] == b[j-1] {
-                dist[i, j] = dist[i-1, j-1]  // noop
+                newValue = dist[i-1, j-1]  // noop
+                dist[i, j] = newValue
             } else {
                 let delete = dist[i-1, j] + 1
                 let insert = dist[i, j-1] + 1
                 let substitute = dist[i-1, j-1] + distanceBetweenUInt16Chars(a[i-1], and: b[j-1])
-                dist[i, j] = myMin(
-                    delete,
-                    b: insert,
-                    c: substitute
-                )
+                newValue = myMin(delete, insert, substitute)
+                dist[i, j] = newValue
             }
+            if newValue < threshold { couldUndercutThreshold = true }
         }
+        if !couldUndercutThreshold { return Double(Int.max) }
     }
     
     return dist[a.count, b.count]

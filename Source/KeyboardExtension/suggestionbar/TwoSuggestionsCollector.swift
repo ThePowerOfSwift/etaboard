@@ -3,6 +3,8 @@ class TwoSuggestionsCollector: SuggestionsCollector {
     private var result1 = (suggestion: "", distance: Double(Int.max))
     private var result2 = (suggestion: "", distance: Double(Int.max))
     
+    var boundary: Distance { return result2.distance }
+    
     func addSuggestion(newSuggestion: String, distance newDistance: Distance = 0) {
         if newDistance < result1.distance {
             result2 = result1

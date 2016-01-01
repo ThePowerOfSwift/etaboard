@@ -15,4 +15,12 @@ class WordDistanceTests: XCTestCase {
         expect(wordDistance("", "a")) == 1
         expect(wordDistance("a", "")) == 1
     }
+    
+    func testIsCrazyLargeNumberWhenCannotUndercutThreshold() {
+        expect(wordDistance("a", "b", threshold: 0.5)) == Double(Int.max)
+    }
+
+    func testUndercutsThreshold() {
+        expect(wordDistance("ab", "ab", threshold: 0.1)) == 0
+    }
 }
