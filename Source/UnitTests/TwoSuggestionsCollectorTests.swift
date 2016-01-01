@@ -9,7 +9,7 @@ class TwoSuggestionsCollectorTests: XCTestCase {
     }
     
     func testCollectsOneSuggestionWhenOneAdded() {
-        collector.addSuggestion("foo", distance: 0)
+        collector.addSuggestion("foo")
         expect(self.collector.getSuggestions()) == ["foo"]
     }
     
@@ -20,15 +20,16 @@ class TwoSuggestionsCollectorTests: XCTestCase {
     }
 
     func testLimitsNumberOfSuggestionsToTwo() {
-        collector.addSuggestion("foo", distance: 0)
-        collector.addSuggestion("bar", distance: 0)
-        collector.addSuggestion("baz", distance: 0)
+        collector.addSuggestion("foo")
+        collector.addSuggestion("bar")
+        collector.addSuggestion("baz")
         expect(self.collector.getSuggestions()).to(haveCount(2))
     }
     
     func testAppliesTransformToAllSuggestions() {
-        collector.addSuggestion("foo", distance: 0)
+        collector.addSuggestion("foo")
+        collector.addSuggestion("bar")
         collector.mapSuggestions { $0.capitalizedString }
-        expect(self.collector.getSuggestions()) == ["Foo"]
+        expect(self.collector.getSuggestions()) == ["Foo", "Bar"]
     }
 }
