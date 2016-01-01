@@ -1,6 +1,6 @@
 
 class OneSuggestionCollector: SuggestionsCollector {
-    private var bestDistance = Double(Int.max)
+    private var bestDistance = Distance.max
     private var bestSuggestion = ""
 
     var boundary: Distance { return bestDistance }

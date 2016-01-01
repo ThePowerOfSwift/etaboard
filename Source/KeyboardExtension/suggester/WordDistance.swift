@@ -31,7 +31,7 @@ private class Array2D {
     }
 }
 
-func wordDistance(aStr: String, _ bStr: String, threshold: Distance = Double(Int.max)) -> Distance {
+func wordDistance(aStr: String, _ bStr: String, threshold: Distance = .max) -> Distance {
     let a = Array(aStr.utf16)
     let b = Array(bStr.utf16)
     
@@ -66,7 +66,7 @@ func wordDistance(aStr: String, _ bStr: String, threshold: Distance = Double(Int
             }
             if newValue < threshold { couldUndercutThreshold = true }
         }
-        if !couldUndercutThreshold { return Double(Int.max) }
+        if !couldUndercutThreshold { return Distance.max }
     }
     
     return dist[a.count, b.count]

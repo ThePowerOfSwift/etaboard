@@ -17,7 +17,7 @@ class WordDistanceTests: XCTestCase {
     }
     
     func testIsCrazyLargeNumberWhenCannotUndercutThreshold() {
-        expect(wordDistance("a", "b", threshold: 0.5)) == Double(Int.max)
+        expect(wordDistance("a", "b", threshold: 0.5)) == Distance.max
     }
 
     func testUndercutsThreshold() {
