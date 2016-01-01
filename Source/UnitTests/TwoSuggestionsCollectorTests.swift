@@ -4,16 +4,22 @@ import Nimble
 class TwoSuggestionsCollectorTests: XCTestCase {
     private let collector = TwoSuggestionsCollector()
     
-    func testCollectsNoSuggestionsWhenNoneAdded() {
-        expect(self.collector.getSuggestions()).to(beEmpty())
+    func testReturnsTwoEmptySuggestionsWhenNoneAdded() {
+        expect(self.collector.getSuggestions()) == ["", ""]
     }
     
-    func testCollectsOneSuggestionWhenOneAdded() {
+    func testCollectsOneSuggestion() {
         collector.addSuggestion("foo")
-        expect(self.collector.getSuggestions()) == ["foo"]
+        expect(self.collector.getSuggestions()) == ["foo", ""]
     }
-    
-    func testCollectsSuggestionsSortedByShortestDistanceFirst() {
+
+    func testCollectsTwoSuggestions() {
+        collector.addSuggestion("foo")
+        collector.addSuggestion("bar")
+        expect(self.collector.getSuggestions()) == ["foo", "bar"]
+    }
+
+    func testCollectsSuggestionsSortedByShortestDistanceAscending() {
         collector.addSuggestion("foo", distance: 0)
         collector.addSuggestion("bar", distance: -1)
         expect(self.collector.getSuggestions()) == ["bar", "foo"]
