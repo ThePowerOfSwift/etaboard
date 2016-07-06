@@ -23,8 +23,8 @@ class SuggestionBarController: UIViewController {
     
     override func loadView() {
         suggestionBar.translatesAutoresizingMaskIntoConstraints = false
-        suggestionBar.onSuggestion(target: self, action: "didTapSuggestion:")
-        suggestionBar.onVerbatim(target: self, action: "didTapVerbatim:")
+        suggestionBar.onSuggestion(target: self, action: #selector(self.didTapSuggestion(_:)))
+        suggestionBar.onVerbatim(target: self, action: #selector(self.didTapVerbatim(_:)))
         
         self.view = suggestionBar
      
@@ -53,8 +53,11 @@ class SuggestionBarController: UIViewController {
 
 extension SuggestionBarController {
     private func toggleUppercase() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector:"didActivateUppercase:",
-            name: KeyPressHandler.NotificationUppercaseActivatedName, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(
+            self,
+            selector: #selector(self.didActivateUppercase(_:)),
+            name: KeyPressHandler.NotificationUppercaseActivatedName,
+            object: nil)
     }
     func didActivateUppercase(notification: NSNotification) {
         suggestionBar.mapSuggestions(suggester.capitalize)
