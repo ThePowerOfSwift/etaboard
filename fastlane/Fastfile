@@ -8,6 +8,7 @@ end
 
 desc "Submit new beta build to Apple TestFlight"
 lane :beta do
+  ensure_git_status_clean
   increment_build_number
     gym(
       scheme: "EtaBoard",
