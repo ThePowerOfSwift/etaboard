@@ -50,6 +50,21 @@ class SuggesterTests: XCTestCase {
     }
 }
 
+extension SuggesterTests {
+    func testCapitalizesByCapitalizingFirstLetter() {
+        expect(self.suggester.capitalize("foo")) == "Foo"
+    }
+    
+    func testCapitalizesByPreservingExistingCapitalization() {
+        expect(self.suggester.capitalize("ETA")) == "ETA"
+    }
+    
+    func testCapitalizationDoesNothingToEmptyString() {
+        expect(self.suggester.capitalize("")) == ""
+    }
+    
+}
+
 
 private class OneSuggestionCollector: SuggestionsCollector {
     private var bestDistance = Distance.max

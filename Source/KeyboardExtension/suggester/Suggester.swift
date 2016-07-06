@@ -51,7 +51,8 @@ extension Suggester {
 
 extension Suggester {
     func capitalize(string: String) -> String {
-        return string.capitalizedString
+        guard let first = string.characters.first else { return string }
+        return String(first).uppercaseString + String(string.characters.dropFirst())
     }
     
     private func containsCapitalLetter(string: String) -> Bool {
