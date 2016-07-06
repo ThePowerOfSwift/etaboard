@@ -3,6 +3,8 @@ skip_docs
 
 xcversion version: "~> 7.3.0"
 
+project = 'EtaBoard.xcodeproj'
+
 desc "Runs all the tests"
 lane :test do
   scan
@@ -17,5 +19,9 @@ lane :beta do
     output_directory: "build"
   )
   pilot skip_waiting_for_build_processing: true
+
+  commit_version_bump xcodeproj: project
+  add_git_tag tag: "v#{get_version_number}.#{get_build_number}"
+  push_to_git_remote
 end
 
