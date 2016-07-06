@@ -9,7 +9,7 @@ class TwoSuggestionsCollector: SuggestionsCollector {
         if newDistance < result1.distance {
             result2 = result1
             result1 = (suggestion: newSuggestion, distance: newDistance)
-        } else if newDistance < result2.distance {
+        } else if (newDistance < result2.distance && newSuggestion != result1.suggestion) {
             result2 = (suggestion: newSuggestion, distance: newDistance)
         }
     }

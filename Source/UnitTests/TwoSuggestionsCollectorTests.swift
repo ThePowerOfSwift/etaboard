@@ -18,6 +18,13 @@ class TwoSuggestionsCollectorTests: XCTestCase {
         collector.addSuggestion("bar")
         expect(self.collector.getSuggestions()) == ["foo", "bar"]
     }
+    
+    func testCollectsSuggestionOnlyOnce() {
+        collector.addSuggestion("foo", distance: 0)
+        collector.addSuggestion("bar", distance: 1)
+        collector.addSuggestion("foo", distance: 0)
+        expect(self.collector.getSuggestions()) == ["foo", "bar"]
+    }
 
     func testCollectsSuggestionsSortedByShortestDistanceAscending() {
         collector.addSuggestion("foo", distance: 0)
