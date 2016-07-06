@@ -8,7 +8,10 @@ end
 desc "Submit new beta build to Apple TestFlight"
 lane :beta do
   increment_build_number
-  gym(scheme: "EtaBoard")
+    gym(
+      scheme: "EtaBoard",
+      output_directory: "build"
+    )
   pilot skip_waiting_for_build_processing: true
 end
 
