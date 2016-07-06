@@ -1,6 +1,8 @@
 fastlane_version "1.97.2"
 skip_docs
 
+xcversion version: "~> 7.3.0"
+
 desc "Runs all the tests"
 lane :test do
   scan
