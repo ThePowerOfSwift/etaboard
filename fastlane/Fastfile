@@ -1,4 +1,5 @@
 fastlane_version "1.97.2"
+skip_docs
 
 desc "Runs all the tests"
 lane :test do
