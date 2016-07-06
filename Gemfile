@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
 
 group :global do
-  gem 'scan'
+  gem 'fastlane'
 end
