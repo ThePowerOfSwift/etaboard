@@ -65,7 +65,6 @@
 		20D909D11C2836E1000A5DFD /* Realm.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 20D909CF1C2836E1000A5DFD /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		20D909D21C2836E1000A5DFD /* RealmSwift.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 20D909D01C2836E1000A5DFD /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		20F1DE191BD9519A00A33A86 /* Dictionaries.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 20F1DE181BD9519A00A33A86 /* Dictionaries.bundle */; };
-		20FBD3611C33E26200FC8B34 /* OneSuggestionCollector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FBD35F1C33E0D000FC8B34 /* OneSuggestionCollector.swift */; };
 		20FBD3631C342AD300FC8B34 /* TwoSuggestionsCollectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FBD3621C342AD300FC8B34 /* TwoSuggestionsCollectorTests.swift */; };
 		20FBD3661C342C0900FC8B34 /* TwoSuggestionsCollector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FBD3651C342C0900FC8B34 /* TwoSuggestionsCollector.swift */; };
 		20FBD3671C342C0900FC8B34 /* TwoSuggestionsCollector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FBD3651C342C0900FC8B34 /* TwoSuggestionsCollector.swift */; };
@@ -179,7 +178,6 @@
 		20D909CF1C2836E1000A5DFD /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = ../../Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		20D909D01C2836E1000A5DFD /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = ../../Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		20F1DE181BD9519A00A33A86 /* Dictionaries.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Dictionaries.bundle; path = dictionaries/build/Dictionaries.bundle; sourceTree = SOURCE_ROOT; };
-		20FBD35F1C33E0D000FC8B34 /* OneSuggestionCollector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OneSuggestionCollector.swift; path = ../KeyboardExtension/suggester/OneSuggestionCollector.swift; sourceTree = "<group>"; };
 		20FBD3621C342AD300FC8B34 /* TwoSuggestionsCollectorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoSuggestionsCollectorTests.swift; sourceTree = "<group>"; };
 		20FBD3651C342C0900FC8B34 /* TwoSuggestionsCollector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoSuggestionsCollector.swift; sourceTree = "<group>"; };
 		20FBD3681C342C3C00FC8B34 /* SuggestionsCollector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionsCollector.swift; sourceTree = "<group>"; };
@@ -348,7 +346,6 @@
 			isa = PBXGroup;
 			children = (
 				2083F4E51BAE2B1500EBAFCC /* SuggesterTests.swift */,
-				20FBD35F1C33E0D000FC8B34 /* OneSuggestionCollector.swift */,
 				207F2C9B1BADB1350049AEB9 /* SuggesterPerformanceTests.swift */,
 				20925E391BACABF700FBCFE4 /* WordDistanceTests.swift */,
 				20D909B91C2492E8000A5DFD /* WordDistanceAcceptanceTests.swift */,
@@ -605,7 +602,6 @@
 				2045E7C11BC858F900045CEB /* SequenceType+groupBy.swift in Sources */,
 				207F2C9C1BADB1350049AEB9 /* SuggesterPerformanceTests.swift in Sources */,
 				207F2C9D1BADB2FC0049AEB9 /* Suggester.swift in Sources */,
-				20FBD3611C33E26200FC8B34 /* OneSuggestionCollector.swift in Sources */,
 				20C304C51BBAFF6B00C3460E /* WordBasedDocument.swift in Sources */,
 				20C304BE1BB833C600C3460E /* Int,String+random.swift in Sources */,
 				20C304C21BBAFE5800C3460E /* Document.swift in Sources */,
