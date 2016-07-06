@@ -10,7 +10,7 @@ class UITextDocumentProxyMock: UITextDocumentProxyAdapter {
     
     var deleteBackward_calls = 0
     override func deleteBackward() {
-        deleteBackward_calls++
+        deleteBackward_calls += 1
     }
 }
 
