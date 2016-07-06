@@ -1,15 +1,20 @@
-plist := /usr/libexec/PlistBuddy -c
+fastlane := bundle exec fastlane
 
-container_info := 'Source/ContainerApp/Info.plist'
-extension_info := 'Source/KeyboardExtension/helpers/Info.plist'
 
-old_build_number:=$(shell $(plist) 'Print CFBundleVersion' $(container_info))
-new_build_number:=$(shell echo $(old_build_number)+1 | bc)
+###############
+# Main actions
+###############
 
-bump-build-number:
-	$(plist) 'Set :CFBundleVersion $(new_build_number)' $(container_info)
-	$(plist) 'Set :CFBundleVersion $(new_build_number)' $(extension_info)
+beta: dictionaries-from-scratch generate-code precheck
+	$(fastlane) beta
 
+precheck: generate-code
+	$(fastlane) test
+
+
+################
+# Generate code
+################
 
 extension:=Source/KeyboardExtension
 helpers:=$(extension)/helpers
@@ -22,23 +27,19 @@ generate-character-distances:
 
 generate-code: generate-character-distances
 
+
+###############
+# Dictionaries
+###############
+
 dictionaries := $(MAKE) -C dictionaries
 dictionaries-from-scratch:
 	$(dictionaries) clean all
 
-precheck: generate-code
-	bundle exec scan
 
-clean:
-	xcodebuild clean
-
-.PHONY: build
-build: generate-code
-	xcodebuild build
-
-archive: dictionaries-from-scratch clean precheck generate-code bump-build-number
-	xcodebuild archive -scheme EtaBoard
-	echo "Commit the version bump."
+###############
+# Dependencies
+###############
 
 tools:
 	bundle install
@@ -51,3 +52,4 @@ clean-dependencies:
 	rm -rf Carthage
 configure: dependencies tools
 	$(dictionaries) configure
+
