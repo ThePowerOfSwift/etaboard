@@ -44,10 +44,6 @@ extension Suggester {
         let wordsOfSameLength = wordsByLength[word.characters.count] ?? []
         for candidate in wordsOfSameLength {
             let distance = wordDistance(word, candidate, threshold: collector.boundary)
-            if candidate == "konnte" {
-                NSLog("threshold: \(collector.boundary)")
-                NSLog("distance: \(distance)")
-            }
             collector.addSuggestion(candidate, distance: distance)
         }
     }
