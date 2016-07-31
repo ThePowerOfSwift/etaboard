@@ -23,15 +23,9 @@ class KeyboardController: UIViewController, UIGestureRecognizerDelegate {
         let keyboardView = KeyboardView.create(keyboardModel)
         keyboardView.translatesAutoresizingMaskIntoConstraints = false
         
-        let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(didSwipeLeft))
-        leftSwipe.direction = .Left
-        leftSwipe.delegate = self
-        keyboardView.addGestureRecognizer(leftSwipe)
-        
         let tap = MyTapRecognizer(target: self, action: #selector(didTap))
         tap.delegate = self
         keyboardView.addGestureRecognizer(tap)
-        tap.requireGestureRecognizerToFail(leftSwipe)
         
         keyboardModel.delegate = keyboardView
         view = keyboardView
