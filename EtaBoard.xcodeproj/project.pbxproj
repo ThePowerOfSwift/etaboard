@@ -23,6 +23,7 @@
 		2045E7C11BC858F900045CEB /* SequenceType+groupBy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2045E7BF1BC8584200045CEB /* SequenceType+groupBy.swift */; };
 		2051CABC1C0BA9D400744586 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2051CABA1C0BA9D400744586 /* Realm.framework */; };
 		2051CABD1C0BA9D400744586 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2051CABB1C0BA9D400744586 /* RealmSwift.framework */; };
+		20523C941D4E835B00F35D21 /* MySwipeRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20523C921D4E82A800F35D21 /* MySwipeRecognizer.swift */; };
 		205A41391BC4978E00E659E1 /* CharacterDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205A41371BC4978000E659E1 /* CharacterDistance.swift */; };
 		205A413A1BC4978E00E659E1 /* CharacterDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205A41371BC4978000E659E1 /* CharacterDistance.swift */; };
 		205A413D1BC4999900E659E1 /* ConcreteLayout_DistanceBetweenChars_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205A413C1BC4999900E659E1 /* ConcreteLayout_DistanceBetweenChars_Tests.swift */; };
@@ -140,6 +141,7 @@
 		2045E7BF1BC8584200045CEB /* SequenceType+groupBy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SequenceType+groupBy.swift"; sourceTree = "<group>"; };
 		2051CABA1C0BA9D400744586 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = SOURCE_ROOT; };
 		2051CABB1C0BA9D400744586 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = SOURCE_ROOT; };
+		20523C921D4E82A800F35D21 /* MySwipeRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySwipeRecognizer.swift; sourceTree = "<group>"; };
 		205A41361BC4912F00E659E1 /* CharacterDistanceGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDistanceGenerator.swift; sourceTree = "<group>"; };
 		205A41371BC4978000E659E1 /* CharacterDistance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterDistance.swift; sourceTree = "<group>"; };
 		205A413C1BC4999900E659E1 /* ConcreteLayout_DistanceBetweenChars_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcreteLayout_DistanceBetweenChars_Tests.swift; sourceTree = "<group>"; };
@@ -419,6 +421,7 @@
 				C21AC261406FBCF7ABB89D22 /* KeyboardView.swift */,
 				C218C70011E8ACF9B9DFAEF1 /* KeyPressHandler.swift */,
 				C2109E4AA5A6B55793E1A243 /* MyTapRecognizer.swift */,
+				20523C921D4E82A800F35D21 /* MySwipeRecognizer.swift */,
 				20D909C01C25D4E7000A5DFD /* KeyboardController.swift */,
 			);
 			path = keyboard;
@@ -640,6 +643,7 @@
 				C217DE1857A2A3DB936D4FBC /* KeyboardModel.swift in Sources */,
 				20D909C91C27992B000A5DFD /* Colors.swift in Sources */,
 				200B84971BE979A000E9D998 /* Distance.swift in Sources */,
+				20523C941D4E835B00F35D21 /* MySwipeRecognizer.swift in Sources */,
 				204008BC1BD6D30300FAD96C /* SuggesterWithDictionaries.swift in Sources */,
 				20317D9B1BA09D3E008A4303 /* SuggestionBarView.swift in Sources */,
 				20925E361BACA64700FBCFE4 /* Suggester.swift in Sources */,
