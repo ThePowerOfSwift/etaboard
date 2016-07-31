@@ -23,7 +23,8 @@ class KeyboardController: UIViewController, UIGestureRecognizerDelegate {
         let keyboardView = KeyboardView.create(keyboardModel)
         keyboardView.translatesAutoresizingMaskIntoConstraints = false
         
-        let leftSwipe = MySwipeRecognizer(target: self, action: #selector(didSwipeLeft))
+        let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(didSwipeLeft))
+        leftSwipe.direction = .Left
         leftSwipe.delegate = self
         keyboardView.addGestureRecognizer(leftSwipe)
         
