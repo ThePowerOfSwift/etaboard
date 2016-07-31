@@ -20,12 +20,13 @@ class WordBasedDocument: Document {
         return wordsBefore.last
     }
     
-    func deleteCurrentWord() {
-        guard let currentWord = currentWord() else { return }
+    func deleteCurrentWord() -> Bool {
+        guard let currentWord = currentWord() else { return false }
         
         for _ in 0..<currentWord.characters.count {
             deleteBackward()
         }
+        return true
     }
     
     func deleteBackward() {

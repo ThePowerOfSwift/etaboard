@@ -9,7 +9,7 @@ protocol Document {
     func insert(text: String)
 
     func deleteBackward()
-    func deleteCurrentWord()
+    func deleteCurrentWord() -> Bool
 
     func replaceCurrentWord(text: String)
 }

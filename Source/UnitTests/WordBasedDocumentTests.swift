@@ -32,13 +32,13 @@ class WordBasedDocumentTests: XCTestCase {
     
     func testDeleteCurrentWord_DeletesBackToLastSpaceExcludingTheSpace() {
         mock.documentContextBeforeInput = "foo bar"
-        document.deleteCurrentWord()
+        expect(self.document.deleteCurrentWord()) == true
         expect(self.mock.deleteBackward_calls) == 3
     }
     
     func testDeleteCurrentWord_DoesNothingAtTheBeginningOfDocument() {
         mock.documentContextBeforeInput = nil
-        document.deleteCurrentWord()
+        expect(self.document.deleteCurrentWord()) == false
         expect(self.mock.deleteBackward_calls) == 0
     }
     

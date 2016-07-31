@@ -21,9 +21,10 @@ class NotifyingDocument: Document {
         notify()
     }
     
-    func deleteCurrentWord() {
-        wrappedDocument.deleteCurrentWord()
-        notify()
+    func deleteCurrentWord() -> Bool {
+        let wasDeleted = wrappedDocument.deleteCurrentWord()
+        if wasDeleted { notify() }
+        return wasDeleted
     }
     
     func insert(text: String) {
