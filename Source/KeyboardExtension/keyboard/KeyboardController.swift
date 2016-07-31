@@ -23,7 +23,7 @@ class KeyboardController: UIViewController {
         let keyboardView = KeyboardView.create(keyboardModel)
         keyboardView.translatesAutoresizingMaskIntoConstraints = false
         
-        let tapRecognizer = MyTapRecognizer(target: self, action: #selector(self.didTap(_:)))
+        let tapRecognizer = MyTapRecognizer(target: self, action: #selector(didTap))
         keyboardView.addGestureRecognizer(tapRecognizer)
         
         keyboardModel.delegate = keyboardView
