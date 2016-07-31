@@ -27,8 +27,8 @@ class KeyboardController: UIViewController, UIGestureRecognizerDelegate {
         leftSwipe.direction = .Left
         leftSwipe.delegate = self
         keyboardView.addGestureRecognizer(leftSwipe)
-        
-        let tap = MyTapRecognizer(target: self, action: #selector(didTap))
+
+        let tap = MyTapRecognizer(target: self, action: #selector(didTaps))
         tap.delegate = self
         keyboardView.addGestureRecognizer(tap)
         tap.requireGestureRecognizerToFail(leftSwipe)
@@ -41,17 +41,14 @@ class KeyboardController: UIViewController, UIGestureRecognizerDelegate {
         return true
     }
     
-    func didTap(recognizer: MyTapRecognizer) {
-//        let touchPoint = recognizer.locationInView(view)
-//        NSLog("tap at (%.1f,%.1f)", touchPoint.x, touchPoint.y)
-//        let intendedTouchPoint = CGPointMake(touchPoint.x, touchPoint.y)
+    func didTaps(recognizer: MyTapRecognizer) {
         for tapLocation in recognizer.tapLocations {
-            NSLog("tap at (%.1f,%.1f)", tapLocation.x, tapLocation.y)
+            NSLog("tap on keyboard at \(tapLocation)")
             let key = keyboardModel.closestKey(to: tapLocation)
             keyPressHandler.handle(key)
         }
     }
-    
+
     func didSwipeLeft(recognizer: UIGestureRecognizer) {
         NSLog("swipe left")
         document.deleteCurrentWord()
