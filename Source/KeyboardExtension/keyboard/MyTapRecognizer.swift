@@ -35,6 +35,8 @@ class MyTapRecognizer: UIGestureRecognizer {
     }
     
     func debug(message: String) {
-        NSLog("[tap] \(message)")
+        #if DEBUG
+            NSLog("[tap] \(message)")
+        #endif
     }
 }
