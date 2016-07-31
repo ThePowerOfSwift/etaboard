@@ -1,6 +1,6 @@
 import UIKit
 
-class KeyboardController: UIViewController {
+class KeyboardController: UIViewController, UIGestureRecognizerDelegate {
     private let keyboardModel = KeyboardModel()
     private let document: Document
     private let keyPressHandler: KeyPressHandler
@@ -23,12 +23,22 @@ class KeyboardController: UIViewController {
         let keyboardView = KeyboardView.create(keyboardModel)
         keyboardView.translatesAutoresizingMaskIntoConstraints = false
         
-        let tapRecognizer = MyTapRecognizer(target: self, action: #selector(didTap))
-        keyboardView.addGestureRecognizer(tapRecognizer)
+        let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(didSwipeLeft))
+        leftSwipe.direction = .Left
+        leftSwipe.delegate = self
+        keyboardView.addGestureRecognizer(leftSwipe)
+        
+        let tap = MyTapRecognizer(target: self, action: #selector(didTap))
+        tap.delegate = self
+        keyboardView.addGestureRecognizer(tap)
+        tap.requireGestureRecognizerToFail(leftSwipe)
         
         keyboardModel.delegate = keyboardView
-        
         view = keyboardView
+    }
+ 
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
     
     func didTap(recognizer: UIGestureRecognizer) {
@@ -36,5 +46,9 @@ class KeyboardController: UIViewController {
         let intendedTouchPoint = CGPointMake(touchPoint.x, touchPoint.y)
         let key = keyboardModel.closestKey(to: intendedTouchPoint)
         keyPressHandler.handle(key)
+    }
+    
+    func didSwipeLeft(recognizer: UIGestureRecognizer) {
+        NSLog("swiped left")
     }
 }
