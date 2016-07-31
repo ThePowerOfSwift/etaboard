@@ -21,6 +21,11 @@ class NotifyingDocument: Document {
         notify()
     }
     
+    func deleteCurrentWord() {
+        wrappedDocument.deleteCurrentWord()
+        notify()
+    }
+    
     func insert(text: String) {
         wrappedDocument.insert(text)
         notify()

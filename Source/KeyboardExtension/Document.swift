@@ -5,7 +5,11 @@ protocol DocumentDelegate {
 
 protocol Document {
     func currentWord() -> String?
-    func replaceCurrentWord(text: String)
-    func deleteBackward()
+
     func insert(text: String)
+
+    func deleteBackward()
+    func deleteCurrentWord()
+
+    func replaceCurrentWord(text: String)
 }

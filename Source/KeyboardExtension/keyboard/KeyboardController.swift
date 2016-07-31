@@ -49,6 +49,6 @@ class KeyboardController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     func didSwipeLeft(recognizer: UIGestureRecognizer) {
-        NSLog("swiped left")
+        document.deleteCurrentWord()
     }
 }
