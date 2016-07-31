@@ -40,12 +40,15 @@ class KeyboardController: UIViewController, UIGestureRecognizerDelegate {
         return true
     }
     
-    func didTap(recognizer: UIGestureRecognizer) {
-        let touchPoint = recognizer.locationInView(view)
-        NSLog("tap at (%.1f,%.1f)", touchPoint.x, touchPoint.y)
-        let intendedTouchPoint = CGPointMake(touchPoint.x, touchPoint.y)
-        let key = keyboardModel.closestKey(to: intendedTouchPoint)
-        keyPressHandler.handle(key)
+    func didTap(recognizer: MyTapRecognizer) {
+//        let touchPoint = recognizer.locationInView(view)
+//        NSLog("tap at (%.1f,%.1f)", touchPoint.x, touchPoint.y)
+//        let intendedTouchPoint = CGPointMake(touchPoint.x, touchPoint.y)
+        for tapLocation in recognizer.tapLocations {
+            NSLog("tap at (%.1f,%.1f)", tapLocation.x, tapLocation.y)
+            let key = keyboardModel.closestKey(to: tapLocation)
+            keyPressHandler.handle(key)
+        }
     }
     
     func didSwipeLeft(recognizer: UIGestureRecognizer) {
