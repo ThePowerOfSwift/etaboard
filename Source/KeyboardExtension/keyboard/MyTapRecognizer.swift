@@ -2,13 +2,14 @@ import UIKit
 
 class MyTapRecognizer: UIGestureRecognizer {
     
-    var taps = 0
-    var tapLocations: [CGPoint] = []
+    private var tapsExpected = 0
+    private var tapsCollected = 0
+    var lastTap: CGPoint = CGPointMake(0, 0)
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent) {
         if let allTouches = event.allTouches() {
             debug("began: #allTouches: \(allTouches.count)")
-            taps = allTouches.count
+            tapsExpected = allTouches.count
         }
     }
     
@@ -17,24 +18,26 @@ class MyTapRecognizer: UIGestureRecognizer {
         debug("ended: #allTouches: \(event.allTouches()?.count)")
 
         if let touch = touches.first {
-            let touchPoint = touch.locationInView(self.view)
-            debug("ended: touch at \(NSStringFromCGPoint(touchPoint))")
-            tapLocations.append(touchPoint)
+            lastTap = touch.locationInView(self.view)
+            debug("ended: touch at \(NSStringFromCGPoint(lastTap))")
+            tapsCollected += 1
             
-            if tapLocations.count >= taps {
+            if tapsCollected >= tapsExpected {
                 debug("collected all taps")
                 self.state = .Ended
+            } else {
+                self.state = .Changed
             }
         }
     }
     
     override func reset() {
         debug("reset")
-        taps = 0
-        tapLocations = []
+        tapsExpected = 0
+        tapsCollected = 0
     }
     
-    func debug(message: String) {
+    private func debug(message: String) {
         #if DEBUG
             NSLog("[tap] \(message)")
         #endif
