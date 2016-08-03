@@ -22,23 +22,29 @@ class KeyboardController: UIViewController, UIGestureRecognizerDelegate {
     override func loadView() {
         let keyboardView = KeyboardView.create(keyboardModel)
         keyboardView.translatesAutoresizingMaskIntoConstraints = false
+        view = keyboardView
+        keyboardModel.delegate = keyboardView
         
-        let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(didSwipeLeft))
-        leftSwipe.direction = .Left
-        leftSwipe.delegate = self
-        keyboardView.addGestureRecognizer(leftSwipe)
-
+        let leftSwipe = addSwipeRecognizer(.Left, action: #selector(didSwipeLeft))
+        let upSwipe = addSwipeRecognizer(.Up, action: #selector(didSwipeUp))
+        
         let tap = MyTapRecognizer(target: self, action: #selector(didTap))
         tap.delegate = self
         keyboardView.addGestureRecognizer(tap)
         tap.requireGestureRecognizerToFail(leftSwipe)
-
-        keyboardModel.delegate = keyboardView
-        view = keyboardView
+        tap.requireGestureRecognizerToFail(upSwipe)
     }
  
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
+    }
+    
+    private func addSwipeRecognizer(direction: UISwipeGestureRecognizerDirection, action: Selector) -> UISwipeGestureRecognizer {
+        let recognizer = UISwipeGestureRecognizer(target: self, action: action)
+        recognizer.direction = direction
+        recognizer.delegate = self
+        view.addGestureRecognizer(recognizer)
+        return recognizer
     }
     
     func didTap(recognizer: MyTapRecognizer) {
@@ -49,5 +55,10 @@ class KeyboardController: UIViewController, UIGestureRecognizerDelegate {
     func didSwipeLeft(recognizer: UIGestureRecognizer) {
         NSLog("swipe left")
         document.deleteCurrentWord()
+    }
+
+    func didSwipeUp(recognizer: UIGestureRecognizer) {
+        NSLog("swipe up")
+        keyPressHandler.handle(SchematicLayout.ToUppercase)
     }
 }
