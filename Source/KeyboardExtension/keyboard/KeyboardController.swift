@@ -28,7 +28,7 @@ class KeyboardController: UIViewController, UIGestureRecognizerDelegate {
         let leftSwipe = addSwipeRecognizer(.Left, action: #selector(didSwipeLeft))
         let upSwipe = addSwipeRecognizer(.Up, action: #selector(didSwipeUp))
         
-        let tap = MyTapRecognizer(target: self, action: #selector(didTap))
+        let tap = MyTapRecognizer(target: self, action: #selector(didTaps))
         tap.delegate = self
         keyboardView.addGestureRecognizer(tap)
         tap.requireGestureRecognizerToFail(leftSwipe)
@@ -47,9 +47,14 @@ class KeyboardController: UIViewController, UIGestureRecognizerDelegate {
         return recognizer
     }
     
-    func didTap(recognizer: MyTapRecognizer) {
-        NSLog("tap on keyboard at \(recognizer.lastTap)")
-        recognizer.lastTap |> keyboardModel.closestKey |> keyPressHandler.handle
+    var counter = 0    
+    func didTaps(recognizer: MyTapRecognizer) {
+        NSLog("processing taps: \(recognizer.lastTaps)")
+        recognizer.lastTaps.forEach({ tap in
+            NSLog("tap \(counter) on keyboard at \(tap)")
+            counter += 1
+            tap |> keyboardModel.closestKey |> keyPressHandler.handle
+        })
     }
 
     func didSwipeLeft(recognizer: UIGestureRecognizer) {

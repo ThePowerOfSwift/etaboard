@@ -4,6 +4,7 @@ class MyTapRecognizer: UIGestureRecognizer {
     
     private var tapsExpected = 0
     private var tapsCollected = 0
+    var lastTaps: [CGPoint] = []
     var lastTap: CGPoint = CGPointMake(0, 0)
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent) {
@@ -17,17 +18,16 @@ class MyTapRecognizer: UIGestureRecognizer {
         debug("ended: #touches: \(touches.count)")
         debug("ended: #allTouches: \(event.allTouches()?.count)")
 
-        if let touch = touches.first {
-            lastTap = touch.locationInView(self.view)
-            debug("ended: touch at \(NSStringFromCGPoint(lastTap))")
-            tapsCollected += 1
-            
-            if tapsCollected >= tapsExpected {
-                debug("collected all taps")
-                self.state = .Ended
-            } else {
-                self.state = .Changed
-            }
+        lastTaps = touches.map({ $0.locationInView(view) })
+        debug("ended: touches at \(lastTaps)")
+        tapsCollected += lastTaps.count
+        
+        if tapsCollected >= tapsExpected {
+            debug("collected all taps")
+            self.state = .Ended
+        } else {
+            debug("notifying about new tap")
+            self.state = .Changed
         }
     }
     
