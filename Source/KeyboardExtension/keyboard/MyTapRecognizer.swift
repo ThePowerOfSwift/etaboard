@@ -4,8 +4,13 @@ class MyTapRecognizer: UIGestureRecognizer {
     
     private var tapsExpected = 0
     private var tapsCollected = 0
-    var lastTaps: [CGPoint] = []
-    var lastTap: CGPoint = CGPointMake(0, 0)
+    private var lastTaps: [CGPoint] = []
+    
+    func getAndClearLastTaps() -> [CGPoint] {
+        let taps = lastTaps
+        lastTaps = []
+        return taps
+    }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent) {
         if let allTouches = event.allTouches() {

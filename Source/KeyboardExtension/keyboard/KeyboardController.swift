@@ -49,8 +49,9 @@ class KeyboardController: UIViewController, UIGestureRecognizerDelegate {
     
     var counter = 0    
     func didTaps(recognizer: MyTapRecognizer) {
-        NSLog("processing taps: \(recognizer.lastTaps)")
-        recognizer.lastTaps.forEach({ tap in
+        let taps = recognizer.getAndClearLastTaps()
+        NSLog("processing taps: \(taps)")
+        taps.forEach({ tap in
             NSLog("tap \(counter) on keyboard at \(tap)")
             counter += 1
             tap |> keyboardModel.closestKey |> keyPressHandler.handle
