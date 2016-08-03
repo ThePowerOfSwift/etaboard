@@ -23,7 +23,7 @@ class MyTapRecognizer: UIGestureRecognizer {
         debug("ended: #touches: \(touches.count)")
         debug("ended: #allTouches: \(event.allTouches()?.count)")
 
-        lastTaps = touches.map({ $0.locationInView(view) })
+        lastTaps.appendContentsOf(touches.map { $0.locationInView(view) })
         debug("ended: touches at \(lastTaps)")
         tapsCollected += lastTaps.count
         
@@ -40,6 +40,7 @@ class MyTapRecognizer: UIGestureRecognizer {
         debug("reset")
         tapsExpected = 0
         tapsCollected = 0
+        lastTaps = []
     }
     
     private func debug(message: String) {
