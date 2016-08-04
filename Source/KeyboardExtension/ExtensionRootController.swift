@@ -21,7 +21,8 @@ class ExtensionRootController: UIInputViewController {
 
         let keyboardController = KeyboardController(document: document,
             nextKeyboardAction: { [unowned self] in self.advanceToNextInputMode() },
-            onSwipeDown: completeSuggestion(suggestionBarController, document))
+            onSwipeDown: completeSuggestion(suggestionBarController, document),
+            onSwipeRight: completeSuggestion(suggestionBarController, document, suffix: " "))
         addChild(keyboardController)
 
         layoutSubviews(
@@ -43,12 +44,12 @@ class ExtensionRootController: UIInputViewController {
         view.addSubview(controller.view)
     }
     
-    func completeSuggestion(suggestionBar: SuggestionBarController, _ document: Document)
-        -> (() -> ()) {
+    func completeSuggestion(suggestionBar: SuggestionBarController, _ document: Document,
+                            suffix: String = "") -> (() -> ()) {
         NSLog("complete suggestion")
         return {
             guard let suggestion = suggestionBar.primarySuggestion else { return }
-            document.replaceCurrentWord(suggestion)
+            document.replaceCurrentWord(suggestion + suffix)
         }
     }
 }

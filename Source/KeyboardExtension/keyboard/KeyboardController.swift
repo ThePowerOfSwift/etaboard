@@ -5,14 +5,19 @@ class KeyboardController: UIViewController, UIGestureRecognizerDelegate {
     private let document: Document
     private let keyPressHandler: KeyPressHandler
     private let onSwipeDown: () -> ()
+    private let onSwipeRight: () -> ()
     
-    init(document: Document, nextKeyboardAction: () -> Void, onSwipeDown: () -> ()) {
+    init(document: Document, nextKeyboardAction: () -> Void,
+         onSwipeDown: () -> (),
+         onSwipeRight: () -> ()
+         ) {
         self.document = document
         keyPressHandler = KeyPressHandler(
             nextKeyboardAction: nextKeyboardAction,
             keyboard: keyboardModel,
             document: document)
         self.onSwipeDown = onSwipeDown
+        self.onSwipeRight = onSwipeRight
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -30,6 +35,7 @@ class KeyboardController: UIViewController, UIGestureRecognizerDelegate {
         let leftSwipe = addSwipeRecognizer(.Left, action: #selector(didSwipeLeft))
         let upSwipe = addSwipeRecognizer(.Up, action: #selector(didSwipeUp))
         let downSwipe = addSwipeRecognizer(.Down, action: #selector(didSwipeDown))
+        let rightSwipe = addSwipeRecognizer(.Right, action: #selector(didSwipeRight))
         
         let tap = MyTapRecognizer(target: self, action: #selector(didTaps))
         tap.delegate = self
@@ -37,6 +43,7 @@ class KeyboardController: UIViewController, UIGestureRecognizerDelegate {
         tap.requireGestureRecognizerToFail(leftSwipe)
         tap.requireGestureRecognizerToFail(upSwipe)
         tap.requireGestureRecognizerToFail(downSwipe)
+        tap.requireGestureRecognizerToFail(rightSwipe)
     }
  
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
@@ -72,7 +79,6 @@ class KeyboardController: UIViewController, UIGestureRecognizerDelegate {
         keyPressHandler.handle(SchematicLayout.ToUppercase)
     }
     
-    func didSwipeDown() {
-        onSwipeDown()
-    }
+    func didSwipeDown() { onSwipeDown() }
+    func didSwipeRight() { onSwipeRight() }
 }
