@@ -4,13 +4,15 @@ class KeyboardController: UIViewController, UIGestureRecognizerDelegate {
     private let keyboardModel = KeyboardModel()
     private let document: Document
     private let keyPressHandler: KeyPressHandler
+    private let onSwipeDown: () -> ()
     
-    init(document: Document, nextKeyboardAction: () -> Void) {
+    init(document: Document, nextKeyboardAction: () -> Void, onSwipeDown: () -> ()) {
         self.document = document
         keyPressHandler = KeyPressHandler(
             nextKeyboardAction: nextKeyboardAction,
             keyboard: keyboardModel,
             document: document)
+        self.onSwipeDown = onSwipeDown
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -27,12 +29,14 @@ class KeyboardController: UIViewController, UIGestureRecognizerDelegate {
         
         let leftSwipe = addSwipeRecognizer(.Left, action: #selector(didSwipeLeft))
         let upSwipe = addSwipeRecognizer(.Up, action: #selector(didSwipeUp))
+        let downSwipe = addSwipeRecognizer(.Down, action: #selector(didSwipeDown))
         
         let tap = MyTapRecognizer(target: self, action: #selector(didTaps))
         tap.delegate = self
         keyboardView.addGestureRecognizer(tap)
         tap.requireGestureRecognizerToFail(leftSwipe)
         tap.requireGestureRecognizerToFail(upSwipe)
+        tap.requireGestureRecognizerToFail(downSwipe)
     }
  
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
@@ -66,5 +70,9 @@ class KeyboardController: UIViewController, UIGestureRecognizerDelegate {
     func didSwipeUp(recognizer: UIGestureRecognizer) {
         NSLog("swipe up")
         keyPressHandler.handle(SchematicLayout.ToUppercase)
+    }
+    
+    func didSwipeDown() {
+        onSwipeDown()
     }
 }
