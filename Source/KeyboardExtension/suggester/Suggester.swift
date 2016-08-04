@@ -34,7 +34,7 @@ extension Suggester {
         
         collectSuggestionsWithDistancesFor(currentWord, into: collector)
         if (containsCapitalLetter(currentWord)) {
-            return collector.mapSuggestions(capitalize)
+            collector.mapSuggestions(capitalize)
         }
     }
     
