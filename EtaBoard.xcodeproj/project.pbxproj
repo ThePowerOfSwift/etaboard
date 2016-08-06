@@ -46,6 +46,7 @@
 		20925E3A1BACABF700FBCFE4 /* WordDistanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20925E391BACABF700FBCFE4 /* WordDistanceTests.swift */; };
 		20925E3B1BACAD9E00FBCFE4 /* WordDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20925E371BACABDE00FBCFE4 /* WordDistance.swift */; };
 		209616351BC5A20A003D1E81 /* CharacterDistanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209616341BC5A20A003D1E81 /* CharacterDistanceTests.swift */; };
+		20A2EE641D568D0800D39D89 /* ReSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20A2EE631D568D0800D39D89 /* ReSwift.framework */; };
 		20C304BE1BB833C600C3460E /* Int,String+random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C304BD1BB833C600C3460E /* Int,String+random.swift */; };
 		20C304C11BBAFD1000C3460E /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C304C01BBAFD1000C3460E /* Document.swift */; };
 		20C304C21BBAFE5800C3460E /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C304C01BBAFD1000C3460E /* Document.swift */; };
@@ -163,6 +164,7 @@
 		20925E371BACABDE00FBCFE4 /* WordDistance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordDistance.swift; sourceTree = "<group>"; };
 		20925E391BACABF700FBCFE4 /* WordDistanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordDistanceTests.swift; sourceTree = "<group>"; };
 		209616341BC5A20A003D1E81 /* CharacterDistanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterDistanceTests.swift; sourceTree = "<group>"; };
+		20A2EE631D568D0800D39D89 /* ReSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReSwift.framework; path = ../../Carthage/Build/iOS/ReSwift.framework; sourceTree = "<group>"; };
 		20C304BD1BB833C600C3460E /* Int,String+random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int,String+random.swift"; sourceTree = "<group>"; };
 		20C304C01BBAFD1000C3460E /* Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		20C304C31BBAFF6B00C3460E /* WordBasedDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordBasedDocument.swift; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 				2051CABC1C0BA9D400744586 /* Realm.framework in Frameworks */,
 				2051CABD1C0BA9D400744586 /* RealmSwift.framework in Frameworks */,
 				207FBA111C1DDF1D00FCA904 /* PromiseKit.framework in Frameworks */,
+				20A2EE641D568D0800D39D89 /* ReSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,9 +262,10 @@
 		2051CAC01C0BBAE800744586 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				207FBA101C1DDF1D00FCA904 /* PromiseKit.framework */,
 				2051CABA1C0BA9D400744586 /* Realm.framework */,
 				2051CABB1C0BA9D400744586 /* RealmSwift.framework */,
+				207FBA101C1DDF1D00FCA904 /* PromiseKit.framework */,
+				20A2EE631D568D0800D39D89 /* ReSwift.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -570,6 +574,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/PromiseKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ReSwift.framework",
 			);
 			name = "Carthage: copy frameworks";
 			outputPaths = (
