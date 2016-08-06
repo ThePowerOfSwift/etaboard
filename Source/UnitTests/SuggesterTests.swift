@@ -52,15 +52,15 @@ class SuggesterTests: XCTestCase {
 
 extension SuggesterTests {
     func testCapitalizesByCapitalizingFirstLetter() {
-        expect(self.suggester.capitalize("foo")) == "Foo"
+        expect(Suggester.capitalize("foo")) == "Foo"
     }
     
     func testCapitalizesByPreservingExistingCapitalization() {
-        expect(self.suggester.capitalize("ETA")) == "ETA"
+        expect(Suggester.capitalize("ETA")) == "ETA"
     }
     
     func testCapitalizationDoesNothingToEmptyString() {
-        expect(self.suggester.capitalize("")) == ""
+        expect(Suggester.capitalize("")) == ""
     }
     
 }
