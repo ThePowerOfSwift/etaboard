@@ -7,6 +7,7 @@ struct AppState: StateType {
 struct UpdateSuggestionsAction: Action {
     let suggestions: [String]
 }
+struct CapitalizeSuggestionsAction: Action {}
 
 struct AppReducer: Reducer {
     func handleAction(action: Action, state: AppState?) -> AppState {
@@ -17,6 +18,8 @@ struct AppReducer: Reducer {
         switch action {
         case let action as UpdateSuggestionsAction:
             state.suggestions = action.suggestions
+        case _ as CapitalizeSuggestionsAction:
+            state.suggestions = state.suggestions.map(Suggester.capitalize)
         default:
             break
         }

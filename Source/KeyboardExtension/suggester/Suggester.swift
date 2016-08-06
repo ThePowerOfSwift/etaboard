@@ -34,7 +34,7 @@ extension Suggester {
         
         collectSuggestionsWithDistancesFor(currentWord, into: collector)
         if (containsCapitalLetter(currentWord)) {
-            collector.mapSuggestions(capitalize)
+            collector.mapSuggestions(Suggester.capitalize)
         }
     }
     
@@ -50,7 +50,7 @@ extension Suggester {
 }
 
 extension Suggester {
-    func capitalize(string: String) -> String {
+    static func capitalize(string: String) -> String {
         guard let first = string.characters.first else { return string }
         return String(first).uppercaseString + String(string.characters.dropFirst())
     }

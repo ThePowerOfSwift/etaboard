@@ -60,12 +60,12 @@ extension SuggestionBarController {
     private func toggleUppercase() {
         NSNotificationCenter.defaultCenter().addObserver(
             self,
-            selector: #selector(self.didActivateUppercase(_:)),
+            selector: #selector(didActivateUppercase),
             name: KeyPressHandler.NotificationUppercaseActivatedName,
             object: nil)
     }
     func didActivateUppercase(notification: NSNotification) {
-        suggestionBar.mapSuggestions(suggester.capitalize)
+        mainStore.dispatch(CapitalizeSuggestionsAction())
     }
 }
 
