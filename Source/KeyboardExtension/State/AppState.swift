@@ -24,3 +24,7 @@ struct AppReducer: Reducer {
         return state
     }
 }
+
+func getPrimarySuggestion(state: AppState) -> String? {
+    return state.suggestions.first
+}
