@@ -1,5 +1,6 @@
 import UIKit
 import PromiseKit
+import ReSwift
 
 class SuggestionBarController: UIViewController {
     private let document: Document
@@ -74,7 +75,24 @@ extension SuggestionBarController: DocumentDelegate {
             self.suggestionsCollector = TwoSuggestionsCollector()
             self.suggester.collectSuggestionsFor(newCurrentWord, into: self.suggestionsCollector)
             return self.suggestionsCollector.getSuggestions()
-        }.then(self.suggestionBar.displaySuggestions)
+        }.then(self.postNewSuggestions)
         self.suggestionBar.displayVerbatim(newCurrentWord)
+    }
+    private func postNewSuggestions(suggestions: [String]) {
+        mainStore.dispatch(
+            UpdateSuggestionsAction(suggestions: suggestions)
+        )
+    }
+}
+
+extension SuggestionBarController: StoreSubscriber {
+    override func viewWillAppear(animated: Bool) {
+        mainStore.subscribe(self)
+    }
+    override func viewWillDisappear(animated: Bool) {
+        mainStore.unsubscribe(self)
+    }
+    func newState(state: AppState) {
+        suggestionBar.displaySuggestions(state.suggestions)
     }
 }

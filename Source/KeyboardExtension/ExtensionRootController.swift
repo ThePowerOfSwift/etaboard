@@ -1,4 +1,10 @@
 import UIKit
+import ReSwift
+
+let mainStore = Store<AppState>(
+    reducer: AppReducer(),
+    state: nil
+)
 
 class Instances {
     static let systemDictionaryLoader = SystemDictionaryLoader()

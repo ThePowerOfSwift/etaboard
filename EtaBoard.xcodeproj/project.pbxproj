@@ -47,6 +47,7 @@
 		20925E3B1BACAD9E00FBCFE4 /* WordDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20925E371BACABDE00FBCFE4 /* WordDistance.swift */; };
 		209616351BC5A20A003D1E81 /* CharacterDistanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209616341BC5A20A003D1E81 /* CharacterDistanceTests.swift */; };
 		20A2EE641D568D0800D39D89 /* ReSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20A2EE631D568D0800D39D89 /* ReSwift.framework */; };
+		20A2EE681D568FA700D39D89 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A2EE671D568FA700D39D89 /* AppState.swift */; };
 		20C304BE1BB833C600C3460E /* Int,String+random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C304BD1BB833C600C3460E /* Int,String+random.swift */; };
 		20C304C11BBAFD1000C3460E /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C304C01BBAFD1000C3460E /* Document.swift */; };
 		20C304C21BBAFE5800C3460E /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C304C01BBAFD1000C3460E /* Document.swift */; };
@@ -165,6 +166,7 @@
 		20925E391BACABF700FBCFE4 /* WordDistanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordDistanceTests.swift; sourceTree = "<group>"; };
 		209616341BC5A20A003D1E81 /* CharacterDistanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterDistanceTests.swift; sourceTree = "<group>"; };
 		20A2EE631D568D0800D39D89 /* ReSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReSwift.framework; path = ../../Carthage/Build/iOS/ReSwift.framework; sourceTree = "<group>"; };
+		20A2EE671D568FA700D39D89 /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		20C304BD1BB833C600C3460E /* Int,String+random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int,String+random.swift"; sourceTree = "<group>"; };
 		20C304C01BBAFD1000C3460E /* Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		20C304C31BBAFF6B00C3460E /* WordBasedDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordBasedDocument.swift; sourceTree = "<group>"; };
@@ -336,6 +338,14 @@
 			path = suggester;
 			sourceTree = "<group>";
 		};
+		20A2EE661D568F8C00D39D89 /* State */ = {
+			isa = PBXGroup;
+			children = (
+				20A2EE671D568FA700D39D89 /* AppState.swift */,
+			);
+			path = State;
+			sourceTree = "<group>";
+		};
 		20C304BF1BBAFB9A00C3460E /* document */ = {
 			isa = PBXGroup;
 			children = (
@@ -394,6 +404,7 @@
 				C21741DE8AD26B91F90FC940 /* suggestionbar */,
 				20925E341BACA5CF00FBCFE4 /* suggester */,
 				20C304BF1BBAFB9A00C3460E /* document */,
+				20A2EE661D568F8C00D39D89 /* State */,
 				C21DF7BC99AC431E9EA856D8 /* ExtensionRootController.swift */,
 				204008BB1BD6D30300FAD96C /* SuggesterWithDictionaries.swift */,
 				20D909C41C278F62000A5DFD /* SystemDictionaryLoader.swift */,
@@ -654,6 +665,7 @@
 				20D909BF1C253675000A5DFD /* SuggestionBarController.swift in Sources */,
 				20FBD3691C342C3C00FC8B34 /* SuggestionsCollector.swift in Sources */,
 				20D909C51C278F62000A5DFD /* SystemDictionaryLoader.swift in Sources */,
+				20A2EE681D568FA700D39D89 /* AppState.swift in Sources */,
 				C214F72F655636D4EFF1A5EC /* KeyPressHandler.swift in Sources */,
 				200B84951BE9740B00E9D998 /* Character+.swift in Sources */,
 				C211CB0B7AE6315B6481428E /* ExtensionRootController.swift in Sources */,
