@@ -9,10 +9,6 @@ class SuggestionBarController: UIViewController {
     private var suggestionBar: SuggestionBarView
     private let completionQueue = dispatch_queue_create(
         "de.bepple.etaboard.completions", DISPATCH_QUEUE_SERIAL)
-    private var suggestionsCollector: TwoSuggestionsCollector = TwoSuggestionsCollector()
-    var primarySuggestion: String? {
-        return suggestionsCollector.getSuggestions().first
-    }
 
     init(document: Document, suggester: Suggester, userDictionary: UserDictionary) {
         self.document = document
@@ -72,9 +68,9 @@ extension SuggestionBarController {
 extension SuggestionBarController: DocumentDelegate {
     func didChangeCurrentWord(newCurrentWord: String?) {
         dispatch_promise(on: completionQueue) {
-            self.suggestionsCollector = TwoSuggestionsCollector()
-            self.suggester.collectSuggestionsFor(newCurrentWord, into: self.suggestionsCollector)
-            return self.suggestionsCollector.getSuggestions()
+            let suggestionsCollector = TwoSuggestionsCollector()
+            self.suggester.collectSuggestionsFor(newCurrentWord, into: suggestionsCollector)
+            return suggestionsCollector.getSuggestions()
         }.then(self.postNewSuggestions)
         self.suggestionBar.displayVerbatim(newCurrentWord)
     }
