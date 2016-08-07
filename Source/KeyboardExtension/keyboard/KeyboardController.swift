@@ -32,30 +32,32 @@ class KeyboardController: UIViewController, UIGestureRecognizerDelegate {
         view = keyboardView
         keyboardModel.delegate = keyboardView
         
-        let leftSwipe = addSwipeRecognizer(.Left, action: #selector(didSwipeLeft))
-        let upSwipe = addSwipeRecognizer(.Up, action: #selector(didSwipeUp))
-        let downSwipe = addSwipeRecognizer(.Down, action: #selector(didSwipeDown))
-        let rightSwipe = addSwipeRecognizer(.Right, action: #selector(didSwipeRight))
-        
         let tap = MyTapRecognizer(target: self, action: #selector(didTaps))
         tap.delegate = self
         keyboardView.addGestureRecognizer(tap)
-        tap.requireGestureRecognizerToFail(leftSwipe)
-        tap.requireGestureRecognizerToFail(upSwipe)
-        tap.requireGestureRecognizerToFail(downSwipe)
-        tap.requireGestureRecognizerToFail(rightSwipe)
+        
+        let swipes = [
+            (UISwipeGestureRecognizerDirection.Left, #selector(didSwipeLeft)),
+            (.Up, #selector(didSwipeUp)),
+            (.Down, #selector(didSwipeDown)),
+            (.Right, #selector(didSwipeRight))
+        ]
+        swipes.forEach { direction, action in
+            let swipe = createSwipeRecognizer(direction, action)
+            view.addGestureRecognizer(swipe)
+            tap.requireGestureRecognizerToFail(swipe)
+        }
     }
  
-    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return true
-    }
-    
-    private func addSwipeRecognizer(direction: UISwipeGestureRecognizerDirection, action: Selector) -> UISwipeGestureRecognizer {
+    private func createSwipeRecognizer(direction: UISwipeGestureRecognizerDirection, _ action: Selector) -> UISwipeGestureRecognizer {
         let recognizer = UISwipeGestureRecognizer(target: self, action: action)
         recognizer.direction = direction
         recognizer.delegate = self
-        view.addGestureRecognizer(recognizer)
         return recognizer
+    }
+    
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
     
     var counter = 0
@@ -73,12 +75,10 @@ class KeyboardController: UIViewController, UIGestureRecognizerDelegate {
         NSLog("swipe left")
         document.deleteCurrentWord()
     }
-
     func didSwipeUp() {
         NSLog("swipe up")
         keyPressHandler.handle(SchematicLayout.ToUppercase)
     }
-    
     func didSwipeDown() { onSwipeDown() }
     func didSwipeRight() { onSwipeRight() }
 }
