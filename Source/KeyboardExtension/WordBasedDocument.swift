@@ -31,6 +31,7 @@ class WordBasedDocument: Document {
     
     func deleteToken() -> Bool {
         guard let input = proxy.documentContextBeforeInput else { return false }
+        NSLog("input: <\(input)>")
         
         let options: NSLinguisticTaggerOptions = []
         let schemes = [NSLinguisticTagSchemeLexicalClass]
@@ -39,16 +40,15 @@ class WordBasedDocument: Document {
         tagger.string = input
         
         var tokens : [String] = []
-        
         tagger.enumerateTagsInRange(
             range,
             scheme: NSLinguisticTagSchemeLexicalClass,
             options: options) {
                 (tag, tokenRange, _, _) in
-                print(tag)
                 let token = (input as NSString).substringWithRange(tokenRange)
                 tokens.append(token)
         }
+        NSLog("tokens: \(tokens)")
         
         guard let lastToken = tokens.last else { return true }
         
