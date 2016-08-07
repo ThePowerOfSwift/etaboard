@@ -60,9 +60,7 @@ extension SuggestionBarController: DocumentDelegate {
         self.suggestionBar.displayVerbatim(newCurrentWord)
     }
     private func postNewSuggestions(suggestions: [String]) {
-        mainStore.dispatch(
-            NewSuggestionsAction(suggestions: suggestions)
-        )
+        mainStore.dispatch(PostNewSuggestions(suggestions: suggestions))
     }
 }
 

@@ -11,3 +11,8 @@
 
 To TestFlight: `make beta`
 
+
+## Conventions
+
+Name store actions from the user’s perspective. Do not name the consequences of the action. That’s what the reducers are for. Start the name with a past participle. Example: `ActivatedCapitalization`.
+

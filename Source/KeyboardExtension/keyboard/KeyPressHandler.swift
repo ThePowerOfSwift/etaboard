@@ -25,7 +25,7 @@ class KeyPressHandler {
             
         self.dedicatedReactions[SchematicLayout.ToUppercase] = {
             keyboard.proceedToPage(.Uppercase)
-            mainStore.dispatch(CapitalizeSuggestionsAction())
+            mainStore.dispatch(ActivateCapitalization())
         }
     }
     
