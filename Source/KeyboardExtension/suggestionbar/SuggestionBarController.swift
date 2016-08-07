@@ -76,7 +76,7 @@ extension SuggestionBarController: DocumentDelegate {
     }
     private func postNewSuggestions(suggestions: [String]) {
         mainStore.dispatch(
-            UpdateSuggestionsAction(suggestions: suggestions)
+            NewSuggestionsAction(suggestions: suggestions)
         )
     }
 }
