@@ -58,7 +58,7 @@ class KeyboardController: UIViewController, UIGestureRecognizerDelegate {
         return recognizer
     }
     
-    var counter = 0    
+    var counter = 0
     func didTaps(recognizer: MyTapRecognizer) {
         let taps = recognizer.getAndClearLastTaps()
         NSLog("processing taps: \(taps)")
@@ -69,12 +69,12 @@ class KeyboardController: UIViewController, UIGestureRecognizerDelegate {
         })
     }
 
-    func didSwipeLeft(recognizer: UIGestureRecognizer) {
+    func didSwipeLeft() {
         NSLog("swipe left")
         document.deleteCurrentWord()
     }
 
-    func didSwipeUp(recognizer: UIGestureRecognizer) {
+    func didSwipeUp() {
         NSLog("swipe up")
         keyPressHandler.handle(SchematicLayout.ToUppercase)
     }
