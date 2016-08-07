@@ -42,7 +42,7 @@ dictionaries-from-scratch:
 ###############
 
 tools:
-	bundle install
+	bundle install --path vendor/bundle
 
 dependencies:
 	carthage bootstrap --platform iOS
