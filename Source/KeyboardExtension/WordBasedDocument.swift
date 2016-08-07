@@ -29,17 +29,14 @@ class WordBasedDocument: Document {
         NSLog("input: <\(input)>")
         
         let options: NSLinguisticTaggerOptions = []
-        let schemes = [NSLinguisticTagSchemeLexicalClass]
-        let tagger = NSLinguisticTagger(tagSchemes: schemes, options: Int(options.rawValue))
-        let range = NSMakeRange(0, (input as NSString).length)
+        let scheme = NSLinguisticTagSchemeTokenType
+        let tagger = NSLinguisticTagger(tagSchemes: [scheme], options: Int(options.rawValue))
+        let range = NSMakeRange(0, input.characters.count)
         tagger.string = input
         
-        var tokens : [String] = []
-        tagger.enumerateTagsInRange(
-            range,
-            scheme: NSLinguisticTagSchemeLexicalClass,
-            options: options) {
-                (tag, tokenRange, _, _) in
+        var tokens: [String] = []
+        tagger.enumerateTagsInRange(range, scheme: scheme, options: options) {
+            (tag, tokenRange, _, _) in
                 let token = (input as NSString).substringWithRange(tokenRange)
                 tokens.append(token)
         }
