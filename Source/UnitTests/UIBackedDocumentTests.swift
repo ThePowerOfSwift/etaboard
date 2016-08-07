@@ -30,24 +30,6 @@ class UIBackedDocumentTests: XCTestCase {
         expect(self.mock.insertText_calledWith) == "foo"
     }
     
-    func testDeleteCurrentWord_DeletesBackToLastSpaceExcludingTheSpace() {
-        mock.documentContextBeforeInput = "foo bar"
-        expect(self.document.deleteCurrentWord()) == true
-        expect(self.mock.deleteBackward_calls) == 3
-    }
-    
-    func testDeleteCurrentWord_DoesNothingAtTheBeginningOfDocument() {
-        mock.documentContextBeforeInput = nil
-        expect(self.document.deleteCurrentWord()) == false
-        expect(self.mock.deleteBackward_calls) == 0
-    }
-    
-    func testDeleteCurrentWord_DoesNothingRightAfterSpace() {
-        mock.documentContextBeforeInput = " "
-        document.deleteCurrentWord()
-        expect(self.mock.deleteBackward_calls) == 0
-    }
-    
     func testThereIsNoCurrentWordAtBeginningOfLine() {
         mock.documentContextBeforeInput = "\n"
         expect(self.document.currentWord()).to(beNil())

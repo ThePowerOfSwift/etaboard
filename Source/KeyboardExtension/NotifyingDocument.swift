@@ -21,12 +21,6 @@ class NotifyingDocument: Document {
         notify()
     }
     
-    func deleteCurrentWord() -> Bool {
-        let wasDeleted = wrappedDocument.deleteCurrentWord()
-        if wasDeleted { notify() }
-        return wasDeleted
-    }
-
     func deleteToken() -> Bool {
         let wasDeleted = wrappedDocument.deleteToken()
         if wasDeleted { notify() }
