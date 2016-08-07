@@ -6,7 +6,7 @@ fastlane := bundle exec fastlane
 ###############
 
 beta: dictionaries-from-scratch generate-code precheck
-	$(fastlane) beta
+	$(fastlane) beta submit:true
 
 precheck: generate-code
 	$(fastlane) test
