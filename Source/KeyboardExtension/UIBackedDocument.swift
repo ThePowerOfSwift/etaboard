@@ -1,6 +1,6 @@
 import UIKit
 
-class WordBasedDocument: Document {
+class UIBackedDocument: Document {
     let proxy: UITextDocumentProxy
     
     init(proxy: UITextDocumentProxy) {

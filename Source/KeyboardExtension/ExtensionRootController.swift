@@ -16,7 +16,7 @@ class ExtensionRootController: UIInputViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.darkGrayColor()
         
-        let document = NotifyingDocument(wrapping: WordBasedDocument(proxy: textDocumentProxy))
+        let document = NotifyingDocument(wrapping: UIBackedDocument(proxy: textDocumentProxy))
         
         let suggestionBarController = SuggestionBarController(document: document,
             suggester: Instances.suggester,

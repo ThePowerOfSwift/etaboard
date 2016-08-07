@@ -15,14 +15,14 @@ class UITextDocumentProxyMock: UITextDocumentProxyAdapter {
 }
 
 
-class WordBasedDocumentTests: XCTestCase {
+class UIBackedDocumentTests: XCTestCase {
 
     var mock: UITextDocumentProxyMock!
-    var document: WordBasedDocument!
+    var document: UIBackedDocument!
 
     override func setUp() {
         mock = UITextDocumentProxyMock()
-        document = WordBasedDocument(proxy: mock)
+        document = UIBackedDocument(proxy: mock)
     }
 
     func testPassesStringToProxyUnchanged() {
@@ -56,7 +56,7 @@ class WordBasedDocumentTests: XCTestCase {
 
 // MARK: - deleteToken
 
-extension WordBasedDocumentTests {
+extension UIBackedDocumentTests {
     func testDeleteToken_DoesNothingAtBeginningOfDocument() {
         mock.documentContextBeforeInput = nil
         expect(self.document.deleteToken()) == false

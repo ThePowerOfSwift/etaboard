@@ -16,7 +16,7 @@
 		20317D9B1BA09D3E008A4303 /* SuggestionBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20317D9A1BA09D3E008A4303 /* SuggestionBarView.swift */; };
 		20317D9D1BA0A9B1008A4303 /* UIView+LayoutConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20317D9C1BA0A9B1008A4303 /* UIView+LayoutConstraints.swift */; };
 		20317D9F1BA0B677008A4303 /* NotifyingDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20317D9E1BA0B677008A4303 /* NotifyingDocument.swift */; };
-		20317DE71BA2EEF2008A4303 /* WordBasedDocumentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20317DE61BA2EEF2008A4303 /* WordBasedDocumentTests.swift */; };
+		20317DE71BA2EEF2008A4303 /* UIBackedDocumentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20317DE61BA2EEF2008A4303 /* UIBackedDocumentTests.swift */; };
 		204008BC1BD6D30300FAD96C /* SuggesterWithDictionaries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204008BB1BD6D30300FAD96C /* SuggesterWithDictionaries.swift */; };
 		2045E7BE1BC84A2700045CEB /* pipe-forward.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2045E7BD1BC84A2700045CEB /* pipe-forward.swift */; };
 		2045E7C01BC8584200045CEB /* SequenceType+groupBy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2045E7BF1BC8584200045CEB /* SequenceType+groupBy.swift */; };
@@ -51,8 +51,8 @@
 		20C304BE1BB833C600C3460E /* Int,String+random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C304BD1BB833C600C3460E /* Int,String+random.swift */; };
 		20C304C11BBAFD1000C3460E /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C304C01BBAFD1000C3460E /* Document.swift */; };
 		20C304C21BBAFE5800C3460E /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C304C01BBAFD1000C3460E /* Document.swift */; };
-		20C304C41BBAFF6B00C3460E /* WordBasedDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C304C31BBAFF6B00C3460E /* WordBasedDocument.swift */; };
-		20C304C51BBAFF6B00C3460E /* WordBasedDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C304C31BBAFF6B00C3460E /* WordBasedDocument.swift */; };
+		20C304C41BBAFF6B00C3460E /* UIBackedDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C304C31BBAFF6B00C3460E /* UIBackedDocument.swift */; };
+		20C304C51BBAFF6B00C3460E /* UIBackedDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C304C31BBAFF6B00C3460E /* UIBackedDocument.swift */; };
 		20D5F64A1BA2F4C100956BE8 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20D5F6481BA2F4C100956BE8 /* Nimble.framework */; };
 		20D5F64E1BA2F4DA00956BE8 /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 20D5F6481BA2F4C100956BE8 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		20D909BA1C2492E8000A5DFD /* WordDistanceAcceptanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D909B91C2492E8000A5DFD /* WordDistanceAcceptanceTests.swift */; };
@@ -136,7 +136,7 @@
 		20317D9E1BA0B677008A4303 /* NotifyingDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotifyingDocument.swift; sourceTree = "<group>"; };
 		20317DE21BA2EEF2008A4303 /* UnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		20317DE51BA2EEF2008A4303 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		20317DE61BA2EEF2008A4303 /* WordBasedDocumentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordBasedDocumentTests.swift; sourceTree = "<group>"; };
+		20317DE61BA2EEF2008A4303 /* UIBackedDocumentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBackedDocumentTests.swift; sourceTree = "<group>"; };
 		204008BB1BD6D30300FAD96C /* SuggesterWithDictionaries.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggesterWithDictionaries.swift; sourceTree = "<group>"; };
 		2045E7BD1BC84A2700045CEB /* pipe-forward.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "pipe-forward.swift"; sourceTree = "<group>"; };
 		2045E7BF1BC8584200045CEB /* SequenceType+groupBy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SequenceType+groupBy.swift"; sourceTree = "<group>"; };
@@ -169,7 +169,7 @@
 		20A2EE671D568FA700D39D89 /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		20C304BD1BB833C600C3460E /* Int,String+random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int,String+random.swift"; sourceTree = "<group>"; };
 		20C304C01BBAFD1000C3460E /* Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
-		20C304C31BBAFF6B00C3460E /* WordBasedDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordBasedDocument.swift; sourceTree = "<group>"; };
+		20C304C31BBAFF6B00C3460E /* UIBackedDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIBackedDocument.swift; sourceTree = "<group>"; };
 		20D5F6481BA2F4C100956BE8 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = SOURCE_ROOT; };
 		20D909B91C2492E8000A5DFD /* WordDistanceAcceptanceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordDistanceAcceptanceTests.swift; sourceTree = "<group>"; };
 		20D909BE1C253675000A5DFD /* SuggestionBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionBarController.swift; sourceTree = "<group>"; };
@@ -351,7 +351,7 @@
 			children = (
 				20C304C01BBAFD1000C3460E /* Document.swift */,
 				20317D9E1BA0B677008A4303 /* NotifyingDocument.swift */,
-				20C304C31BBAFF6B00C3460E /* WordBasedDocument.swift */,
+				20C304C31BBAFF6B00C3460E /* UIBackedDocument.swift */,
 			);
 			name = document;
 			sourceTree = "<group>";
@@ -372,7 +372,7 @@
 		20C304C71BBB071600C3460E /* document */ = {
 			isa = PBXGroup;
 			children = (
-				20317DE61BA2EEF2008A4303 /* WordBasedDocumentTests.swift */,
+				20317DE61BA2EEF2008A4303 /* UIBackedDocumentTests.swift */,
 			);
 			name = document;
 			sourceTree = "<group>";
@@ -618,11 +618,11 @@
 				2045E7C11BC858F900045CEB /* SequenceType+groupBy.swift in Sources */,
 				207F2C9C1BADB1350049AEB9 /* SuggesterPerformanceTests.swift in Sources */,
 				207F2C9D1BADB2FC0049AEB9 /* Suggester.swift in Sources */,
-				20C304C51BBAFF6B00C3460E /* WordBasedDocument.swift in Sources */,
+				20C304C51BBAFF6B00C3460E /* UIBackedDocument.swift in Sources */,
 				20C304BE1BB833C600C3460E /* Int,String+random.swift in Sources */,
 				20C304C21BBAFE5800C3460E /* Document.swift in Sources */,
 				205A413A1BC4978E00E659E1 /* CharacterDistance.swift in Sources */,
-				20317DE71BA2EEF2008A4303 /* WordBasedDocumentTests.swift in Sources */,
+				20317DE71BA2EEF2008A4303 /* UIBackedDocumentTests.swift in Sources */,
 				20D909CC1C28301F000A5DFD /* UserDictionary.swift in Sources */,
 				200C471C1BA337B200FA59D3 /* UITextDocumentProxyAdapter.swift in Sources */,
 				207686631BB21300004B1F57 /* String+split_Tests.swift in Sources */,
@@ -651,7 +651,7 @@
 				20D909C11C25D4E7000A5DFD /* KeyboardController.swift in Sources */,
 				20317D9D1BA0A9B1008A4303 /* UIView+LayoutConstraints.swift in Sources */,
 				C21CC63D023DE56856F324EF /* SchematicLayout.swift in Sources */,
-				20C304C41BBAFF6B00C3460E /* WordBasedDocument.swift in Sources */,
+				20C304C41BBAFF6B00C3460E /* UIBackedDocument.swift in Sources */,
 				2045E7BE1BC84A2700045CEB /* pipe-forward.swift in Sources */,
 				C217DE1857A2A3DB936D4FBC /* KeyboardModel.swift in Sources */,
 				20D909C91C27992B000A5DFD /* Colors.swift in Sources */,
