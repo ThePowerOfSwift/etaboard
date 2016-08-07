@@ -21,12 +21,7 @@ class WordBasedDocument: Document {
     }
     
     func deleteCurrentWord() -> Bool {
-        guard let currentWord = currentWord() else { return false }
-        
-        for _ in 0..<currentWord.characters.count {
-            deleteBackward()
-        }
-        return true
+        return delete(currentWord())
     }
     
     func deleteToken() -> Bool {
@@ -50,9 +45,13 @@ class WordBasedDocument: Document {
         }
         NSLog("tokens: \(tokens)")
         
-        guard let lastToken = tokens.last else { return true }
+        return delete(tokens.last)
+    }
+    
+    private func delete(string: String?) -> Bool {
+        guard let string = string else { return false }
         
-        for _ in 0..<lastToken.characters.count {
+        for _ in 0..<string.characters.count {
             deleteBackward()
         }
         return true
