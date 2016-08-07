@@ -32,6 +32,13 @@ extension Suggester {
         NSLog("asked for suggestion for: \(currentContext)")
         guard let currentWord = currentContext else { return }
         
+        let containsOnlyPunctuation = currentWord.stringByTrimmingCharactersInSet(
+            NSCharacterSet.punctuationCharacterSet()).isEmpty
+        if containsOnlyPunctuation {
+            collector.addSuggestion(currentWord, distance: Distance.min)
+            return
+        }
+        
         collectSuggestionsWithDistancesFor(currentWord, into: collector)
         if (containsCapitalLetter(currentWord)) {
             collector.mapSuggestions(Suggester.capitalize)

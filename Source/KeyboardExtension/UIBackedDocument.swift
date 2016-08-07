@@ -13,11 +13,24 @@ class UIBackedDocument: Document {
     }
     
     func getToken() -> String? {
-        guard let contextBefore = proxy.documentContextBeforeInput else { return nil }
-        if contextBefore.hasSuffix(" ") || contextBefore.hasSuffix("\n") { return nil }
+        guard let input = proxy.documentContextBeforeInput else { return nil }
+        if input.hasSuffix(" ") || input.hasSuffix("\n") { return nil }
         
-        let wordsBefore = contextBefore.split(" ")
-        return wordsBefore.last
+        let options: NSLinguisticTaggerOptions = [.OmitWhitespace]
+        let scheme = NSLinguisticTagSchemeTokenType
+        let tagger = NSLinguisticTagger(tagSchemes: [scheme], options: Int(options.rawValue))
+        let range = NSMakeRange(0, input.characters.count)
+        tagger.string = input
+        
+        var tokens: [String] = []
+        tagger.enumerateTagsInRange(range, scheme: scheme, options: options) {
+            (tag, tokenRange, _, _) in
+            let token = (input as NSString).substringWithRange(tokenRange)
+            tokens.append(token)
+        }
+        NSLog("tokens: \(tokens)")
+        
+        return tokens.last
     }
     
     func deleteNonWhiteSpaceToken() -> Bool {
