@@ -4,12 +4,12 @@ protocol DocumentDelegate {
 }
 
 protocol Document {
-    func currentWord() -> String?
+    func getToken() -> String?
 
     func insert(text: String)
 
     func deleteBackward()
     func deleteToken() -> Bool
 
-    func replaceCurrentWord(text: String)
+    func replaceToken(text: String)
 }

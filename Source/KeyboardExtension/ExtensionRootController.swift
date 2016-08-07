@@ -55,7 +55,7 @@ class ExtensionRootController: UIInputViewController {
         NSLog("complete suggestion")
         return {
             guard let suggestion = getPrimarySuggestion(mainStore.state) else { return }
-            document.replaceCurrentWord(suggestion + suffix)
+            document.replaceToken(suggestion + suffix)
         }
     }
 }

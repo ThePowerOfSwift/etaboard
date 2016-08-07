@@ -29,10 +29,14 @@ class UIBackedDocumentTests: XCTestCase {
         document.insert("foo")
         expect(self.mock.insertText_calledWith) == "foo"
     }
-    
-    func testThereIsNoCurrentWordAtBeginningOfLine() {
+}
+
+// MARK: - getToken
+
+extension UIBackedDocumentTests {
+    func testThereIsNoTokenAtBeginningOfLine() {
         mock.documentContextBeforeInput = "\n"
-        expect(self.document.currentWord()).to(beNil())
+        expect(self.document.getToken()).to(beNil())
     }
 }
 

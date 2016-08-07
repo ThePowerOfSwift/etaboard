@@ -7,12 +7,12 @@ class NotifyingDocument: Document {
         self.wrappedDocument = wrappedDocument
     }
     
-    func currentWord() -> String? {
-        return wrappedDocument.currentWord()
+    func getToken() -> String? {
+        return wrappedDocument.getToken()
     }
     
-    func replaceCurrentWord(text: String) {
-        wrappedDocument.replaceCurrentWord(text)
+    func replaceToken(text: String) {
+        wrappedDocument.replaceToken(text)
         notify()
     }
     
@@ -33,6 +33,6 @@ class NotifyingDocument: Document {
     }
     
     private func notify() {
-        delegate?.didChangeCurrentWord(wrappedDocument.currentWord())
+        delegate?.didChangeCurrentWord(wrappedDocument.getToken())
     }
 }

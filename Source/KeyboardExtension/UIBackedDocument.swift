@@ -7,12 +7,12 @@ class UIBackedDocument: Document {
         self.proxy = proxy
     }
     
-    func replaceCurrentWord(text: String) {
-        deleteCurrentWord()
+    func replaceToken(text: String) {
+        deleteNonWhiteSpaceToken()
         insert(text)
     }
     
-    func currentWord() -> String? {
+    func getToken() -> String? {
         guard let contextBefore = proxy.documentContextBeforeInput else { return nil }
         if contextBefore.hasSuffix(" ") || contextBefore.hasSuffix("\n") { return nil }
         
@@ -20,8 +20,8 @@ class UIBackedDocument: Document {
         return wordsBefore.last
     }
     
-    func deleteCurrentWord() -> Bool {
-        return delete(currentWord())
+    func deleteNonWhiteSpaceToken() -> Bool {
+        return delete(getToken())
     }
     
     func deleteToken() -> Bool {

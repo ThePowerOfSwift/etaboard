@@ -32,7 +32,7 @@ class SuggestionBarController: UIViewController {
     
     func didTapSuggestion(button: UIButton) {
         guard let word = button.currentTitle else { return }
-        document.replaceCurrentWord(word)
+        document.replaceToken(word)
     }
     
     func didTapVerbatim(button: UIButton) {
@@ -46,7 +46,7 @@ class SuggestionBarController: UIViewController {
             NSLog("Underlying error: \(error)")
         }
         
-        document.replaceCurrentWord(verbatimWord)
+        document.replaceToken(verbatimWord)
     }
 }
 
