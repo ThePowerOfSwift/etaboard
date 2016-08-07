@@ -26,7 +26,13 @@ class NotifyingDocument: Document {
         if wasDeleted { notify() }
         return wasDeleted
     }
-    
+
+    func deleteToken() -> Bool {
+        let wasDeleted = wrappedDocument.deleteToken()
+        if wasDeleted { notify() }
+        return wasDeleted
+    }
+
     func insert(text: String) {
         wrappedDocument.insert(text)
         notify()

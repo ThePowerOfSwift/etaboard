@@ -52,5 +52,32 @@ class WordBasedDocumentTests: XCTestCase {
         mock.documentContextBeforeInput = "\n"
         expect(self.document.currentWord()).to(beNil())
     }
+}
 
+// MARK: - deleteToken
+
+extension WordBasedDocumentTests {
+    func testDeleteToken_DoesNothingAtBeginningOfDocument() {
+        mock.documentContextBeforeInput = nil
+        expect(self.document.deleteToken()) == false
+        expect(self.mock.deleteBackward_calls) == 0
+    }
+    
+    func testRecognizesConsecutiveNonAlphanumericCharactersAsToken() {
+        mock.documentContextBeforeInput = "foo"
+        expect(self.document.deleteToken()) == true
+        expect(self.mock.deleteBackward_calls) == 3
+    }
+
+    func testRecognizesConsecutiveSpacesAfterWordAsToken() {
+        mock.documentContextBeforeInput = "a  "
+        expect(self.document.deleteToken()) == true
+        expect(self.mock.deleteBackward_calls) == 2
+    }
+
+    func testRecognizesConsecutivePunctuationAsToken() {
+        mock.documentContextBeforeInput = "?!"
+        expect(self.document.deleteToken()) == true
+        expect(self.mock.deleteBackward_calls) == 2
+    }
 }

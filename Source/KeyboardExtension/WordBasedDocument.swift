@@ -29,6 +29,35 @@ class WordBasedDocument: Document {
         return true
     }
     
+    func deleteToken() -> Bool {
+        guard let input = proxy.documentContextBeforeInput else { return false }
+        
+        let options: NSLinguisticTaggerOptions = []
+        let schemes = [NSLinguisticTagSchemeLexicalClass]
+        let tagger = NSLinguisticTagger(tagSchemes: schemes, options: Int(options.rawValue))
+        let range = NSMakeRange(0, (input as NSString).length)
+        tagger.string = input
+        
+        var tokens : [String] = []
+        
+        tagger.enumerateTagsInRange(
+            range,
+            scheme: NSLinguisticTagSchemeLexicalClass,
+            options: options) {
+                (tag, tokenRange, _, _) in
+                print(tag)
+                let token = (input as NSString).substringWithRange(tokenRange)
+                tokens.append(token)
+        }
+        
+        guard let lastToken = tokens.last else { return true }
+        
+        for _ in 0..<lastToken.characters.count {
+            deleteBackward()
+        }
+        return true
+    }
+    
     func deleteBackward() {
         proxy.deleteBackward()
     }
