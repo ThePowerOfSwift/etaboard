@@ -1,7 +1,5 @@
 
 class KeyPressHandler {
-    static let NotificationUppercaseActivatedName = "EBUppercaseActivated"
-    
     let keyboard: KeyboardModel
     let document: Document
     var dedicatedReactions: [String: () -> Void]
@@ -27,8 +25,7 @@ class KeyPressHandler {
             
         self.dedicatedReactions[SchematicLayout.ToUppercase] = {
             keyboard.proceedToPage(.Uppercase)
-            NSNotificationCenter.defaultCenter().postNotificationName(
-                KeyPressHandler.NotificationUppercaseActivatedName, object: nil)
+            mainStore.dispatch(CapitalizeSuggestionsAction())
         }
     }
     
