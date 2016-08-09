@@ -1,7 +1,7 @@
 import UIKit
 import ReSwift
 
-let mainStore = Store<AppState>(
+let store = Store<AppState>(
     reducer: AppReducer(),
     state: nil
 )
@@ -30,8 +30,8 @@ class ExtensionRootController: UIInputViewController {
 
         let keyboardController = KeyboardController(document: document,
             nextKeyboardAction: { [unowned self] in self.advanceToNextInputMode() },
-            onSwipeDown: { mainStore.dispatch(documentActions.CompleteSuggestion) },
-            onSwipeRight: { mainStore.dispatch(documentActions.CompleteSuggestionAndProceed) }
+            onSwipeDown: { store.dispatch(documentActions.CompleteSuggestion) },
+            onSwipeRight: { store.dispatch(documentActions.CompleteSuggestionAndProceed) }
         )
         addChild(keyboardController)
 

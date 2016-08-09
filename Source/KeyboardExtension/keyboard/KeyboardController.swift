@@ -78,7 +78,7 @@ class KeyboardController: UIViewController, UIGestureRecognizerDelegate {
     }
     func didSwipeUp() {
         NSLog("swipe up")
-        mainStore.dispatch(ActivateCapitalization())
+        store.dispatch(ActivateCapitalization())
     }
     func didSwipeDown() { onSwipeDown() }
     func didSwipeRight() { onSwipeRight() }
@@ -86,10 +86,10 @@ class KeyboardController: UIViewController, UIGestureRecognizerDelegate {
 
 extension KeyboardController: StoreSubscriber {
     override func viewWillAppear(animated: Bool) {
-        mainStore.subscribe(self)
+        store.subscribe(self)
     }
     override func viewWillDisappear(animated: Bool) {
-        mainStore.unsubscribe(self)
+        store.unsubscribe(self)
     }
     func newState(state: AppState) {
         let nextLayout = state.capitalize ? Page.Uppercase : Page.Lowercase

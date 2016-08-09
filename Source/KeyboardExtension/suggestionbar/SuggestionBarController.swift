@@ -34,7 +34,7 @@ class SuggestionBarController: UIViewController {
     
     func didTapSuggestion(button: UIButton) {
         guard let word = button.currentTitle else { return }
-        mainStore.dispatch(documentActions.CompleteSuggestion(word))
+        store.dispatch(documentActions.CompleteSuggestion(word))
     }
     
     func didTapVerbatim(button: UIButton) {
@@ -62,16 +62,16 @@ extension SuggestionBarController: DocumentDelegate {
         self.suggestionBar.displayVerbatim(newCurrentWord)
     }
     private func postNewSuggestions(suggestions: [String]) {
-        mainStore.dispatch(PostNewSuggestions(suggestions: suggestions))
+        store.dispatch(PostNewSuggestions(suggestions: suggestions))
     }
 }
 
 extension SuggestionBarController: StoreSubscriber {
     override func viewWillAppear(animated: Bool) {
-        mainStore.subscribe(self)
+        store.subscribe(self)
     }
     override func viewWillDisappear(animated: Bool) {
-        mainStore.unsubscribe(self)
+        store.unsubscribe(self)
     }
     func newState(state: AppState) {
         suggestionBar.displaySuggestions(state.suggestions)

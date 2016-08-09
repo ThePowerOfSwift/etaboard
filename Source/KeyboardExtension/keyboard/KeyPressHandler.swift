@@ -14,15 +14,15 @@ class KeyPressHandler {
             SchematicLayout.Backspace: { document.deleteBackward() },
             SchematicLayout.Space: {
                 document.insert(" ")
-                mainStore.dispatch(DeactivateCapitalization())
+                store.dispatch(DeactivateCapitalization())
             },
             SchematicLayout.NextSystemKeyboard: nextKeyboardAction,
             SchematicLayout.ToSymbols: { keyboard.proceedToPage(.Symbols) },
             SchematicLayout.ToLetters: { keyboard.proceedToPage(.Lowercase) },
             SchematicLayout.ToEmojis: { keyboard.proceedToPage(.Emojis) },
             
-            SchematicLayout.ToLowercase: { mainStore.dispatch(DeactivateCapitalization()) },
-            SchematicLayout.ToUppercase: { mainStore.dispatch(ActivateCapitalization()) }
+            SchematicLayout.ToLowercase: { store.dispatch(DeactivateCapitalization()) },
+            SchematicLayout.ToUppercase: { store.dispatch(ActivateCapitalization()) }
         ]
     }
     
@@ -32,7 +32,7 @@ class KeyPressHandler {
         }
         else {
             document.insert(key)
-            mainStore.dispatch(DeactivateCapitalization())
+            store.dispatch(DeactivateCapitalization())
         }
     }
 }
