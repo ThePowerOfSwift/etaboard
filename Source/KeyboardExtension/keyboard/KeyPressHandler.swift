@@ -14,19 +14,16 @@ class KeyPressHandler {
             SchematicLayout.Backspace: { document.deleteBackward() },
             SchematicLayout.Space: {
                 document.insert(" ")
-                keyboard.proceedToPage(.Lowercase)
+                mainStore.dispatch(DeactivateCapitalization())
             },
             SchematicLayout.NextSystemKeyboard: nextKeyboardAction,
-            SchematicLayout.ToLowercase: { keyboard.proceedToPage(.Lowercase) },
             SchematicLayout.ToSymbols: { keyboard.proceedToPage(.Symbols) },
             SchematicLayout.ToLetters: { keyboard.proceedToPage(.Lowercase) },
             SchematicLayout.ToEmojis: { keyboard.proceedToPage(.Emojis) },
-        ]
             
-        self.dedicatedReactions[SchematicLayout.ToUppercase] = {
-            keyboard.proceedToPage(.Uppercase)
-            mainStore.dispatch(ActivateCapitalization())
-        }
+            SchematicLayout.ToLowercase: { mainStore.dispatch(DeactivateCapitalization()) },
+            SchematicLayout.ToUppercase: { mainStore.dispatch(ActivateCapitalization()) }
+        ]
     }
     
     func handle(key: String) {
@@ -35,7 +32,7 @@ class KeyPressHandler {
         }
         else {
             document.insert(key)
-            keyboard.proceedToPage(.Lowercase)
+            mainStore.dispatch(DeactivateCapitalization())
         }
     }
 }

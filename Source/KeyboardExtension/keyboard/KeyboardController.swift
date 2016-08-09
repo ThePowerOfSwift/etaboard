@@ -1,4 +1,5 @@
 import UIKit
+import ReSwift
 
 class KeyboardController: UIViewController, UIGestureRecognizerDelegate {
     private let keyboardModel = KeyboardModel()
@@ -77,8 +78,21 @@ class KeyboardController: UIViewController, UIGestureRecognizerDelegate {
     }
     func didSwipeUp() {
         NSLog("swipe up")
-        keyPressHandler.handle(SchematicLayout.ToUppercase)
+        mainStore.dispatch(ActivateCapitalization())
     }
     func didSwipeDown() { onSwipeDown() }
     func didSwipeRight() { onSwipeRight() }
+}
+
+extension KeyboardController: StoreSubscriber {
+    override func viewWillAppear(animated: Bool) {
+        mainStore.subscribe(self)
+    }
+    override func viewWillDisappear(animated: Bool) {
+        mainStore.unsubscribe(self)
+    }
+    func newState(state: AppState) {
+        let nextLayout = state.capitalize ? Page.Uppercase : Page.Lowercase
+        keyboardModel.proceedToPage(nextLayout)
+    }
 }
