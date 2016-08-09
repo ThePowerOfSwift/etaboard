@@ -38,3 +38,35 @@ struct AppReducer: Reducer {
 func getPrimarySuggestion(state: AppState) -> String? {
     return state.suggestions.first
 }
+
+class DocumentActions {
+    private let document: Document
+    
+    init(_ document: Document) {
+        self.document = document
+    }
+
+    func CompleteSuggestion(suggestion: String) -> ((AppState, Store<AppState>) -> Action?) {
+        return { _, _ in
+            return self.CompleteSuggestion(suggestion)
+        }
+    }
+    
+    func CompleteSuggestion(state: AppState, store: Store<AppState>) -> Action? {
+        return CompleteSuggestionWithSuffix(state, store)
+    }
+    
+    func CompleteSuggestionAndProceed(state: AppState, store: Store<AppState>) -> Action? {
+        return CompleteSuggestionWithSuffix(state, store, suffix: " ")
+    }
+
+    private func CompleteSuggestionWithSuffix(state: AppState, _ store: Store<AppState>, suffix: String = "") -> Action? {
+        guard let suggestion = getPrimarySuggestion(state) else { return nil }
+        return CompleteSuggestion(suggestion + suffix)
+    }
+
+    private func CompleteSuggestion(suggestion: String) -> Action {
+        document.replaceToken(suggestion)
+        return DeactivateCapitalization()
+    }
+}

@@ -17,8 +17,11 @@ class ExtensionRootController: UIInputViewController {
         view.backgroundColor = UIColor.darkGrayColor()
         
         let document = NotifyingDocument(wrapping: UIBackedDocument(proxy: textDocumentProxy))
+        let documentActions = DocumentActions(document)
         
-        let suggestionBarController = SuggestionBarController(document: document,
+        let suggestionBarController = SuggestionBarController(
+            document: document,
+            documentActions: documentActions,
             suggester: Instances.suggester,
             userDictionary: UserDictionary())
         addChild(suggestionBarController)
@@ -27,8 +30,9 @@ class ExtensionRootController: UIInputViewController {
 
         let keyboardController = KeyboardController(document: document,
             nextKeyboardAction: { [unowned self] in self.advanceToNextInputMode() },
-            onSwipeDown: completeSuggestion(suggestionBarController, document),
-            onSwipeRight: completeSuggestion(suggestionBarController, document, suffix: " "))
+            onSwipeDown: { mainStore.dispatch(documentActions.CompleteSuggestion) },
+            onSwipeRight: { mainStore.dispatch(documentActions.CompleteSuggestionAndProceed) }
+        )
         addChild(keyboardController)
 
         layoutSubviews(
@@ -48,15 +52,6 @@ class ExtensionRootController: UIInputViewController {
     private func addChild(controller: UIViewController) {
         addChildViewController(controller)
         view.addSubview(controller.view)
-    }
-    
-    func completeSuggestion(suggestionBar: SuggestionBarController, _ document: Document,
-                            suffix: String = "") -> (() -> ()) {
-        NSLog("complete suggestion")
-        return {
-            guard let suggestion = getPrimarySuggestion(mainStore.state) else { return }
-            document.replaceToken(suggestion + suffix)
-        }
     }
 }
 

@@ -4,14 +4,16 @@ import ReSwift
 
 class SuggestionBarController: UIViewController {
     private let document: Document
+    private let documentActions: DocumentActions
     private let suggester: Suggester
     private let userDictionary: UserDictionary
     private var suggestionBar: SuggestionBarView
     private let completionQueue = dispatch_queue_create(
         "de.bepple.etaboard.completions", DISPATCH_QUEUE_SERIAL)
 
-    init(document: Document, suggester: Suggester, userDictionary: UserDictionary) {
+    init(document: Document, documentActions: DocumentActions, suggester: Suggester, userDictionary: UserDictionary) {
         self.document = document
+        self.documentActions = documentActions
         self.suggester = suggester
         self.userDictionary = userDictionary
         suggestionBar = SuggestionBarView()
@@ -32,7 +34,7 @@ class SuggestionBarController: UIViewController {
     
     func didTapSuggestion(button: UIButton) {
         guard let word = button.currentTitle else { return }
-        document.replaceToken(word)
+        mainStore.dispatch(documentActions.CompleteSuggestion(word))
     }
     
     func didTapVerbatim(button: UIButton) {
